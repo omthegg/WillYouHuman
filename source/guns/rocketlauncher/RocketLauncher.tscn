@@ -1,0 +1,358 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://assets/models/guns/wyh_rocketlauncher_ply.glb" type="PackedScene" id=1]
+[ext_resource path="res://source/guns/rocketlauncher/RocketLauncher.gd" type="Script" id=2]
+[ext_resource path="res://assets/images/custom/misc/circle.png" type="Texture" id=3]
+
+[sub_resource type="Shader" id=19]
+code = "shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+
+const float PI = 3.1415926;
+
+uniform float viewmodel_fov = 50.0f;
+
+uniform vec4 albedo : hint_color = vec4(1.0f);
+uniform sampler2D texture_albedo : hint_albedo;
+uniform float specular = 0.5f;
+uniform float metallic = 1.0f;
+uniform float roughness : hint_range(0,1) = 1.0f;
+uniform float point_size : hint_range(0,128);
+uniform sampler2D texture_metallic : hint_white;
+uniform vec4 metallic_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
+uniform sampler2D texture_roughness : hint_white;
+uniform vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
+//uniform sampler2D texture_emission : hint_black_albedo;
+//uniform vec4 emission : hint_color;
+//uniform float emission_energy;
+uniform sampler2D texture_normal : hint_normal;
+uniform float normal_scale : hint_range(-16,16) = 0.5f;
+uniform vec3 uv1_scale = vec3(1.0f);
+uniform vec3 uv1_offset = vec3(0.0f);
+uniform vec3 uv2_scale = vec3(1.0f);
+uniform vec3 uv2_offset = vec3(0.0f);
+
+void vertex() {
+	UV = UV * uv1_scale.xy + uv1_offset.xy;
+	
+	/* begin shader magic*/
+	float onetanfov = 1.0f / tan(0.5f * (viewmodel_fov * PI / 180.0f));
+	float aspect = VIEWPORT_SIZE.x / VIEWPORT_SIZE.y;
+	// modify projection matrix
+	PROJECTION_MATRIX[1][1] = onetanfov;
+	PROJECTION_MATRIX[0][0] = onetanfov / aspect;
+	// draws the viewmodel over everything (disable if you want dof near on viewmodel)
+	POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
+	POSITION.z = mix(POSITION.z, 0, 0.999);
+	/* end shader magic */
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	albedo_tex *= COLOR;
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+	NORMALMAP = texture(texture_normal,base_uv).rgb;
+	NORMALMAP_DEPTH = normal_scale;
+	//vec3 emission_tex = texture(texture_emission,base_uv).rgb;
+	//EMISSION = (emission.rgb+emission_tex)*emission_energy;
+}"
+
+[sub_resource type="ShaderMaterial" id=24]
+shader = SubResource( 19 )
+shader_param/viewmodel_fov = 80.0
+shader_param/albedo = Color( 1, 1, 1, 1 )
+shader_param/specular = 0.0
+shader_param/metallic = 0.0
+shader_param/roughness = 1.0
+shader_param/point_size = null
+shader_param/metallic_texture_channel = Plane( 1, 0, 0, 0 )
+shader_param/roughness_texture_channel = Plane( 1, 0, 0, 0 )
+shader_param/normal_scale = 0.5
+shader_param/uv1_scale = Vector3( 1, 1, 1 )
+shader_param/uv1_offset = Vector3( 0, 0, 0 )
+shader_param/uv2_scale = Vector3( 1, 1, 1 )
+shader_param/uv2_offset = Vector3( 0, 0, 0 )
+
+[sub_resource type="SpatialMaterial" id=2]
+
+[sub_resource type="CylinderMesh" id=1]
+material = SubResource( 2 )
+top_radius = 0.5
+radial_segments = 4
+rings = 1
+
+[sub_resource type="Curve" id=17]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.478873, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=16]
+curve = SubResource( 17 )
+
+[sub_resource type="ParticlesMaterial" id=18]
+emission_shape = 5
+emission_ring_radius = 0.8
+emission_ring_inner_radius = 0.7
+emission_ring_height = 1.0
+emission_ring_axis = Vector3( 0, 0, 1 )
+gravity = Vector3( 0, 0, 0 )
+radial_accel = -10.0
+scale_curve = SubResource( 16 )
+
+[sub_resource type="SpatialMaterial" id=25]
+flags_unshaded = true
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_color = Color( 0, 1, 0.0509804, 1 )
+
+[sub_resource type="QuadMesh" id=20]
+material = SubResource( 25 )
+size = Vector2( 0.1, 0.1 )
+
+[sub_resource type="Animation" id=21]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite3D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite3D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ShootLight:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ShootLight:light_energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[sub_resource type="Animation" id=22]
+resource_name = "charge_shoot"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite3D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 0.0627451, 1 ), Color( 0, 1, 0.0627451, 1 ), Color( 0, 1, 0.0627451, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite3D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 5, 5, 5 ), Vector3( 0.2, 0.2, 0.2 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ShootLight:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ShootLight:light_energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.1, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 5.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=23]
+resource_name = "shoot"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite3D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0.854902, 1, 1 ), Color( 0, 0.854902, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite3D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 2, 2, 2 ), Vector3( 0.2, 0.2, 0.2 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ShootLight:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ShootLight:light_energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.1, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+
+[node name="RocketLauncher" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="wyh_rocketlauncher" parent="." index="0"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+material/0 = SubResource( 24 )
+
+[node name="BurnoutTimer" type="Timer" parent="." index="1"]
+wait_time = 5.0
+one_shot = true
+
+[node name="Timer" type="Timer" parent="." index="2"]
+wait_time = 0.3
+one_shot = true
+
+[node name="Spatial" type="Spatial" parent="." index="3"]
+transform = Transform( 1.8, 0, 0, 0, 1, 0, 0, 0, 6.1, 0, -0.00698484, 0.0308944 )
+visible = false
+
+[node name="MeshInstance" type="MeshInstance" parent="Spatial" index="0"]
+transform = Transform( 0.0353553, 0, 0.0353553, 0, 0.02, 0, -0.0353553, 0, 0.0353553, 0, 0.2427, 0 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+
+[node name="ChargeParticles" type="Particles" parent="." index="4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.9 )
+emitting = false
+lifetime = 0.4
+process_material = SubResource( 18 )
+draw_pass_1 = SubResource( 20 )
+
+[node name="Sprite3D" type="Sprite3D" parent="." index="5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16, -0.9 )
+visible = false
+texture = ExtResource( 3 )
+
+[node name="ShootLight" type="OmniLight" parent="." index="6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16, -1.1 )
+visible = false
+layers = 3
+light_color = Color( 0.196078, 1, 0, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
+playback_speed = 10.0
+anims/RESET = SubResource( 21 )
+anims/charge_shoot = SubResource( 22 )
+anims/shoot = SubResource( 23 )
+
+[connection signal="timeout" from="BurnoutTimer" to="." method="_on_BurnoutTimer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

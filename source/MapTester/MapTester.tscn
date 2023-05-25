@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://addons/qodot/src/nodes/qodot_map.gd" type="Script" id=1]
+[ext_resource path="res://source/maps/Map.gd" type="Script" id=2]
+[ext_resource path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" type="Resource" id=3]
+[ext_resource path="res://source/environments/Environment1.tres" type="Environment" id=5]
+
+[sub_resource type="NavigationMesh" id=1]
+resource_local_to_scene = true
+geometry_parsed_geometry_type = 1
+agent_height = 1.8
+agent_radius = 0.6
+
+[sub_resource type="SpatialMaterial" id=2]
+
+[node name="MapTester" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Navigation" type="Navigation" parent="."]
+
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
+navmesh = SubResource( 1 )
+
+[node name="QodotMap" type="Spatial" parent="Navigation/NavigationMeshInstance"]
+script = ExtResource( 1 )
+map_file = ""
+inverse_scale_factor = 16.0
+entity_fgd = ExtResource( 3 )
+base_texture_dir = "res://textures"
+texture_file_extensions = PoolStringArray( "png" )
+worldspawn_layers = [  ]
+brush_clip_texture = "special/clip"
+face_skip_texture = "special/skip"
+texture_wads = [  ]
+material_file_extension = "tres"
+default_material = SubResource( 2 )
+uv_unwrap_texel_size = 1.0
+print_profiling_data = false
+use_trenchbroom_group_hierarchy = false
+tree_attach_batch_size = 16
+set_owner_batch_size = 16
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 5 )

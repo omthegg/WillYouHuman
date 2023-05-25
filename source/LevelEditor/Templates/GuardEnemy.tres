@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://source/LevelEditor/LevelEditorTemplate.gd" type="Script" id=1]
+[ext_resource path="res://source/enemies/guard/Guard.tscn" type="PackedScene" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "Guard Enemy"
+scene = ExtResource( 2 )
+spawn_using_entity_spawner = true
+entity_spawner_color = Color( 1, 0, 0, 1 )
+entity_spawner_offset = Vector3( 0, 0, 0 )
+rotation_step = 45
+y_rotation_only = true
+enabled = true

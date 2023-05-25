@@ -1,0 +1,111 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://source/smiley/Smiley.tres" type="Material" id=1]
+[ext_resource path="res://source/smiley/Smiley.gd" type="Script" id=2]
+
+[sub_resource type="SphereMesh" id=3]
+resource_local_to_scene = true
+material = ExtResource( 1 )
+radial_segments = 5
+rings = 2
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshInstance:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MeshInstance:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "ready"
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshInstance:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.01, 0.01, 0.01 ), Vector3( 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MeshInstance:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="Smiley" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 3.0
+anims/RESET = SubResource( 5 )
+anims/ready = SubResource( 6 )
+
+[node name="LeftCheck" type="RayCast" parent="."]
+enabled = true
+cast_to = Vector3( -0.7, 0, 0 )
+
+[node name="RightCheck" type="RayCast" parent="."]
+enabled = true
+cast_to = Vector3( 0.7, 0, 0 )
+
+[node name="FrontCheck" type="RayCast" parent="."]
+enabled = true
+cast_to = Vector3( 0, 0, -0.7 )
+
+[node name="BackCheck" type="RayCast" parent="."]
+enabled = true
+cast_to = Vector3( 0, 0, 0.7 )
+
+[node name="UpCheck" type="RayCast" parent="."]
+enabled = true
+cast_to = Vector3( 0, 0.7, 0 )
+
+[node name="DownCheck" type="RayCast" parent="."]
+enabled = true
+cast_to = Vector3( 0, -0.7, 0 )
+
+[node name="PlayerDetector" type="RayCast" parent="."]
+enabled = true
+cast_to = Vector3( 0, 0, -20 )
+
+[node name="CollectDetector" type="RayCast" parent="."]
+enabled = true
+cast_to = Vector3( 0, 0, -2 )
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

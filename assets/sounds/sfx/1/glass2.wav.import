@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/glass2.wav-84fab4df2b05f1bd258cf84d49e2a83d.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sfx/1/glass2.wav"
+dest_files=[ "res://.import/glass2.wav-84fab4df2b05f1bd258cf84d49e2a83d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

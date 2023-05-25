@@ -1,0 +1,13 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+path="res://.import/staircase.map-2748b83d824d778d67d0881e5a7c85d2.tres"
+
+[deps]
+
+source_file="res://trenchbroom_maps/staircase.map"
+dest_files=[ "res://.import/staircase.map-2748b83d824d778d67d0881e5a7c85d2.tres" ]
+
+[params]
+

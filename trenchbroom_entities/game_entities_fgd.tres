@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://trenchbroom_entities/player_spawner.tres" type="Resource" id=1]
+[ext_resource path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_file.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+export_file = false
+target_folder = ""
+fgd_name = "WillYouHumanEntities"
+base_fgd_files = [  ]
+entity_definitions = [ ExtResource( 1 ) ]

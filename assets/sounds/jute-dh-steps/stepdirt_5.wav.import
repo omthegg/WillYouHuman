@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/stepdirt_5.wav-0795e6384d40936236c4c300e99519c5.sample"
+
+[deps]
+
+source_file="res://assets/sounds/jute-dh-steps/stepdirt_5.wav"
+dest_files=[ "res://.import/stepdirt_5.wav-0795e6384d40936236c4c300e99519c5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

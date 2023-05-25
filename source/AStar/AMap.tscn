@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://source/AStar/AStarPathTile.meshlib" type="MeshLibrary" id=1]
+[ext_resource path="res://source/AStar/AMap.gd" type="Script" id=2]
+
+[node name="AMap" type="Spatial"]
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_description_": "AStar map for pathfinding"
+}
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+__meta__ = {
+"_editor_clip_": 0
+}

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://source/SquidRepresentation/Emotion.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+eyebrow_left_up = Vector3( -2, 1.9, 0 )
+eyebrow_left_down = Vector3( -2, -0.1, 0 )
+eye_left = Vector3( -2, 0.9, 0 )
+eyebrow_right_up = Vector3( 2, 1.9, 0 )
+eyebrow_right_down = Vector3( 2, -0.1, 0 )
+eye_right = Vector3( 2, 0.9, 0 )
+mouth = Vector3( 0, -1.7, 0 )
+eyebrow_left_up_rotation = 25
+eyebrow_right_up_rotation = -25
