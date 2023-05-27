@@ -16,6 +16,7 @@ var enemy_bullet = preload("res://source/enemies/EnemyBullet/EnemyBullet.tscn")
 var nailgun_projectile = preload("res://source/NailgunProjectile/NailgunProjectile.tscn")
 var entity_spawner = preload("res://source/EntitySpawner/EntitySpawner.tscn")
 var polygon3d = preload("res://source/Polygon3D/Polygon3D.tscn")
+var bomb = preload("res://source/bomb/Bomb.tscn")
 
 
 var environments = [
