@@ -18,7 +18,7 @@ func _physics_process(_delta):
 
 func _on_Timer_timeout():
 	var bomb_instance = Global.bomb.instance()
-	get_tree().get_root().add_child(bomb_instance)
+	Global.map.add_child(bomb_instance)
 	bomb_instance.time = bomb_timer
 	bomb_instance.global_transform.origin = global_transform.origin
 	timer.start(spawner_timer)
