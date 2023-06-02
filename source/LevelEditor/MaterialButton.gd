@@ -16,6 +16,7 @@ func _ready():
 	flip_v = true
 	toggle_mode = true
 	action_mode = BaseButton.ACTION_MODE_BUTTON_PRESS
+	mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 	
 	#print(material_name)
 

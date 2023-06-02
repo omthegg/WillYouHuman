@@ -18,6 +18,7 @@ func _ready():
 	clip_text = true
 	toggle_mode = true
 	action_mode = BaseButton.ACTION_MODE_BUTTON_PRESS
+	mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 	
 	set("custom_styles/hover", stylebox_hover)
 	set("custom_styles/pressed", stylebox_pressed)

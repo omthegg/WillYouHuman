@@ -1,10 +1,11 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://source/maps/Map.gd" type="Script" id=1]
 [ext_resource path="res://source/environments/Environment1.tres" type="Environment" id=2]
 [ext_resource path="res://source/LevelEditor/LevelEditor.gd" type="Script" id=3]
 [ext_resource path="res://assets/images/custom/floor1/sprite_00.png" type="Texture" id=4]
 [ext_resource path="res://assets/fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/images/custom/misc/slider_grabber.png" type="Texture" id=6]
 [ext_resource path="res://source/LevelEditor/TemplateButtonStyleboxNormal.tres" type="StyleBox" id=7]
 [ext_resource path="res://source/LevelEditor/TemplateButtonStyleboxPressed.tres" type="StyleBox" id=8]
 [ext_resource path="res://source/LevelEditor/ObjectHighlightCheckerboard.tres" type="Material" id=9]
@@ -64,6 +65,22 @@ font_data = ExtResource( 5 )
 
 [sub_resource type="StyleBoxFlat" id=15]
 bg_color = Color( 0, 0, 0, 0.309804 )
+
+[sub_resource type="StyleBoxTexture" id=25]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 24, 24 )
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+
+[sub_resource type="StyleBoxFlat" id=27]
+bg_color = Color( 0.14902, 0.14902, 0.14902, 0.984314 )
+
+[sub_resource type="StyleBoxTexture" id=26]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 24, 24 )
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+modulate_color = Color( 0.67451, 0.67451, 0.67451, 1 )
 
 [sub_resource type="StyleBoxFlat" id=16]
 bg_color = Color( 0, 0, 0, 0.309804 )
@@ -256,10 +273,24 @@ anchor_bottom = 1.0
 margin_right = 0.511997
 custom_styles/panel = SubResource( 15 )
 
-[node name="TemplatesGridContainer" type="GridContainer" parent="UI"]
-anchor_right = 0.062
+[node name="TemplatesScrollContainer" type="ScrollContainer" parent="UI"]
+anchor_right = 0.074
 anchor_bottom = 1.0
-margin_right = 0.511997
+margin_right = 0.223999
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="TemplatesGridContainer" type="GridContainer" parent="UI/TemplatesScrollContainer"]
+
+[node name="TemplatesVScrollBar" type="VScrollBar" parent="UI"]
+visible = false
+anchor_right = 0.012
+anchor_bottom = 1.0
+margin_right = -0.288
+custom_styles/grabber_highlight = SubResource( 25 )
+custom_styles/grabber = SubResource( 25 )
+custom_styles/scroll = SubResource( 27 )
+custom_styles/grabber_pressed = SubResource( 26 )
 
 [node name="Panel2" type="Panel" parent="UI"]
 anchor_left = 0.937

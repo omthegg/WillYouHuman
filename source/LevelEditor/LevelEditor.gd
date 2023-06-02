@@ -10,7 +10,10 @@ onready var placement_plane = $PlacementPlane
 onready var placement_plane_collision_shape = $PlacementPlane/CollisionShape
 onready var object_highlight = $ObjectHighlight
 
-onready var templates_grid_container = $UI/TemplatesGridContainer
+onready var templates_grid_container = $UI/TemplatesScrollContainer/TemplatesGridContainer
+onready var templates_scrollcontainer = $UI/TemplatesScrollContainer
+onready var tsc_vscroll = templates_scrollcontainer.get_v_scrollbar() # TemplatesScrollContainer_VScrollBar
+onready var templates_vscrollbar = $UI/TemplatesVScrollBar
 onready var materials_grid_container = $UI/MaterialsGridContainer
 onready var variables_grid_container = $UI/VariablesGridContainer
 onready var groups_grid_container = $UI/GroupsGridContainer
@@ -85,6 +88,10 @@ func _ready():
 	
 	$UI/RightClickMenu/DeleteButton.connect("button_up", self, "_on_DeleteButton_button_up")
 	
+	tsc_vscroll.add_stylebox_override("grabber_highlight", templates_vscrollbar.get_stylebox("grabber_highlight"))
+	tsc_vscroll.add_stylebox_override("grabber", templates_vscrollbar.get_stylebox("grabber"))
+	tsc_vscroll.add_stylebox_override("scroll", templates_vscrollbar.get_stylebox("scroll"))
+	tsc_vscroll.add_stylebox_override("grabber_pressed", templates_vscrollbar.get_stylebox("grabber_pressed"))
 	#var polygon3d_instance = Global.polygon3d.instance()
 	#map_navmesh.add_child(polygon3d_instance)
 	#polygon3d_instance.create_polygon()
@@ -93,6 +100,9 @@ func _ready():
 func _process(_delta):
 	save_file_dialog.rect_global_position = Vector2(0, 0)
 	load_file_dialog.rect_global_position = Vector2(0, 0)
+	templates_grid_container.rect_position.x = 12
+	tsc_vscroll.rect_position.x = 6
+	#tsc_vscroll.rect_pivot_offset = Vector2(-12, 0)
 
 
 func _input(event):
@@ -271,7 +281,7 @@ func get_templates():
 func add_templates():
 	for template in templates:
 		var template_button_instance = TemplateButton.new()
-		templates_grid_container.add_child(template_button_instance)
+		templates_grid_container.add_child(template_button_instance) # templates_grid_container
 		template_button_instance.template = template
 
 
