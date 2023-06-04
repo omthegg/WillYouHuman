@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://source/maps/Map.gd" type="Script" id=1]
 [ext_resource path="res://source/environments/Environment1.tres" type="Environment" id=2]
@@ -109,6 +109,24 @@ font_data = ExtResource( 5 )
 [sub_resource type="DynamicFont" id=24]
 size = 8
 font_data = ExtResource( 5 )
+
+[sub_resource type="InputEventAction" id=34]
+action = "save"
+
+[sub_resource type="ShortCut" id=35]
+shortcut = SubResource( 34 )
+
+[sub_resource type="InputEventAction" id=32]
+action = "play"
+
+[sub_resource type="ShortCut" id=33]
+shortcut = SubResource( 32 )
+
+[sub_resource type="InputEventAction" id=36]
+action = "load"
+
+[sub_resource type="ShortCut" id=31]
+shortcut = SubResource( 36 )
 
 [node name="LevelEditor" type="Spatial"]
 script = ExtResource( 3 )
@@ -387,6 +405,7 @@ anchor_right = 0.445
 anchor_bottom = 0.04
 margin_left = -0.255981
 margin_right = 0.320038
+mouse_default_cursor_shape = 2
 custom_fonts/font = SubResource( 22 )
 custom_styles/hover = ExtResource( 7 )
 custom_styles/pressed = ExtResource( 8 )
@@ -402,6 +421,7 @@ anchor_right = 0.555
 anchor_bottom = 0.04
 margin_left = 0.128021
 margin_right = -0.320007
+mouse_default_cursor_shape = 2
 custom_fonts/font = SubResource( 22 )
 custom_styles/hover = ExtResource( 7 )
 custom_styles/pressed = ExtResource( 8 )
@@ -417,6 +437,7 @@ anchor_right = 0.664
 anchor_bottom = 0.04
 margin_left = 0.511963
 margin_right = 0.0639648
+mouse_default_cursor_shape = 2
 custom_fonts/font = SubResource( 22 )
 custom_styles/hover = ExtResource( 7 )
 custom_styles/pressed = ExtResource( 8 )
@@ -433,10 +454,12 @@ anchor_right = 0.454
 anchor_bottom = 1.0
 margin_left = 0.447968
 margin_right = 0.103973
+mouse_default_cursor_shape = 2
 custom_fonts/font = SubResource( 24 )
 custom_styles/hover = ExtResource( 7 )
 custom_styles/pressed = ExtResource( 8 )
 custom_styles/normal = ExtResource( 7 )
+shortcut = SubResource( 35 )
 text = "Save"
 
 [node name="PlayButton" type="Button" parent="UI" groups=["EditorButton"]]
@@ -446,11 +469,13 @@ anchor_right = 0.595
 anchor_bottom = 1.0
 margin_left = 0.0639648
 margin_right = -0.280029
+mouse_default_cursor_shape = 2
 custom_fonts/font = SubResource( 24 )
 custom_styles/hover = ExtResource( 7 )
 custom_styles/pressed = ExtResource( 8 )
 custom_styles/normal = ExtResource( 7 )
 disabled = true
+shortcut = SubResource( 33 )
 text = "Play"
 
 [node name="LoadButton" type="Button" parent="UI" groups=["EditorButton"]]
@@ -460,10 +485,12 @@ anchor_right = 0.524
 anchor_bottom = 1.0
 margin_left = -0.256012
 margin_right = 0.42395
+mouse_default_cursor_shape = 2
 custom_fonts/font = SubResource( 24 )
 custom_styles/hover = ExtResource( 7 )
 custom_styles/pressed = ExtResource( 8 )
 custom_styles/normal = ExtResource( 7 )
+shortcut = SubResource( 31 )
 text = "Load"
 
 [node name="SaveFileDialog" type="FileDialog" parent="UI"]

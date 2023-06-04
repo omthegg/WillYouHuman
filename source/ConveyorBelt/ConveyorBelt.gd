@@ -78,6 +78,8 @@ func _physics_process(delta):
 		for body in bodies:
 			if body is KinematicBody:
 				body.global_transform.origin += speed * -global_transform.basis.z * delta
+			if body is RigidBody:
+				body.set_axis_velocity(speed * -global_transform.basis.z)
 
 
 func _process(delta):
@@ -101,8 +103,12 @@ func _process(delta):
 func _on_Area_body_entered(body):
 	if !(body in bodies):
 		bodies.append(body)
+		if body is RigidBody:
+			body.linear_velocity = Vector3.ZERO
 
 
 func _on_Area_body_exited(body):
 	if body in bodies:
 		bodies.erase(body)
+		#if body is RigidBody:
+		#	body.linear_velocity = Vector3.ZERO

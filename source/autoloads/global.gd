@@ -164,6 +164,7 @@ func create_particles(position:Vector3, gravity:Vector3=Vector3.ZERO, size:Vecto
 	#particles_material.scale = size
 	particles_material.emission_shape = ParticlesMaterial.EMISSION_SHAPE_SPHERE
 	particles_material.emission_sphere_radius = emission_radius
+	particles_material.initial_velocity = initial_velocity
 	
 	var scale_curve = CurveTexture.new()
 	scale_curve.curve = Curve.new()
