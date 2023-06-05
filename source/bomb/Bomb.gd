@@ -4,6 +4,7 @@ var time:int = 5
 
 onready var label = $Label3D
 onready var timer = $Timer
+onready var circle = $Circle
 
 var bodies = []
 
@@ -28,6 +29,7 @@ func _process(_delta):
 func _physics_process(delta):
 	if blown_up and !$Particles.emitting:
 		queue_free()
+	
 
 
 func _on_Timer_timeout():
@@ -43,6 +45,7 @@ func _on_Timer_timeout():
 	$CollisionShape.disabled = true
 	$MeshInstance.hide()
 	$Label3D.hide()
+	circle.hide()
 	$Particles.emitting = true
 
 
