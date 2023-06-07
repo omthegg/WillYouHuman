@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://source/NailgunProjectile/NailgunProjectile.gd" type="Script" id=1]
 
@@ -11,6 +11,9 @@ params_billboard_mode = 1
 [sub_resource type="QuadMesh" id=2]
 material = SubResource( 3 )
 size = Vector2( 0.4, 0.4 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 0.2, 0.2, 0.2 )
 
 [node name="NailgunProjectile" type="Area"]
 collision_layer = 3
@@ -28,5 +31,11 @@ wait_time = 10.0
 one_shot = true
 autostart = true
 
+[node name="WallDetector" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="WallDetector"]
+shape = SubResource( 4 )
+
 [connection signal="body_entered" from="." to="." method="_on_Area_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="body_entered" from="WallDetector" to="." method="_on_WallDetector_body_entered"]

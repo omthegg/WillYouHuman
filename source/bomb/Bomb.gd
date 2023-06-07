@@ -5,12 +5,17 @@ var time:int = 5
 onready var label = $Label3D
 onready var timer = $Timer
 onready var circle = $Circle
+onready var mesh_instance = $MeshInstance
 
 var bodies = []
 
 var blown_up = false
 
+var max_health = 50
+var health = 50
+
 func _ready():
+	health = max_health
 	label.set_as_toplevel(true)
 	if Global.editing_level:
 		mode = RigidBody.MODE_STATIC
@@ -26,13 +31,20 @@ func _process(_delta):
 	label.text = str(int(timer.time_left+1))
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if blown_up and !$Particles.emitting:
 		queue_free()
-	
 
 
-func _on_Timer_timeout():
+func damage(amount):
+	health -= amount
+	mesh_instance.get_surface_material(0).albedo_color.g = 0.5 - ((health / max_health) * 0.5)
+	if health <= 0:
+		$Timer.stop()
+		explode()
+
+
+func explode():
 	for body in bodies:
 		if body.is_in_group("Player"):
 			body.damage()
@@ -47,6 +59,10 @@ func _on_Timer_timeout():
 	$Label3D.hide()
 	circle.hide()
 	$Particles.emitting = true
+
+
+func _on_Timer_timeout():
+	explode()
 
 
 func _on_Area_body_entered(body):

@@ -43,7 +43,7 @@ export var triplanar:bool = true setget set_triplanar
 export var uv_scale:Vector3 setget set_uv_scale
 export var uv_offset:Vector3 setget set_uv_offset
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("kill"):
 		print(mdt.get_vertex_count())
 

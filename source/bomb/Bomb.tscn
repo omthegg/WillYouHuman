@@ -58,7 +58,7 @@ albedo_texture = ExtResource( 4 )
 material = SubResource( 11 )
 size = Vector2( 10, 10 )
 
-[node name="Bomb" type="RigidBody"]
+[node name="Bomb" type="RigidBody" groups=["Bomb"]]
 gravity_scale = 3.0
 axis_lock_angular_x = true
 axis_lock_angular_y = true

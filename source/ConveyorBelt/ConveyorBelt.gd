@@ -110,5 +110,5 @@ func _on_Area_body_entered(body):
 func _on_Area_body_exited(body):
 	if body in bodies:
 		bodies.erase(body)
-		#if body is RigidBody:
-		#	body.linear_velocity = Vector3.ZERO
+		if body is RigidBody:
+			body.linear_velocity = Vector3.ZERO
