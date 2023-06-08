@@ -11,8 +11,8 @@ var bodies = []
 
 var blown_up = false
 
-var max_health = 50
-var health = 50
+var max_health = 50.0
+var health = 50.0
 
 func _ready():
 	health = max_health
@@ -38,7 +38,8 @@ func _physics_process(_delta):
 
 func damage(amount):
 	health -= amount
-	mesh_instance.get_surface_material(0).albedo_color.g = 0.5 - ((health / max_health) * 0.5)
+	mesh_instance.get_surface_material(0).albedo_color.g = 0.7 - ((health / max_health) * 0.7)
+	#print(((health / max_health)))
 	if health <= 0:
 		$Timer.stop()
 		explode()
