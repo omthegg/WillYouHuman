@@ -56,6 +56,10 @@ var moved_camera = false
 
 var selected_pivots = []
 
+var surface_drag_first_position:Vector3
+var surface_drag_second_position:Vector3
+var surface_drag_height:float
+
 enum EDITOR_MODE {
 	OBJECT_MODE = 0,
 	VERTEX_MODE = 1,

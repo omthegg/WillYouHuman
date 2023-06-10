@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://source/trail/Trail.gd" type="Script" id=1]
-[ext_resource path="res://assets/textures/custom/misc/circle.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/custom/misc/circle.png" type="Texture" id=2]
 
 [sub_resource type="SphereMesh" id=1]
 radial_segments = 8
