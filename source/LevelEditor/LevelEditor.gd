@@ -254,23 +254,62 @@ func _physics_process(delta):
 		
 		if selected_template:
 			if selected_template.name == "Surface":
-				if Input.is_action_just_pressed("shoot"):
-					surface_drag_first_position = cursor.global_transform.origin
-					surface_drag_instance = place_object()
+				if !is_mouse_on_ui() and !save_file_dialog.visible:
+					if Input.is_action_just_pressed("shoot"):
+						surface_drag_first_position = cursor.global_transform.origin
+						surface_drag_instance = place_object()
+						surface_drag_instance.get_node("CollisionShape").disabled = true
+					
+					if Input.is_action_pressed("shoot"):
+						surface_drag_second_position = cursor.global_transform.origin
+						#if surface_drag_first_position.x > surface_drag_second_position.x:
+						#	if surface_drag_first_position.z > surface_drag_second_position.z:
+						#		surface_drag_instance.point1 = surface_drag_instance.to_local(surface_drag_first_position)
+						#surface_drag_instance.point1 = surface_drag_instance.to_local(Vector3(surface_drag_first_position.x, surface_drag_second_position.y + surface_drag_height, surface_drag_first_position.z))
+						#surface_drag_instance.point2 = surface_drag_instance.to_local(Vector3(surface_drag_first_position.x, surface_drag_second_position.y + surface_drag_height, surface_drag_second_position.z))
+						#surface_drag_instance.point3 = surface_drag_instance.to_local(Vector3(surface_drag_first_position.x, surface_drag_first_position.y, surface_drag_first_position.z))
+						#surface_drag_instance.point4 = surface_drag_instance.to_local(Vector3(surface_drag_first_position.x, surface_drag_first_position.y, surface_drag_second_position.z))
+						#surface_drag_instance.point5 = surface_drag_instance.to_local(Vector3(surface_drag_second_position.x, surface_drag_second_position.y + surface_drag_height, surface_drag_first_position.z))
+						#surface_drag_instance.point6 = surface_drag_instance.to_local(Vector3(surface_drag_second_position.x, surface_drag_second_position.y + surface_drag_height, surface_drag_second_position.z))
+						#surface_drag_instance.point7 = surface_drag_instance.to_local(Vector3(surface_drag_second_position.x, surface_drag_second_position.y, surface_drag_first_position.z))
+						#surface_drag_instance.point8 = surface_drag_instance.to_local(Vector3(surface_drag_second_position.x, surface_drag_second_position.y, surface_drag_second_position.z))
+						
+						if (surface_drag_first_position.x < surface_drag_second_position.x) and (surface_drag_first_position.z > surface_drag_second_position.z):
+							surface_drag_instance.point5 = surface_drag_instance.to_local(Vector3(surface_drag_first_position.x, surface_drag_second_position.y + surface_drag_height, surface_drag_first_position.z))
+							surface_drag_instance.point6 = surface_drag_instance.to_local(Vector3(surface_drag_first_position.x, surface_drag_second_position.y + surface_drag_height, surface_drag_second_position.z))
+							surface_drag_instance.point7 = surface_drag_instance.to_local(Vector3(surface_drag_first_position.x, surface_drag_first_position.y, surface_drag_first_position.z))
+							surface_drag_instance.point8 = surface_drag_instance.to_local(Vector3(surface_drag_first_position.x, surface_drag_first_position.y, surface_drag_second_position.z))
+							surface_drag_instance.point1 = surface_drag_instance.to_local(Vector3(surface_drag_second_position.x, surface_drag_second_position.y + surface_drag_height, surface_drag_first_position.z))
+							surface_drag_instance.point2 = surface_drag_instance.to_local(Vector3(surface_drag_second_position.x, surface_drag_second_position.y + surface_drag_height, surface_drag_second_position.z))
+							surface_drag_instance.point3 = surface_drag_instance.to_local(Vector3(surface_drag_second_position.x, surface_drag_second_position.y, surface_drag_first_position.z))
+							surface_drag_instance.point4 = surface_drag_instance.to_local(Vector3(surface_drag_second_position.x, surface_drag_second_position.y, surface_drag_second_position.z))
+							#surface_drag_instance.mesh_instance.mesh.flip_faces = true
+						elif (surface_drag_first_position.x > surface_drag_second_position.x) and (surface_drag_first_position.z < surface_drag_second_position.z):
+							surface_drag_instance.point2 = surface_drag_instance.to_local(Vector3(surface_drag_first_position.x, surface_drag_second_position.y + surface_drag_height, surface_drag_first_position.z))
+							surface_drag_instance.point1 = surface_drag_instance.to_local(Vector3(surface_drag_first_position.x, surface_drag_second_position.y + surface_drag_height, surface_drag_second_position.z))
+							surface_drag_instance.point4 = surface_drag_instance.to_local(Vector3(surface_drag_first_position.x, surface_drag_first_position.y, surface_drag_first_position.z))
+							surface_drag_instance.point3 = surface_drag_instance.to_local(Vector3(surface_drag_first_position.x, surface_drag_first_position.y, surface_drag_second_position.z))
+							surface_drag_instance.point6 = surface_drag_instance.to_local(Vector3(surface_drag_second_position.x, surface_drag_second_position.y + surface_drag_height, surface_drag_first_position.z))
+							surface_drag_instance.point5 = surface_drag_instance.to_local(Vector3(surface_drag_second_position.x, surface_drag_second_position.y + surface_drag_height, surface_drag_second_position.z))
+							surface_drag_instance.point8 = surface_drag_instance.to_local(Vector3(surface_drag_second_position.x, surface_drag_second_position.y, surface_drag_first_position.z))
+							surface_drag_instance.point7 = surface_drag_instance.to_local(Vector3(surface_drag_second_position.x, surface_drag_second_position.y, surface_drag_second_position.z))
+							#surface_drag_instance.mesh_instance.mesh.flip_faces = true
+						else:
+							#surface_drag_instance.mesh_instance.mesh.flip_faces = falsesurface_drag_instance.point1 = surface_drag_instance.to_local(Vector3(surface_drag_first_position.x, surface_drag_second_position.y + surface_drag_height, surface_drag_first_position.z))
+							surface_drag_instance.point1 = surface_drag_instance.to_local(Vector3(surface_drag_first_position.x, surface_drag_second_position.y + surface_drag_height, surface_drag_first_position.z))
+							surface_drag_instance.point2 = surface_drag_instance.to_local(Vector3(surface_drag_first_position.x, surface_drag_second_position.y + surface_drag_height, surface_drag_second_position.z))
+							surface_drag_instance.point3 = surface_drag_instance.to_local(Vector3(surface_drag_first_position.x, surface_drag_first_position.y, surface_drag_first_position.z))
+							surface_drag_instance.point4 = surface_drag_instance.to_local(Vector3(surface_drag_first_position.x, surface_drag_first_position.y, surface_drag_second_position.z))
+							surface_drag_instance.point5 = surface_drag_instance.to_local(Vector3(surface_drag_second_position.x, surface_drag_second_position.y + surface_drag_height, surface_drag_first_position.z))
+							surface_drag_instance.point6 = surface_drag_instance.to_local(Vector3(surface_drag_second_position.x, surface_drag_second_position.y + surface_drag_height, surface_drag_second_position.z))
+							surface_drag_instance.point7 = surface_drag_instance.to_local(Vector3(surface_drag_second_position.x, surface_drag_second_position.y, surface_drag_first_position.z))
+							surface_drag_instance.point8 = surface_drag_instance.to_local(Vector3(surface_drag_second_position.x, surface_drag_second_position.y, surface_drag_second_position.z))
+					
 				
-				if Input.is_action_pressed("shoot"):
-					surface_drag_second_position = cursor.global_transform.origin
-					#if surface_drag_first_position.x > surface_drag_second_position.x:
-					#	if surface_drag_first_position.z > surface_drag_second_position.z:
-					#		surface_drag_instance.point1 = surface_drag_instance.to_local(surface_drag_first_position)
-					surface_drag_instance.point1 = surface_drag_instance.to_local(Vector3(surface_drag_first_position.x, surface_drag_second_position.y + surface_drag_height, surface_drag_first_position.z))
-					surface_drag_instance.point2 = surface_drag_instance.to_local(Vector3(surface_drag_first_position.x, surface_drag_second_position.y + surface_drag_height, surface_drag_second_position.z))
-					surface_drag_instance.point3 = surface_drag_instance.to_local(Vector3(surface_drag_first_position.x, surface_drag_first_position.y, surface_drag_first_position.z))
-					surface_drag_instance.point4 = surface_drag_instance.to_local(Vector3(surface_drag_first_position.x, surface_drag_first_position.y, surface_drag_second_position.z))
-					surface_drag_instance.point5 = surface_drag_instance.to_local(Vector3(surface_drag_second_position.x, surface_drag_second_position.y + surface_drag_height, surface_drag_first_position.z))
-					surface_drag_instance.point6 = surface_drag_instance.to_local(Vector3(surface_drag_second_position.x, surface_drag_second_position.y + surface_drag_height, surface_drag_second_position.z))
-					surface_drag_instance.point7 = surface_drag_instance.to_local(Vector3(surface_drag_second_position.x, surface_drag_second_position.y, surface_drag_first_position.z))
-					surface_drag_instance.point8 = surface_drag_instance.to_local(Vector3(surface_drag_second_position.x, surface_drag_second_position.y, surface_drag_second_position.z))
+				if Input.is_action_just_released("shoot"):
+					if surface_drag_instance:
+						surface_drag_instance.get_node("CollisionShape").disabled = false
+						surface_drag_instance = null
 
 
 func move_camera(delta):
