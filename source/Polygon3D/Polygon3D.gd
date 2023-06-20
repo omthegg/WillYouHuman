@@ -1,14 +1,14 @@
 extends StaticBody
 
 #export var points:PoolVector3Array = []
-export var point1 = Vector3(1, 1, 1) setget set_point1_verts
-export var point2 = Vector3(1, 1, -1) setget set_point2_verts
-export var point3 = Vector3(1, -1, 1) setget set_point3_verts
-export var point4 = Vector3(1, -1, -1) setget set_point4_verts
-export var point5 = Vector3(-1, 1, 1) setget set_point5_verts
-export var point6 = Vector3(-1, 1, -1) setget set_point6_verts
-export var point7 = Vector3(-1, -1, 1) setget set_point7_verts
-export var point8 = Vector3(-1, -1, -1) setget set_point8_verts
+export var point1 = Vector3(1, 1, 1) setget set_point1_verts # Right Up Back
+export var point2 = Vector3(1, 1, -1) setget set_point2_verts # Right Up Front
+export var point3 = Vector3(1, -1, 1) setget set_point3_verts # Right Down Back
+export var point4 = Vector3(1, -1, -1) setget set_point4_verts # Right Down Front
+export var point5 = Vector3(-1, 1, 1) setget set_point5_verts # Left Up Back
+export var point6 = Vector3(-1, 1, -1) setget set_point6_verts # Left Up Front
+export var point7 = Vector3(-1, -1, 1) setget set_point7_verts # Left Down Back
+export var point8 = Vector3(-1, -1, -1) setget set_point8_verts # Left Down Front
 
 var point1_verts = []
 var point2_verts = []

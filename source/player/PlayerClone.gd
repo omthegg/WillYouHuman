@@ -54,7 +54,7 @@ var previous_weapon = 0
 
 func _ready():
 	yield(get_tree(), "idle_frame")
-	for i in range(120):
+	for i in range(60):
 		#create_trail()
 		move(get_physics_process_delta_time())
 

@@ -58,7 +58,8 @@ var selected_pivots = []
 
 var surface_drag_first_position:Vector3
 var surface_drag_second_position:Vector3
-var surface_drag_height:float
+var surface_drag_height:float = 1.0
+var surface_drag_instance:StaticBody
 
 enum EDITOR_MODE {
 	OBJECT_MODE = 0,
@@ -173,7 +174,8 @@ func _input(event):
 								variables_button.disabled = true
 					
 					else:
-						place_object()
+						if selected_template.name != "Surface":
+							place_object()
 			
 			else:
 				if editor_mode == EDITOR_MODE.OBJECT_MODE:
@@ -249,6 +251,26 @@ func _physics_process(delta):
 			cursor.global_transform.origin.x = stepify(cursor.global_transform.origin.x, snap)
 			cursor.global_transform.origin.y = stepify(cursor.global_transform.origin.y, snap)
 			cursor.global_transform.origin.z = stepify(cursor.global_transform.origin.z, snap)
+		
+		if selected_template:
+			if selected_template.name == "Surface":
+				if Input.is_action_just_pressed("shoot"):
+					surface_drag_first_position = cursor.global_transform.origin
+					surface_drag_instance = place_object()
+				
+				if Input.is_action_pressed("shoot"):
+					surface_drag_second_position = cursor.global_transform.origin
+					#if surface_drag_first_position.x > surface_drag_second_position.x:
+					#	if surface_drag_first_position.z > surface_drag_second_position.z:
+					#		surface_drag_instance.point1 = surface_drag_instance.to_local(surface_drag_first_position)
+					surface_drag_instance.point1 = surface_drag_instance.to_local(Vector3(surface_drag_first_position.x, surface_drag_second_position.y + surface_drag_height, surface_drag_first_position.z))
+					surface_drag_instance.point2 = surface_drag_instance.to_local(Vector3(surface_drag_first_position.x, surface_drag_second_position.y + surface_drag_height, surface_drag_second_position.z))
+					surface_drag_instance.point3 = surface_drag_instance.to_local(Vector3(surface_drag_first_position.x, surface_drag_first_position.y, surface_drag_first_position.z))
+					surface_drag_instance.point4 = surface_drag_instance.to_local(Vector3(surface_drag_first_position.x, surface_drag_first_position.y, surface_drag_second_position.z))
+					surface_drag_instance.point5 = surface_drag_instance.to_local(Vector3(surface_drag_second_position.x, surface_drag_second_position.y + surface_drag_height, surface_drag_first_position.z))
+					surface_drag_instance.point6 = surface_drag_instance.to_local(Vector3(surface_drag_second_position.x, surface_drag_second_position.y + surface_drag_height, surface_drag_second_position.z))
+					surface_drag_instance.point7 = surface_drag_instance.to_local(Vector3(surface_drag_second_position.x, surface_drag_second_position.y, surface_drag_first_position.z))
+					surface_drag_instance.point8 = surface_drag_instance.to_local(Vector3(surface_drag_second_position.x, surface_drag_second_position.y, surface_drag_second_position.z))
 
 
 func move_camera(delta):
@@ -593,6 +615,8 @@ func place_object():
 			object_instance.name = object_instance.name.replace("@", "")
 			
 			play_button.disabled = true
+			
+			return object_instance
 
 
 func move_selected_object():

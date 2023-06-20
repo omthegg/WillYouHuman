@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://source/Polygon3D/Polygon3D.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="SphereShape" id=3]
 resource_local_to_scene = true
@@ -16,6 +17,9 @@ rings = 4
 resource_local_to_scene = true
 flags_unshaded = true
 albedo_color = Color( 1, 1, 0, 1 )
+
+[sub_resource type="DynamicFont" id=13]
+font_data = ExtResource( 2 )
 
 [sub_resource type="SpatialMaterial" id=6]
 resource_local_to_scene = true
@@ -71,6 +75,15 @@ shape = SubResource( 3 )
 mesh = SubResource( 2 )
 material/0 = SubResource( 4 )
 
+[node name="Label3D" type="Label3D" parent="Point1Pivot"]
+cast_shadow = 0
+pixel_size = 0.02
+billboard = 1
+no_depth_test = true
+modulate = Color( 0.686275, 0, 1, 1 )
+text = "1"
+font = SubResource( 13 )
+
 [node name="Point2Pivot" type="StaticBody" parent="." groups=["Pivot"]]
 collision_layer = 32
 collision_mask = 32
@@ -81,6 +94,15 @@ shape = SubResource( 3 )
 [node name="MeshInstance" type="MeshInstance" parent="Point2Pivot"]
 mesh = SubResource( 2 )
 material/0 = SubResource( 6 )
+
+[node name="Label3D" type="Label3D" parent="Point2Pivot"]
+cast_shadow = 0
+pixel_size = 0.02
+billboard = 1
+no_depth_test = true
+modulate = Color( 0.686275, 0, 1, 1 )
+text = "2"
+font = SubResource( 13 )
 
 [node name="Point3Pivot" type="StaticBody" parent="." groups=["Pivot"]]
 collision_layer = 32
@@ -93,6 +115,15 @@ shape = SubResource( 3 )
 mesh = SubResource( 2 )
 material/0 = SubResource( 7 )
 
+[node name="Label3D" type="Label3D" parent="Point3Pivot"]
+cast_shadow = 0
+pixel_size = 0.02
+billboard = 1
+no_depth_test = true
+modulate = Color( 0.686275, 0, 1, 1 )
+text = "3"
+font = SubResource( 13 )
+
 [node name="Point4Pivot" type="StaticBody" parent="." groups=["Pivot"]]
 collision_layer = 32
 collision_mask = 32
@@ -103,6 +134,15 @@ shape = SubResource( 3 )
 [node name="MeshInstance" type="MeshInstance" parent="Point4Pivot"]
 mesh = SubResource( 2 )
 material/0 = SubResource( 8 )
+
+[node name="Label3D" type="Label3D" parent="Point4Pivot"]
+cast_shadow = 0
+pixel_size = 0.02
+billboard = 1
+no_depth_test = true
+modulate = Color( 0.686275, 0, 1, 1 )
+text = "4"
+font = SubResource( 13 )
 
 [node name="Point5Pivot" type="StaticBody" parent="." groups=["Pivot"]]
 collision_layer = 32
@@ -115,6 +155,15 @@ shape = SubResource( 3 )
 mesh = SubResource( 2 )
 material/0 = SubResource( 9 )
 
+[node name="Label3D" type="Label3D" parent="Point5Pivot"]
+cast_shadow = 0
+pixel_size = 0.02
+billboard = 1
+no_depth_test = true
+modulate = Color( 0.686275, 0, 1, 1 )
+text = "5"
+font = SubResource( 13 )
+
 [node name="Point6Pivot" type="StaticBody" parent="." groups=["Pivot"]]
 collision_layer = 32
 collision_mask = 32
@@ -125,6 +174,15 @@ shape = SubResource( 3 )
 [node name="MeshInstance" type="MeshInstance" parent="Point6Pivot"]
 mesh = SubResource( 2 )
 material/0 = SubResource( 10 )
+
+[node name="Label3D" type="Label3D" parent="Point6Pivot"]
+cast_shadow = 0
+pixel_size = 0.02
+billboard = 1
+no_depth_test = true
+modulate = Color( 0.686275, 0, 1, 1 )
+text = "6"
+font = SubResource( 13 )
 
 [node name="Point7Pivot" type="StaticBody" parent="." groups=["Pivot"]]
 collision_layer = 32
@@ -137,6 +195,15 @@ shape = SubResource( 3 )
 mesh = SubResource( 2 )
 material/0 = SubResource( 11 )
 
+[node name="Label3D" type="Label3D" parent="Point7Pivot"]
+cast_shadow = 0
+pixel_size = 0.02
+billboard = 1
+no_depth_test = true
+modulate = Color( 0.686275, 0, 1, 1 )
+text = "7"
+font = SubResource( 13 )
+
 [node name="Point8Pivot" type="StaticBody" parent="." groups=["Pivot"]]
 collision_layer = 32
 collision_mask = 32
@@ -147,6 +214,15 @@ shape = SubResource( 3 )
 [node name="MeshInstance" type="MeshInstance" parent="Point8Pivot"]
 mesh = SubResource( 2 )
 material/0 = SubResource( 12 )
+
+[node name="Label3D" type="Label3D" parent="Point8Pivot"]
+cast_shadow = 0
+pixel_size = 0.02
+billboard = 1
+no_depth_test = true
+modulate = Color( 0.686275, 0, 1, 1 )
+text = "1"
+font = SubResource( 13 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 
