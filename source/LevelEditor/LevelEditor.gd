@@ -60,6 +60,8 @@ var surface_drag_first_position:Vector3
 var surface_drag_second_position:Vector3
 var surface_drag_height:float = 1.0
 var surface_drag_instance:StaticBody
+var surface_drag_height_mouse_first_y:int
+var surface_drag_original_height:float = 1.0
 
 enum EDITOR_MODE {
 	OBJECT_MODE = 0,
@@ -256,12 +258,17 @@ func _physics_process(delta):
 			if selected_template.name == "Surface":
 				if !is_mouse_on_ui() and !save_file_dialog.visible:
 					if Input.is_action_just_pressed("shoot"):
+						#surface_drag_height = 1.0
 						surface_drag_first_position = cursor.global_transform.origin
 						surface_drag_instance = place_object()
 						surface_drag_instance.get_node("CollisionShape").disabled = true
+						
+						if surface_drag_first_position.y != placement_plane.global_transform.origin.y:
+							placement_plane.global_transform.origin.y = surface_drag_first_position.y
 					
 					if Input.is_action_pressed("shoot"):
-						surface_drag_second_position = cursor.global_transform.origin
+						if !Input.is_action_pressed("alt"):
+							surface_drag_second_position = cursor.global_transform.origin
 						#if surface_drag_first_position.x > surface_drag_second_position.x:
 						#	if surface_drag_first_position.z > surface_drag_second_position.z:
 						#		surface_drag_instance.point1 = surface_drag_instance.to_local(surface_drag_first_position)
@@ -304,12 +311,55 @@ func _physics_process(delta):
 							surface_drag_instance.point6 = surface_drag_instance.to_local(Vector3(surface_drag_second_position.x, surface_drag_second_position.y + surface_drag_height, surface_drag_second_position.z))
 							surface_drag_instance.point7 = surface_drag_instance.to_local(Vector3(surface_drag_second_position.x, surface_drag_second_position.y, surface_drag_first_position.z))
 							surface_drag_instance.point8 = surface_drag_instance.to_local(Vector3(surface_drag_second_position.x, surface_drag_second_position.y, surface_drag_second_position.z))
-					
+						
+						surface_drag_instance.align_pivots()
+						#surface_drag_instance.rebuild_mesh()
+						#surface_drag_instance.refresh_collision_shape()
+				
 				
 				if Input.is_action_just_released("shoot"):
 					if surface_drag_instance:
-						surface_drag_instance.get_node("CollisionShape").disabled = false
-						surface_drag_instance = null
+						if is_instance_valid(surface_drag_instance):
+							surface_drag_instance.get_node("CollisionShape").disabled = false
+							surface_drag_height = 1.0
+							surface_drag_original_height = 1.0
+							
+							if surface_drag_first_position == surface_drag_second_position:
+								surface_drag_instance.queue_free()
+							
+							surface_drag_instance = null
+				
+				
+				if Input.is_action_just_pressed("alt"):
+					surface_drag_height_mouse_first_y = get_viewport().get_mouse_position().y
+				
+				if Input.is_action_pressed("alt"):
+					#surface_drag_height = surface_drag_original_height + stepify(surface_drag_height_mouse_first_y/camera.global_transform.origin.distance_to(surface_drag_second_position+Vector3(0, surface_drag_height, 0)), 0.5) - stepify(get_viewport().get_mouse_position().y/camera.global_transform.origin.distance_to(surface_drag_second_position+Vector3(0, surface_drag_height, 0)), 0.5)
+					var d = stepify(((surface_drag_height_mouse_first_y - get_viewport().get_mouse_position().y) / 30), 0.5)
+					#stepify((surface_drag_height_mouse_first_y - get_viewport().get_mouse_position().y) / sqrt(camera.global_transform.origin.distance_to(surface_drag_second_position+Vector3(0, surface_drag_height, 0))), 0.5)
+					if surface_drag_original_height + d > 1.0:
+						surface_drag_height = surface_drag_original_height + d
+					
+					#var mouse_pos = get_viewport().get_mouse_position()
+					#if mouse_pos.y < 20:
+					#	Input.warp_mouse_position(Vector2(mouse_pos.x, 575))
+					#	#surface_drag_original_height -= 600
+					#if mouse_pos.y > 580:
+					#	surface_drag_height_mouse_first_y -= 580
+					#	Input.warp_mouse_position(Vector2(mouse_pos.x, 25))
+					#if mouse_pos.x > 1004:
+					#	Input.warp_mouse_position(Vector2(25, mouse_pos.y))
+					#if mouse_pos.x < 20:
+					#	Input.warp_mouse_position(Vector2(999, mouse_pos.y))
+				
+				#else:
+				#	surface_drag_height = 1.0
+				
+				if Input.is_action_just_released("alt"):
+					surface_drag_original_height = surface_drag_height
+					if !Input.is_action_pressed("shoot"):
+						surface_drag_height = 1.0
+						surface_drag_original_height = 1.0
 
 
 func move_camera(delta):
@@ -550,7 +600,7 @@ func hide_selected_object_pivots():
 func is_mouse_on_ui():
 	var editor_buttons = get_tree().get_nodes_in_group("EditorButton")
 	for editor_button in editor_buttons:
-		if editor_button.is_hovered():
+		if editor_button.is_hovered() and editor_button.visible:
 			return true
 	
 	var editor_panels = get_tree().get_nodes_in_group("EditorPanel")
@@ -559,7 +609,8 @@ func is_mouse_on_ui():
 		var ep_pos = ep.rect_position
 		var ep_dim = ep.rect_size
 		if m.x > ep_pos.x and m.x < ep_pos.x + ep_dim.x and m.y > ep_pos.y and m.y < ep_pos.y + ep_dim.y:
-			return true
+			if ep.visible:
+				return true
 
 
 func _on_ObjectModeButton_pressed():
@@ -661,7 +712,7 @@ func place_object():
 func move_selected_object():
 	if editor_mode == EDITOR_MODE.OBJECT_MODE:
 		if !Input.is_action_pressed("charge_shoot") and !Input.is_action_pressed("rotate"):
-			if selected_object:
+			if selected_object and is_instance_valid(selected_object):
 				if Input.is_action_just_pressed("move_forward"):
 					selected_object.translation.z -= snap
 				if Input.is_action_just_pressed("move_backward"):

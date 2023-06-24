@@ -76,6 +76,7 @@ mesh = SubResource( 2 )
 material/0 = SubResource( 4 )
 
 [node name="Label3D" type="Label3D" parent="Point1Pivot"]
+visible = false
 cast_shadow = 0
 pixel_size = 0.02
 billboard = 1
@@ -96,6 +97,7 @@ mesh = SubResource( 2 )
 material/0 = SubResource( 6 )
 
 [node name="Label3D" type="Label3D" parent="Point2Pivot"]
+visible = false
 cast_shadow = 0
 pixel_size = 0.02
 billboard = 1
@@ -116,6 +118,7 @@ mesh = SubResource( 2 )
 material/0 = SubResource( 7 )
 
 [node name="Label3D" type="Label3D" parent="Point3Pivot"]
+visible = false
 cast_shadow = 0
 pixel_size = 0.02
 billboard = 1
@@ -136,6 +139,7 @@ mesh = SubResource( 2 )
 material/0 = SubResource( 8 )
 
 [node name="Label3D" type="Label3D" parent="Point4Pivot"]
+visible = false
 cast_shadow = 0
 pixel_size = 0.02
 billboard = 1
@@ -156,6 +160,7 @@ mesh = SubResource( 2 )
 material/0 = SubResource( 9 )
 
 [node name="Label3D" type="Label3D" parent="Point5Pivot"]
+visible = false
 cast_shadow = 0
 pixel_size = 0.02
 billboard = 1
@@ -176,6 +181,7 @@ mesh = SubResource( 2 )
 material/0 = SubResource( 10 )
 
 [node name="Label3D" type="Label3D" parent="Point6Pivot"]
+visible = false
 cast_shadow = 0
 pixel_size = 0.02
 billboard = 1
@@ -196,6 +202,7 @@ mesh = SubResource( 2 )
 material/0 = SubResource( 11 )
 
 [node name="Label3D" type="Label3D" parent="Point7Pivot"]
+visible = false
 cast_shadow = 0
 pixel_size = 0.02
 billboard = 1
@@ -216,6 +223,7 @@ mesh = SubResource( 2 )
 material/0 = SubResource( 12 )
 
 [node name="Label3D" type="Label3D" parent="Point8Pivot"]
+visible = false
 cast_shadow = 0
 pixel_size = 0.02
 billboard = 1

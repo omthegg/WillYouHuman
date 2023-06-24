@@ -21,35 +21,36 @@ var prediction_object_velocity = Vector3(0, 0, 0)
 var prediction_preview = MeshInstance.new()
 
 func _ready():
-	yield(get_tree().get_root(), "ready")
+	pass
+	#yield(get_tree().get_root(), "ready")
 	
-	add_child(prediction_object)
+	#add_child(prediction_object)
 	
-	raycast_up.cast_to = Vector3.UP * 2
-	raycast_down.cast_to = Vector3.DOWN * 2
-	raycast_front.cast_to = Vector3.FORWARD * 2
-	raycast_back.cast_to = Vector3.BACK * 2
-	raycast_left.cast_to = Vector3.LEFT * 2
-	raycast_right.cast_to = Vector3.RIGHT * 2
+	#raycast_up.cast_to = Vector3.UP * 2
+	#raycast_down.cast_to = Vector3.DOWN * 2
+	#raycast_front.cast_to = Vector3.FORWARD * 2
+	#raycast_back.cast_to = Vector3.BACK * 2
+	#raycast_left.cast_to = Vector3.LEFT * 2
+	#raycast_right.cast_to = Vector3.RIGHT * 2
 	
-	raycast_up.enabled = true
-	raycast_down.enabled = true
-	raycast_front.enabled = true
-	raycast_back.enabled = true
-	raycast_left.enabled = true
-	raycast_right.enabled = true
+	#raycast_up.enabled = true
+	#raycast_down.enabled = true
+	#raycast_front.enabled = true
+	#raycast_back.enabled = true
+	#raycast_left.enabled = true
+	#raycast_right.enabled = true
 	
-	prediction_object.add_child(raycast_up)
-	prediction_object.add_child(raycast_down)
-	prediction_object.add_child(raycast_front)
-	prediction_object.add_child(raycast_back)
-	prediction_object.add_child(raycast_left)
-	prediction_object.add_child(raycast_right)
+	#prediction_object.add_child(raycast_up)
+	#prediction_object.add_child(raycast_down)
+	#prediction_object.add_child(raycast_front)
+	#prediction_object.add_child(raycast_back)
+	#prediction_object.add_child(raycast_left)
+	#prediction_object.add_child(raycast_right)
 	
-	get_tree().get_root().add_child(prediction_preview)
-	prediction_preview.mesh = CylinderMesh.new()
-	prediction_preview.material_override = SpatialMaterial.new()
-	prediction_preview.material_override.albedo_color = Color.cyan
+	#get_tree().get_root().add_child(prediction_preview)
+	#prediction_preview.mesh = CylinderMesh.new()
+	#prediction_preview.material_override = SpatialMaterial.new()
+	#prediction_preview.material_override.albedo_color = Color.cyan
 
 
 func _physics_process(delta):
