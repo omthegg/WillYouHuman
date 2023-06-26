@@ -17,9 +17,11 @@ func trigger():
 	var nodes = get_tree().get_nodes_in_group(move_group)
 	for node in nodes:
 		var tween = create_tween()
+		tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 		#add_child(tween)
 		tween.tween_property(node, "global_transform:origin", node.global_transform.origin + move_vector, time)
-		
+		if node.name.begins_with("PlayerMover"):
+			node.velocities.append(move_vector/time)
 
 
 func show_previews():
