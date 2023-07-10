@@ -1,31 +1,32 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=22 format=2]
 
-[ext_resource path="res://source/environments/Environment1.tres" type="Environment" id=1]
-[ext_resource path="res://source/maps/Map.gd" type="Script" id=2]
-[ext_resource path="res://source/ConveyorBelt/ConveyorBelt.tscn" type="PackedScene" id=3]
-[ext_resource path="res://source/ConveyorBelt/ConveyorBelt.gd" type="Script" id=4]
-[ext_resource path="res://source/Polygon3D/Polygon3D.gd" type="Script" id=5]
-[ext_resource path="res://source/Polygon3D/Polygon3D.tscn" type="PackedScene" id=6]
-[ext_resource path="res://textures/floor1.png" type="Texture" id=7]
-[ext_resource path="res://source/EntitySpawner/EntitySpawner.gd" type="Script" id=8]
-[ext_resource path="res://source/EntitySpawner/EntitySpawner.tscn" type="PackedScene" id=9]
-[ext_resource path="res://source/player/Player.tscn" type="PackedScene" id=10]
-[ext_resource path="res://source/BombSpawner/BombSpawner.tscn" type="PackedScene" id=11]
-[ext_resource path="res://source/BombSpawner/BombSpawner.gd" type="Script" id=12]
-[ext_resource path="res://source/enemies/guard/Guard.tscn" type="PackedScene" id=13]
+[ext_resource path="res://source/Polygon3D/Polygon3D.tscn" type="PackedScene" id=1]
+[ext_resource path="res://source/Polygon3D/Polygon3D.gd" type="Script" id=2]
+[ext_resource path="res://source/environments/Environment1.tres" type="Environment" id=3]
+[ext_resource path="res://source/maps/Map.gd" type="Script" id=4]
+[ext_resource path="res://textures/floor1.png" type="Texture" id=5]
+[ext_resource path="res://source/EntitySpawner/EntitySpawner.gd" type="Script" id=6]
+[ext_resource path="res://source/EntitySpawner/EntitySpawner.tscn" type="PackedScene" id=7]
+[ext_resource path="res://source/player/Player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://source/Mover/Mover.gd" type="Script" id=9]
+[ext_resource path="res://source/PlayerMover/PlayerMover.gd" type="Script" id=10]
+[ext_resource path="res://source/GroupButton/GroupButton.gd" type="Script" id=11]
+[ext_resource path="res://source/GroupButton/GroupButton.tscn" type="PackedScene" id=12]
+[ext_resource path="res://source/Mover/Mover.tscn" type="PackedScene" id=13]
+[ext_resource path="res://source/PlayerMover/PlayerMover.tscn" type="PackedScene" id=14]
 
-[sub_resource type="NavigationMesh" id=4]
+[sub_resource type="NavigationMesh" id=9]
 resource_local_to_scene = true
-vertices = PoolVector3Array( -4.25, 0.8, -8.25, -4.25, 0.8, 0.25, 0.25, 0.8, 0.25, 0.25, 0.8, -8.25, -6.25, 1.3, 11.5, -6.25, 1.3, 21.25, 2.25, 1.3, 21.25, 2.25, 1.3, 11.5, 2.25, 1.3, 11.5, 2.25, 1.3, 1.75, -6.25, 1.3, 1.75, -6.25, 1.3, 11.5, -7.75, 0.8, 18.25, -7.75, 0.8, 17.75, -14.5, 0.8, 17.75, -15, 0.8, 18.25, -14.5, 0.8, 6.5, -7.75, 0.8, 6.5, -7.75, 0.8, 5.75, -15, 0.8, 5.75, -15, 0.8, 18.25, -14.5, 0.8, 17.75, -21.25, 0.8, 17.75, -22.25, 0.8, 18.25, -15, 0.8, 5.75, -22.25, 0.8, 5.75, -21.25, 0.8, 6.5, -14.5, 0.8, 6.5, -22.25, 0.8, 18.25, -21.25, 0.8, 17.75, -21.75, 0.8, 17.25, -22.25, 0.8, 12, -22.25, 0.8, 18.25, -21.75, 0.8, 17.25, -21.75, 0.8, 7, -22.25, 0.8, 5.75, -21.75, 0.8, 7, -21.25, 0.8, 6.5, -22.25, 0.8, 5.75, -22.25, 0.8, 12, -21.75, 0.8, 7, 6, -4.7, 11, 6, -4.7, 13.25, 8.25, -4.7, 13.25, 8.25, -4.7, 11 )
-polygons = [ PoolIntArray( 3, 2, 0 ), PoolIntArray( 0, 2, 1 ), PoolIntArray( 7, 6, 4 ), PoolIntArray( 4, 6, 5 ), PoolIntArray( 11, 10, 8 ), PoolIntArray( 8, 10, 9 ), PoolIntArray( 13, 12, 14 ), PoolIntArray( 14, 12, 15 ), PoolIntArray( 17, 16, 18 ), PoolIntArray( 18, 16, 19 ), PoolIntArray( 21, 20, 22 ), PoolIntArray( 22, 20, 23 ), PoolIntArray( 27, 26, 24 ), PoolIntArray( 24, 26, 25 ), PoolIntArray( 30, 29, 28 ), PoolIntArray( 32, 31, 33 ), PoolIntArray( 33, 31, 34 ), PoolIntArray( 35, 37, 36 ), PoolIntArray( 40, 39, 38 ), PoolIntArray( 44, 43, 41 ), PoolIntArray( 41, 43, 42 ) ]
+vertices = PoolVector3Array( 0.300226, 1.5, -5.44977, -11.4498, 1.5, -5.44977, -11.1998, 1.5, 0.800227, 0.300226, 1.5, 0.800227, -11.1998, 1.5, 0.800227, -11.4498, 1.5, 7.30023, 0.300226, 1.5, 7.30023, 0.300226, 1.5, 0.800227, -17.4498, 6.5, -1.44977, -17.4498, 6.5, 3.30023, -12.6998, 6.5, 3.30023, -12.6998, 6.5, -1.44977, -17.1998, 1.5, -1.19977, -16.9498, 1.5, -0.449773, -16.4498, 1.5, -0.949773, -12.9498, 1.5, -1.19977, -17.1998, 1.5, -1.19977, -16.4498, 1.5, -0.949773, -13.6998, 1.5, -0.949773, -16.9498, 1.5, 2.30023, -16.9498, 1.5, -0.449773, -17.1998, 1.5, -1.19977, -17.1998, 1.5, 3.05023, -12.9498, 1.5, -1.19977, -13.6998, 1.5, -0.949773, -13.1998, 1.5, -0.449773, -12.9498, 1.5, 3.05023, -12.9498, 1.5, -1.19977, -13.1998, 1.5, -0.449773, -13.1998, 1.5, 2.30023, -17.1998, 1.5, 3.05023, -16.4498, 1.5, 2.80023, -16.9498, 1.5, 2.30023, -12.9498, 1.5, 3.05023, -13.1998, 1.5, 2.30023, -13.6998, 1.5, 2.80023, -17.1998, 1.5, 3.05023, -12.9498, 1.5, 3.05023, -13.6998, 1.5, 2.80023, -16.4498, 1.5, 2.80023, -15.4498, 2, 0.550227, -15.4498, 2, 1.30023, -14.6998, 2, 1.30023, -14.6998, 2, 0.550227, -17.4498, 1.5, 7.55023, -17.4498, 1.5, 8.30023, -16.6998, 1.5, 8.30023, -16.6998, 1.5, 7.55023 )
+polygons = [ PoolIntArray( 3, 2, 0 ), PoolIntArray( 0, 2, 1 ), PoolIntArray( 7, 6, 4 ), PoolIntArray( 4, 6, 5 ), PoolIntArray( 11, 10, 8 ), PoolIntArray( 8, 10, 9 ), PoolIntArray( 14, 13, 12 ), PoolIntArray( 18, 17, 15 ), PoolIntArray( 15, 17, 16 ), PoolIntArray( 19, 22, 20 ), PoolIntArray( 20, 22, 21 ), PoolIntArray( 25, 24, 23 ), PoolIntArray( 29, 28, 26 ), PoolIntArray( 26, 28, 27 ), PoolIntArray( 32, 31, 30 ), PoolIntArray( 35, 34, 33 ), PoolIntArray( 39, 38, 36 ), PoolIntArray( 36, 38, 37 ), PoolIntArray( 43, 42, 40 ), PoolIntArray( 40, 42, 41 ), PoolIntArray( 47, 46, 44 ), PoolIntArray( 44, 46, 45 ) ]
 geometry_parsed_geometry_type = 1
 agent_height = 1.8
 agent_radius = 0.6
 
 [sub_resource type="ArrayMesh" id=2]
 surfaces/0 = {
-"aabb": AABB( -9, -1, -1, 10, 2.00001, 21 ),
-"array_data": PoolByteArray( 0, 0, 16, 193, 0, 0, 128, 63, 0, 0, 160, 65, 0, 0, 127, 64, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 127, 127, 129, 64, 85, 57, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 160, 65, 0, 0, 127, 64, 85, 53, 0, 0, 0, 0, 16, 193, 0, 0, 128, 63, 0, 0, 128, 191, 127, 127, 129, 64, 0, 60, 0, 0, 0, 0, 16, 193, 0, 0, 128, 191, 0, 0, 160, 65, 0, 0, 127, 64, 0, 0, 0, 56, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 127, 127, 129, 64, 85, 57, 0, 56, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 160, 65, 0, 0, 127, 64, 85, 53, 0, 56, 0, 0, 16, 193, 0, 0, 128, 191, 0, 0, 128, 191, 127, 127, 129, 64, 0, 60, 0, 56, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 160, 65, 127, 0, 127, 127, 85, 53, 0, 0, 0, 0, 16, 193, 0, 0, 128, 63, 0, 0, 128, 191, 129, 0, 0, 63, 0, 0, 0, 56, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 127, 0, 127, 127, 85, 57, 0, 0, 0, 0, 16, 193, 0, 0, 128, 63, 0, 0, 160, 65, 129, 0, 0, 63, 85, 53, 0, 56, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 160, 65, 127, 0, 127, 127, 85, 53, 0, 56, 0, 0, 16, 193, 0, 0, 128, 191, 0, 0, 128, 191, 129, 0, 0, 63, 0, 0, 0, 60, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 127, 0, 127, 127, 85, 57, 0, 56, 0, 0, 16, 193, 0, 0, 128, 191, 0, 0, 160, 65, 129, 0, 0, 63, 85, 53, 0, 60, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 160, 65, 0, 127, 129, 64, 85, 53, 0, 56, 0, 0, 16, 193, 0, 0, 128, 191, 0, 0, 160, 65, 0, 129, 127, 64, 85, 57, 0, 56, 0, 0, 16, 193, 0, 0, 128, 63, 0, 0, 160, 65, 0, 127, 129, 64, 85, 57, 0, 56, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 160, 65, 0, 129, 127, 64, 0, 60, 0, 56, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 0, 127, 129, 64, 85, 53, 0, 60, 0, 0, 16, 193, 0, 0, 128, 191, 0, 0, 128, 191, 0, 129, 127, 64, 85, 57, 0, 60, 0, 0, 16, 193, 0, 0, 128, 63, 0, 0, 128, 191, 0, 127, 129, 64, 85, 57, 0, 60, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 0, 129, 127, 64, 0, 60, 0, 60 ),
+"aabb": AABB( -13, 0, 0, 13, 1.00001, 14 ),
+"array_data": PoolByteArray( 0, 0, 80, 193, 0, 0, 128, 63, 0, 0, 96, 65, 0, 0, 127, 64, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 127, 127, 129, 64, 85, 57, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 96, 65, 0, 0, 127, 64, 85, 53, 0, 0, 0, 0, 80, 193, 0, 0, 128, 63, 0, 0, 0, 0, 127, 127, 129, 64, 0, 60, 0, 0, 0, 0, 80, 193, 0, 0, 0, 0, 0, 0, 96, 65, 0, 0, 127, 64, 0, 0, 0, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 127, 127, 129, 64, 85, 57, 0, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 96, 65, 0, 0, 127, 64, 85, 53, 0, 56, 0, 0, 80, 193, 0, 0, 0, 0, 0, 0, 0, 0, 127, 127, 129, 64, 0, 60, 0, 56, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 96, 65, 127, 0, 127, 127, 85, 53, 0, 0, 0, 0, 80, 193, 0, 0, 128, 63, 0, 0, 0, 0, 129, 0, 0, 63, 0, 0, 0, 56, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 127, 0, 127, 127, 85, 57, 0, 0, 0, 0, 80, 193, 0, 0, 128, 63, 0, 0, 96, 65, 129, 0, 0, 63, 85, 53, 0, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 96, 65, 127, 0, 127, 127, 85, 53, 0, 56, 0, 0, 80, 193, 0, 0, 0, 0, 0, 0, 0, 0, 129, 0, 0, 63, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 127, 0, 127, 127, 85, 57, 0, 56, 0, 0, 80, 193, 0, 0, 0, 0, 0, 0, 96, 65, 129, 0, 0, 63, 85, 53, 0, 60, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 96, 65, 0, 127, 129, 64, 85, 53, 0, 56, 0, 0, 80, 193, 0, 0, 0, 0, 0, 0, 96, 65, 0, 129, 127, 64, 85, 57, 0, 56, 0, 0, 80, 193, 0, 0, 128, 63, 0, 0, 96, 65, 0, 127, 129, 64, 85, 57, 0, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 96, 65, 0, 129, 127, 64, 0, 60, 0, 56, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 127, 129, 64, 85, 53, 0, 60, 0, 0, 80, 193, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 127, 64, 85, 57, 0, 60, 0, 0, 80, 193, 0, 0, 128, 63, 0, 0, 0, 0, 0, 127, 129, 64, 85, 57, 0, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 127, 64, 0, 60, 0, 60 ),
 "array_index_data": PoolByteArray( 0, 0, 2, 0, 4, 0, 2, 0, 6, 0, 4, 0, 1, 0, 3, 0, 5, 0, 3, 0, 7, 0, 5, 0, 8, 0, 10, 0, 12, 0, 10, 0, 14, 0, 12, 0, 9, 0, 11, 0, 13, 0, 11, 0, 15, 0, 13, 0, 16, 0, 18, 0, 20, 0, 18, 0, 22, 0, 20, 0, 17, 0, 19, 0, 21, 0, 19, 0, 23, 0, 21, 0 ),
 "blend_shape_data": [  ],
 "format": 2194711,
@@ -38,7 +39,7 @@ surfaces/0 = {
 [sub_resource type="SpatialMaterial" id=3]
 flags_world_triplanar = true
 albedo_color = Color( 1, 0.819608, 0, 1 )
-albedo_texture = ExtResource( 7 )
+albedo_texture = ExtResource( 5 )
 emission_enabled = true
 emission = Color( 1, 1, 1, 1 )
 emission_energy = 0.0
@@ -47,10 +48,10 @@ emission_on_uv2 = false
 uv1_scale = Vector3( 0.5, 0.5, 0.5 )
 uv1_triplanar = true
 
-[sub_resource type="ArrayMesh" id=5]
+[sub_resource type="ArrayMesh" id=4]
 surfaces/0 = {
-"aabb": AABB( -1, -1, -5, 1, 2.00001, 6.00001 ),
-"array_data": PoolByteArray( 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 64, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 160, 192, 127, 127, 129, 64, 85, 57, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 64, 85, 53, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 160, 192, 127, 127, 129, 64, 0, 60, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 127, 64, 0, 0, 0, 56, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 160, 192, 127, 127, 129, 64, 85, 57, 0, 56, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 127, 64, 85, 53, 0, 56, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 160, 192, 127, 127, 129, 64, 0, 60, 0, 56, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 127, 0, 127, 127, 85, 53, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 160, 192, 129, 0, 0, 63, 0, 0, 0, 56, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 160, 192, 127, 0, 127, 127, 85, 57, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 129, 0, 0, 63, 85, 53, 0, 56, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 127, 0, 127, 127, 85, 53, 0, 56, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 160, 192, 129, 0, 0, 63, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 160, 192, 127, 0, 127, 127, 85, 57, 0, 56, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 129, 0, 0, 63, 85, 53, 0, 60, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 129, 64, 85, 53, 0, 56, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 0, 129, 127, 64, 85, 57, 0, 56, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 129, 64, 85, 57, 0, 56, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 129, 127, 64, 0, 60, 0, 56, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 160, 192, 0, 127, 129, 64, 85, 53, 0, 60, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 160, 192, 0, 129, 127, 64, 85, 57, 0, 60, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 160, 192, 0, 127, 129, 64, 85, 57, 0, 60, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 160, 192, 0, 129, 127, 64, 0, 60, 0, 60 ),
+"aabb": AABB( -6, 0, 0, 6, 1.00001, 6.00001 ),
+"array_data": PoolByteArray( 0, 0, 192, 192, 0, 0, 128, 63, 0, 0, 192, 64, 0, 0, 127, 64, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 127, 127, 129, 64, 85, 57, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 192, 64, 0, 0, 127, 64, 85, 53, 0, 0, 0, 0, 192, 192, 0, 0, 128, 63, 0, 0, 0, 0, 127, 127, 129, 64, 0, 60, 0, 0, 0, 0, 192, 192, 0, 0, 0, 0, 0, 0, 192, 64, 0, 0, 127, 64, 0, 0, 0, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 127, 127, 129, 64, 85, 57, 0, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 192, 64, 0, 0, 127, 64, 85, 53, 0, 56, 0, 0, 192, 192, 0, 0, 0, 0, 0, 0, 0, 0, 127, 127, 129, 64, 0, 60, 0, 56, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 192, 64, 127, 0, 127, 127, 85, 53, 0, 0, 0, 0, 192, 192, 0, 0, 128, 63, 0, 0, 0, 0, 129, 0, 0, 63, 0, 0, 0, 56, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 127, 0, 127, 127, 85, 57, 0, 0, 0, 0, 192, 192, 0, 0, 128, 63, 0, 0, 192, 64, 129, 0, 0, 63, 85, 53, 0, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 192, 64, 127, 0, 127, 127, 85, 53, 0, 56, 0, 0, 192, 192, 0, 0, 0, 0, 0, 0, 0, 0, 129, 0, 0, 63, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 127, 0, 127, 127, 85, 57, 0, 56, 0, 0, 192, 192, 0, 0, 0, 0, 0, 0, 192, 64, 129, 0, 0, 63, 85, 53, 0, 60, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 192, 64, 0, 127, 129, 64, 85, 53, 0, 56, 0, 0, 192, 192, 0, 0, 0, 0, 0, 0, 192, 64, 0, 129, 127, 64, 85, 57, 0, 56, 0, 0, 192, 192, 0, 0, 128, 63, 0, 0, 192, 64, 0, 127, 129, 64, 85, 57, 0, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 192, 64, 0, 129, 127, 64, 0, 60, 0, 56, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 127, 129, 64, 85, 53, 0, 60, 0, 0, 192, 192, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 127, 64, 85, 57, 0, 60, 0, 0, 192, 192, 0, 0, 128, 63, 0, 0, 0, 0, 0, 127, 129, 64, 85, 57, 0, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 127, 64, 0, 60, 0, 60 ),
 "array_index_data": PoolByteArray( 0, 0, 2, 0, 4, 0, 2, 0, 6, 0, 4, 0, 1, 0, 3, 0, 5, 0, 3, 0, 7, 0, 5, 0, 8, 0, 10, 0, 12, 0, 10, 0, 14, 0, 12, 0, 9, 0, 11, 0, 13, 0, 11, 0, 15, 0, 13, 0, 16, 0, 18, 0, 20, 0, 18, 0, 22, 0, 20, 0, 17, 0, 19, 0, 21, 0, 19, 0, 23, 0, 21, 0 ),
 "blend_shape_data": [  ],
 "format": 2194711,
@@ -60,10 +61,10 @@ surfaces/0 = {
 "vertex_count": 24
 }
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="SpatialMaterial" id=5]
 flags_world_triplanar = true
 albedo_color = Color( 1, 0.819608, 0, 1 )
-albedo_texture = ExtResource( 7 )
+albedo_texture = ExtResource( 5 )
 emission_enabled = true
 emission = Color( 1, 1, 1, 1 )
 emission_energy = 0.0
@@ -74,8 +75,8 @@ uv1_triplanar = true
 
 [sub_resource type="ArrayMesh" id=7]
 surfaces/0 = {
-"aabb": AABB( -2, -1, -1, 4, 2.00001, 1.00001 ),
-"array_data": PoolByteArray( 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 127, 64, 0, 0, 0, 0, 0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 128, 191, 127, 127, 129, 64, 85, 57, 0, 0, 0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 127, 64, 85, 53, 0, 0, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 128, 191, 127, 127, 129, 64, 0, 60, 0, 0, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 127, 64, 0, 0, 0, 56, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 128, 191, 127, 127, 129, 64, 85, 57, 0, 56, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 127, 64, 85, 53, 0, 56, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 128, 191, 127, 127, 129, 64, 0, 60, 0, 56, 0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 0, 0, 127, 0, 127, 127, 85, 53, 0, 0, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 128, 191, 129, 0, 0, 63, 0, 0, 0, 56, 0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 128, 191, 127, 0, 127, 127, 85, 57, 0, 0, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 0, 0, 129, 0, 0, 63, 85, 53, 0, 56, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 0, 0, 127, 0, 127, 127, 85, 53, 0, 56, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 128, 191, 129, 0, 0, 63, 0, 0, 0, 60, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 128, 191, 127, 0, 127, 127, 85, 57, 0, 56, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 0, 0, 129, 0, 0, 63, 85, 53, 0, 60, 0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 0, 0, 0, 127, 129, 64, 85, 53, 0, 56, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 0, 0, 0, 129, 127, 64, 85, 57, 0, 56, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 0, 0, 0, 127, 129, 64, 85, 57, 0, 56, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 0, 0, 0, 129, 127, 64, 0, 60, 0, 56, 0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 128, 191, 0, 127, 129, 64, 85, 53, 0, 60, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 128, 191, 0, 129, 127, 64, 85, 57, 0, 60, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 128, 191, 0, 127, 129, 64, 85, 57, 0, 60, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 128, 191, 0, 129, 127, 64, 0, 60, 0, 60 ),
+"aabb": AABB( -3, -1, -3, 6, 5.00001, 6.00001 ),
+"array_data": PoolByteArray( 0, 0, 64, 192, 0, 0, 128, 64, 0, 0, 64, 64, 0, 0, 127, 64, 0, 0, 0, 0, 0, 0, 64, 64, 0, 0, 128, 64, 0, 0, 64, 192, 127, 127, 129, 64, 85, 57, 0, 0, 0, 0, 64, 64, 0, 0, 128, 64, 0, 0, 64, 64, 0, 0, 127, 64, 85, 53, 0, 0, 0, 0, 64, 192, 0, 0, 128, 64, 0, 0, 64, 192, 127, 127, 129, 64, 0, 60, 0, 0, 0, 0, 64, 192, 0, 0, 128, 191, 0, 0, 64, 64, 0, 0, 127, 64, 0, 0, 0, 56, 0, 0, 64, 64, 0, 0, 128, 191, 0, 0, 64, 192, 127, 127, 129, 64, 85, 57, 0, 56, 0, 0, 64, 64, 0, 0, 128, 191, 0, 0, 64, 64, 0, 0, 127, 64, 85, 53, 0, 56, 0, 0, 64, 192, 0, 0, 128, 191, 0, 0, 64, 192, 127, 127, 129, 64, 0, 60, 0, 56, 0, 0, 64, 64, 0, 0, 128, 64, 0, 0, 64, 64, 127, 0, 127, 127, 85, 53, 0, 0, 0, 0, 64, 192, 0, 0, 128, 64, 0, 0, 64, 192, 129, 0, 0, 63, 0, 0, 0, 56, 0, 0, 64, 64, 0, 0, 128, 64, 0, 0, 64, 192, 127, 0, 127, 127, 85, 57, 0, 0, 0, 0, 64, 192, 0, 0, 128, 64, 0, 0, 64, 64, 129, 0, 0, 63, 85, 53, 0, 56, 0, 0, 64, 64, 0, 0, 128, 191, 0, 0, 64, 64, 127, 0, 127, 127, 85, 53, 0, 56, 0, 0, 64, 192, 0, 0, 128, 191, 0, 0, 64, 192, 129, 0, 0, 63, 0, 0, 0, 60, 0, 0, 64, 64, 0, 0, 128, 191, 0, 0, 64, 192, 127, 0, 127, 127, 85, 57, 0, 56, 0, 0, 64, 192, 0, 0, 128, 191, 0, 0, 64, 64, 129, 0, 0, 63, 85, 53, 0, 60, 0, 0, 64, 64, 0, 0, 128, 64, 0, 0, 64, 64, 0, 127, 129, 64, 85, 53, 0, 56, 0, 0, 64, 192, 0, 0, 128, 191, 0, 0, 64, 64, 0, 129, 127, 64, 85, 57, 0, 56, 0, 0, 64, 192, 0, 0, 128, 64, 0, 0, 64, 64, 0, 127, 129, 64, 85, 57, 0, 56, 0, 0, 64, 64, 0, 0, 128, 191, 0, 0, 64, 64, 0, 129, 127, 64, 0, 60, 0, 56, 0, 0, 64, 64, 0, 0, 128, 64, 0, 0, 64, 192, 0, 127, 129, 64, 85, 53, 0, 60, 0, 0, 64, 192, 0, 0, 128, 191, 0, 0, 64, 192, 0, 129, 127, 64, 85, 57, 0, 60, 0, 0, 64, 192, 0, 0, 128, 64, 0, 0, 64, 192, 0, 127, 129, 64, 85, 57, 0, 60, 0, 0, 64, 64, 0, 0, 128, 191, 0, 0, 64, 192, 0, 129, 127, 64, 0, 60, 0, 60 ),
 "array_index_data": PoolByteArray( 0, 0, 2, 0, 4, 0, 2, 0, 6, 0, 4, 0, 1, 0, 3, 0, 5, 0, 3, 0, 7, 0, 5, 0, 8, 0, 10, 0, 12, 0, 10, 0, 14, 0, 12, 0, 9, 0, 11, 0, 13, 0, 11, 0, 15, 0, 13, 0, 16, 0, 18, 0, 20, 0, 18, 0, 22, 0, 20, 0, 17, 0, 19, 0, 21, 0, 19, 0, 23, 0, 21, 0 ),
 "blend_shape_data": [  ],
 "format": 2194711,
@@ -88,82 +89,7 @@ surfaces/0 = {
 [sub_resource type="SpatialMaterial" id=8]
 flags_world_triplanar = true
 albedo_color = Color( 1, 0.819608, 0, 1 )
-albedo_texture = ExtResource( 7 )
-emission_enabled = true
-emission = Color( 1, 1, 1, 1 )
-emission_energy = 0.0
-emission_operator = 0
-emission_on_uv2 = false
-uv1_scale = Vector3( 0.5, 0.5, 0.5 )
-uv1_triplanar = true
-
-[sub_resource type="ArrayMesh" id=9]
-surfaces/0 = {
-"aabb": AABB( -1, -1, -5, 1, 2.00001, 6.00001 ),
-"array_data": PoolByteArray( 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 64, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 160, 192, 127, 127, 129, 64, 85, 57, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 64, 85, 53, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 160, 192, 127, 127, 129, 64, 0, 60, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 127, 64, 0, 0, 0, 56, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 160, 192, 127, 127, 129, 64, 85, 57, 0, 56, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 127, 64, 85, 53, 0, 56, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 160, 192, 127, 127, 129, 64, 0, 60, 0, 56, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 127, 0, 127, 127, 85, 53, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 160, 192, 129, 0, 0, 63, 0, 0, 0, 56, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 160, 192, 127, 0, 127, 127, 85, 57, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 129, 0, 0, 63, 85, 53, 0, 56, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 127, 0, 127, 127, 85, 53, 0, 56, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 160, 192, 129, 0, 0, 63, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 160, 192, 127, 0, 127, 127, 85, 57, 0, 56, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 129, 0, 0, 63, 85, 53, 0, 60, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 129, 64, 85, 53, 0, 56, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 0, 129, 127, 64, 85, 57, 0, 56, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 129, 64, 85, 57, 0, 56, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 129, 127, 64, 0, 60, 0, 56, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 160, 192, 0, 127, 129, 64, 85, 53, 0, 60, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 160, 192, 0, 129, 127, 64, 85, 57, 0, 60, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 160, 192, 0, 127, 129, 64, 85, 57, 0, 60, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 160, 192, 0, 129, 127, 64, 0, 60, 0, 60 ),
-"array_index_data": PoolByteArray( 0, 0, 2, 0, 4, 0, 2, 0, 6, 0, 4, 0, 1, 0, 3, 0, 5, 0, 3, 0, 7, 0, 5, 0, 8, 0, 10, 0, 12, 0, 10, 0, 14, 0, 12, 0, 9, 0, 11, 0, 13, 0, 11, 0, 15, 0, 13, 0, 16, 0, 18, 0, 20, 0, 18, 0, 22, 0, 20, 0, 17, 0, 19, 0, 21, 0, 19, 0, 23, 0, 21, 0 ),
-"blend_shape_data": [  ],
-"format": 2194711,
-"index_count": 36,
-"primitive": 4,
-"skeleton_aabb": [  ],
-"vertex_count": 24
-}
-
-[sub_resource type="SpatialMaterial" id=10]
-flags_world_triplanar = true
-albedo_color = Color( 1, 0.819608, 0, 1 )
-albedo_texture = ExtResource( 7 )
-emission_enabled = true
-emission = Color( 1, 1, 1, 1 )
-emission_energy = 0.0
-emission_operator = 0
-emission_on_uv2 = false
-uv1_scale = Vector3( 0.5, 0.5, 0.5 )
-uv1_triplanar = true
-
-[sub_resource type="ArrayMesh" id=11]
-surfaces/0 = {
-"aabb": AABB( -1, -1, -1, 4, 2.00001, 1.00001 ),
-"array_data": PoolByteArray( 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 127, 64, 0, 0, 0, 0, 0, 0, 64, 64, 0, 0, 128, 63, 0, 0, 128, 191, 127, 127, 129, 64, 85, 57, 0, 0, 0, 0, 64, 64, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 127, 64, 85, 53, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 127, 127, 129, 64, 0, 60, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 127, 64, 0, 0, 0, 56, 0, 0, 64, 64, 0, 0, 128, 191, 0, 0, 128, 191, 127, 127, 129, 64, 85, 57, 0, 56, 0, 0, 64, 64, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 127, 64, 85, 53, 0, 56, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 127, 127, 129, 64, 0, 60, 0, 56, 0, 0, 64, 64, 0, 0, 128, 63, 0, 0, 0, 0, 127, 0, 127, 127, 85, 53, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 129, 0, 0, 63, 0, 0, 0, 56, 0, 0, 64, 64, 0, 0, 128, 63, 0, 0, 128, 191, 127, 0, 127, 127, 85, 57, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 0, 0, 129, 0, 0, 63, 85, 53, 0, 56, 0, 0, 64, 64, 0, 0, 128, 191, 0, 0, 0, 0, 127, 0, 127, 127, 85, 53, 0, 56, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 129, 0, 0, 63, 0, 0, 0, 60, 0, 0, 64, 64, 0, 0, 128, 191, 0, 0, 128, 191, 127, 0, 127, 127, 85, 57, 0, 56, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 0, 0, 129, 0, 0, 63, 85, 53, 0, 60, 0, 0, 64, 64, 0, 0, 128, 63, 0, 0, 0, 0, 0, 127, 129, 64, 85, 53, 0, 56, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 0, 0, 0, 129, 127, 64, 85, 57, 0, 56, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 0, 0, 0, 127, 129, 64, 85, 57, 0, 56, 0, 0, 64, 64, 0, 0, 128, 191, 0, 0, 0, 0, 0, 129, 127, 64, 0, 60, 0, 56, 0, 0, 64, 64, 0, 0, 128, 63, 0, 0, 128, 191, 0, 127, 129, 64, 85, 53, 0, 60, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 0, 129, 127, 64, 85, 57, 0, 60, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 0, 127, 129, 64, 85, 57, 0, 60, 0, 0, 64, 64, 0, 0, 128, 191, 0, 0, 128, 191, 0, 129, 127, 64, 0, 60, 0, 60 ),
-"array_index_data": PoolByteArray( 0, 0, 2, 0, 4, 0, 2, 0, 6, 0, 4, 0, 1, 0, 3, 0, 5, 0, 3, 0, 7, 0, 5, 0, 8, 0, 10, 0, 12, 0, 10, 0, 14, 0, 12, 0, 9, 0, 11, 0, 13, 0, 11, 0, 15, 0, 13, 0, 16, 0, 18, 0, 20, 0, 18, 0, 22, 0, 20, 0, 17, 0, 19, 0, 21, 0, 19, 0, 23, 0, 21, 0 ),
-"blend_shape_data": [  ],
-"format": 2194711,
-"index_count": 36,
-"primitive": 4,
-"skeleton_aabb": [  ],
-"vertex_count": 24
-}
-
-[sub_resource type="SpatialMaterial" id=12]
-flags_world_triplanar = true
-albedo_color = Color( 1, 0.819608, 0, 1 )
-albedo_texture = ExtResource( 7 )
-emission_enabled = true
-emission = Color( 1, 1, 1, 1 )
-emission_energy = 0.0
-emission_operator = 0
-emission_on_uv2 = false
-uv1_scale = Vector3( 0.5, 0.5, 0.5 )
-uv1_triplanar = true
-
-[sub_resource type="ArrayMesh" id=13]
-surfaces/0 = {
-"aabb": AABB( -3, -1, -3, 6, 2.00001, 6.00001 ),
-"array_data": PoolByteArray( 0, 0, 64, 192, 0, 0, 128, 63, 0, 0, 64, 64, 0, 0, 127, 64, 0, 0, 0, 0, 0, 0, 64, 64, 0, 0, 128, 63, 0, 0, 64, 192, 127, 127, 129, 64, 85, 57, 0, 0, 0, 0, 64, 64, 0, 0, 128, 63, 0, 0, 64, 64, 0, 0, 127, 64, 85, 53, 0, 0, 0, 0, 64, 192, 0, 0, 128, 63, 0, 0, 64, 192, 127, 127, 129, 64, 0, 60, 0, 0, 0, 0, 64, 192, 0, 0, 128, 191, 0, 0, 64, 64, 0, 0, 127, 64, 0, 0, 0, 56, 0, 0, 64, 64, 0, 0, 128, 191, 0, 0, 64, 192, 127, 127, 129, 64, 85, 57, 0, 56, 0, 0, 64, 64, 0, 0, 128, 191, 0, 0, 64, 64, 0, 0, 127, 64, 85, 53, 0, 56, 0, 0, 64, 192, 0, 0, 128, 191, 0, 0, 64, 192, 127, 127, 129, 64, 0, 60, 0, 56, 0, 0, 64, 64, 0, 0, 128, 63, 0, 0, 64, 64, 127, 0, 127, 127, 85, 53, 0, 0, 0, 0, 64, 192, 0, 0, 128, 63, 0, 0, 64, 192, 129, 0, 0, 63, 0, 0, 0, 56, 0, 0, 64, 64, 0, 0, 128, 63, 0, 0, 64, 192, 127, 0, 127, 127, 85, 57, 0, 0, 0, 0, 64, 192, 0, 0, 128, 63, 0, 0, 64, 64, 129, 0, 0, 63, 85, 53, 0, 56, 0, 0, 64, 64, 0, 0, 128, 191, 0, 0, 64, 64, 127, 0, 127, 127, 85, 53, 0, 56, 0, 0, 64, 192, 0, 0, 128, 191, 0, 0, 64, 192, 129, 0, 0, 63, 0, 0, 0, 60, 0, 0, 64, 64, 0, 0, 128, 191, 0, 0, 64, 192, 127, 0, 127, 127, 85, 57, 0, 56, 0, 0, 64, 192, 0, 0, 128, 191, 0, 0, 64, 64, 129, 0, 0, 63, 85, 53, 0, 60, 0, 0, 64, 64, 0, 0, 128, 63, 0, 0, 64, 64, 0, 127, 129, 64, 85, 53, 0, 56, 0, 0, 64, 192, 0, 0, 128, 191, 0, 0, 64, 64, 0, 129, 127, 64, 85, 57, 0, 56, 0, 0, 64, 192, 0, 0, 128, 63, 0, 0, 64, 64, 0, 127, 129, 64, 85, 57, 0, 56, 0, 0, 64, 64, 0, 0, 128, 191, 0, 0, 64, 64, 0, 129, 127, 64, 0, 60, 0, 56, 0, 0, 64, 64, 0, 0, 128, 63, 0, 0, 64, 192, 0, 127, 129, 64, 85, 53, 0, 60, 0, 0, 64, 192, 0, 0, 128, 191, 0, 0, 64, 192, 0, 129, 127, 64, 85, 57, 0, 60, 0, 0, 64, 192, 0, 0, 128, 63, 0, 0, 64, 192, 0, 127, 129, 64, 85, 57, 0, 60, 0, 0, 64, 64, 0, 0, 128, 191, 0, 0, 64, 192, 0, 129, 127, 64, 0, 60, 0, 60 ),
-"array_index_data": PoolByteArray( 0, 0, 2, 0, 4, 0, 2, 0, 6, 0, 4, 0, 1, 0, 3, 0, 5, 0, 3, 0, 7, 0, 5, 0, 8, 0, 10, 0, 12, 0, 10, 0, 14, 0, 12, 0, 9, 0, 11, 0, 13, 0, 11, 0, 15, 0, 13, 0, 16, 0, 18, 0, 20, 0, 18, 0, 22, 0, 20, 0, 17, 0, 19, 0, 21, 0, 19, 0, 23, 0, 21, 0 ),
-"blend_shape_data": [  ],
-"format": 2194711,
-"index_count": 36,
-"primitive": 4,
-"skeleton_aabb": [  ],
-"vertex_count": 24
-}
-
-[sub_resource type="SpatialMaterial" id=14]
-flags_world_triplanar = true
-albedo_color = Color( 1, 0.819608, 0, 1 )
-albedo_texture = ExtResource( 7 )
+albedo_texture = ExtResource( 5 )
 emission_enabled = true
 emission = Color( 1, 1, 1, 1 )
 emission_energy = 0.0
@@ -173,7 +99,7 @@ uv1_scale = Vector3( 0.5, 0.5, 0.5 )
 uv1_triplanar = true
 
 [node name="Map" type="Spatial"]
-script = ExtResource( 2 )
+script = ExtResource( 4 )
 spikes_enabled = false
 level_type = 0
 level_light = 0
@@ -188,213 +114,89 @@ take_rocketlauncher = false
 give_rocketlauncher = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource( 1 )
+environment = ExtResource( 3 )
 
 [node name="Navigation" type="Navigation" parent="."]
 
 [node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
-navmesh = SubResource( 4 )
+navmesh = SubResource( 9 )
 
-[node name="Surface" type="StaticBody" parent="Navigation/NavigationMeshInstance" groups=["Polygon3D"] instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2 )
+[node name="Surface" type="StaticBody" parent="Navigation/NavigationMeshInstance" groups=["Polygon3D"] instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -6 )
 collision_layer = 31
 collision_mask = 31
-script = ExtResource( 5 )
-point1 = Vector3( 1, 1, 20 )
-point2 = Vector3( 1, 1, -1 )
-point3 = Vector3( 1, -1, 20 )
-point4 = Vector3( 1, -1, -1 )
-point5 = Vector3( -9, 1, 20 )
-point6 = Vector3( -9, 1, -1 )
-point7 = Vector3( -9, -1, 20 )
-point8 = Vector3( -9, -1, -1 )
+script = ExtResource( 2 )
+point1 = Vector3( 0, 1, 14 )
+point2 = Vector3( 0, 1, 0 )
+point3 = Vector3( 0, 0, 14 )
+point4 = Vector3( 0, 0, 0 )
+point5 = Vector3( -13, 1, 14 )
+point6 = Vector3( -13, 1, 0 )
+point7 = Vector3( -13, 0, 14 )
+point8 = Vector3( -13, 0, 0 )
 mesh = SubResource( 2 )
 material = SubResource( 3 )
 triplanar = true
 uv_scale = Vector3( 0.5, 0.5, 0.5 )
 uv_offset = Vector3( 0, 0, 0 )
 
-[node name="Conveyor Belt" type="StaticBody" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 3 )]
-transform = Transform( 3, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0 )
-script = ExtResource( 4 )
-ending_point = Vector3( 0, 0, -10 )
-width = 2.0
-speed = 10.0
-
-[node name="Conveyor Belt280" type="StaticBody" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 3 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 0, 6 )
-script = ExtResource( 4 )
-ending_point = Vector3( -14, 0, 0 )
-width = 2.0
-speed = 10.0
-
-[node name="Conveyor Belt338" type="StaticBody" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 3 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -22, 0, 6 )
-script = ExtResource( 4 )
-ending_point = Vector3( 0, 0, 12 )
-width = 2.0
-speed = 10.0
-
-[node name="Conveyor Belt396" type="StaticBody" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 3 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -22, 0, 18 )
-script = ExtResource( 4 )
-ending_point = Vector3( 16, 0, 0 )
-width = 2.0
-speed = 10.0
-
-[node name="BombSpawner" type="StaticBody" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 7, 6 )
-script = ExtResource( 12 )
-spawner_timer = 5
-bomb_timer = 5
-
-[node name="Surface208" type="StaticBody" parent="Navigation/NavigationMeshInstance" groups=["Polygon3D"] instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -4, 14 )
+[node name="Surface212" type="StaticBody" parent="Navigation/NavigationMeshInstance" groups=["Polygon3D", "movethis"] instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -2 )
 collision_layer = 31
 collision_mask = 31
-script = ExtResource( 5 )
-point1 = Vector3( 0, 1, 1 )
-point2 = Vector3( 0, 1, -5 )
-point3 = Vector3( 0, -1, 1 )
-point4 = Vector3( 0, -1, -5 )
-point5 = Vector3( -1, 1, 1 )
-point6 = Vector3( -1, 1, -5 )
-point7 = Vector3( -1, -1, 1 )
-point8 = Vector3( -1, -1, -5 )
-mesh = SubResource( 5 )
-material = SubResource( 6 )
+script = ExtResource( 2 )
+point1 = Vector3( 0, 1, 6 )
+point2 = Vector3( 0, 1, 0 )
+point3 = Vector3( 0, 0, 6 )
+point4 = Vector3( 0, 0, 0 )
+point5 = Vector3( -6, 1, 6 )
+point6 = Vector3( -6, 1, 0 )
+point7 = Vector3( -6, 0, 6 )
+point8 = Vector3( -6, 0, 0 )
+mesh = SubResource( 4 )
+material = SubResource( 5 )
 triplanar = true
 uv_scale = Vector3( 0.5, 0.5, 0.5 )
 uv_offset = Vector3( 0, 0, 0 )
 
-[node name="Surface209" type="StaticBody" parent="Navigation/NavigationMeshInstance" groups=["Polygon3D"] instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -4, 15 )
+[node name="Button" type="StaticBody" parent="Navigation/NavigationMeshInstance" groups=["movethis"] instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 1, 1 )
+script = ExtResource( 11 )
+trigger_group = "mover1"
+mode = 0
+
+[node name="Mover" type="StaticBody" parent="Navigation/NavigationMeshInstance" groups=["mover1"] instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 8 )
+script = ExtResource( 9 )
+move_group = "movethis"
+move_vector = Vector3( -30, 0, 0 )
+time = 5.0
+
+[node name="PlayerMover" type="StaticBody" parent="Navigation/NavigationMeshInstance" groups=["Polygon3D", "movethis"] instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 2, 1 )
 collision_layer = 31
 collision_mask = 31
-script = ExtResource( 5 )
-point1 = Vector3( 2, 1, 0 )
-point2 = Vector3( 2, 1, -1 )
-point3 = Vector3( 2, -1, 0 )
-point4 = Vector3( 2, -1, -1 )
-point5 = Vector3( -2, 1, 0 )
-point6 = Vector3( -2, 1, -1 )
-point7 = Vector3( -2, -1, 0 )
-point8 = Vector3( -2, -1, -1 )
+script = ExtResource( 10 )
+point1 = Vector3( 3, 4, 3 )
+point2 = Vector3( 3, 4, -3 )
+point3 = Vector3( 3, -1, 3 )
+point4 = Vector3( 3, -1, -3 )
+point5 = Vector3( -3, 4, 3 )
+point6 = Vector3( -3, 4, -3 )
+point7 = Vector3( -3, -1, 3 )
+point8 = Vector3( -3, -1, -3 )
 mesh = SubResource( 7 )
 material = SubResource( 8 )
 triplanar = true
 uv_scale = Vector3( 0.5, 0.5, 0.5 )
 uv_offset = Vector3( 0, 0, 0 )
 
-[node name="Surface210" type="StaticBody" parent="Navigation/NavigationMeshInstance" groups=["Polygon3D"] instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -4, 14 )
-collision_layer = 31
-collision_mask = 31
-script = ExtResource( 5 )
-point1 = Vector3( 0, 1, 1 )
-point2 = Vector3( 0, 1, -5 )
-point3 = Vector3( 0, -1, 1 )
-point4 = Vector3( 0, -1, -5 )
-point5 = Vector3( -1, 1, 1 )
-point6 = Vector3( -1, 1, -5 )
-point7 = Vector3( -1, -1, 1 )
-point8 = Vector3( -1, -1, -5 )
-mesh = SubResource( 9 )
-material = SubResource( 10 )
-triplanar = true
-uv_scale = Vector3( 0.5, 0.5, 0.5 )
-uv_offset = Vector3( 0, 0, 0 )
-
-[node name="Surface212" type="StaticBody" parent="Navigation/NavigationMeshInstance" groups=["Polygon3D"] instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -4, 10 )
-collision_layer = 31
-collision_mask = 31
-script = ExtResource( 5 )
-point1 = Vector3( 3, 1, 0 )
-point2 = Vector3( 3, 1, -1 )
-point3 = Vector3( 3, -1, 0 )
-point4 = Vector3( 3, -1, -1 )
-point5 = Vector3( -1, 1, 0 )
-point6 = Vector3( -1, 1, -1 )
-point7 = Vector3( -1, -1, 0 )
-point8 = Vector3( -1, -1, -1 )
-mesh = SubResource( 11 )
-material = SubResource( 12 )
-triplanar = true
-uv_scale = Vector3( 0.5, 0.5, 0.5 )
-uv_offset = Vector3( 0, 0, 0 )
-
-[node name="Surface282" type="StaticBody" parent="Navigation/NavigationMeshInstance" groups=["Polygon3D"] instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -6, 12 )
-collision_layer = 31
-collision_mask = 31
-script = ExtResource( 5 )
-point1 = Vector3( 3, 1, 3 )
-point2 = Vector3( 3, 1, -3 )
-point3 = Vector3( 3, -1, 3 )
-point4 = Vector3( 3, -1, -3 )
-point5 = Vector3( -3, 1, 3 )
-point6 = Vector3( -3, 1, -3 )
-point7 = Vector3( -3, -1, 3 )
-point8 = Vector3( -3, -1, -3 )
-mesh = SubResource( 13 )
-material = SubResource( 14 )
-triplanar = true
-uv_scale = Vector3( 0.5, 0.5, 0.5 )
-uv_offset = Vector3( 0, 0, 0 )
-
-[node name="BombSpawner286" type="StaticBody" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 7, 12 )
-script = ExtResource( 12 )
-spawner_timer = 5
-bomb_timer = 5
-
-[node name="Player" type="StaticBody" parent="Navigation" groups=["EntitySpawner"] instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 8 )
+[node name="Player" type="StaticBody" parent="Navigation" groups=["EntitySpawner"] instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 1, 1 )
 collision_layer = 32
 collision_mask = 32
-script = ExtResource( 8 )
+script = ExtResource( 6 )
 entity_name = "Player"
-scene = ExtResource( 10 )
+scene = ExtResource( 8 )
 offset = Vector3( 0, 0, 0 )
 color = Color( 0, 1, 0, 1 )
-
-[node name="Guard Enemy" type="StaticBody" parent="Navigation" groups=["EntitySpawner"] instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -5, 13 )
-collision_layer = 32
-collision_mask = 32
-script = ExtResource( 8 )
-entity_name = "Guard Enemy"
-scene = ExtResource( 13 )
-offset = Vector3( 0, 0, 0 )
-color = Color( 1, 0, 0, 1 )
-
-[node name="Guard Enemy283" type="StaticBody" parent="Navigation" groups=["EntitySpawner"] instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -5, 13 )
-collision_layer = 32
-collision_mask = 32
-script = ExtResource( 8 )
-entity_name = "Guard Enemy"
-scene = ExtResource( 13 )
-offset = Vector3( 0, 0, 0 )
-color = Color( 1, 0, 0, 1 )
-
-[node name="Guard Enemy284" type="StaticBody" parent="Navigation" groups=["EntitySpawner"] instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -5, 11 )
-collision_layer = 32
-collision_mask = 32
-script = ExtResource( 8 )
-entity_name = "Guard Enemy"
-scene = ExtResource( 13 )
-offset = Vector3( 0, 0, 0 )
-color = Color( 1, 0, 0, 1 )
-
-[node name="Guard Enemy285" type="StaticBody" parent="Navigation" groups=["EntitySpawner"] instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -5, 11 )
-collision_layer = 32
-collision_mask = 32
-script = ExtResource( 8 )
-entity_name = "Guard Enemy"
-scene = ExtResource( 13 )
-offset = Vector3( 0, 0, 0 )
-color = Color( 1, 0, 0, 1 )

@@ -20,8 +20,8 @@ func trigger():
 		tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 		#add_child(tween)
 		tween.tween_property(node, "global_transform:origin", node.global_transform.origin + move_vector, time)
-		if node.name.begins_with("PlayerMover"):
-			node.velocities.append(move_vector/time)
+		#if node.name.begins_with("PlayerMover"):
+		#	node.velocities.append(move_vector/time)
 
 
 func show_previews():
@@ -37,7 +37,13 @@ func show_previews():
 		var node_mesh_instance = node.get_node_or_null("MeshInstance")
 		if node_mesh_instance:
 			var node_mesh_copy = node_mesh_instance.mesh.duplicate()
-			var node_mesh_material_copy:SpatialMaterial = node_mesh_instance.material_override.duplicate()
+			var node_mesh_material_copy:SpatialMaterial # = node_mesh_instance.material_override.duplicate()
+			if node_mesh_instance.material_override:
+				node_mesh_material_copy = node_mesh_instance.material_override.duplicate()
+			else:
+				node_mesh_material_copy = SpatialMaterial.new()
+				node_mesh_material_copy.flags_unshaded = true
+			
 			node_mesh_material_copy.flags_transparent = true
 			node_mesh_material_copy.albedo_color.a = 0.7
 			var preview_mesh_instance = MeshInstance.new()
