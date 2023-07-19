@@ -29,8 +29,12 @@ onready var vertex_mode_button = $UI/VertexModeButton
 onready var variables_button = $UI/VariablesButton
 onready var save_button = $UI/SaveButton
 onready var play_button = $UI/PlayButton
+onready var level_settings_button = $UI/LevelSettingsButton
 onready var save_file_dialog = $UI/SaveFileDialog
 onready var load_file_dialog = $UI/LoadFileDialog
+onready var level_settings = $UI/LevelSettings
+onready var level_settings_theme_label = $UI/LevelSettings/ThemeLabel
+onready var level_settings_light_label = $UI/LevelSettings/LightLabel
 
 onready var map = $Map
 onready var map_navmesh = $Map/Navigation/NavigationMeshInstance
@@ -886,3 +890,11 @@ func _on_AddGroupButton_pressed():
 	show_selected_object_groups()
 	group_line_edit.text = ""
 
+
+
+func _on_LevelSettingsButton_pressed():
+	level_settings.show()
+
+
+func _on_LevelSettingsCloseButton_pressed():
+	level_settings.hide()

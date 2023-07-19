@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://source/maps/Map.gd" type="Script" id=1]
 [ext_resource path="res://source/environments/Environment1.tres" type="Environment" id=2]
@@ -127,6 +127,17 @@ action = "load"
 
 [sub_resource type="ShortCut" id=31]
 shortcut = SubResource( 36 )
+
+[sub_resource type="StyleBoxFlat" id=39]
+bg_color = Color( 0, 0, 0, 0.509804 )
+
+[sub_resource type="DynamicFont" id=37]
+size = 8
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=38]
+size = 8
+font_data = ExtResource( 5 )
 
 [node name="LevelEditor" type="Spatial"]
 script = ExtResource( 3 )
@@ -512,6 +523,90 @@ mode = 0
 access = 2
 filters = PoolStringArray( "*.tscn ; Godot Scene File" )
 
+[node name="LevelSettingsButton" type="Button" parent="UI"]
+anchor_left = 0.219
+anchor_top = 0.96
+anchor_right = 0.344
+anchor_bottom = 1.0
+margin_left = -0.256012
+margin_right = -0.256012
+custom_fonts/font = SubResource( 24 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 8 )
+custom_styles/normal = ExtResource( 7 )
+text = "Level Settings"
+
+[node name="LevelSettings" type="Control" parent="UI"]
+margin_left = 368.0
+margin_top = 232.0
+margin_right = 656.0
+margin_bottom = 344.0
+
+[node name="ColorRect" type="ColorRect" parent="UI/LevelSettings"]
+margin_left = -368.0
+margin_top = -232.0
+margin_right = 656.0
+margin_bottom = 368.0
+color = Color( 0, 0, 0, 0.309804 )
+
+[node name="Panel" type="Panel" parent="UI/LevelSettings"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 39 )
+
+[node name="ThemeButton" type="Button" parent="UI/LevelSettings"]
+margin_left = 24.0
+margin_top = 8.0
+margin_right = 88.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 37 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 8 )
+custom_styles/normal = ExtResource( 7 )
+text = "Theme"
+
+[node name="LightButton" type="Button" parent="UI/LevelSettings"]
+margin_left = 24.0
+margin_top = 40.0
+margin_right = 88.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 37 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 8 )
+custom_styles/normal = ExtResource( 7 )
+text = "Light"
+
+[node name="CloseButton" type="Button" parent="UI/LevelSettings"]
+margin_left = 112.0
+margin_top = 80.0
+margin_right = 176.0
+margin_bottom = 104.0
+custom_fonts/font = SubResource( 37 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 8 )
+custom_styles/normal = ExtResource( 7 )
+text = "Close"
+
+[node name="ThemeLabel" type="Label" parent="UI/LevelSettings"]
+margin_left = 96.0
+margin_top = 8.0
+margin_right = 232.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 38 )
+text = "Theme"
+align = 1
+valign = 1
+
+[node name="LightLabel" type="Label" parent="UI/LevelSettings"]
+margin_left = 96.0
+margin_top = 40.0
+margin_right = 232.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 38 )
+text = "Light"
+align = 1
+valign = 1
+
 [connection signal="text_entered" from="UI/Panel4/GroupLineEdit" to="." method="_on_GroupLineEdit_text_entered"]
 [connection signal="pressed" from="UI/Panel4/AddGroupButton" to="." method="_on_AddGroupButton_pressed"]
 [connection signal="pressed" from="UI/ObjectModeButton" to="." method="_on_ObjectModeButton_pressed"]
@@ -522,3 +617,5 @@ filters = PoolStringArray( "*.tscn ; Godot Scene File" )
 [connection signal="pressed" from="UI/LoadButton" to="." method="_on_LoadButton_pressed"]
 [connection signal="file_selected" from="UI/SaveFileDialog" to="." method="_on_SaveFileDialog_file_selected"]
 [connection signal="file_selected" from="UI/LoadFileDialog" to="." method="_on_LoadFileDialog_file_selected"]
+[connection signal="pressed" from="UI/LevelSettingsButton" to="." method="_on_LevelSettingsButton_pressed"]
+[connection signal="pressed" from="UI/LevelSettings/CloseButton" to="." method="_on_LevelSettingsCloseButton_pressed"]
