@@ -49,6 +49,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://source/LevelEditor/MaterialButton.gd"
 }, {
+"base": "Control",
+"class": "OptionSwitch",
+"language": "GDScript",
+"path": "res://source/LevelEditor/OptionSwitch.gd"
+}, {
 "base": "Spatial",
 "class": "OrbitArm",
 "language": "GDScript",
@@ -223,6 +228,7 @@ _global_script_class_icons={
 "LiquidLayer": "",
 "Map": "",
 "MaterialButton": "",
+"OptionSwitch": "",
 "OrbitArm": "",
 "PhysicsBall": "",
 "PhysicsEntity": "",
