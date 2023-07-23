@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://assets/models/guns/Material_001.material" type="Material" id=1]
 [ext_resource path="res://source/WeaponPickup/WeaponPickup.gd" type="Script" id=2]
@@ -190,6 +190,8 @@ surfaces/0 = {
 "vertex_count": 36
 }
 
+[sub_resource type="SpatialMaterial" id=69]
+
 [sub_resource type="ArrayMesh" id=26]
 resource_name = "wyh_nailgun_Cylinder006"
 surfaces/0 = {
@@ -203,6 +205,8 @@ surfaces/0 = {
 "skeleton_aabb": [  ],
 "vertex_count": 36
 }
+
+[sub_resource type="SpatialMaterial" id=70]
 
 [sub_resource type="ArrayMesh" id=27]
 resource_name = "wyh_nailgun_Cylinder007"
@@ -218,6 +222,8 @@ surfaces/0 = {
 "vertex_count": 36
 }
 
+[sub_resource type="SpatialMaterial" id=71]
+
 [sub_resource type="ArrayMesh" id=28]
 resource_name = "wyh_nailgun_Cylinder008"
 surfaces/0 = {
@@ -231,6 +237,8 @@ surfaces/0 = {
 "skeleton_aabb": [  ],
 "vertex_count": 36
 }
+
+[sub_resource type="SpatialMaterial" id=72]
 
 [sub_resource type="ArrayMesh" id=20]
 resource_name = "wyh_nailgun_ply_wyh_nailgun"
@@ -352,21 +360,25 @@ skeleton = NodePath("../../wyh_supernailgun2")
 transform = Transform( 1.5, 0, -9.53597e-08, 0, 1.5, 0, 9.53597e-08, 0, 1.5, 1.01387e-07, 0.0872689, -0.671457 )
 mesh = SubResource( 25 )
 skeleton = NodePath("../../wyh_supernailgun2")
+material/0 = SubResource( 69 )
 
 [node name="Cylinder006" type="MeshInstance" parent="wyh_supernailgun"]
 transform = Transform( 1.5, 0, -9.53597e-08, 0, 1.5, 0, 9.53597e-08, 0, 1.5, 0.0700001, 0.017269, -0.671457 )
 mesh = SubResource( 26 )
 skeleton = NodePath("../../wyh_supernailgun2")
+material/0 = SubResource( 70 )
 
 [node name="Cylinder007" type="MeshInstance" parent="wyh_supernailgun"]
 transform = Transform( 1.5, 0, -9.53597e-08, 0, 1.5, 0, 9.53597e-08, 0, 1.5, -0.0699999, 0.017269, -0.671457 )
 mesh = SubResource( 27 )
 skeleton = NodePath("../../wyh_supernailgun2")
+material/0 = SubResource( 71 )
 
 [node name="Cylinder008" type="MeshInstance" parent="wyh_supernailgun"]
 transform = Transform( 1.5, 0, -9.53597e-08, 0, 1.5, 0, 9.53597e-08, 0, 1.5, 1.01387e-07, -0.052731, -0.671457 )
 mesh = SubResource( 28 )
 skeleton = NodePath("../../wyh_supernailgun2")
+material/0 = SubResource( 72 )
 
 [node name="wyh_supernailgun2" type="MeshInstance" parent="."]
 transform = Transform( -1.5, 0, -1.31134e-07, 0, 1.5, 0, 1.31134e-07, 0, -1.5, 0, 2, 0 )
