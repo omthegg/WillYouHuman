@@ -526,7 +526,6 @@ access = 2
 filters = PoolStringArray( "*.tscn ; Godot Scene File" )
 
 [node name="LevelSettingsButton" type="Button" parent="UI"]
-visible = false
 anchor_left = 0.219
 anchor_top = 0.96
 anchor_right = 0.344
@@ -540,12 +539,13 @@ custom_styles/normal = ExtResource( 7 )
 text = "Level Settings"
 
 [node name="LevelSettings" type="Control" parent="UI"]
+visible = false
 margin_left = 368.0
 margin_top = 232.0
 margin_right = 656.0
 margin_bottom = 344.0
 
-[node name="ColorRect" type="ColorRect" parent="UI/LevelSettings"]
+[node name="ColorRect" type="ColorRect" parent="UI/LevelSettings" groups=["EditorPanel"]]
 margin_left = -368.0
 margin_top = -232.0
 margin_right = 656.0
@@ -613,6 +613,7 @@ align = 1
 valign = 1
 
 [node name="LightValueLabel" type="Label" parent="UI/LevelSettings"]
+visible = false
 margin_left = 136.0
 margin_top = 40.0
 margin_right = 232.0
@@ -623,6 +624,7 @@ align = 1
 valign = 1
 
 [node name="ThemeValueLabel" type="Label" parent="UI/LevelSettings"]
+visible = false
 margin_left = 136.0
 margin_top = 8.0
 margin_right = 232.0
@@ -633,6 +635,7 @@ align = 1
 valign = 1
 
 [node name="TextureButton" type="TextureButton" parent="UI/LevelSettings"]
+visible = false
 margin_left = 114.0
 margin_top = 12.0
 margin_right = 130.0
@@ -644,11 +647,20 @@ texture_pressed = ExtResource( 10 )
 texture_hover = ExtResource( 10 )
 expand = true
 
-[node name="MultiOptionSwitch" type="Control" parent="UI/LevelSettings"]
+[node name="ThemeMultiOptionSwitch" type="Control" parent="UI/LevelSettings"]
 margin_left = 136.0
 margin_right = 232.0
 margin_bottom = 40.0
 script = ExtResource( 11 )
+options = PoolStringArray( "Normal" )
+
+[node name="MultiOptionSwitch" type="Control" parent="UI/LevelSettings"]
+margin_left = 136.0
+margin_top = 32.0
+margin_right = 232.0
+margin_bottom = 72.0
+script = ExtResource( 11 )
+options = PoolStringArray( "Bright", "Dark" )
 
 [connection signal="text_entered" from="UI/Panel4/GroupLineEdit" to="." method="_on_GroupLineEdit_text_entered"]
 [connection signal="pressed" from="UI/Panel4/AddGroupButton" to="." method="_on_AddGroupButton_pressed"]
@@ -662,3 +674,5 @@ script = ExtResource( 11 )
 [connection signal="file_selected" from="UI/LoadFileDialog" to="." method="_on_LoadFileDialog_file_selected"]
 [connection signal="pressed" from="UI/LevelSettingsButton" to="." method="_on_LevelSettingsButton_pressed"]
 [connection signal="pressed" from="UI/LevelSettings/CloseButton" to="." method="_on_LevelSettingsCloseButton_pressed"]
+[connection signal="value_changed" from="UI/LevelSettings/ThemeMultiOptionSwitch" to="." method="_on_ThemeMultiOptionSwitch_value_changed"]
+[connection signal="value_changed" from="UI/LevelSettings/MultiOptionSwitch" to="." method="_on_MultiOptionSwitch_value_changed"]
