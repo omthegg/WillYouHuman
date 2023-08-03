@@ -346,19 +346,19 @@ depth = 19.9
 material = ExtResource( 22 )
 
 [node name="SpeedBoost" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.65, 5.75, 4 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.65, 5, 4 )
 
 [node name="SpeedBoost2" parent="." instance=ExtResource( 7 )]
-transform = Transform( 0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 2.29883, 15.05, -92.4472 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.299, 14.4, -92.447 )
 
 [node name="SpeedBoost4" parent="." instance=ExtResource( 7 )]
-transform = Transform( -1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -71.1598, 18.15, -72.764 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -71.16, 17.4, -72.764 )
 
 [node name="SpeedBoost5" parent="." instance=ExtResource( 7 )]
-transform = Transform( -1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -51.5598, 18.15, 76.186 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -51.56, 17.4, 76.186 )
 
 [node name="SpeedBoost3" parent="." instance=ExtResource( 7 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.7036, 26.25, 17.0172 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.704, 25.6, 17.017 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( -0.5, 0.224144, -0.836516, 0, 0.965926, 0.258819, 0.866025, 0.12941, -0.482963, -26.9065, 13.6462, -20.3318 )

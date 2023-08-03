@@ -525,7 +525,7 @@ mode = 0
 access = 2
 filters = PoolStringArray( "*.tscn ; Godot Scene File" )
 
-[node name="LevelSettingsButton" type="Button" parent="UI"]
+[node name="LevelSettingsButton" type="Button" parent="UI" groups=["EditorButton"]]
 anchor_left = 0.219
 anchor_top = 0.96
 anchor_right = 0.344
@@ -540,16 +540,19 @@ text = "Level Settings"
 
 [node name="LevelSettings" type="Control" parent="UI"]
 visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = 368.0
 margin_top = 232.0
-margin_right = 656.0
-margin_bottom = 344.0
+margin_right = -368.0
+margin_bottom = -256.0
 
 [node name="ColorRect" type="ColorRect" parent="UI/LevelSettings" groups=["EditorPanel"]]
+visible = false
 margin_left = -368.0
 margin_top = -232.0
-margin_right = 656.0
-margin_bottom = 368.0
+margin_right = 1038.0
+margin_bottom = 592.0
 color = Color( 0, 0, 0, 0.309804 )
 
 [node name="Panel" type="Panel" parent="UI/LevelSettings"]
@@ -582,10 +585,14 @@ custom_styles/normal = ExtResource( 7 )
 text = "Light"
 
 [node name="CloseButton" type="Button" parent="UI/LevelSettings"]
-margin_left = 112.0
-margin_top = 80.0
-margin_right = 176.0
-margin_bottom = 104.0
+anchor_left = 0.389
+anchor_top = 0.714
+anchor_right = 0.611
+anchor_bottom = 0.929
+margin_left = -0.0320053
+margin_top = 0.0319977
+margin_right = 0.0319977
+margin_bottom = -0.0480042
 custom_fonts/font = SubResource( 37 )
 custom_styles/hover = ExtResource( 7 )
 custom_styles/pressed = ExtResource( 8 )
@@ -593,20 +600,28 @@ custom_styles/normal = ExtResource( 7 )
 text = "Close"
 
 [node name="ThemeLabel" type="Label" parent="UI/LevelSettings"]
-margin_left = 24.0
-margin_top = 8.0
-margin_right = 88.0
-margin_bottom = 32.0
+anchor_left = 0.083
+anchor_top = 0.071
+anchor_right = 0.306
+anchor_bottom = 0.286
+margin_left = 0.0959988
+margin_top = 0.0479999
+margin_right = -0.128006
+margin_bottom = -0.0320015
 custom_fonts/font = SubResource( 38 )
 text = "Theme"
 align = 1
 valign = 1
 
 [node name="LightLabel" type="Label" parent="UI/LevelSettings"]
-margin_left = 24.0
-margin_top = 40.0
-margin_right = 88.0
-margin_bottom = 64.0
+anchor_left = 0.083
+anchor_top = 0.357
+anchor_right = 0.306
+anchor_bottom = 0.571
+margin_left = 0.0959988
+margin_top = 0.0159988
+margin_right = -0.128006
+margin_bottom = 0.0479965
 custom_fonts/font = SubResource( 38 )
 text = "Light"
 align = 1

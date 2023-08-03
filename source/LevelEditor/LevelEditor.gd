@@ -33,6 +33,7 @@ onready var level_settings_button = $UI/LevelSettingsButton
 onready var save_file_dialog = $UI/SaveFileDialog
 onready var load_file_dialog = $UI/LoadFileDialog
 onready var level_settings = $UI/LevelSettings
+onready var level_settings_color_rect = $UI/LevelSettings/ColorRect
 onready var level_settings_theme_label = $UI/LevelSettings/ThemeLabel
 onready var level_settings_light_label = $UI/LevelSettings/LightLabel
 onready var level_settings_theme_switch = $UI/LevelSettings/ThemeMultiOptionSwitch
@@ -899,10 +900,12 @@ func _on_AddGroupButton_pressed():
 
 func _on_LevelSettingsButton_pressed():
 	level_settings.show()
+	level_settings_color_rect.show()
 
 
 func _on_LevelSettingsCloseButton_pressed():
 	level_settings.hide()
+	level_settings_color_rect.hide()
 
 
 func _on_ThemeMultiOptionSwitch_value_changed(new_value):
