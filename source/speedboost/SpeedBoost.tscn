@@ -188,7 +188,7 @@ extents = Vector3( 2, 1.25, 2 )
 extents = Vector3( 2, 1.25, 2 )
 
 [sub_resource type="CubeMesh" id=9]
-size = Vector3( 3.975, 2.5, 3.975 )
+size = Vector3( 4, 2.5, 4 )
 
 [sub_resource type="SpatialMaterial" id=10]
 flags_unshaded = true

@@ -365,10 +365,10 @@ transform = Transform( -0.5, 0.224144, -0.836516, 0, 0.965926, 0.258819, 0.86602
 far = 200.0
 
 [node name="JumpBoost" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 41.65, 2.55, 46.3 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 41.65, 1, 46.3 )
 
 [node name="JumpBoost2" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 2.55, 48.05 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 1, 48.05 )
 
 [node name="JumpBoost3" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8, 27.4, 23.25 )

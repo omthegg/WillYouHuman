@@ -1,8 +1,12 @@
-extends Spatial
+extends StaticBody
 
 export var jump_multiplier:int = 3
 
 var used = false
+
+func _ready():
+	if !Global.editing_level:
+		$CollisionShape.disabled = true
 
 func _on_Area_body_entered(body):
 	if !used:
