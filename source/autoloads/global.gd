@@ -61,6 +61,7 @@ var timer = 0.0
 var enemy_count = 0
 
 var console_open = false
+var god_mode = false
 
 var editing_level = false
 var playing_custom_level = false

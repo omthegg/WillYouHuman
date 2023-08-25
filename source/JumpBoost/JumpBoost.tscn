@@ -106,4 +106,5 @@ visible = false
 mesh = SubResource( 5 )
 material/0 = SubResource( 6 )
 
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
 [connection signal="timeout" from="RefreshTimer" to="." method="_on_RefreshTimer_timeout"]

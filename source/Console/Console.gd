@@ -38,4 +38,7 @@ func _on_LineEdit_text_entered(new_text:String):
 	elif new_text.begins_with("LevelEditor") or new_text.begins_with("leveleditor"):
 		var _v = get_tree().change_scene("res://source/LevelEditor/LevelEditor.tscn")
 	
+	elif new_text.begins_with("godmode") or new_text.begins_with("god") or new_text.begins_with("GodMode") or new_text.begins_with("Godmode") or new_text.begins_with("God"):
+		Global.god_mode = !Global.god_mode
+	
 	$LineEdit.text = ""

@@ -32,5 +32,6 @@ func _on_Area_body_entered(body):
 
 func _on_PlayerDetector_body_entered(body):
 	if body.is_in_group("Player"):
-		body.damage()
+		if !Global.god_mode:
+			body.damage()
 		queue_free()

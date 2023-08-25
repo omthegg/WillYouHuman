@@ -48,8 +48,9 @@ func damage(amount):
 func explode():
 	for body in bodies:
 		if body.is_in_group("Player"):
-			body.damage()
-			body.damage()
+			if !Global.god_mode:
+				body.damage()
+				body.damage()
 		if body.is_in_group("Enemy"):
 			body.die()
 	
