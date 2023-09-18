@@ -81,6 +81,8 @@ var editor_mode = EDITOR_MODE.OBJECT_MODE
 var level_scene
 var running_level # Not a bool
 
+var polygon_like_object_names = ["Surface", "PlayerMover", "Lava"]
+
 func _ready():
 	print(get("x"))
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -181,10 +183,11 @@ func _input(event):
 								selected_object = null
 								object_highlight.hide()
 								variables_button.disabled = true
+								vertex_mode_button.disabled = true
 					
 					else:
 						if selected_template:
-							if selected_template.name != "Surface" and selected_template.name != "PlayerMover":
+							if not(selected_template.name in polygon_like_object_names):
 								place_object()
 			
 			else:
@@ -263,7 +266,7 @@ func _physics_process(delta):
 			cursor.global_transform.origin.z = stepify(cursor.global_transform.origin.z, snap)
 		
 		if selected_template:
-			if selected_template.name == "Surface" or selected_template.name == "PlayerMover":
+			if selected_template.name in polygon_like_object_names:
 				if !is_mouse_on_ui() and !save_file_dialog.visible:
 					if (editor_mode == EDITOR_MODE.OBJECT_MODE) and (Input.is_action_just_pressed("shoot")):
 						if !Input.is_action_pressed("control"):
@@ -462,8 +465,9 @@ func hide_selected_object_variables():
 	for child in variables_grid_container.get_children():
 		child.queue_free()
 
-	if selected_object.has_method("hide_previews"):
-		selected_object.hide_previews()
+	if selected_object and is_instance_valid(selected_object):
+		if selected_object.has_method("hide_previews"):
+			selected_object.hide_previews()
 
 
 func show_selected_object_groups():

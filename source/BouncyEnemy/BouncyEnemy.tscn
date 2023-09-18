@@ -114,6 +114,10 @@ cast_to = Vector3( 0, -2, 0 )
 enabled = true
 cast_to = Vector3( 0, 25, 0 )
 
+[node name="CeilingCollider" type="RayCast" parent="."]
+enabled = true
+cast_to = Vector3( 0, 2, 0 )
+
 [node name="MeshInstance" type="MeshInstance" parent="."]
 visible = false
 mesh = SubResource( 5 )

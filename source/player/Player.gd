@@ -188,6 +188,10 @@ func _ready():
 	
 	if Global.unlocked_weapons.size() == 0:
 		arms.hide()
+	
+	yield(get_tree(), "idle_frame")
+	if Global.map.level_light == Global.map.LEVEL_LIGHT.BRIGHT:
+		$OmniLight.hide()
 
 
 func _input(event):

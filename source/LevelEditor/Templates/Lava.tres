@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://source/LevelEditor/LevelEditorTemplate.gd" type="Script" id=1]
+[ext_resource path="res://source/Lava/Lava.tscn" type="PackedScene" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "Lava"
+scene = ExtResource( 2 )
+spawn_using_entity_spawner = false
+entity_spawner_color = Color( 1, 1, 1, 1 )
+entity_spawner_offset = Vector3( 0, 0, 0 )
+rotation_step = 0
+y_rotation_only = false
+enabled = true
+editable_variables = PoolStringArray(  )
