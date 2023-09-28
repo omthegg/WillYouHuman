@@ -122,126 +122,127 @@ func _process(_delta):
 
 
 func _input(event):
-	if event is InputEventMouseMotion:
-		if !save_file_dialog.visible:
-			if Input.is_action_pressed("charge_shoot"): # Hold right click to control camera
-				if Global.editing_level:
-					Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-		
-		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and !Global.playing_custom_level:
-			camera_rotation_helper.rotate_y(deg2rad(-event.relative.x * (Settings.mouse_sensitivity / 100.0)))
-			camera.rotate_x(deg2rad(-event.relative.y * (Settings.mouse_sensitivity / 100.0)))
-			camera.rotation.x = clamp(camera.rotation.x, deg2rad(-90), deg2rad(90))
-			compass_camera_rotation_helper.global_rotation = camera.global_rotation
-			#moved_camera = true
-			right_click_menu.hide()
-			#compass_camera.rotation_degrees = camera.rotation_degrees
-	
-	if Input.is_action_just_released("charge_shoot"):
-		if Global.editing_level:
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	
-	
-	if Input.is_action_just_pressed("shoot"):
-		if !is_mouse_on_ui() and !save_file_dialog.visible:
-			if camera_raycast.is_colliding():
-				var collider = camera_raycast.get_collider()
-				
-				if editor_mode == EDITOR_MODE.VERTEX_MODE:
-					if collider.is_in_group("Pivot"):
-						var pivot_mesh = collider.get_node("MeshInstance")
-						if collider in selected_pivots:
-							selected_pivots.erase(collider)
-							pivot_mesh.get_surface_material(0).albedo_color = Color.yellow
-						else:
-							selected_pivots.append(collider)
-							pivot_mesh.get_surface_material(0).albedo_color = Color.green
-				
-				if editor_mode == EDITOR_MODE.OBJECT_MODE:
-					if Input.is_action_pressed("control"): # Select object if space is being held
-						if !collider.is_in_group("Pivot") and collider != placement_plane:
-							selected_object = collider
-							var collider_collision_shape:CollisionShape = collider.get_node_or_null("CollisionShape")
-							if collider_collision_shape:
-								#object_highlight.mesh = collider_collision_shape.shape.get_debug_mesh()
-								object_highlight.mesh = collider.get_node("MeshInstance").mesh
-								object_highlight.global_transform.origin = collider.get_node("MeshInstance").global_transform.origin
-								object_highlight.global_rotation = collider.get_node("MeshInstance").global_rotation
-								object_highlight.show()
-							
-							# Disable the vertexmode button if the selected object isn't an editable polygon
-							vertex_mode_button.disabled = !selected_object.is_in_group("Polygon3D")
-							
-							#if selected_object_has_editable_variables():
-							# Don't enable the settings tab if the
-							# selected object is an EntitySpawner.
-							if !("EntitySpawner" in selected_object.name):
-								variables_button.disabled = false
-						
-						if collider == placement_plane:
-							if editor_mode == EDITOR_MODE.OBJECT_MODE:
-								selected_object = null
-								object_highlight.hide()
-								variables_button.disabled = true
-								vertex_mode_button.disabled = true
-					
-					else:
-						if selected_template:
-							if not(selected_template.name in polygon_like_object_names):
-								place_object()
+	if Global.editing_level:
+		if event is InputEventMouseMotion:
+			if !save_file_dialog.visible:
+				if Input.is_action_pressed("charge_shoot"): # Hold right click to control camera
+					if Global.editing_level:
+						Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			
-			else:
-				if editor_mode == EDITOR_MODE.OBJECT_MODE:
-					selected_object = null
-					object_highlight.hide()
-					variables_button.disabled = true
-	
-	
-	if Input.is_action_just_pressed("shift"): # Speed
-		camera_speed = FAST_CAMERA_SPEED
-	if Input.is_action_just_released("shift"):
-		camera_speed = NORMAL_CAMERA_SPEED
-	
-	
-	if Input.is_action_pressed("g"):
-		if event is InputEventMouseButton:
-			if event.is_pressed():
-				if event.button_index == BUTTON_WHEEL_UP:
-					placement_plane.global_transform.origin.y += snap
-				if event.button_index == BUTTON_WHEEL_DOWN:
-					placement_plane.global_transform.origin.y -= snap
+			if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and !Global.playing_custom_level:
+				camera_rotation_helper.rotate_y(deg2rad(-event.relative.x * (Settings.mouse_sensitivity / 100.0)))
+				camera.rotate_x(deg2rad(-event.relative.y * (Settings.mouse_sensitivity / 100.0)))
+				camera.rotation.x = clamp(camera.rotation.x, deg2rad(-90), deg2rad(90))
+				compass_camera_rotation_helper.global_rotation = camera.global_rotation
+				#moved_camera = true
+				right_click_menu.hide()
+				#compass_camera.rotation_degrees = camera.rotation_degrees
+		
+		if Input.is_action_just_released("charge_shoot"):
+			if Global.editing_level:
+				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		
+		
+		if Input.is_action_just_pressed("shoot"):
+			if !is_mouse_on_ui() and !save_file_dialog.visible:
+				if camera_raycast.is_colliding():
+					var collider = camera_raycast.get_collider()
+					
+					if editor_mode == EDITOR_MODE.VERTEX_MODE:
+						if collider.is_in_group("Pivot"):
+							var pivot_mesh = collider.get_node("MeshInstance")
+							if collider in selected_pivots:
+								selected_pivots.erase(collider)
+								pivot_mesh.get_surface_material(0).albedo_color = Color.yellow
+							else:
+								selected_pivots.append(collider)
+								pivot_mesh.get_surface_material(0).albedo_color = Color.green
+					
+					if editor_mode == EDITOR_MODE.OBJECT_MODE:
+						if Input.is_action_pressed("control"): # Select object if space is being held
+							if !collider.is_in_group("Pivot") and collider != placement_plane:
+								selected_object = collider
+								var collider_collision_shape:CollisionShape = collider.get_node_or_null("CollisionShape")
+								if collider_collision_shape:
+									#object_highlight.mesh = collider_collision_shape.shape.get_debug_mesh()
+									object_highlight.mesh = collider.get_node("MeshInstance").mesh
+									object_highlight.global_transform.origin = collider.get_node("MeshInstance").global_transform.origin
+									object_highlight.global_rotation = collider.get_node("MeshInstance").global_rotation
+									object_highlight.show()
+								
+								# Disable the vertexmode button if the selected object isn't an editable polygon
+								vertex_mode_button.disabled = !selected_object.is_in_group("Polygon3D")
+								
+								#if selected_object_has_editable_variables():
+								# Don't enable the settings tab if the
+								# selected object is an EntitySpawner.
+								if !("EntitySpawner" in selected_object.name):
+									variables_button.disabled = false
+							
+							if collider == placement_plane:
+								if editor_mode == EDITOR_MODE.OBJECT_MODE:
+									selected_object = null
+									object_highlight.hide()
+									variables_button.disabled = true
+									vertex_mode_button.disabled = true
+						
+						else:
+							if selected_template:
+								if not(selected_template.name in polygon_like_object_names):
+									place_object()
 				
-				grid_y_label.text = str("Grid Y: ", placement_plane.global_transform.origin.y)
-	
-	if Input.is_action_just_pressed("delete"):
-		if selected_object and editor_mode == EDITOR_MODE.OBJECT_MODE:
-			selected_object.queue_free()
-			object_highlight.hide()
-			variables_button.disabled = true
-	
-	
-	if Input.is_action_just_pressed("control"):
-		cursor.get_node("MeshInstance").hide()
-		placement_plane_collision_shape.disabled = true
-		#camera_raycast.set_collision_mask_bit(7, false)
-	if Input.is_action_just_released("control"):
-		cursor.get_node("MeshInstance").show()
-		placement_plane_collision_shape.disabled = false
-		#camera_raycast.set_collision_mask_bit(7, true)
-	
-	
-	# Rotating
-	#if Input.is_action_pressed("r"):
-	#	if selected_object:
-	#		if !selected_object.is_in_group("Polygon3D"):
-	#			if event is InputEventMouseButton:
-	#				if event.is_pressed():
-	#					if event.button_index == BUTTON_WHEEL_UP:
-	#						selected_object.global_rotation.y += deg2rad(rotation_snap)
-	#					if event.button_index == BUTTON_WHEEL_DOWN:
-	#						selected_object.global_rotation.y -= deg2rad(rotation_snap)
-	#					
-	#					object_highlight.global_rotation = selected_object.global_rotation
+				else:
+					if editor_mode == EDITOR_MODE.OBJECT_MODE:
+						selected_object = null
+						object_highlight.hide()
+						variables_button.disabled = true
+		
+		
+		if Input.is_action_just_pressed("shift"): # Speed
+			camera_speed = FAST_CAMERA_SPEED
+		if Input.is_action_just_released("shift"):
+			camera_speed = NORMAL_CAMERA_SPEED
+		
+		
+		if Input.is_action_pressed("g"):
+			if event is InputEventMouseButton:
+				if event.is_pressed():
+					if event.button_index == BUTTON_WHEEL_UP:
+						placement_plane.global_transform.origin.y += snap
+					if event.button_index == BUTTON_WHEEL_DOWN:
+						placement_plane.global_transform.origin.y -= snap
+					
+					grid_y_label.text = str("Grid Y: ", placement_plane.global_transform.origin.y)
+		
+		if Input.is_action_just_pressed("delete"):
+			if selected_object and editor_mode == EDITOR_MODE.OBJECT_MODE:
+				selected_object.queue_free()
+				object_highlight.hide()
+				variables_button.disabled = true
+		
+		
+		if Input.is_action_just_pressed("control"):
+			cursor.get_node("MeshInstance").hide()
+			placement_plane_collision_shape.disabled = true
+			#camera_raycast.set_collision_mask_bit(7, false)
+		if Input.is_action_just_released("control"):
+			cursor.get_node("MeshInstance").show()
+			placement_plane_collision_shape.disabled = false
+			#camera_raycast.set_collision_mask_bit(7, true)
+		
+		
+		# Rotating
+		#if Input.is_action_pressed("r"):
+		#	if selected_object:
+		#		if !selected_object.is_in_group("Polygon3D"):
+		#			if event is InputEventMouseButton:
+		#				if event.is_pressed():
+		#					if event.button_index == BUTTON_WHEEL_UP:
+		#						selected_object.global_rotation.y += deg2rad(rotation_snap)
+		#					if event.button_index == BUTTON_WHEEL_DOWN:
+		#						selected_object.global_rotation.y -= deg2rad(rotation_snap)
+		#					
+		#					object_highlight.global_rotation = selected_object.global_rotation
 
 
 func _physics_process(delta):

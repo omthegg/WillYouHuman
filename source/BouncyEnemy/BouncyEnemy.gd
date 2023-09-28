@@ -14,15 +14,16 @@ func _ready():
 
 
 func _physics_process(delta):
-	var player_distance = Global.player.global_transform.origin - global_transform.origin
-	#print(ceiling_detector.is_colliding())
-	if ceiling_detector.is_colliding():
-		if ceiling_collider.is_colliding() and !ground_detector.is_colliding():
-			apply_central_impulse(player_distance/20)
+	if Global.player and is_instance_valid(Global.player):
+		var player_distance = Global.player.global_transform.origin - global_transform.origin
+		#print(ceiling_detector.is_colliding())
+		if ceiling_detector.is_colliding():
+			if ceiling_collider.is_colliding() and !ground_detector.is_colliding():
+				apply_central_impulse(player_distance/20)
+			
+			if ground_detector.is_colliding():
+				apply_central_impulse(Vector3(rand_range(-4, 4), 10/linear_velocity.y, rand_range(-4, 4)))
 		
-		if ground_detector.is_colliding():
-			apply_central_impulse(Vector3(rand_range(-4, 4), 10/linear_velocity.y, rand_range(-4, 4)))
-	
-	else:
-		if ground_detector.is_colliding():
-			apply_central_impulse(player_distance * Vector3(0.2, 1, 0.2))
+		else:
+			if ground_detector.is_colliding():
+				apply_central_impulse(player_distance * Vector3(0.2, 1, 0.2))

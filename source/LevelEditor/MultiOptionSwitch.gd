@@ -60,8 +60,8 @@ func _ready():
 
 func _on_LeftArrow_pressed():
 	current_option -= 1
-	if current_option < options.size():
-		current_option = options.size()
+	if current_option < 0:
+		current_option = options.size() - 1
 	
 	label.text = options[current_option]
 	emit_signal("value_changed", current_option)
@@ -69,7 +69,7 @@ func _on_LeftArrow_pressed():
 
 func _on_RightArrow_pressed():
 	current_option += 1
-	if current_option > options.size():
+	if current_option > options.size() - 1:
 		current_option = 0
 	
 	label.text = options[current_option]
