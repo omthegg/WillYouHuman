@@ -1287,7 +1287,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Vignette" type="ColorRect" parent="Head/Camera"]
-visible = false
 material = SubResource( 74 )
 anchor_right = 1.0
 anchor_bottom = 1.0

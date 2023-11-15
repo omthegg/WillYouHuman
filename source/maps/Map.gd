@@ -52,6 +52,7 @@ var colored_materials = [
 
 var colored_materials_tweens = []
 
+#var pulse_value = -1.0
 
 func _init():
 	VisualServer.set_debug_generate_wireframes(true)
@@ -103,7 +104,7 @@ func _ready():
 
 
 
-func _process(_delta):
+func _process(delta):
 	if !animation_thread.is_active():
 		animation_thread.start(self, 'pause_animations')
 	
@@ -112,6 +113,13 @@ func _process(_delta):
 	if level_type == LEVEL_TYPE.DISCO:
 		disco_lights()
 	
+	#pulse_value += delta
+	#if pulse_value >= 1.0:
+	#	pulse_value = -1.0
+	
+	#var r = deg2rad(pulse_value)
+	#print(r)
+	#get_node("WorldEnvironment").environment.adjustment_brightness += sin(r)/6
 
 
 

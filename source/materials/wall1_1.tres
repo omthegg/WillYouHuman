@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/images/custom/wall1/sprite_3.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/custom/wall1/sprite_0.png" type="Texture" id=6]
 
-[sub_resource type="AnimatedTexture" id=9]
+[sub_resource type="AnimatedTexture" id=10]
 flags = 19
 frames = 6
 fps = 2.0
@@ -25,8 +25,8 @@ frame_5/delay_sec = 0.0
 
 [resource]
 flags_world_triplanar = true
-albedo_color = Color( 1, 0.819608, 0, 1 )
-albedo_texture = SubResource( 9 )
+albedo_color = Color( 1, 0.72549, 0, 1 )
+albedo_texture = SubResource( 10 )
 emission_enabled = true
 emission = Color( 1, 1, 1, 1 )
 emission_energy = 0.0

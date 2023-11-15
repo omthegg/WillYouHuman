@@ -4,7 +4,7 @@
 
 [resource]
 flags_world_triplanar = true
-albedo_color = Color( 1, 0.819608, 0, 1 )
+albedo_color = Color( 1, 0.72549, 0, 1 )
 albedo_texture = ExtResource( 1 )
 emission_enabled = true
 emission = Color( 1, 1, 1, 1 )
