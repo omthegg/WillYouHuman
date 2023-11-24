@@ -278,6 +278,7 @@ AI="*res://source/autoloads/AI.gd"
 SceneTransition="*res://source/autoloads/SceneTransition.gd"
 Settings="*res://source/autoloads/settings.gd"
 Collectibles="*res://source/autoloads/collectibles.gd"
+TextureRandomizer="*res://source/autoloads/TextureRandomizer.gd"
 
 [display]
 

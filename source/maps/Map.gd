@@ -100,7 +100,8 @@ func _ready():
 			Global.player.camera.current = true
 		
 		#$Navigation/NavigationMeshInstance.bake_navigation_mesh()
-
+	
+	TextureRandomizer.generate_random_texture()
 
 
 

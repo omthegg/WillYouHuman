@@ -299,3 +299,4 @@ func set_triplanar(value):
 	triplanar = value
 	mesh_instance.material_override.flags_world_triplanar = value
 	mesh_instance.material_override.uv1_triplanar = value
+
