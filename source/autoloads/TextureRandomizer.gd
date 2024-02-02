@@ -5,7 +5,7 @@ var floor1 = preload("res://textures/floor1.png")
 
 var rects = []
 
-func generate_random_texture():
+func generate_random_texture(repeating_texture_size:int=1024, texture_size:int=512):
 	var repeating_texture = Image.new()
 	repeating_texture.create(1024, 1024, true, Image.FORMAT_RGB8)
 	for x in range(0, 1024, 64):
@@ -90,6 +90,11 @@ func generate_random_texture():
 		#img.fill_rect(rect, Color(rand_range(0.0, 1.0), rand_range(0.0, 1.0), rand_range(0.0, 1.0)))
 	
 	img.save_png("C:/Users/EXO/Desktop/rand.png")
+	
+	var image_texture = ImageTexture.new()
+	image_texture.create_from_image(img)
+	
+	return image_texture
 
 
 func find_biggest_rect(rects_array: Array):

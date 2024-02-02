@@ -37,6 +37,7 @@ export var take_rocketlauncher = false
 export var give_rocketlauncher = false
 
 var animation_thread = Thread.new()
+var texture_randomization_thread = Thread.new()
 
 var animated_materials = []
 var colliding_csg = []
@@ -68,9 +69,12 @@ func _ready():
 	#Engine.time_scale = 0.5
 	Global.map = self
 	Global.unlocked_weapons = []
-	
-	for i in get_children():
+	for i in get_all_children(self):
 		if i is CSGShape:
+			#var m = SpatialMaterial.new()
+			#m.albedo_texture = TextureRandomizer.generate_random_texture()
+			#i.material = m
+			#yield(get_tree(), "idle_frame")
 			if i.material is SpatialMaterial:
 				if i.material.albedo_texture is AnimatedTexture:
 					if !animated_materials.has(i.material):
@@ -101,7 +105,9 @@ func _ready():
 		
 		#$Navigation/NavigationMeshInstance.bake_navigation_mesh()
 	
-	TextureRandomizer.generate_random_texture()
+	$TextureTest.material.albedo_texture = TextureRandomizer.generate_random_texture()
+	print($TextureTest.material.albedo_texture)
+
 
 
 
