@@ -107,6 +107,7 @@ func _ready():
 	
 	$TextureTest.material.albedo_texture = TextureRandomizer.generate_random_texture()
 	print($TextureTest.material.albedo_texture)
+	$TextureTest.material.albedo_texture.get_data().save_png("C:/Users/EXO/Desktop/test.png")
 
 
 

@@ -72,7 +72,7 @@ var l = Label.new()
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	
-	VisualServer.texture_set_shrink_all_x2_on_set_data(true)
+	#VisualServer.texture_set_shrink_all_x2_on_set_data(true)
 	
 	add_child(l)
 	#Settings.set_viewport_size(Vector2(1024/5, 600/5))
