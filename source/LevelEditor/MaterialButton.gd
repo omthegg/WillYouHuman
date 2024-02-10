@@ -58,9 +58,10 @@ func _pressed():
 	Global.level_editor.selected_material = template_material
 	
 	if Global.level_editor.selected_object:
-		if Global.level_editor.selected_object.is_in_group("Polygon3D"):
-			#Global.level_editor.selected_object.get_node("MeshInstance").material_override = template_material
-			Global.level_editor.selected_object.material = template_material
+		if is_instance_valid(Global.level_editor.selected_object):
+			if Global.level_editor.selected_object.is_in_group("Polygon3D"):
+				#Global.level_editor.selected_object.get_node("MeshInstance").material_override = template_material
+				Global.level_editor.selected_object.material = template_material
 
 func _draw():
 	if pressed:

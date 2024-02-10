@@ -3,9 +3,9 @@ extends Node
 var icon = preload("res://godot.png")
 var floor1 = preload("res://textures/floor1.png")
 
-var rects = []
-
 func generate_random_texture(repeating_texture_size:int=1024, texture_size:int=512):
+	var rects = []
+	
 	var repeating_texture = Image.new()
 	repeating_texture.create(1024, 1024, true, Image.FORMAT_RGB8)
 	for x in range(0, 1024, 64):
@@ -73,7 +73,7 @@ func generate_random_texture(repeating_texture_size:int=1024, texture_size:int=5
 	#print(sorted_bigger_rects)
 	
 	var img = Image.new()
-	img.create(512, 512, true, Image.FORMAT_RGB8)
+	img.create(512, 512, false, Image.FORMAT_RGB8)
 	
 	for rect in rects:
 		var randomly_scaled_texture = repeating_texture.duplicate()
@@ -92,7 +92,7 @@ func generate_random_texture(repeating_texture_size:int=1024, texture_size:int=5
 	img.save_png("C:/Users/EXO/Desktop/rand.png")
 	
 	var image_texture = ImageTexture.new()
-	image_texture.create_from_image(img)
+	image_texture.create_from_image(img, 1)
 	
 	return image_texture
 

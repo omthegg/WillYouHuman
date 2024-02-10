@@ -95,7 +95,6 @@ size = 56
 font_data = ExtResource( 17 )
 
 [sub_resource type="SpatialMaterial" id=12]
-flags_unshaded = true
 
 [node name="TestMap" type="Spatial"]
 script = ExtResource( 5 )

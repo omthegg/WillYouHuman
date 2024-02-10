@@ -14,8 +14,8 @@ position = Vector2( 2211, 114 )
 texture = ExtResource( 2 )
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
-margin_left = 2076.0
-margin_top = 743.0
-margin_right = 2384.0
-margin_bottom = 1205.0
+margin_left = 2088.0
+margin_top = 755.0
+margin_right = 2396.0
+margin_bottom = 1217.0
 color = Color( 0.52549, 0.501961, 0.396078, 1 )
