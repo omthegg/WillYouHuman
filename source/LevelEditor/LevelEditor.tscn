@@ -404,13 +404,31 @@ custom_styles/normal = SubResource( 18 )
 text = "Delete"
 
 [node name="GridYLabel" type="Label" parent="UI"]
-margin_left = 216.0
+margin_left = 268.0
 margin_top = 8.0
-margin_right = 336.0
+margin_right = 352.0
 margin_bottom = 16.0
 custom_fonts/font = SubResource( 21 )
 text = "Grid Y: 0"
 autowrap = true
+
+[node name="GridSnapLabel" type="Label" parent="UI"]
+margin_left = 104.0
+margin_top = 8.0
+margin_right = 188.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 21 )
+text = "Grid snap:"
+autowrap = true
+
+[node name="SpinBox" type="SpinBox" parent="UI/GridSnapLabel"]
+margin_left = 84.0
+margin_top = -8.0
+margin_right = 158.0
+margin_bottom = 16.0
+max_value = 5.0
+step = 0.1
+value = 1.0
 
 [node name="ObjectModeButton" type="Button" parent="UI" groups=["EditorButton"]]
 anchor_left = 0.344
