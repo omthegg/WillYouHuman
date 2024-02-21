@@ -83,6 +83,8 @@ var running_level # Not a bool
 
 var polygon_like_object_names = ["Surface", "PlayerMover", "Lava"]
 
+var control_in_focus:Control
+
 func _ready():
 	print(get("x"))
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -111,6 +113,7 @@ func _ready():
 	#var polygon3d_instance = Global.polygon3d.instance()
 	#map_navmesh.add_child(polygon3d_instance)
 	#polygon3d_instance.create_polygon()
+	get_viewport().connect("gui_focus_changed", self, "_on_control_focus_changed")
 
 
 func _process(_delta):
@@ -230,6 +233,11 @@ func _input(event):
 			placement_plane_collision_shape.disabled = false
 			#camera_raycast.set_collision_mask_bit(7, true)
 		
+		if Input.is_action_just_pressed("enter"):
+			if !save_file_dialog.visible:
+				if control_in_focus != null:
+					if is_instance_valid(control_in_focus):
+						control_in_focus.release_focus()
 		
 		# Rotating
 		#if Input.is_action_pressed("r"):
@@ -919,3 +927,13 @@ func _on_ThemeMultiOptionSwitch_value_changed(new_value):
 
 func _on_MultiOptionSwitch_value_changed(new_value):
 	map.set_level_light(new_value)
+
+
+func _on_control_focus_changed(control:Control):
+	# This runs when the control in focus changes.
+	#if control_in_focus != null:
+	#	if is_instance_valid(control_in_focus):
+	#		control_in_focus.release_focus()
+	if control != null:
+		if is_instance_valid(control):
+			control_in_focus = control
