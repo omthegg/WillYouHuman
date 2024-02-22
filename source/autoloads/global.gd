@@ -191,3 +191,10 @@ func create_particles(position:Vector3, gravity:Vector3=Vector3.ZERO, size:Vecto
 	particles.emitting = true
 	
 	return particles
+
+
+func generate_random_textures_for_array(objects):
+	var thread = Thread.new()
+	thread.start(TextureRandomizer, "generate_random_textures_for_array", objects)
+	#TextureRandomizer.generate_random_textures_for_array(objects)
+

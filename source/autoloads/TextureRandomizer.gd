@@ -3,16 +3,19 @@ extends Node
 var icon = preload("res://godot.png")
 var floor1 = preload("res://textures/floor1.png")
 
-func generate_random_texture(repeating_texture_size:int=1024, texture_size:int=512):
+var repeating_texture
+
+func generate_random_texture(repeating_texture_size:int=1024, texture_size:int=512, keep_repeating_texture = true):
 	var rects = []
 	
-	var repeating_texture = Image.new()
-	repeating_texture.create(1024, 1024, true, Image.FORMAT_RGB8)
-	for x in range(0, 1024, 64):
-		for y in range(0, 1024, 64):
-			repeating_texture.blit_rect(floor1.get_data(), Rect2(0, 0, 64, 64), Vector2(x, y))
-	
-	repeating_texture.save_png("C:/Users/EXO/Desktop/repeating_texture.png")
+	if !keep_repeating_texture or (keep_repeating_texture and repeating_texture == null):
+		repeating_texture = Image.new()
+		repeating_texture.create(1024, 1024, true, Image.FORMAT_RGB8)
+		for x in range(0, 1024, 64):
+			for y in range(0, 1024, 64):
+				repeating_texture.blit_rect(floor1.get_data(), Rect2(0, 0, 64, 64), Vector2(x, y))
+		
+		repeating_texture.save_png("C:/Users/EXO/Desktop/repeating_texture.png")
 	
 	randomize()
 	var r = Rect2()
