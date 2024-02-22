@@ -92,7 +92,7 @@ func generate_random_texture(repeating_texture_size:int=1024, texture_size:int=5
 	img.save_png("C:/Users/EXO/Desktop/rand.png")
 	
 	var image_texture = ImageTexture.new()
-	image_texture.create_from_image(img, 1)
+	image_texture.create_from_image(img, 2)
 	
 	return image_texture
 
@@ -114,3 +114,26 @@ func sort_rects_array(rects_array: Array):
 		#removes the number from the variable number
 		rects_array.remove(rects_array.find(result))
 	return new_array
+
+
+func generate_random_textures_for_array(objects:Array):
+	for object in objects:
+		if object.is_in_group("Polygon3D"):
+			var texture = generate_random_texture()
+			var material = SpatialMaterial.new()
+			material.uv1_scale = Vector3(0.05, 0.05, 0.05)
+			material.uv1_triplanar = true
+			material.flags_world_triplanar = true
+			material.albedo_color = object.material.albedo_color
+			material.albedo_texture = texture
+			object.material.albedo_texture = texture
+		
+		elif object is CSGShape:
+			var texture = generate_random_texture()
+			var material = SpatialMaterial.new()
+			material.uv1_scale = Vector3(0.05, 0.05, 0.05)
+			material.uv1_triplanar = true
+			material.flags_world_triplanar = true
+			material.albedo_color = object.material.albedo_color
+			material.albedo_texture = texture
+			object.material = material

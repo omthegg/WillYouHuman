@@ -421,11 +421,10 @@ custom_fonts/font = SubResource( 21 )
 text = "Grid snap:"
 autowrap = true
 
-[node name="SpinBox" type="SpinBox" parent="UI/GridSnapLabel"]
-margin_left = 84.0
-margin_top = -8.0
-margin_right = 158.0
-margin_bottom = 16.0
+[node name="GridSnapSpinBox" type="SpinBox" parent="UI"]
+margin_left = 188.0
+margin_right = 262.0
+margin_bottom = 24.0
 max_value = 5.0
 step = 0.1
 value = 1.0
@@ -697,6 +696,7 @@ options = PoolStringArray( "Bright", "Dark" )
 
 [connection signal="text_entered" from="UI/Panel4/GroupLineEdit" to="." method="_on_GroupLineEdit_text_entered"]
 [connection signal="pressed" from="UI/Panel4/AddGroupButton" to="." method="_on_AddGroupButton_pressed"]
+[connection signal="value_changed" from="UI/GridSnapSpinBox" to="." method="_on_GridSnapSpinBox_value_changed"]
 [connection signal="pressed" from="UI/ObjectModeButton" to="." method="_on_ObjectModeButton_pressed"]
 [connection signal="pressed" from="UI/VertexModeButton" to="." method="_on_VertexModeButton_pressed"]
 [connection signal="pressed" from="UI/VariablesButton" to="." method="_on_VariablesButton_pressed"]

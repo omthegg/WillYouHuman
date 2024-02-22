@@ -1,22 +1,18 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://source/Polygon3D/Polygon3D.gd" type="Script" id=1]
 [ext_resource path="res://source/environments/Environment1.tres" type="Environment" id=2]
 [ext_resource path="res://source/Polygon3D/Polygon3D.tscn" type="PackedScene" id=3]
 [ext_resource path="res://textures/floor1.png" type="Texture" id=4]
-[ext_resource path="res://source/ConveyorBelt/ConveyorBelt.gd" type="Script" id=5]
 [ext_resource path="res://source/maps/Map.gd" type="Script" id=6]
 [ext_resource path="res://source/ConveyorBelt/ConveyorBelt.tscn" type="PackedScene" id=7]
 [ext_resource path="res://source/EntitySpawner/EntitySpawner.tscn" type="PackedScene" id=8]
-[ext_resource path="res://source/EntitySpawner/EntitySpawner.gd" type="Script" id=9]
 [ext_resource path="res://assets/images/custom/glass/glass.png" type="Texture" id=10]
 [ext_resource path="res://source/player/Player.tscn" type="PackedScene" id=11]
-[ext_resource path="res://source/BombSpawner/BombSpawner.gd" type="Script" id=12]
 [ext_resource path="res://source/BombSpawner/BombSpawner.tscn" type="PackedScene" id=13]
 
-[sub_resource type="NavigationMesh" id=6]
+[sub_resource type="NavigationMesh" id=13]
 resource_local_to_scene = true
-vertices = PoolVector3Array( -8.44977, 7.3, -8.44977, -8.44977, 7.3, -7.94977, -1.19977, 7.3, -7.94977, -1.19977, 7.3, -8.44977, -1.19977, 7.3, -7.94977, 6.30023, 7.3, -7.94977, 6.30023, 7.3, -8.44977, -1.19977, 7.3, -8.44977, -1.19977, 1.3, -7.94977, 6.05023, 1.3, -7.94977, -0.949774, 1.3, -8.19977, -8.19977, 1.3, -8.19977, -8.44977, 8.3, -6.44977, -8.44977, 8.3, -4.69977, -1.19977, 8.3, -4.69977, -1.19977, 8.3, -6.44977, -1.19977, 8.3, -4.69977, 6.30023, 8.3, -4.69977, 6.30023, 8.3, -6.44977, -1.19977, 8.3, -6.44977, -8.44977, 1.3, -3.19977, -8.44977, 1.3, 8.30023, -1.19977, 1.3, 8.30023, -1.19977, 1.3, -3.19977, -1.19977, 1.3, 8.30023, 6.30023, 1.3, 8.30023, 6.30023, 1.3, -3.19977, -1.19977, 1.3, -3.19977 )
+vertices = PoolVector3Array( -8.44977, 7.3, -8.44977, -8.44977, 7.3, -7.94977, -1.19977, 7.3, -7.94977, -1.19977, 7.3, -8.44977, -1.19977, 7.3, -7.94977, 6.30023, 7.3, -7.94977, 6.30023, 7.3, -8.44977, -1.19977, 7.3, -8.44977, -1.19977, 1.3, -7.94977, 6.05023, 1.3, -7.94977, -0.949774, 1.3, -8.19977, -8.19977, 1.3, -8.19977, -8.44977, 8.8, -6.44977, -8.44977, 8.8, -4.69977, -1.19977, 8.8, -4.69977, -1.19977, 8.8, -6.44977, -1.19977, 8.8, -4.69977, 6.30023, 8.8, -4.69977, 6.30023, 8.8, -6.44977, -1.19977, 8.8, -6.44977, -8.44977, 1.3, -3.19977, -8.44977, 1.3, 8.30023, -1.19977, 1.3, 8.30023, -1.19977, 1.3, -3.19977, -1.19977, 1.3, 8.30023, 6.30023, 1.3, 8.30023, 6.30023, 1.3, -3.19977, -1.19977, 1.3, -3.19977 )
 polygons = [ PoolIntArray( 3, 2, 0 ), PoolIntArray( 0, 2, 1 ), PoolIntArray( 7, 6, 4 ), PoolIntArray( 4, 6, 5 ), PoolIntArray( 11, 10, 8 ), PoolIntArray( 8, 10, 9 ), PoolIntArray( 15, 14, 12 ), PoolIntArray( 12, 14, 13 ), PoolIntArray( 19, 18, 16 ), PoolIntArray( 16, 18, 17 ), PoolIntArray( 23, 22, 20 ), PoolIntArray( 20, 22, 21 ), PoolIntArray( 27, 26, 24 ), PoolIntArray( 24, 26, 25 ) ]
 geometry_parsed_geometry_type = 1
 agent_height = 1.8
@@ -121,8 +117,8 @@ uv1_triplanar = true
 
 [sub_resource type="ArrayMesh" id=11]
 surfaces/0 = {
-"aabb": AABB( -1, -1, 0, 17, 2.00001, 4 ),
-"array_data": PoolByteArray( 0, 0, 128, 65, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 127, 64, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 64, 64, 127, 127, 129, 64, 85, 57, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 127, 64, 85, 53, 0, 0, 0, 0, 128, 65, 0, 0, 128, 63, 0, 0, 64, 64, 127, 127, 129, 64, 0, 60, 0, 0, 0, 0, 128, 65, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 127, 64, 0, 0, 0, 56, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 64, 127, 127, 129, 64, 85, 57, 0, 56, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 127, 64, 85, 53, 0, 56, 0, 0, 128, 65, 0, 0, 128, 191, 0, 0, 128, 64, 127, 127, 129, 64, 0, 60, 0, 56, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 127, 0, 127, 127, 85, 53, 0, 0, 0, 0, 128, 65, 0, 0, 128, 63, 0, 0, 64, 64, 129, 0, 0, 63, 0, 0, 0, 56, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 64, 64, 127, 0, 127, 127, 85, 57, 0, 0, 0, 0, 128, 65, 0, 0, 128, 63, 0, 0, 0, 0, 129, 0, 0, 63, 85, 53, 0, 56, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 0, 127, 0, 127, 127, 85, 53, 0, 56, 0, 0, 128, 65, 0, 0, 128, 191, 0, 0, 128, 64, 129, 0, 0, 63, 0, 0, 0, 60, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 64, 127, 0, 127, 127, 85, 57, 0, 56, 0, 0, 128, 65, 0, 0, 128, 191, 0, 0, 0, 0, 129, 0, 0, 63, 85, 53, 0, 60, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 127, 129, 64, 85, 53, 0, 56, 0, 0, 128, 65, 0, 0, 128, 191, 0, 0, 0, 0, 0, 129, 127, 64, 85, 57, 0, 56, 0, 0, 128, 65, 0, 0, 128, 63, 0, 0, 0, 0, 0, 127, 129, 64, 85, 57, 0, 56, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 0, 0, 129, 127, 64, 0, 60, 0, 56, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 64, 64, 0, 127, 129, 64, 85, 53, 0, 60, 0, 0, 128, 65, 0, 0, 128, 191, 0, 0, 128, 64, 0, 129, 127, 64, 85, 57, 0, 60, 0, 0, 128, 65, 0, 0, 128, 63, 0, 0, 64, 64, 0, 127, 129, 64, 85, 57, 0, 60, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 64, 0, 129, 127, 64, 0, 60, 0, 60 ),
+"aabb": AABB( 0, -1, 0, 16, 2.00001, 4 ),
+"array_data": PoolByteArray( 0, 0, 128, 65, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 127, 64, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 64, 64, 127, 127, 129, 64, 85, 57, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 127, 64, 85, 53, 0, 0, 0, 0, 128, 65, 0, 0, 128, 63, 0, 0, 64, 64, 127, 127, 129, 64, 0, 60, 0, 0, 0, 0, 128, 65, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 127, 64, 0, 0, 0, 56, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 64, 127, 127, 129, 64, 85, 57, 0, 56, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 127, 64, 85, 53, 0, 56, 0, 0, 128, 65, 0, 0, 128, 191, 0, 0, 128, 64, 127, 127, 129, 64, 0, 60, 0, 56, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 127, 0, 127, 127, 85, 53, 0, 0, 0, 0, 128, 65, 0, 0, 128, 63, 0, 0, 64, 64, 129, 0, 0, 63, 0, 0, 0, 56, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 64, 64, 127, 0, 127, 127, 85, 57, 0, 0, 0, 0, 128, 65, 0, 0, 128, 63, 0, 0, 0, 0, 129, 0, 0, 63, 85, 53, 0, 56, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 0, 127, 0, 127, 127, 85, 53, 0, 56, 0, 0, 128, 65, 0, 0, 128, 191, 0, 0, 128, 64, 129, 0, 0, 63, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 64, 127, 0, 127, 127, 85, 57, 0, 56, 0, 0, 128, 65, 0, 0, 128, 191, 0, 0, 0, 0, 129, 0, 0, 63, 85, 53, 0, 60, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 127, 129, 64, 85, 53, 0, 56, 0, 0, 128, 65, 0, 0, 128, 191, 0, 0, 0, 0, 0, 129, 127, 64, 85, 57, 0, 56, 0, 0, 128, 65, 0, 0, 128, 63, 0, 0, 0, 0, 0, 127, 129, 64, 85, 57, 0, 56, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 0, 0, 129, 127, 64, 0, 60, 0, 56, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 64, 64, 0, 127, 129, 64, 85, 53, 0, 60, 0, 0, 128, 65, 0, 0, 128, 191, 0, 0, 128, 64, 0, 129, 127, 64, 85, 57, 0, 60, 0, 0, 128, 65, 0, 0, 128, 63, 0, 0, 64, 64, 0, 127, 129, 64, 85, 57, 0, 60, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 64, 0, 129, 127, 64, 0, 60, 0, 60 ),
 "array_index_data": PoolByteArray( 0, 0, 2, 0, 4, 0, 2, 0, 6, 0, 4, 0, 1, 0, 3, 0, 5, 0, 3, 0, 7, 0, 5, 0, 8, 0, 10, 0, 12, 0, 10, 0, 14, 0, 12, 0, 9, 0, 11, 0, 13, 0, 11, 0, 15, 0, 13, 0, 16, 0, 18, 0, 20, 0, 18, 0, 22, 0, 20, 0, 17, 0, 19, 0, 21, 0, 19, 0, 23, 0, 21, 0 ),
 "blend_shape_data": [  ],
 "format": 2194711,
@@ -146,18 +142,7 @@ uv1_triplanar = true
 
 [node name="Map" type="Spatial"]
 script = ExtResource( 6 )
-spikes_enabled = false
-level_type = 0
-level_light = 0
 color = Color( 1, 0.819608, 0, 1 )
-take_revolver = false
-give_revolver = false
-take_shotgun = false
-give_shotgun = false
-take_nailgun = false
-give_nailgun = false
-take_rocketlauncher = false
-give_rocketlauncher = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 2 )
@@ -165,13 +150,10 @@ environment = ExtResource( 2 )
 [node name="Navigation" type="Navigation" parent="."]
 
 [node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
-navmesh = SubResource( 6 )
+navmesh = SubResource( 13 )
 
-[node name="Surface" type="StaticBody" parent="Navigation/NavigationMeshInstance" groups=["Polygon3D"] instance=ExtResource( 3 )]
+[node name="Surface" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -9 )
-collision_layer = 31
-collision_mask = 31
-script = ExtResource( 1 )
 point1 = Vector3( 0, 1, 18 )
 point2 = Vector3( 0, 1, 0 )
 point3 = Vector3( 0, 0, 18 )
@@ -182,15 +164,10 @@ point7 = Vector3( -16, 0, 18 )
 point8 = Vector3( -16, 0, 0 )
 mesh = SubResource( 2 )
 material = SubResource( 3 )
-triplanar = true
 uv_scale = Vector3( 0.5, 0.5, 0.5 )
-uv_offset = Vector3( 0, 0, 0 )
 
-[node name="Surface230" type="StaticBody" parent="Navigation/NavigationMeshInstance" groups=["Polygon3D"] instance=ExtResource( 3 )]
+[node name="Surface230" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, -9 )
-collision_layer = 31
-collision_mask = 31
-script = ExtResource( 1 )
 point1 = Vector3( 0, 6, 0 )
 point2 = Vector3( 0, 6, 2 )
 point3 = Vector3( 0, 0, 0 )
@@ -201,22 +178,14 @@ point7 = Vector3( 16, 0, 0 )
 point8 = Vector3( 16, 0, 2 )
 mesh = SubResource( 4 )
 material = SubResource( 5 )
-triplanar = true
 uv_scale = Vector3( 0.5, 0.5, 0.5 )
-uv_offset = Vector3( 0, 0, 0 )
 
-[node name="Conveyor Belt" type="StaticBody" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 7 )]
+[node name="Conveyor Belt" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 7 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6, 1, -6 )
-script = ExtResource( 5 )
 ending_point = Vector3( -16, 0, 0 )
-width = 2.0
-speed = 10.0
 
-[node name="Surface334" type="StaticBody" parent="Navigation/NavigationMeshInstance" groups=["Polygon3D"] instance=ExtResource( 3 )]
+[node name="Surface334" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, -5 )
-collision_layer = 31
-collision_mask = 31
-script = ExtResource( 1 )
 point1 = Vector3( 0, 4.5, 1 )
 point2 = Vector3( 0, 4.5, 0 )
 point3 = Vector3( 0, 0, 1 )
@@ -227,15 +196,10 @@ point7 = Vector3( -16, 0, 1 )
 point8 = Vector3( -16, 0, 0 )
 mesh = SubResource( 7 )
 material = SubResource( 8 )
-triplanar = true
 uv_scale = Vector3( 0.5, 0.5, 0.5 )
-uv_offset = Vector3( 0, 0, 0 )
 
-[node name="Surface335" type="StaticBody" parent="Navigation/NavigationMeshInstance" groups=["Polygon3D"] instance=ExtResource( 3 )]
+[node name="Surface335" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, -5 )
-collision_layer = 31
-collision_mask = 31
-script = ExtResource( 1 )
 point1 = Vector3( 0, 1, 0 )
 point2 = Vector3( 0, 1, 1 )
 point3 = Vector3( 0, 0, 0 )
@@ -246,41 +210,29 @@ point7 = Vector3( 16, 0, 0 )
 point8 = Vector3( 16, 0, 1 )
 mesh = SubResource( 9 )
 material = SubResource( 10 )
-triplanar = true
 uv_scale = Vector3( 0.5, 0.5, 0.5 )
-uv_offset = Vector3( 0, 0, 0 )
 
-[node name="Surface336" type="StaticBody" parent="Navigation/NavigationMeshInstance" groups=["Polygon3D"] instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 7, -7 )
-collision_layer = 31
-collision_mask = 31
-script = ExtResource( 1 )
+[node name="Surface336" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 7.5, -7 )
 point1 = Vector3( 0, 1, 0 )
 point2 = Vector3( 0, 1, 3 )
 point3 = Vector3( 0, -1, 0 )
-point4 = Vector3( -1, -1, 4 )
+point4 = Vector3( 0, -1, 4 )
 point5 = Vector3( 16, 1, 0 )
 point6 = Vector3( 16, 1, 3 )
 point7 = Vector3( 16, -1, 0 )
 point8 = Vector3( 16, -1, 4 )
 mesh = SubResource( 11 )
 material = SubResource( 12 )
-triplanar = true
 uv_scale = Vector3( 0.5, 0.5, 0.5 )
-uv_offset = Vector3( 0, 0, 0 )
 
-[node name="BombSpawner" type="StaticBody" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 13 )]
+[node name="BombSpawner" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4, -6 )
-script = ExtResource( 12 )
 spawner_timer = 2
 bomb_timer = 100
 
-[node name="Player" type="StaticBody" parent="Navigation" groups=["EntitySpawner"] instance=ExtResource( 8 )]
+[node name="Player" parent="Navigation" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 4 )
-collision_layer = 32
-collision_mask = 32
-script = ExtResource( 9 )
 entity_name = "Player"
 scene = ExtResource( 11 )
-offset = Vector3( 0, 0, 0 )
 color = Color( 0, 1, 0, 1 )

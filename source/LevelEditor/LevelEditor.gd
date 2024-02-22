@@ -937,3 +937,7 @@ func _on_control_focus_changed(control:Control):
 	if control != null:
 		if is_instance_valid(control):
 			control_in_focus = control
+
+
+func _on_GridSnapSpinBox_value_changed(value):
+	snap = value
