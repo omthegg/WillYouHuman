@@ -193,9 +193,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Compass" type="Control" parent="UI"]
-margin_left = 648.0
+margin_left = 736.0
 margin_top = -48.0
-margin_right = 848.0
+margin_right = 936.0
 margin_bottom = 152.0
 __meta__ = {
 "_edit_group_": true
@@ -478,12 +478,12 @@ action_mode = 0
 text = "Variables"
 
 [node name="SaveButton" type="Button" parent="UI" groups=["EditorButton"]]
-anchor_left = 0.398
+anchor_left = 0.403
 anchor_top = 0.96
-anchor_right = 0.454
+anchor_right = 0.458
 anchor_bottom = 1.0
-margin_left = 0.447968
-margin_right = 0.103973
+margin_left = -0.256042
+margin_right = 0.551941
 mouse_default_cursor_shape = 2
 custom_fonts/font = SubResource( 24 )
 custom_styles/hover = ExtResource( 7 )
@@ -493,12 +493,12 @@ shortcut = SubResource( 35 )
 text = "Save"
 
 [node name="PlayButton" type="Button" parent="UI" groups=["EditorButton"]]
-anchor_left = 0.539
+anchor_left = 0.542
 anchor_top = 0.96
-anchor_right = 0.595
+anchor_right = 0.597
 anchor_bottom = 1.0
-margin_left = 0.0639648
-margin_right = -0.280029
+margin_left = -0.384033
+margin_right = 0.424072
 mouse_default_cursor_shape = 2
 custom_fonts/font = SubResource( 24 )
 custom_styles/hover = ExtResource( 7 )
@@ -509,12 +509,12 @@ shortcut = SubResource( 33 )
 text = "Play"
 
 [node name="LoadButton" type="Button" parent="UI" groups=["EditorButton"]]
-anchor_left = 0.469
+anchor_left = 0.472
 anchor_top = 0.96
-anchor_right = 0.524
+anchor_right = 0.528
 anchor_bottom = 1.0
-margin_left = -0.256012
-margin_right = 0.42395
+margin_left = 0.255981
+margin_right = -0.216003
 mouse_default_cursor_shape = 2
 custom_fonts/font = SubResource( 24 )
 custom_styles/hover = ExtResource( 7 )

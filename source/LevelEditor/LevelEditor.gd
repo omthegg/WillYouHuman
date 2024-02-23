@@ -648,6 +648,7 @@ func _on_ObjectModeButton_pressed():
 	templates_grid_container.show()
 	templates_panel.show()
 	materials_grid_container.show()
+	tsc_vscroll.show()
 	materials_panel.show()
 	
 	variables_grid_container.hide()
@@ -671,6 +672,7 @@ func _on_VertexModeButton_pressed():
 	cursor.hide()
 	templates_grid_container.hide()
 	templates_panel.hide()
+	tsc_vscroll.hide()
 	materials_grid_container.hide()
 	materials_panel.hide()
 	
@@ -882,6 +884,7 @@ func _on_VariablesButton_pressed():
 	cursor.hide()
 	templates_grid_container.hide()
 	templates_panel.hide()
+	tsc_vscroll.hide()
 	materials_grid_container.hide()
 	materials_panel.hide()
 	

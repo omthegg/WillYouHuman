@@ -282,6 +282,8 @@ TextureRandomizer="*res://source/autoloads/TextureRandomizer.gd"
 
 [display]
 
+window/size/width=1152
+window/size/height=648
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 

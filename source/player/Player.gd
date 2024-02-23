@@ -45,6 +45,7 @@ onready var nailgun_raycast = $Head/Camera/NailgunRaycast
 onready var nailgun_projectile_position = $Head/Camera/NailgunProjectilePosition
 
 onready var SpeedBoostTimer = $SpeedBoostTimer
+onready var speed_boost_bar = $HUD/SpeedBoostBar
 
 onready var viewmodel_sprite = $Head/Camera/ViewModelSprite
 onready var viewmodel_wall_detector = $Head/Camera/GunCamera/PlayerArms/Armature/Skeleton/RightArmIKPosition/ViewModelWallDetector
@@ -414,8 +415,8 @@ func _physics_process(delta):
 	
 	if speed_multiplier >= 1.4:
 		#$Head/Camera/SpeedBoosted.show()
-		$Head/Camera/SpeedBoostBar.show()
-		$Head/Camera/SpeedBoostBar.material.set_shader_param('value', ($SpeedBoostTimer.time_left/$SpeedBoostTimer.wait_time)*100)
+		speed_boost_bar.show()
+		speed_boost_bar.material.set_shader_param('value', ($SpeedBoostTimer.time_left/$SpeedBoostTimer.wait_time)*100)
 		#create_trail()
 		if camera.fov < Settings.fov + 10:
 			camera.fov = lerp(camera.fov, Settings.fov + 10, 7 * delta)
@@ -792,8 +793,8 @@ func _on_BounceTimer_timeout():
 
 func _on_SpeedBoostTimer_timeout():
 	speed_multiplier = 1
-	$Head/Camera/SpeedBoosted.hide()
-	$Head/Camera/SpeedBoostBar.hide()
+	#$Head/Camera/SpeedBoosted.hide()
+	speed_boost_bar.hide()
 
 
 # Die when touching an enemy

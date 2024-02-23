@@ -2,21 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/sprite_0.png-1b8e0eccdaa7591e16efc40bed3a8fc0.s3tc.stex"
-path.etc2="res://.import/sprite_0.png-1b8e0eccdaa7591e16efc40bed3a8fc0.etc2.stex"
+path="res://.import/sprite_0.png-1b8e0eccdaa7591e16efc40bed3a8fc0.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/images/custom/wall1/sprite_0.png"
-dest_files=[ "res://.import/sprite_0.png-1b8e0eccdaa7591e16efc40bed3a8fc0.s3tc.stex", "res://.import/sprite_0.png-1b8e0eccdaa7591e16efc40bed3a8fc0.etc2.stex" ]
+dest_files=[ "res://.import/sprite_0.png-1b8e0eccdaa7591e16efc40bed3a8fc0.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

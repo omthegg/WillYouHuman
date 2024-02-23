@@ -95,7 +95,7 @@ func generate_random_texture(repeating_texture_size:int=1024, texture_size:int=5
 	img.save_png("C:/Users/EXO/Desktop/rand.png")
 	
 	var image_texture = ImageTexture.new()
-	image_texture.create_from_image(img, 2)
+	image_texture.create_from_image(img, 3)
 	
 	return image_texture
 
@@ -124,17 +124,18 @@ func generate_random_textures_for_array(objects:Array):
 		if object.is_in_group("Polygon3D"):
 			var texture = generate_random_texture()
 			var material = SpatialMaterial.new()
-			material.uv1_scale = Vector3(0.05, 0.05, 0.05)
+			material.uv1_scale = Vector3(0.04, 0.04, 0.04)
 			material.uv1_triplanar = true
 			material.flags_world_triplanar = true
 			material.albedo_color = object.material.albedo_color
 			material.albedo_texture = texture
-			object.material.albedo_texture = texture
+			object.material = material
+			#object.material.albedo_texture = texture
 		
 		elif object is CSGShape:
 			var texture = generate_random_texture()
 			var material = SpatialMaterial.new()
-			material.uv1_scale = Vector3(0.05, 0.05, 0.05)
+			material.uv1_scale = Vector3(0.04, 0.04, 0.04)
 			material.uv1_triplanar = true
 			material.flags_world_triplanar = true
 			material.albedo_color = object.material.albedo_color
