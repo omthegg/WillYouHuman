@@ -15,9 +15,9 @@ func _ready():
 	
 	color_rect.color = Color.black
 	modulate.a = 0
-	color_rect.rect_size = Vector2(1024, 600)
+	color_rect.rect_size = Vector2(1152, 648)
 	
-	label.rect_size = Vector2(1024, 600)
+	label.rect_size = Vector2(1152, 648)
 	label.align = Label.ALIGN_CENTER
 	label.valign = Label.VALIGN_CENTER
 	#label.add_font_override("scene_transition_font", font)
@@ -51,6 +51,8 @@ func transition(text:String="Transition", scene_path:String=""):
 	modulate.a = 1
 	
 	var _c = get_tree().change_scene(scene_path)
+	
+	yield(get_tree().create_timer(1.0), "timeout")
 	
 	tween.interpolate_property(self, "modulate:a", 1, 0, 0.5)
 	tween.start()

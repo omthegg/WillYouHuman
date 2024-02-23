@@ -105,7 +105,9 @@ func _ready():
 		
 		#$Navigation/NavigationMeshInstance.bake_navigation_mesh()
 	
-	Global.generate_random_textures_for_array(get_node("Navigation/NavigationMeshInstance").get_children())
+	if get_node("Navigation/NavigationMeshInstance"):
+		if get_node("Navigation/NavigationMeshInstance").get_child_count() > 0:
+			Global.generate_random_textures_for_array(get_node("Navigation/NavigationMeshInstance").get_children())
 	#$TextureTest.material.albedo_texture = TextureRandomizer.generate_random_texture()
 	#print($TextureTest.material.albedo_texture)
 	#$TextureTest.material.albedo_texture.get_data().save_png("C:/Users/EXO/Desktop/test.png")

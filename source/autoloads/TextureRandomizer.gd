@@ -24,24 +24,12 @@ func generate_random_texture(repeating_texture_size:int=1024, texture_size:int=5
 	rects.append(r)
 	var x_or_y = 1
 	for i in range(100):
-		#var img = Image.new()
-		#img.create(128, 128, true, Image.FORMAT_RGB8)
-		#for rect in rects:
-		#	print(rect)
-		#	img.fill_rect(rect, Color(rand_range(0.0, 1.0), rand_range(0.0, 1.0), rand_range(0.0, 1.0)))
-		
-		#img.save_png(str("C:/Users/EXO/Desktop/", str(i), ".png"))
-		
-		#var sorted_bigger_rects = rects.duplicate(true)
-		#sorted_bigger_rects.sort()
 		var sorted_bigger_rects = sort_rects_array(rects.duplicate())
 		if sorted_bigger_rects.size() > 2:
 			sorted_bigger_rects.resize(int(sorted_bigger_rects.size()/1.4))
 		
 		var random_rect = sorted_bigger_rects[randi()%sorted_bigger_rects.size()]
 		
-		#x_or_y *= -1
-		#x_or_y = random_rect.size.y > random_rect.size.x
 		if random_rect.size.y == random_rect.size.x:
 			x_or_y = randi() %2
 		elif random_rect.size.y > random_rect.size.x:
@@ -50,14 +38,12 @@ func generate_random_texture(repeating_texture_size:int=1024, texture_size:int=5
 			x_or_y = 0
 		
 		var slice1 = random_rect
-		#slice1.position = random_rect.position
 		if x_or_y == 1:
 			slice1.size *= Vector2(1.0, 0.5)
 		else:
 			slice1.size *= Vector2(0.5, 1.0)
 		
 		var slice2 = random_rect
-		#slice2.position = random_rect.position + random_rect.size * Vector2(0.0, 1.0)
 		if x_or_y:
 			slice2.position += slice2.size * Vector2(0.0, 0.5)
 			slice2.size *= Vector2(1.0, 0.5)
@@ -69,11 +55,6 @@ func generate_random_texture(repeating_texture_size:int=1024, texture_size:int=5
 		rects.append(slice1)
 		rects.append(slice2)
 	
-	#var sorted_bigger_rects = rects.duplicate(true)
-	#sorted_bigger_rects.sort()
-	#if sorted_bigger_rects.size() > 2:
-	#	sorted_bigger_rects.resize(int(sorted_bigger_rects.size()/2))
-	#print(sorted_bigger_rects)
 	
 	var img = Image.new()
 	img.create(512, 512, false, Image.FORMAT_RGB8)

@@ -46,6 +46,7 @@ onready var nailgun_projectile_position = $Head/Camera/NailgunProjectilePosition
 
 onready var SpeedBoostTimer = $SpeedBoostTimer
 onready var speed_boost_bar = $HUD/SpeedBoostBar
+onready var wallrun_bar = $HUD/Wallrunbar
 
 onready var viewmodel_sprite = $Head/Camera/ViewModelSprite
 onready var viewmodel_wall_detector = $Head/Camera/GunCamera/PlayerArms/Armature/Skeleton/RightArmIKPosition/ViewModelWallDetector
@@ -182,7 +183,7 @@ func _ready():
 	rocketlauncher_crosshair.set_as_toplevel(true)
 	#$HUD/Crosshair.set_as_toplevel(true)
 	
-	$HUD/Wallrunbar.set_as_toplevel(true)
+	wallrun_bar.set_as_toplevel(true)
 	
 	arms.set_skin(Collectibles.skin_iris)
 	model.set_skin(Collectibles.skin_iris)
@@ -193,6 +194,8 @@ func _ready():
 	yield(get_tree(), "idle_frame")
 	if Global.map.level_light == Global.map.LEVEL_LIGHT.BRIGHT:
 		$OmniLight.hide()
+	
+	wallrun_bar.show()
 
 
 func _input(event):
@@ -312,22 +315,21 @@ func switch_weapons(previous, selected):
 		nailgun_crosshair.hide()
 		rocketlauncher_crosshair.show()
 	elif selected == Weapons.WEAPON_SUPERNAILGUN:
-		revolver_crosshair.show()
+		revolver_crosshair.hide()
 		shotgun_crosshair.hide()
 		nailgun_crosshair.hide()
 		rocketlauncher_crosshair.hide()
 	
 
 
-
 func _process(delta):
 	$Head/Camera/FPSCounter.text = str(Engine.get_frames_per_second())
-	$HUD/Wallrunbar.value = wallrun_charge
+	wallrun_bar.value = wallrun_charge
 	
 	if wallrun_charge == 100:
-		$HUD/Wallrunbar.modulate.a = lerp($HUD/Wallrunbar.modulate.a, 0, 20 * delta)
+		wallrun_bar.modulate.a = lerp(wallrun_bar.modulate.a, 0, 20 * delta)
 	else:
-		$HUD/Wallrunbar.modulate.a = lerp($HUD/Wallrunbar.modulate.a, 1, 30 * delta)
+		wallrun_bar.modulate.a = lerp(wallrun_bar.modulate.a, 1, 30 * delta)
 	
 	for i in shotgun_raycasts.get_children():
 		if i is RayCast:

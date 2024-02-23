@@ -20,6 +20,9 @@ onready var rocketlauncher_charge = $RocketLauncherCharge
 onready var rocketlauncher_icon = $RocketLauncherIcon
 onready var rocketlauncher = player.rocketlauncher
 
+func _ready():
+	show()
+
 func revolver_ui():
 	if revolver:
 		var charge_percent = ((revolver.charge/revolver.max_charge) * 100)
@@ -299,3 +302,4 @@ func _process(_delta):
 	
 	if (revolver.secondary_charge == 0) and (rocketlauncher.secondary_charge == 0):
 		weapon_blast_charge.hide()
+	
