@@ -1361,15 +1361,14 @@ value = 3.0
 percent_visible = false
 
 [node name="Wallrunbar" type="ProgressBar" parent="HUD"]
-visible = false
 anchor_left = 0.448
-anchor_top = 0.062
+anchor_top = 0.056
 anchor_right = 0.552
-anchor_bottom = 0.077
+anchor_bottom = 0.071
 margin_left = -0.0960083
-margin_top = -0.176003
-margin_right = 0.0959473
-margin_bottom = 0.103996
+margin_top = -0.288002
+margin_right = 0.0958252
+margin_bottom = -0.00799942
 rect_pivot_offset = Vector2( 60, 5 )
 custom_styles/fg = SubResource( 23 )
 custom_styles/bg = SubResource( 24 )

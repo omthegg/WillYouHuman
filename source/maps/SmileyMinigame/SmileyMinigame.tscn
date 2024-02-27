@@ -70,7 +70,6 @@ font_data = ExtResource( 6 )
 
 [node name="SmileyMinigame" type="Spatial"]
 script = ExtResource( 1 )
-spikes_enabled = false
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 margin_left = 152.0
@@ -121,35 +120,35 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -28.45, 0 )
 jump_multiplier = 5
 
 [node name="JumpBoost2" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 70, -48.5, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 70, -49.895, 0 )
 jump_multiplier = 5
 
 [node name="JumpBoost3" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -70, -48.5, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -70, -49.895, 0 )
 jump_multiplier = 5
 
 [node name="JumpBoost4" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -48.5, 70 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -49.895, 70 )
 jump_multiplier = 5
 
 [node name="JumpBoost5" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 70, -48.5, 70 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 70, -49.895, 70 )
 jump_multiplier = 5
 
 [node name="JumpBoost6" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -70, -48.5, 70 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -70, -49.895, 70 )
 jump_multiplier = 5
 
 [node name="JumpBoost7" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -48.5, -70 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -49.895, -70 )
 jump_multiplier = 5
 
 [node name="JumpBoost8" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 70, -48.5, -70 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 70, -49.895, -70 )
 jump_multiplier = 5
 
 [node name="JumpBoost9" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -70, -48.5, -70 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -70, -49.895, -70 )
 jump_multiplier = 5
 
 [node name="CSGMesh" type="CSGMesh" parent="."]
@@ -160,19 +159,19 @@ collision_mask = 3
 mesh = SubResource( 11 )
 
 [node name="SpeedBoost" parent="." instance=ExtResource( 13 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -49.25, 60 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 60 )
 
 [node name="SpeedBoost2" parent="." instance=ExtResource( 13 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60, -49.25, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60, -50, 0 )
 
 [node name="SpeedBoost3" parent="." instance=ExtResource( 13 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -49.25, -60 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, -60 )
 
 [node name="SpeedBoost4" parent="." instance=ExtResource( 13 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -60, -49.25, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -60, -50, 0 )
 
 [node name="SpeedBoost5" parent="." instance=ExtResource( 13 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 84, 12.75, -84 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 84, 12, -84 )
 
 [node name="CSGBox2" type="CSGBox" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 11, -90 )
@@ -184,7 +183,7 @@ depth = 20.0
 material = ExtResource( 14 )
 
 [node name="SpeedBoost6" parent="." instance=ExtResource( 13 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -84, 12.75, -84 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -84, 12, -84 )
 
 [node name="CSGBox3" type="CSGBox" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 11, -90 )
@@ -196,7 +195,7 @@ depth = 20.0
 material = ExtResource( 14 )
 
 [node name="SpeedBoost7" parent="." instance=ExtResource( 13 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -84, 12.75, 84 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -84, 12, 84 )
 
 [node name="CSGBox4" type="CSGBox" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 11, 90 )
@@ -208,7 +207,7 @@ depth = 20.0
 material = ExtResource( 14 )
 
 [node name="SpeedBoost8" parent="." instance=ExtResource( 13 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 84, 12.75, 84 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 84, 12, 84 )
 
 [node name="CSGBox5" type="CSGBox" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 11, 90 )
