@@ -13,4 +13,4 @@ entity_spawner_offset = Vector3( 0, 0, 0 )
 rotation_step = 0
 y_rotation_only = false
 enabled = true
-editable_variables = PoolStringArray( "gravity_scale", "speed" )
+editable_variables = PoolStringArray( "speed", "fall_direction.x", "fall_direction.y", "fall_direction.z", "max_health" )

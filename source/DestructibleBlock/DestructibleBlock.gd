@@ -8,7 +8,7 @@ onready var static_body_collision_shape = $StaticBody/CollisionShape
 export var max_health = 100.0
 var health = 100.0
 
-export var speed = 100.0
+export var speed = 15.0
 export var fall_direction:Vector3 = Vector3(0, -1, 0)
 
 var broken = false
@@ -17,8 +17,8 @@ func _ready():
 	health = max_health
 	outside_mesh_instance.mesh = collision_shape.shape.get_debug_mesh()
 	
-	if !Global.editing_level:
-		collision_shape.disabled = true
+	#if !Global.editing_level:
+	#	collision_shape.disabled = true
 
 func damage(amount):
 	if health > 0:
@@ -35,3 +35,7 @@ func break_block():
 	broken = true
 	inside_mesh_instance.scale = Vector3(1, 1, 1)
 	constant_linear_velocity = fall_direction * speed
+
+func _physics_process(delta):
+	if broken:
+		global_transform.origin += fall_direction * speed * delta

@@ -255,10 +255,12 @@ func _input(event):
 
 func _physics_process(delta):
 	if Global.editing_level:
-		move_camera(delta)
-		move_pivots()
-		move_selected_object()
-		rotate_selected_object()
+		if !Input.is_action_pressed("control"):
+			move_camera(delta)
+			move_pivots()
+			move_selected_object()
+			rotate_selected_object()
+		
 		camera_raycast.global_transform.origin = camera_rotation_helper.global_transform.origin
 		
 		if is_instance_valid(selected_object):
