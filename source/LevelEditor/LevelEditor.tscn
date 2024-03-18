@@ -299,15 +299,15 @@ text = "-Y"
 font = SubResource( 12 )
 
 [node name="Panel" type="Panel" parent="UI"]
-anchor_right = 0.062
+anchor_right = 0.066
 anchor_bottom = 1.0
-margin_right = 0.511997
+margin_right = -0.0319977
 custom_styles/panel = SubResource( 15 )
 
 [node name="TemplatesScrollContainer" type="ScrollContainer" parent="UI"]
-anchor_right = 0.074
+anchor_right = 0.076
 anchor_bottom = 1.0
-margin_right = 0.223999
+margin_right = 0.447998
 follow_focus = true
 scroll_horizontal_enabled = false
 
@@ -324,14 +324,14 @@ custom_styles/scroll = SubResource( 27 )
 custom_styles/grabber_pressed = SubResource( 26 )
 
 [node name="Panel2" type="Panel" parent="UI"]
-anchor_left = 0.937
+anchor_left = 0.944
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 0.511963
 custom_styles/panel = SubResource( 16 )
 
 [node name="MaterialsGridContainer" type="GridContainer" parent="UI"]
-anchor_left = 0.937
+anchor_left = 0.944
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 0.511963

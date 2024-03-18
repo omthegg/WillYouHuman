@@ -15,7 +15,7 @@ func generate_random_texture(repeating_texture_size:int=1024, texture_size:int=5
 			for y in range(0, 1024, 64):
 				repeating_texture.blit_rect(floor1.get_data(), Rect2(0, 0, 64, 64), Vector2(x, y))
 		
-		repeating_texture.save_png("C:/Users/EXO/Desktop/repeating_texture.png")
+		#repeating_texture.save_png("C:/Users/EXO/Desktop/repeating_texture.png")
 	
 	randomize()
 	var r = Rect2()
@@ -73,7 +73,7 @@ func generate_random_texture(repeating_texture_size:int=1024, texture_size:int=5
 		#print(rect)
 		#img.fill_rect(rect, Color(rand_range(0.0, 1.0), rand_range(0.0, 1.0), rand_range(0.0, 1.0)))
 	
-	img.save_png("C:/Users/EXO/Desktop/rand.png")
+	#img.save_png("C:/Users/EXO/Desktop/rand.png")
 	
 	var image_texture = ImageTexture.new()
 	image_texture.create_from_image(img, 3)

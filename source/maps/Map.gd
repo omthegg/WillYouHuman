@@ -99,15 +99,24 @@ func _ready():
 	if !Global.editing_level:
 		spawn_entities()
 		
+		if get_node("Navigation/NavigationMeshInstance"):
+			if get_node("Navigation/NavigationMeshInstance").get_child_count() > 0:
+				var surfaces_with_random_texture = []
+				for child in get_node("Navigation/NavigationMeshInstance").get_children():
+					if child.is_in_group("Polygon3D"):
+						if (child.material.albedo_texture.resource_path == "res://textures/random.png"):
+							surfaces_with_random_texture.append(child)
+					elif child is CSGBox:
+						surfaces_with_random_texture.append(child)
+				
+				Global.generate_random_textures_for_array(surfaces_with_random_texture)
+		
 		yield(get_tree(), "idle_frame")
 		if Global.player:
 			Global.player.camera.current = true
 		
 		#$Navigation/NavigationMeshInstance.bake_navigation_mesh()
 	
-	if get_node("Navigation/NavigationMeshInstance"):
-		if get_node("Navigation/NavigationMeshInstance").get_child_count() > 0:
-			Global.generate_random_textures_for_array(get_node("Navigation/NavigationMeshInstance").get_children())
 	#$TextureTest.material.albedo_texture = TextureRandomizer.generate_random_texture()
 	#print($TextureTest.material.albedo_texture)
 	#$TextureTest.material.albedo_texture.get_data().save_png("C:/Users/EXO/Desktop/test.png")

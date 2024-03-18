@@ -8,6 +8,7 @@ var viewport = Viewport.new()
 var camera = Camera.new()
 var mesh_instance = MeshInstance.new()
 var sphere = SphereMesh.new()
+var cube = CubeMesh.new()
 
 func _ready():
 	add_to_group("EditorButton", true)
@@ -31,14 +32,14 @@ func add_children():
 	viewport.world.environment.ambient_light_color = Color.white
 	
 	viewport.add_child(camera, true)
-	camera.translation.z += 1
+	camera.translation.z += 2
 	
 	viewport.add_child(mesh_instance, true)
 	sphere.height = 1.0
 	sphere.radius = 0.5
 	sphere.radial_segments = 8
 	sphere.rings = 4
-	mesh_instance.mesh = sphere
+	mesh_instance.mesh = cube
 	mesh_instance.material_override = template_material
 	
 	yield(get_tree(), "idle_frame")
