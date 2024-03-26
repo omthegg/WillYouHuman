@@ -54,7 +54,7 @@ var previous_weapon = 0
 
 func _ready():
 	yield(get_tree(), "idle_frame")
-	for i in range(60):
+	for _i in range(60):
 		#create_trail()
 		move(get_physics_process_delta_time())
 
@@ -122,8 +122,8 @@ func move(delta):
 	var _v = move_and_slide_with_snap(movement, snap, Vector3.UP)
 
 
-func _physics_process(delta):
-	pass
+#func _physics_process(delta):
+#	pass
 #	# Speeding up time
 #	# example on calculating how much later the player
 #	# will reach the clone's destination:

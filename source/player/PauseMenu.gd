@@ -274,3 +274,15 @@ func _on_MouseSensitivityBack_pressed():
 func _on_MouseSensitivitySlider_value_changed(value):
 	Settings.mouse_sensitivity = value
 	$Menu/Settings/SettingsMenu/Controls/ControlsMenu/MouseSensitivity/MouseSensitivityMenu/MouseSensitivityLabel.text = str(value)
+
+
+func _on_Difficulty_pressed():
+	menu_right()
+	$Menu/Difficulty/DifficultyMenu.show()
+	disable_menu($Menu)
+
+
+func _on_DifficultyBack_pressed():
+	menu_left()
+	$Menu/Difficulty/DifficultyMenu.hide()
+	enable_menu($Menu)

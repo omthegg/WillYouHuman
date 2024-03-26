@@ -23,7 +23,7 @@ func generate_random_texture(repeating_texture_size:int=1024, texture_size:int=5
 	r.size = Vector2(512, 512)
 	rects.append(r)
 	var x_or_y = 1
-	for i in range(100):
+	for _i in range(100):
 		var sorted_bigger_rects = sort_rects_array(rects.duplicate())
 		if sorted_bigger_rects.size() > 2:
 			sorted_bigger_rects.resize(int(sorted_bigger_rects.size()/1.4))

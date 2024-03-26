@@ -124,7 +124,7 @@ func _ready():
 
 
 
-func _process(delta):
+func _process(_delta):
 	if !animation_thread.is_active():
 		animation_thread.start(self, 'pause_animations')
 	
