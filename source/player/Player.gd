@@ -47,6 +47,7 @@ onready var nailgun_projectile_position = $Head/Camera/NailgunProjectilePosition
 onready var SpeedBoostTimer = $SpeedBoostTimer
 onready var speed_boost_bar = $HUD/SpeedBoostBar
 onready var wallrun_bar = $HUD/Wallrunbar
+onready var pause_menu = $PauseMenu
 
 onready var viewmodel_sprite = $Head/Camera/ViewModelSprite
 onready var viewmodel_wall_detector = $Head/Camera/GunCamera/PlayerArms/Armature/Skeleton/RightArmIKPosition/ViewModelWallDetector
@@ -767,7 +768,7 @@ func die():
 	camera.current = false
 	
 	$DeathScreen.show()
-	$PauseMenu.hide()
+	pause_menu.hide()
 	$HUD.hide()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	

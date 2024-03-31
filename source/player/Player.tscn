@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=2]
+[gd_scene load_steps=102 format=2]
 
 [ext_resource path="res://source/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://source/buttons/Font.tres" type="DynamicFont" id=2]
@@ -34,6 +34,7 @@
 [ext_resource path="res://assets/images/crosshairs/shotgun.png" type="Texture" id=32]
 [ext_resource path="res://assets/images/crosshairs/nailgun.png" type="Texture" id=33]
 [ext_resource path="res://source/Console/Console.tscn" type="PackedScene" id=34]
+[ext_resource path="res://source/PauseMenuButton/PauseMenuButton.tscn" type="PackedScene" id=35]
 
 [sub_resource type="SpatialMaterial" id=72]
 flags_unshaded = true
@@ -1616,44 +1617,64 @@ custom_styles/normal = ExtResource( 24 )
 text = "Continue"
 align = 0
 
-[node name="Difficulty" type="Button" parent="PauseMenu/Menu"]
+[node name="Difficulty" parent="PauseMenu/Menu" instance=ExtResource( 35 )]
 margin_left = 96.0
 margin_top = 256.0
 margin_right = 224.0
 margin_bottom = 280.0
-custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
-custom_fonts/font = ExtResource( 2 )
-custom_styles/hover = ExtResource( 25 )
-custom_styles/pressed = ExtResource( 25 )
-custom_styles/focus = ExtResource( 24 )
-custom_styles/disabled = ExtResource( 24 )
-custom_styles/normal = ExtResource( 24 )
 text = "Difficulty"
-align = 0
+menu_right = true
+parent_menu = NodePath("..")
+child_menu = NodePath("DifficultyMenu")
 
 [node name="DifficultyMenu" type="Node2D" parent="PauseMenu/Menu/Difficulty"]
 visible = false
 position = Vector2( 176, 16 )
 
-[node name="DifficultyBack" type="Button" parent="PauseMenu/Menu/Difficulty/DifficultyMenu"]
+[node name="DifficultyBack" parent="PauseMenu/Menu/Difficulty/DifficultyMenu" instance=ExtResource( 35 )]
 margin_top = -64.0
 margin_right = 64.0
 margin_bottom = -40.0
-custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
-custom_fonts/font = ExtResource( 2 )
-custom_styles/hover = ExtResource( 25 )
-custom_styles/pressed = ExtResource( 25 )
-custom_styles/focus = ExtResource( 24 )
-custom_styles/disabled = ExtResource( 24 )
-custom_styles/normal = ExtResource( 24 )
 text = "Back"
-align = 0
+menu_left = true
+grandparent_menu = NodePath("../../..")
+parent_menu = NodePath("..")
+
+[node name="Easy" parent="PauseMenu/Menu/Difficulty/DifficultyMenu" instance=ExtResource( 35 )]
+margin_top = -16.0
+margin_right = 64.0
+margin_bottom = 8.0
+text = "Easy"
+menu_left = true
+grandparent_menu = NodePath("../../..")
+parent_menu = NodePath("..")
+
+[node name="VeryEasy" parent="PauseMenu/Menu/Difficulty/DifficultyMenu" instance=ExtResource( 35 )]
+margin_top = 32.0
+margin_right = 64.0
+margin_bottom = 56.0
+text = "Very Easy"
+menu_left = true
+grandparent_menu = NodePath("../../..")
+parent_menu = NodePath("..")
+
+[node name="ExtremelyEasy" parent="PauseMenu/Menu/Difficulty/DifficultyMenu" instance=ExtResource( 35 )]
+margin_top = 80.0
+margin_right = 224.0
+margin_bottom = 104.0
+text = "Extremely Easy"
+menu_left = true
+grandparent_menu = NodePath("../../..")
+parent_menu = NodePath("..")
+
+[node name="InfinitelyEasy" parent="PauseMenu/Menu/Difficulty/DifficultyMenu" instance=ExtResource( 35 )]
+margin_top = 128.0
+margin_right = 240.0
+margin_bottom = 152.0
+text = "Infinitely Easy"
+menu_left = true
+grandparent_menu = NodePath("../../..")
+parent_menu = NodePath("..")
 
 [node name="Settings" type="Button" parent="PauseMenu/Menu"]
 margin_left = 96.0
@@ -2489,8 +2510,6 @@ this mesh instance is used level editor."
 [connection signal="timeout" from="BounceTimer" to="." method="_on_BounceTimer_timeout"]
 [connection signal="pressed" from="DeathScreen/Respawn" to="DeathScreen" method="_on_Respawn_pressed"]
 [connection signal="pressed" from="PauseMenu/Menu/Continue" to="PauseMenu" method="_on_Continue_pressed"]
-[connection signal="pressed" from="PauseMenu/Menu/Difficulty" to="PauseMenu" method="_on_Difficulty_pressed"]
-[connection signal="pressed" from="PauseMenu/Menu/Difficulty/DifficultyMenu/DifficultyBack" to="PauseMenu" method="_on_DifficultyBack_pressed"]
 [connection signal="pressed" from="PauseMenu/Menu/Settings" to="PauseMenu" method="_on_Settings_pressed"]
 [connection signal="pressed" from="PauseMenu/Menu/Settings/SettingsMenu/SettingsBack" to="PauseMenu" method="_on_SettingsBack_pressed"]
 [connection signal="pressed" from="PauseMenu/Menu/Settings/SettingsMenu/Graphics" to="PauseMenu" method="_on_Graphics_pressed"]
