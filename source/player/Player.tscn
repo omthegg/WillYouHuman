@@ -1134,12 +1134,12 @@ bones/1/name = "arm1.L"
 bones/1/parent = 0
 bones/1/rest = Transform( 0, 1, -1.34359e-07, -1, 0, 7.54979e-08, 7.54979e-08, 1.34359e-07, 1, 0.3, 0.85, 4.03076e-08 )
 bones/1/enabled = true
-bones/1/bound_children = [ NodePath("BoneAttachment2") ]
+bones/1/bound_children = [  ]
 bones/2/name = "arm2.L"
 bones/2/parent = 1
 bones/2/rest = Transform( 1, 5.96047e-07, 1.19209e-07, -5.96047e-07, 1, -1.59429e-13, -1.19209e-07, 8.83746e-14, 1, -4.76837e-07, 0.4, -1.33227e-14 )
 bones/2/enabled = true
-bones/2/bound_children = [ NodePath("BoneAttachment") ]
+bones/2/bound_children = [  ]
 bones/3/name = "hand.L"
 bones/3/parent = 2
 bones/3/rest = Transform( 1, 1.13687e-13, 1.06581e-14, -1.13687e-13, 1, 2.5411e-21, -1.06581e-14, -2.5411e-21, 1, -1.78814e-07, 0.4, 1.64748e-14 )
@@ -1149,12 +1149,12 @@ bones/4/name = "arm1.R"
 bones/4/parent = 0
 bones/4/rest = Transform( 0, -1, -1.34359e-07, 1, 0, 7.54979e-08, -7.54979e-08, -1.34359e-07, 1, -0.3, 0.85, -4.03077e-08 )
 bones/4/enabled = true
-bones/4/bound_children = [ NodePath("BoneAttachment4") ]
+bones/4/bound_children = [  ]
 bones/5/name = "arm2.R"
 bones/5/parent = 4
 bones/5/rest = Transform( 1, -5.96046e-07, -1.19209e-07, 5.96046e-07, 1, -1.31007e-13, 1.19209e-07, 5.99529e-14, 1, 4.76837e-07, 0.4, -1.19016e-14 )
 bones/5/enabled = true
-bones/5/bound_children = [ NodePath("BoneAttachment3") ]
+bones/5/bound_children = [  ]
 bones/6/name = "hand.R"
 bones/6/parent = 5
 bones/6/rest = Transform( 1, -1.13687e-13, -1.06581e-14, 1.13687e-13, 1, -1.10114e-20, 1.06581e-14, 1.10114e-20, 1, 1.78814e-07, 0.4, 1.64748e-14 )
@@ -1580,7 +1580,6 @@ valign = 1
 
 [node name="PauseMenu" type="Control" parent="."]
 pause_mode = 2
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
@@ -1676,44 +1675,27 @@ menu_left = true
 grandparent_menu = NodePath("../../..")
 parent_menu = NodePath("..")
 
-[node name="Settings" type="Button" parent="PauseMenu/Menu"]
+[node name="Settings" parent="PauseMenu/Menu" instance=ExtResource( 35 )]
 margin_left = 96.0
 margin_top = 304.0
 margin_right = 224.0
 margin_bottom = 328.0
-custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
-custom_fonts/font = ExtResource( 2 )
-custom_styles/hover = ExtResource( 25 )
-custom_styles/pressed = ExtResource( 25 )
-custom_styles/focus = ExtResource( 24 )
-custom_styles/disabled = ExtResource( 24 )
-custom_styles/normal = ExtResource( 24 )
 text = "Settings"
-align = 0
+menu_right = true
+parent_menu = NodePath("..")
+child_menu = NodePath("SettingsMenu")
 
 [node name="SettingsMenu" type="Node2D" parent="PauseMenu/Menu/Settings"]
-visible = false
 position = Vector2( 176, -32 )
 
-[node name="SettingsBack" type="Button" parent="PauseMenu/Menu/Settings/SettingsMenu"]
+[node name="SettingsBack" parent="PauseMenu/Menu/Settings/SettingsMenu" instance=ExtResource( 35 )]
 margin_top = -64.0
 margin_right = 64.0
 margin_bottom = -40.0
-custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
-custom_fonts/font = ExtResource( 2 )
-custom_styles/hover = ExtResource( 25 )
-custom_styles/pressed = ExtResource( 25 )
-custom_styles/focus = ExtResource( 24 )
-custom_styles/disabled = ExtResource( 24 )
-custom_styles/normal = ExtResource( 24 )
 text = "Back"
-align = 0
+menu_left = true
+grandparent_menu = NodePath("../../..")
+parent_menu = NodePath("..")
 
 [node name="Graphics" type="Button" parent="PauseMenu/Menu/Settings/SettingsMenu"]
 margin_top = -16.0
@@ -2272,22 +2254,22 @@ bones/0/name = "body"
 bones/0/parent = -1
 bones/0/rest = Transform( 1, -4.51308e-15, 1.34359e-07, 1.35392e-14, 1, -6.71794e-08, -1.34359e-07, 6.71794e-08, 1, 0, 1, 0 )
 bones/0/enabled = true
-bones/0/bound_children = [ NodePath("BoneAttachment11") ]
+bones/0/bound_children = [  ]
 bones/1/name = "head"
 bones/1/parent = 0
 bones/1/rest = Transform( 1, -2.05876e-22, 7.10543e-14, 2.05879e-22, 1, -4.5001e-14, -7.10543e-14, 4.5001e-14, 1, 4.96043e-21, 1, -2.84217e-14 )
 bones/1/enabled = true
-bones/1/bound_children = [ NodePath("BoneAttachment"), NodePath("BoneAttachment2") ]
+bones/1/bound_children = [  ]
 bones/2/name = "arm1.L"
 bones/2/parent = 0
 bones/2/rest = Transform( -3.57628e-07, 1, -1.34359e-07, -1, -3.57628e-07, -1.03316e-07, -1.03316e-07, 1.34359e-07, 1, 0.2, 0.853, 2.68717e-08 )
 bones/2/enabled = true
-bones/2/bound_children = [ NodePath("BoneAttachment4") ]
+bones/2/bound_children = [  ]
 bones/3/name = "arm2.L"
 bones/3/parent = 2
 bones/3/rest = Transform( 1, -1.42109e-14, 9.23706e-14, 1.42109e-14, 1, -4.9738e-14, -9.23706e-14, 4.9738e-14, 1, -5.96048e-08, 0.4, 1.57649e-14 )
 bones/3/enabled = true
-bones/3/bound_children = [ NodePath("BoneAttachment3") ]
+bones/3/bound_children = [  ]
 bones/4/name = "hand.L"
 bones/4/parent = 3
 bones/4/rest = Transform( 1, 2.84217e-14, 1.06581e-14, -2.84217e-14, 1, -9.31736e-21, -1.06581e-14, 9.31736e-21, 1, -5.96048e-08, 0.4, 1.44325e-14 )
@@ -2297,12 +2279,12 @@ bones/5/name = "leg1.L"
 bones/5/parent = 0
 bones/5/rest = Transform( -1, 1.84414e-20, -2.85355e-07, -1.64138e-20, -1, -7.10543e-15, -2.85355e-07, -7.10543e-15, 1, 0.15, -1.19209e-07, 2.01538e-08 )
 bones/5/enabled = true
-bones/5/bound_children = [ NodePath("BoneAttachment6") ]
+bones/5/bound_children = [  ]
 bones/6/name = "leg2.L"
 bones/6/parent = 5
 bones/6/rest = Transform( 1, 9.17207e-21, -6.3573e-08, -1.15379e-20, 1, -3.72146e-14, 6.3573e-08, 3.72146e-14, 1, -1.49011e-08, 0.5, -8.88178e-15 )
 bones/6/enabled = true
-bones/6/bound_children = [ NodePath("BoneAttachment5") ]
+bones/6/bound_children = [  ]
 bones/7/name = "foot.L"
 bones/7/parent = 6
 bones/7/rest = Transform( 1, -8.74228e-08, 1.68587e-07, 1.68587e-07, -1.19209e-07, -1, 8.74228e-08, 1, -1.19209e-07, -1.49011e-08, 0.5, -1.84741e-14 )
@@ -2312,12 +2294,12 @@ bones/8/name = "arm1.R"
 bones/8/parent = 0
 bones/8/rest = Transform( -3.57628e-07, -1, -1.34359e-07, 1, -3.57628e-07, -1.03316e-07, 1.03316e-07, -1.34359e-07, 1, -0.2, 0.853, -2.68718e-08 )
 bones/8/enabled = true
-bones/8/bound_children = [ NodePath("BoneAttachment8") ]
+bones/8/bound_children = [  ]
 bones/9/name = "arm2.R"
 bones/9/parent = 8
 bones/9/rest = Transform( 1, 9.9476e-14, -9.9476e-14, -9.9476e-14, 1, -7.1054e-15, 9.9476e-14, 7.1054e-15, 1, 5.96048e-08, 0.4, 1.15017e-14 )
 bones/9/enabled = true
-bones/9/bound_children = [ NodePath("BoneAttachment7") ]
+bones/9/bound_children = [  ]
 bones/10/name = "hand.R"
 bones/10/parent = 9
 bones/10/rest = Transform( 1, -5.68434e-14, -1.06581e-14, 5.68434e-14, 1, -5.50571e-21, 1.06581e-14, 5.50571e-21, 1, 5.96048e-08, 0.4, 7.32704e-15 )
@@ -2327,12 +2309,12 @@ bones/11/name = "leg1.R"
 bones/11/parent = 0
 bones/11/rest = Transform( -1, -5.02404e-22, 1.6637e-08, 3.84192e-22, -1, -7.10543e-15, 1.6637e-08, -7.10543e-15, 1, -0.15, -1.19209e-07, -2.01538e-08 )
 bones/11/enabled = true
-bones/11/bound_children = [ NodePath("BoneAttachment10") ]
+bones/11/bound_children = [  ]
 bones/12/name = "leg2.R"
 bones/12/parent = 11
 bones/12/rest = Transform( 1, 1.79569e-21, 6.3573e-08, 5.70162e-22, 1, -3.72146e-14, -6.3573e-08, 3.72146e-14, 1, 1.49011e-08, 0.5, -1.24345e-14 )
 bones/12/enabled = true
-bones/12/bound_children = [ NodePath("BoneAttachment9") ]
+bones/12/bound_children = [  ]
 bones/13/name = "foot.R"
 bones/13/parent = 12
 bones/13/rest = Transform( 1, 8.74227e-08, 1.68587e-07, 1.68587e-07, -1.19209e-07, -1, -8.74227e-08, 1, -1.19209e-07, 1.49011e-08, 0.5, -1.3145e-14 )
@@ -2510,8 +2492,6 @@ this mesh instance is used level editor."
 [connection signal="timeout" from="BounceTimer" to="." method="_on_BounceTimer_timeout"]
 [connection signal="pressed" from="DeathScreen/Respawn" to="DeathScreen" method="_on_Respawn_pressed"]
 [connection signal="pressed" from="PauseMenu/Menu/Continue" to="PauseMenu" method="_on_Continue_pressed"]
-[connection signal="pressed" from="PauseMenu/Menu/Settings" to="PauseMenu" method="_on_Settings_pressed"]
-[connection signal="pressed" from="PauseMenu/Menu/Settings/SettingsMenu/SettingsBack" to="PauseMenu" method="_on_SettingsBack_pressed"]
 [connection signal="pressed" from="PauseMenu/Menu/Settings/SettingsMenu/Graphics" to="PauseMenu" method="_on_Graphics_pressed"]
 [connection signal="pressed" from="PauseMenu/Menu/Settings/SettingsMenu/Graphics/GraphicsMenu/GraphicsBack" to="PauseMenu" method="_on_GraphicsBack_pressed"]
 [connection signal="pressed" from="PauseMenu/Menu/Settings/SettingsMenu/Graphics/GraphicsMenu/PostProcessing" to="PauseMenu" method="_on_PostProcessing_pressed"]
