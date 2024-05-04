@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://source/maps/Map.gd" type="Script" id=1]
 [ext_resource path="res://source/environments/Environment1.tres" type="Environment" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://source/LevelEditor/MultiOptionSwitch.gd" type="Script" id=11]
 [ext_resource path="res://source/LevelEditor/ScrollGrabber.tres" type="StyleBox" id=12]
 [ext_resource path="res://source/LevelEditor/Scroll.tres" type="StyleBox" id=13]
+[ext_resource path="res://source/Documentation/Documentation.tscn" type="PackedScene" id=14]
 
 [sub_resource type="NavigationMesh" id=1]
 resource_local_to_scene = true
@@ -701,6 +702,9 @@ margin_bottom = 72.0
 script = ExtResource( 11 )
 options = PoolStringArray( "Bright", "Dark" )
 
+[node name="Documentation" parent="UI" instance=ExtResource( 14 )]
+visible = false
+
 [connection signal="text_entered" from="UI/Panel4/GroupLineEdit" to="." method="_on_GroupLineEdit_text_entered"]
 [connection signal="pressed" from="UI/Panel4/AddGroupButton" to="." method="_on_AddGroupButton_pressed"]
 [connection signal="value_changed" from="UI/GridSnapSpinBox" to="." method="_on_GridSnapSpinBox_value_changed"]
@@ -713,6 +717,7 @@ options = PoolStringArray( "Bright", "Dark" )
 [connection signal="file_selected" from="UI/SaveFileDialog" to="." method="_on_SaveFileDialog_file_selected"]
 [connection signal="file_selected" from="UI/LoadFileDialog" to="." method="_on_LoadFileDialog_file_selected"]
 [connection signal="pressed" from="UI/LevelSettingsButton" to="." method="_on_LevelSettingsButton_pressed"]
+[connection signal="pressed" from="UI/DocumentationButton" to="." method="_on_DocumentationButton_pressed"]
 [connection signal="pressed" from="UI/LevelSettings/CloseButton" to="." method="_on_LevelSettingsCloseButton_pressed"]
 [connection signal="value_changed" from="UI/LevelSettings/ThemeMultiOptionSwitch" to="." method="_on_ThemeMultiOptionSwitch_value_changed"]
 [connection signal="value_changed" from="UI/LevelSettings/MultiOptionSwitch" to="." method="_on_MultiOptionSwitch_value_changed"]

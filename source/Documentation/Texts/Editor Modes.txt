@@ -1,0 +1,15 @@
+You can change what mode you're in with the three buttons on the top of the screen.
+
+Object Mode:
+You can place and move obejcts in obejct mode.
+You can select what object to place from the Templates panel on the left side of the screen.
+
+Vertex Mode:
+Vertex mode is only available for draggable obejcts (Surface, PlayerMover).
+You can move the vertices of the object in this mode.
+LeftClick on vertices to select/deselect them.
+Vertices become Green when selected and become Yellow when not selected.
+Use WASDEQ to move the selected vertices based on the Compass.
+
+Variable Mode:
+You can change the variables of objects in this mode.

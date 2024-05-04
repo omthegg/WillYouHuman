@@ -26,7 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 6 )
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." groups=["EditorPanel"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_styles/panel = SubResource( 2 )
@@ -55,18 +55,6 @@ follow_focus = true
 scroll_horizontal_enabled = false
 
 [node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
-margin_right = 128.0
-margin_bottom = 40.0
-
-[node name="Button" type="Button" parent="ScrollContainer/GridContainer"]
-margin_right = 128.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 128, 40 )
-custom_fonts/font = ExtResource( 1 )
-custom_styles/hover = ExtResource( 4 )
-custom_styles/pressed = ExtResource( 2 )
-custom_styles/normal = ExtResource( 3 )
-text = "Documentation"
 
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.111
@@ -75,7 +63,7 @@ anchor_bottom = 0.099
 margin_left = 0.127991
 margin_bottom = -0.152008
 custom_fonts/font = SubResource( 1 )
-text = "Documentation Name"
+text = "Documentation"
 align = 1
 valign = 1
 
@@ -91,11 +79,10 @@ margin_bottom = -0.223999
 custom_colors/font_color_readonly = Color( 0.803922, 0.803922, 0.803922, 1 )
 custom_fonts/font = SubResource( 4 )
 custom_styles/read_only = SubResource( 3 )
-text = "Hello, this is a preview.
-aaaaaAAAAAAAAA
-I can hear the voicelines.. They are talking to me...
+text = "Select something from the left side of the screen to view its documentation.
 
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+If you're new, I suggest you start with \"Controls\",
+\"Editor Modes\", \"Compass\", \"Surface Object\"."
 readonly = true
 smooth_scrolling = true
 wrap_enabled = true

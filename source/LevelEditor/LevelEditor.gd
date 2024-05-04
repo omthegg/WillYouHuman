@@ -43,6 +43,8 @@ onready var map = $Map
 onready var map_navmesh = $Map/Navigation/NavigationMeshInstance
 onready var map_nav = $Map/Navigation
 
+onready var documentation = $UI/Documentation
+
 const NORMAL_CAMERA_SPEED = 15
 const FAST_CAMERA_SPEED = 30
 
@@ -946,3 +948,7 @@ func _on_control_focus_changed(control:Control):
 
 func _on_GridSnapSpinBox_value_changed(value):
 	snap = value
+
+
+func _on_DocumentationButton_pressed():
+	documentation.show()

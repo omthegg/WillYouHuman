@@ -13,7 +13,7 @@ var documentation_text:String
 onready var documentation_tab = get_parent().get_parent().get_parent()
 
 func _ready():
-	connect("pressed", self, "_on_button_pressed")
+	var _c = connect("pressed", self, "_on_button_pressed")
 	
 	rect_min_size = Vector2(128, 40)
 	rect_size = Vector2(128, 40)

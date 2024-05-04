@@ -1,0 +1,2 @@
+Before playing your level, you'll have to Save it.
+If you have any unsaved changes, the Play button will be disabled.

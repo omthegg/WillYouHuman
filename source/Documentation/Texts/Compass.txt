@@ -1,0 +1,2 @@
+The Compass is located at the top right corner of the screen.
+It is quite helpful when moving, rotating, and changing the variables of objects.
