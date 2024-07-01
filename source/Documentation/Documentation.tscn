@@ -79,7 +79,7 @@ margin_bottom = -0.223999
 custom_colors/font_color_readonly = Color( 0.803922, 0.803922, 0.803922, 1 )
 custom_fonts/font = SubResource( 4 )
 custom_styles/read_only = SubResource( 3 )
-text = "Select something from the left side of the screen to view its documentation.
+text = "Select something from the list on the left side of the screen to view its documentation.
 
 If you're new, I suggest you start with \"Controls\",
 \"Editor Modes\", \"Compass\", \"Surface Object\"."

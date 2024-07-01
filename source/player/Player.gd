@@ -197,7 +197,7 @@ func _ready():
 		$OmniLight.hide()
 	
 	wallrun_bar.show()
-
+	arms.hide()
 
 func _input(event):
 	if can_control:

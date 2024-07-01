@@ -1,0 +1,12 @@
+A Mover can move objects based on the numbers you give it.
+You must first put the desired objects into a group and put the name of said group into the "move_group" variable of the Mover.
+Movers can be triggered by Buttons.
+
+Variables:
+move_group: The name of the group of objects that you want to move.
+move_vector.x: The distance the objects will move on the X axis.
+move_vector.y: The distance the objects will move on the Y axis.
+move_vector.z: The distance the objects will move on the Z axis.
+time: The time the Mover will take to move the objects.
+
+You can see a preview of the location of objects after they get moved.

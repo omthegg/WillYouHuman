@@ -44,6 +44,10 @@ func shoot():
 							r.get_collider().damage(pellet_damage)
 						elif r.get_collider().is_in_group("EnemyHitbox"):
 							r.get_collider().get_parent().damage(pellet_damage)
+						elif r.get_collider().is_in_group("DestructibleBlock"):
+							r.get_collider().damage(pellet_damage)
+						elif r.get_collider().is_in_group("Bomb"):
+							r.get_collider().damage(pellet_damage)
 						
 						var si = Global.shot_impact.instance()
 						Global.map.add_child(si)

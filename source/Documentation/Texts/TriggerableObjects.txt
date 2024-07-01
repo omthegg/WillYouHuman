@@ -1,0 +1,7 @@
+Some objects can be triggered by Buttons.
+
+Triggerable objects include:
+Movers, BombSpawners
+
+You must first put the triggerable objects in groups and give the name of the group to the button.
+By using groups, you can trigger multiple objects at once.

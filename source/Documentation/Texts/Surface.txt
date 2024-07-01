@@ -15,7 +15,7 @@ The Random Material is used for giving surfaces randomly generated textures.
 The Random Textures are generated when playing the level.
 
 Variables:
-If you're familiar with game engines or modeling software, you already know what these do.
+If you're familiar with game engines or modeling software, you should already know what these do.
 UV_SCALE: Used to scale the texture.
 TRIPLANAR: Used to lock the texture to the global coordinates.
 UV_OFFSET: Used to offset the texture.

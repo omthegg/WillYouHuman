@@ -1,0 +1,5 @@
+You can put objects in groups on the left side of the screen in the Variables tab.
+Groups can be used for triggering objects and specifying which objects belong to which difficulty levels.
+Groups don't need to be created first. You just have to add the name of the group in the groups list in the Variables tab.
+You can remove an object from a group by hitting the X button next to the group name.
+Do not remove the object from the default groups.
