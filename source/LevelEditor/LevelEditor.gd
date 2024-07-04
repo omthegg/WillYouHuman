@@ -636,9 +636,11 @@ func is_mouse_on_ui():
 		var m = get_viewport().get_mouse_position()
 		var ep_pos = ep.rect_position
 		var ep_dim = ep.rect_size
-		if m.x > ep_pos.x and m.x < ep_pos.x + ep_dim.x and m.y > ep_pos.y and m.y < ep_pos.y + ep_dim.y:
+		#if m.x > ep_pos.x and m.x < ep_pos.x + ep_dim.x and m.y > ep_pos.y and m.y < ep_pos.y + ep_dim.y:
+		if ep.get_rect().has_point(m):
 			if ep.visible:
-				return true
+				if ep.get_parent().visible:
+					return true
 
 
 func _on_ObjectModeButton_pressed():

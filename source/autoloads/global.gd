@@ -68,6 +68,8 @@ var playing_custom_level = false
 
 var l = Label.new()
 
+var level_collectibles = 0
+
 
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
