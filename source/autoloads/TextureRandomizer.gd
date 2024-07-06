@@ -103,14 +103,14 @@ func sort_rects_array(rects_array: Array):
 func generate_random_textures_for_array(objects:Array, one_for_all:bool=true):
 	if one_for_all:
 		var texture = generate_random_texture()
+		var material = SpatialMaterial.new()
+		material.uv1_scale = Vector3(0.04, 0.04, 0.04)
+		material.uv1_triplanar = true
+		material.flags_world_triplanar = true
+		material.albedo_color = Global.map.color
+		material.albedo_texture = texture
 		for object in objects:
 			if (object.is_in_group("Polygon3D")) or (object is CSGShape):
-				var material = SpatialMaterial.new()
-				material.uv1_scale = Vector3(0.04, 0.04, 0.04)
-				material.uv1_triplanar = true
-				material.flags_world_triplanar = true
-				material.albedo_color = object.material.albedo_color
-				material.albedo_texture = texture
 				object.material = material
 	
 	else:
