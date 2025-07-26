@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1if00p2dy3s4"]
+
+[ext_resource type="Script" uid="uid://xlv6x4tfyycd" path="res://source/level_editor/object_button.gd" id="1_qoovd"]
+
+[sub_resource type="Environment" id="Environment_qoovd"]
+background_mode = 1
+background_color = Color(0.078125, 0.078125, 0.078125, 1)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 2.0
+
+[sub_resource type="World3D" id="World3D_is48c"]
+environment = SubResource("Environment_qoovd")
+
+[node name="ObjectButton" type="TextureButton"]
+anchors_preset = -1
+anchor_right = 0.0555556
+anchor_bottom = 0.0987654
+script = ExtResource("1_qoovd")
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="."]
+world_3d = SubResource("World3D_is48c")
+size = Vector2i(64, 64)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewport"]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(0.707107, -0.40558, 0.579228, 0, 0.819152, 0.573576, -0.707107, -0.40558, 0.579228, 1.5, 1.5, 1.5)
+projection = 1
+size = 2.0

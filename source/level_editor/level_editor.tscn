@@ -1,0 +1,168 @@
+[gd_scene load_steps=13 format=3 uid="uid://dgp6t48gtx87i"]
+
+[ext_resource type="Script" uid="uid://b3t4ll2spixth" path="res://source/level_editor/level_editor.gd" id="1_cxict"]
+[ext_resource type="Shader" uid="uid://cde1yf6ft5ae4" path="res://source/level_editor/grid.gdshader" id="1_eqloa"]
+[ext_resource type="Script" uid="uid://bi47r05wp7dvv" path="res://source/level_editor/player_camera.gd" id="2_uixsf"]
+[ext_resource type="PackedScene" uid="uid://b1if00p2dy3s4" path="res://source/level_editor/object_button.tscn" id="4_g8vfu"]
+[ext_resource type="PackedScene" uid="uid://c2lcq7ewvqidi" path="res://source/level_editor/move_tool.tscn" id="5_2uy5j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uixsf"]
+render_priority = 0
+shader = ExtResource("1_eqloa")
+shader_parameter/line_width = 0.04
+shader_parameter/grid_size = 1.0
+shader_parameter/line_color = Color(1, 0, 0, 1)
+shader_parameter/fill_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g8vfu"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8j87u"]
+material = SubResource("StandardMaterial3D_g8vfu")
+size = Vector2(50, 50)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_cxict"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_2uy5j"]
+plane = Plane(0, -1, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cxict"]
+shading_mode = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_g8vfu"]
+radius = 0.2
+height = 0.4
+radial_segments = 8
+rings = 4
+
+[node name="LevelEditor" type="Node3D"]
+script = ExtResource("1_cxict")
+
+[node name="Grid" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid"]
+material_override = SubResource("ShaderMaterial_uixsf")
+mesh = SubResource("PlaneMesh_8j87u")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid"]
+shape = SubResource("WorldBoundaryShape3D_cxict")
+disabled = true
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Grid"]
+shape = SubResource("WorldBoundaryShape3D_2uy5j")
+disabled = true
+
+[node name="PlayerCamera" type="Node3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 5, 0)
+script = ExtResource("2_uixsf")
+
+[node name="RayCast3D" type="RayCast3D" parent="PlayerCamera"]
+top_level = true
+target_position = Vector3(0, 0, 0)
+collide_with_areas = true
+
+[node name="Camera3D" type="Camera3D" parent="PlayerCamera"]
+transform = Transform3D(1, 0, 0, 0, 0.819152, 0.573576, 0, -0.573576, 0.819152, 0, 0, 0)
+fov = 90.0
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridControl" type="Control" parent="UI"]
+layout_mode = 1
+anchor_left = 0.049
+anchor_right = 0.215
+anchor_bottom = 0.099
+offset_left = -0.448002
+offset_right = 0.319992
+offset_bottom = -0.152008
+metadata/_edit_group_ = true
+
+[node name="GridLabel" type="Label" parent="UI/GridControl"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.292
+anchor_bottom = 0.5
+offset_right = -0.064003
+text = "Grid Y:"
+vertical_alignment = 1
+
+[node name="GridSpinBox" type="SpinBox" parent="UI/GridControl"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.292
+anchor_right = 0.784
+anchor_bottom = 0.5
+offset_left = -0.064003
+offset_right = 0.471985
+offset_bottom = -1.0
+allow_greater = true
+allow_lesser = true
+
+[node name="ObjectMenu" type="Control" parent="UI"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="UI/ObjectMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.498039)
+
+[node name="ItemList" type="ItemList" parent="UI/ObjectMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0555556
+anchor_top = 0.0987654
+anchor_right = 0.944444
+anchor_bottom = 0.901235
+metadata/_edit_use_anchors_ = true
+
+[node name="ObjectButton" parent="UI/ObjectMenu/ItemList" instance=ExtResource("4_g8vfu")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+
+[node name="PropertyMenu" type="Control" parent="UI"]
+visible = false
+layout_mode = 1
+anchor_right = 0.0347222
+anchor_bottom = 0.0617284
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PropertyMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="3DCursor" type="Node3D" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="3DCursor"]
+material_override = SubResource("StandardMaterial3D_cxict")
+mesh = SubResource("SphereMesh_g8vfu")
+
+[node name="MoveTool" parent="." instance=ExtResource("5_2uy5j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.20164, 0)
+
+[connection signal="value_changed" from="UI/GridControl/GridSpinBox" to="." method="_on_grid_spin_box_value_changed"]

@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://dmt5d1syw3k4n"]
+
+[ext_resource type="Script" uid="uid://by52ul68bhs5b" path="res://source/level_editor/move_arrow.gd" id="1_mchm3"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mchm3"]
+height = 0.3
+radius = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mchm3"]
+resource_local_to_scene = true
+no_depth_test = true
+shading_mode = 0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gg1o1"]
+top_radius = 0.0
+bottom_radius = 0.1
+height = 0.3
+radial_segments = 4
+rings = 0
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_mchm3"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_43m04"]
+plane = Plane(0, -1, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43m04"]
+resource_local_to_scene = true
+no_depth_test = true
+shading_mode = 0
+
+[node name="MoveArrow" type="Area3D" groups=["MoveArrow"]]
+script = ExtResource("1_mchm3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_mchm3")
+
+[node name="Tip" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tip"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_mchm3")
+mesh = SubResource("CylinderMesh_gg1o1")
+skeleton = NodePath("../..")
+
+[node name="CursorPlane" type="StaticBody3D" parent="Tip"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tip/CursorPlane"]
+shape = SubResource("WorldBoundaryShape3D_mchm3")
+disabled = true
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Tip/CursorPlane"]
+shape = SubResource("WorldBoundaryShape3D_43m04")
+disabled = true
+
+[node name="Line" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_43m04")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dewylcfpmmaop"]
+
+[ext_resource type="Script" uid="uid://qhivmob45286" path="res://source/player/player.gd" id="1_jct2x"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_jct2x")
