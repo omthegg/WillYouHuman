@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://assets/models/player/4/wyh_shelly_ply4.glb" type="PackedScene" id=1]
-
-[node name="PlayerModel2" instance=ExtResource( 1 )]

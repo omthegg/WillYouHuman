@@ -1,6 +1,0 @@
-Variables change how an object behaves.
-Variables can be changed in the Variables tab.
-Only the variables of placed objects can be changed.
-To change an object's variables, the object must first be selected.
-On the right side of the Variables tab, you can change the variables of the selected object.
-On the left side, you can add the object to Groups.
