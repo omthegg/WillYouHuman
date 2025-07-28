@@ -20,9 +20,11 @@ extends Node3D
 @onready var tip:Node3D = $Tip
 @onready var dragging_component:Area3D = $DraggingComponent
 
+var previous_global_position:Vector3 = Vector3.ZERO
 
 func _ready() -> void:
 	refresh_tip()
+	previous_global_position = global_position
 
 
 func refresh_tip() -> void:
@@ -45,3 +47,12 @@ func refresh_tip() -> void:
 	line.mesh = Global.create_line_mesh(vertices)
 	mesh_instance.material_override.albedo_color = color
 	line.material_override.albedo_color = color
+
+
+func _physics_process(_delta):
+	if top_level:
+		if global_position != previous_global_position:
+			var position_difference:Vector3 = global_position - previous_global_position
+			get_parent().global_position += position_difference
+	
+	previous_global_position = global_position

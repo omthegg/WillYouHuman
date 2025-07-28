@@ -1,4 +1,5 @@
 res://source/level_editor
+res://source/primitives/box
 res://source/player
 res://source/autoloads
 res://source/environments

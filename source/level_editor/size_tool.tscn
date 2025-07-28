@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxnmakt4ofm0x"]
+
+[ext_resource type="PackedScene" uid="uid://dk0m5b24l772" path="res://source/level_editor/dragging_component.tscn" id="1_fq5p2"]
+[ext_resource type="Script" uid="uid://hds4d37mdynu" path="res://source/level_editor/size_tool.gd" id="1_xhmie"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fq5p2"]
+shading_mode = 0
+albedo_color = Color(1, 0.398438, 0.990601, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_fq5p2"]
+material = SubResource("StandardMaterial3D_fq5p2")
+radius = 0.2
+height = 0.4
+radial_segments = 8
+rings = 4
+
+[node name="SizeTool" type="Node3D"]
+script = ExtResource("1_xhmie")
+
+[node name="DraggingComponent" parent="." instance=ExtResource("1_fq5p2")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_fq5p2")
