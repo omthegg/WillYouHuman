@@ -27,7 +27,7 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("left_click"):
 		if RayCast.is_colliding():
 			var collider:CollisionObject3D = RayCast.get_collider()
-			if collider.is_in_group("MoveArrow"):
+			if collider.is_in_group("Draggable"):
 				collider.start_grab()
 
 func _physics_process(delta: float) -> void:

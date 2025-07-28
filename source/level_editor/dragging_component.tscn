@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dk0m5b24l772"]
+
+[ext_resource type="Script" uid="uid://ccn2s86ki4uab" path="res://source/level_editor/dragging_component.gd" id="1_y4ujt"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_y4ujt"]
+radius = 0.2
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_y4ujt"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_38gy0"]
+plane = Plane(0, -1, 0, 0)
+
+[node name="DraggingComponent" type="Area3D" groups=["Draggable"]]
+script = ExtResource("1_y4ujt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_y4ujt")
+
+[node name="CursorPlane" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CursorPlane"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_y4ujt")
+disabled = true
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CursorPlane"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_38gy0")
+disabled = true

@@ -1,10 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmt5d1syw3k4n"]
+[gd_scene load_steps=6 format=3 uid="uid://dmt5d1syw3k4n"]
 
 [ext_resource type="Script" uid="uid://by52ul68bhs5b" path="res://source/level_editor/move_arrow.gd" id="1_mchm3"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_mchm3"]
-height = 0.3
-radius = 0.1
+[ext_resource type="PackedScene" uid="uid://dk0m5b24l772" path="res://source/level_editor/dragging_component.tscn" id="2_43m04"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mchm3"]
 resource_local_to_scene = true
@@ -18,22 +15,13 @@ height = 0.3
 radial_segments = 4
 rings = 0
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_mchm3"]
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_43m04"]
-plane = Plane(0, -1, 0, 0)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43m04"]
 resource_local_to_scene = true
 no_depth_test = true
 shading_mode = 0
 
-[node name="MoveArrow" type="Area3D" groups=["MoveArrow"]]
+[node name="MoveArrow" type="Node3D"]
 script = ExtResource("1_mchm3")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-shape = SubResource("CylinderShape3D_mchm3")
 
 [node name="Tip" type="Node3D" parent="."]
 
@@ -43,15 +31,7 @@ material_override = SubResource("StandardMaterial3D_mchm3")
 mesh = SubResource("CylinderMesh_gg1o1")
 skeleton = NodePath("../..")
 
-[node name="CursorPlane" type="StaticBody3D" parent="Tip"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tip/CursorPlane"]
-shape = SubResource("WorldBoundaryShape3D_mchm3")
-disabled = true
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Tip/CursorPlane"]
-shape = SubResource("WorldBoundaryShape3D_43m04")
-disabled = true
-
 [node name="Line" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_43m04")
+
+[node name="DraggingComponent" parent="." instance=ExtResource("2_43m04")]
