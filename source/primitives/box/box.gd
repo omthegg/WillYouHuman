@@ -25,6 +25,13 @@ func _physics_process(_delta):
 	size.y = distance_y
 	size.z = distance_z
 	
+	if size.x == 0:
+		size.x = 2
+	if size.y == 0:
+		size.y = 2
+	if size.z == 0:
+		size.z = 2
+	
 	middle_x = (st_xp.global_position + st_xn.global_position)/2
 	middle_y = (st_yp.global_position + st_yn.global_position)/2
 	middle_z = (st_zp.global_position + st_zn.global_position)/2
