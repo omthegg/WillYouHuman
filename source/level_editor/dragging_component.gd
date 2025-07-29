@@ -5,6 +5,8 @@ extends Area3D
 		move_vector = value
 		cursor_plane.look_at(move_vector)
 
+@export var toggles_top_level:bool = true
+
 @onready var collision_shape:CollisionShape3D = $CollisionShape3D
 @onready var cursor_plane_collision_shape1:CollisionShape3D = $CursorPlane/CollisionShape3D
 @onready var cursor_plane_collision_shape2:CollisionShape3D = $CursorPlane/CollisionShape3D2
@@ -22,7 +24,7 @@ func _input(_event):
 
 func _physics_process(_delta: float) -> void:
 	if grabbed:
-		get_parent().global_position = origin + (cursor.position - grab_origin) * move_vector
+		get_parent().global_position = origin + (cursor.position - grab_origin) * abs(move_vector)
 
 
 func start_grab() -> void:
@@ -32,11 +34,13 @@ func start_grab() -> void:
 	collision_shape.disabled = true
 	grab_origin = cursor.position
 	origin = get_parent().global_position
-	get_parent().top_level = true
+	if toggles_top_level:
+		get_parent().top_level = true
 
 func stop_grab() -> void:
 	grabbed = false
 	cursor_plane_collision_shape1.disabled = true
 	cursor_plane_collision_shape2.disabled = true
 	collision_shape.disabled = false
-	get_parent().top_level = false
+	if toggles_top_level:
+		get_parent().top_level = false

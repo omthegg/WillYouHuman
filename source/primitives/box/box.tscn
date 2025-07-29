@@ -1,29 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://gfffbq34nqfh"]
+[gd_scene load_steps=3 format=3 uid="uid://gfffbq34nqfh"]
 
+[ext_resource type="Script" uid="uid://p277wtd5kx8k" path="res://source/primitives/box/box.gd" id="1_dasfb"]
 [ext_resource type="PackedScene" uid="uid://bxnmakt4ofm0x" path="res://source/level_editor/size_tool.tscn" id="1_nrq82"]
 
 [node name="Box" type="CSGBox3D"]
+script = ExtResource("1_dasfb")
 
-[node name="SizeTool" parent="." instance=ExtResource("1_nrq82")]
+[node name="SizeToolXP" parent="." instance=ExtResource("1_nrq82")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+top_level = true
 move_vector = Vector3(1, 0, 0)
 
-[node name="SizeTool2" parent="." instance=ExtResource("1_nrq82")]
+[node name="SizeToolXN" parent="." instance=ExtResource("1_nrq82")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
-move_vector = Vector3(1, 0, 0)
+top_level = true
+move_vector = Vector3(-1, 0, 0)
 
-[node name="SizeTool3" parent="." instance=ExtResource("1_nrq82")]
+[node name="SizeToolYP" parent="." instance=ExtResource("1_nrq82")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+top_level = true
 move_vector = Vector3(0, 1, 0)
 
-[node name="SizeTool4" parent="." instance=ExtResource("1_nrq82")]
+[node name="SizeToolYN" parent="." instance=ExtResource("1_nrq82")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+top_level = true
 move_vector = Vector3(0, -1, 0)
 
-[node name="SizeTool5" parent="." instance=ExtResource("1_nrq82")]
+[node name="SizeToolZP" parent="." instance=ExtResource("1_nrq82")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+top_level = true
 move_vector = Vector3(0, 0, 1)
 
-[node name="SizeTool6" parent="." instance=ExtResource("1_nrq82")]
+[node name="SizeToolZN" parent="." instance=ExtResource("1_nrq82")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
-move_vector = Vector3(0, 0, 1)
+top_level = true
+move_vector = Vector3(0, 0, -1)
