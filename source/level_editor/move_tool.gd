@@ -8,6 +8,7 @@ var previous_global_position:Vector3 = Vector3.ZERO
 
 func _ready() -> void:
 	camera = get_viewport().get_camera_3d()
+	global_position = get_parent().global_position
 	previous_global_position = global_position
 
 func _physics_process(_delta):

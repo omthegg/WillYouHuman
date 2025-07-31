@@ -96,8 +96,9 @@ func add_editor_highlight(node3d:Node3D) -> MeshInstance3D:
 
 
 func remove_editor_highlight(node3d: Node3D) -> void:
-	node3d.get_node("EditorHighlight").name = "EditorHighlightDeleted"
-	node3d.get_node("EditorHighlightDeleted").queue_free()
+	if is_instance_valid(node3d.get_node_or_null("EditorHighlight")):
+		node3d.get_node("EditorHighlight").name = "EditorHighlightDeleted"
+		node3d.get_node("EditorHighlightDeleted").queue_free()
 
 
 func get_3d_aabb(node: Node) -> AABB:
@@ -122,5 +123,6 @@ func add_move_tool(node3d: Node3D) -> void:
 
 
 func remove_move_tool(node3d:Node3D) -> void:
-	node3d.get_node("MoveTool").name = "MoveToolDeleted"
-	node3d.get_node("MoveToolDeleted").queue_free()
+	if is_instance_valid(node3d.get_node_or_null("MoveTool")):
+		node3d.get_node("MoveTool").name = "MoveToolDeleted"
+		node3d.get_node("MoveToolDeleted").queue_free()
