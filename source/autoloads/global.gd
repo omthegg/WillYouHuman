@@ -78,9 +78,6 @@ func add_editor_highlight(node3d:Node3D) -> MeshInstance3D:
 	var box_mesh:BoxMesh = BoxMesh.new()
 	box_mesh.size = aabb.size
 	
-	#var array_mesh:ArrayMesh = ArrayMesh.new()
-	#array_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_LINES, box_mesh.get_mesh_arrays())
-	
 	var material = StandardMaterial3D.new()
 	material.albedo_color = Color.DEEP_SKY_BLUE
 	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
@@ -90,7 +87,7 @@ func add_editor_highlight(node3d:Node3D) -> MeshInstance3D:
 	var mesh_instance:MeshInstance3D = MeshInstance3D.new()
 	node3d.add_child(mesh_instance)
 	mesh_instance.mesh = box_mesh
-	mesh_instance.global_position = aabb.position + aabb.size/2
+	mesh_instance.global_position = node3d.global_position
 	mesh_instance.name = "EditorHighlight"
 	mesh_instance.scale *= 1.01
 	mesh_instance.material_override = material
@@ -121,6 +118,7 @@ func get_3d_aabb(node: Node) -> AABB:
 func add_move_tool(node3d: Node3D) -> void:
 	var mt:Node3D = move_tool.instantiate()
 	node3d.add_child(mt, true)
+	#mt.global_position = node3d.global_position
 
 
 func remove_move_tool(node3d:Node3D) -> void:

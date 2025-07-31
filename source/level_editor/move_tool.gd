@@ -17,5 +17,7 @@ func _physics_process(_delta):
 			get_parent().global_position += position_difference
 			if get_parent() is CSGBox3D:
 				get_parent().reset_size_tools()
+				get_parent().set_middles()
+				get_parent().set_previous_middles()
 	
 	previous_global_position = global_position

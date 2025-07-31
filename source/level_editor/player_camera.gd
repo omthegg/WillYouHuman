@@ -42,16 +42,15 @@ func _input(event: InputEvent) -> void:
 					
 				else:
 					for object:Node in editor.selected_objects:
-						if is_instance_valid(object.get_node_or_null("EditorHighlight")):
-							Global.remove_editor_highlight(object)
-							Global.remove_move_tool(object)
+						if object != collider:
+							if is_instance_valid(object.get_node_or_null("EditorHighlight")):
+								Global.remove_editor_highlight(object)
+								Global.remove_move_tool(object)
 					
 					editor.selected_objects.clear()
 					editor.selected_objects.append(collider)
-					if is_instance_valid(collider.get_node_or_null("EditorHighlight")):
-						Global.remove_editor_highlight(collider)
-						Global.remove_move_tool(collider)
 					
+					#if editor.selected_objects[0] != collider:
 					Global.add_editor_highlight(collider)
 					Global.add_move_tool(collider)
 	
