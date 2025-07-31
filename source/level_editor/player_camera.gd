@@ -33,18 +33,21 @@ func _input(event: InputEvent) -> void:
 					if collider in editor.selected_objects:
 						editor.selected_objects.erase(collider)
 						if is_instance_valid(collider.get_node_or_null("EditorHighlight")):
-							collider.get_node("EditorHighlight").queue_free()
+							collider.get_node("EditorHighlight").name = "EditorHighlightDeleted"
+							collider.get_node("EditorHighlightDeleted").queue_free()
 					else:
 						editor.selected_objects.append(collider)
 						Global.create_editor_highlight(collider)
 				else:
 					for object:Node in editor.selected_objects:
 						if is_instance_valid(object.get_node_or_null("EditorHighlight")):
-							object.get_node("EditorHighlight").queue_free()
+							object.get_node("EditorHighlight").name = "EditorHighlightDeleted"
+							object.get_node("EditorHighlightDeleted").queue_free()
 					editor.selected_objects.clear()
 					editor.selected_objects.append(collider)
 					if is_instance_valid(collider.get_node_or_null("EditorHighlight")):
-							collider.get_node("EditorHighlight").queue_free() 
+							collider.get_node("EditorHighlight").name = "EditorHighlightDeleted"
+							collider.get_node("EditorHighlightDeleted").queue_free() 
 					Global.create_editor_highlight(collider)
 	
 	
