@@ -69,3 +69,44 @@ func create_line_mesh(vertices:PackedVector3Array) -> ArrayMesh:
 	arrays[Mesh.ARRAY_VERTEX] = vertices
 	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_LINES, arrays)
 	return mesh
+
+
+func create_editor_highlight(object:Node3D) -> MeshInstance3D:
+	var aabb = get_node3d_aabb(object)
+	var box_mesh:BoxMesh = BoxMesh.new()
+	box_mesh.size = aabb.size
+	
+	#var array_mesh:ArrayMesh = ArrayMesh.new()
+	#array_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_LINES, box_mesh.get_mesh_arrays())
+	
+	var material = StandardMaterial3D.new()
+	material.albedo_color = Color.DEEP_SKY_BLUE
+	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	material.albedo_color.a = 0.5
+	
+	var mesh_instance:MeshInstance3D = MeshInstance3D.new()
+	object.add_child(mesh_instance)
+	mesh_instance.mesh = box_mesh
+	mesh_instance.global_position = aabb.position + aabb.size/2
+	mesh_instance.name = "EditorHighlight"
+	mesh_instance.scale *= 1.01
+	mesh_instance.material_override = material
+	
+	
+	return mesh_instance
+
+
+func get_node3d_aabb(node: Node3D) -> AABB:
+	var scene_aabb:AABB = AABB()
+	
+	if node is VisualInstance3D:
+		scene_aabb = node.get_aabb()
+	
+	for child in node.get_children():
+		if child is Node3D:
+			var child_aabb:AABB = get_node3d_aabb(child)
+			if child_aabb.size != Vector3.ZERO: # Ignore empty AABBs
+				scene_aabb = scene_aabb.merge(child_aabb)
+	
+	return scene_aabb

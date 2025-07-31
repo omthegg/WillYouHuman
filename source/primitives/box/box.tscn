@@ -4,6 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://bxnmakt4ofm0x" path="res://source/level_editor/size_tool.tscn" id="1_nrq82"]
 
 [node name="Box" type="CSGBox3D"]
+use_collision = true
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_dasfb")
 
 [node name="SizeToolXP" parent="." instance=ExtResource("1_nrq82")]
