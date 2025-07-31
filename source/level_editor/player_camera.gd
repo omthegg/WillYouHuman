@@ -33,22 +33,27 @@ func _input(event: InputEvent) -> void:
 					if collider in editor.selected_objects:
 						editor.selected_objects.erase(collider)
 						if is_instance_valid(collider.get_node_or_null("EditorHighlight")):
-							collider.get_node("EditorHighlight").name = "EditorHighlightDeleted"
-							collider.get_node("EditorHighlightDeleted").queue_free()
+							Global.remove_editor_highlight(collider)
+							Global.remove_move_tool(collider)
 					else:
 						editor.selected_objects.append(collider)
-						Global.create_editor_highlight(collider)
+						Global.add_editor_highlight(collider)
+						Global.add_move_tool(collider)
+					
 				else:
 					for object:Node in editor.selected_objects:
 						if is_instance_valid(object.get_node_or_null("EditorHighlight")):
-							object.get_node("EditorHighlight").name = "EditorHighlightDeleted"
-							object.get_node("EditorHighlightDeleted").queue_free()
+							Global.remove_editor_highlight(object)
+							Global.remove_move_tool(object)
+					
 					editor.selected_objects.clear()
 					editor.selected_objects.append(collider)
 					if is_instance_valid(collider.get_node_or_null("EditorHighlight")):
-							collider.get_node("EditorHighlight").name = "EditorHighlightDeleted"
-							collider.get_node("EditorHighlightDeleted").queue_free() 
-					Global.create_editor_highlight(collider)
+						Global.remove_editor_highlight(collider)
+						Global.remove_move_tool(collider)
+					
+					Global.add_editor_highlight(collider)
+					Global.add_move_tool(collider)
 	
 	
 	if Input.is_action_just_pressed("left_click"):

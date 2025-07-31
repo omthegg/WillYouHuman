@@ -10,3 +10,6 @@ res://source/level_editor/move_arrow.tscn
 res://source/level_editor/dragging_component.tscn
 res://source/primitives/box/box.tscn
 res://source/level_editor/size_tool.tscn
+res://source/level_editor/move_arrow.gd
+res://source/level_editor/move_tool.gd
+res://source/primitives/box/box.gd

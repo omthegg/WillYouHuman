@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dmt5d1syw3k4n" path="res://source/level_editor/move_arrow.tscn" id="1_g8gcl"]
 
 [node name="MoveTool" type="Node3D"]
+top_level = true
 script = ExtResource("1_f328b")
 
 [node name="MoveArrowZ" parent="." instance=ExtResource("1_g8gcl")]

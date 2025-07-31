@@ -2,6 +2,8 @@ extends Node
 
 var mouse_sens:float = 0.003
 
+var move_tool:PackedScene = preload("res://source/level_editor/move_tool.tscn")
+
 #func _ready() -> void:
 	#var sprite:Sprite2D = Sprite2D.new()
 	#sprite.centered = false
@@ -71,8 +73,8 @@ func create_line_mesh(vertices:PackedVector3Array) -> ArrayMesh:
 	return mesh
 
 
-func create_editor_highlight(object:Node3D) -> MeshInstance3D:
-	var aabb = get_node3d_aabb(object)
+func add_editor_highlight(node3d:Node3D) -> MeshInstance3D:
+	var aabb = get_3d_aabb(node3d)
 	var box_mesh:BoxMesh = BoxMesh.new()
 	box_mesh.size = aabb.size
 	
@@ -86,18 +88,22 @@ func create_editor_highlight(object:Node3D) -> MeshInstance3D:
 	material.albedo_color.a = 0.5
 	
 	var mesh_instance:MeshInstance3D = MeshInstance3D.new()
-	object.add_child(mesh_instance)
+	node3d.add_child(mesh_instance)
 	mesh_instance.mesh = box_mesh
 	mesh_instance.global_position = aabb.position + aabb.size/2
 	mesh_instance.name = "EditorHighlight"
 	mesh_instance.scale *= 1.01
 	mesh_instance.material_override = material
 	
-	
 	return mesh_instance
 
 
-func get_node3d_aabb(node: Node3D) -> AABB:
+func remove_editor_highlight(node3d: Node3D) -> void:
+	node3d.get_node("EditorHighlight").name = "EditorHighlightDeleted"
+	node3d.get_node("EditorHighlightDeleted").queue_free()
+
+
+func get_3d_aabb(node: Node) -> AABB:
 	var scene_aabb:AABB = AABB()
 	
 	if node is VisualInstance3D:
@@ -105,8 +111,18 @@ func get_node3d_aabb(node: Node3D) -> AABB:
 	
 	for child in node.get_children():
 		if child is Node3D:
-			var child_aabb:AABB = get_node3d_aabb(child)
+			var child_aabb:AABB = get_3d_aabb(child)
 			if child_aabb.size != Vector3.ZERO: # Ignore empty AABBs
 				scene_aabb = scene_aabb.merge(child_aabb)
 	
 	return scene_aabb
+
+
+func add_move_tool(node3d: Node3D) -> void:
+	var mt:Node3D = move_tool.instantiate()
+	node3d.add_child(mt, true)
+
+
+func remove_move_tool(node3d:Node3D) -> void:
+	node3d.get_node("MoveTool").name = "MoveToolDeleted"
+	node3d.get_node("MoveToolDeleted").queue_free()

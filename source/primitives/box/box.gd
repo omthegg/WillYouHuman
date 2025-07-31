@@ -42,18 +42,23 @@ func _physics_process(_delta):
 	
 	if (middle_x_difference + middle_y_difference + middle_z_difference) != Vector3.ZERO:
 		global_position += middle_x_difference + middle_y_difference + middle_z_difference
-		st_xp.global_position = global_position + Vector3(size.x/2, 0, 0)
-		st_xn.global_position = global_position + Vector3(-size.x/2, 0, 0)
-		st_yp.global_position = global_position + Vector3(0, size.y/2, 0)
-		st_yn.global_position = global_position + Vector3(0, -size.y/2, 0)
-		st_zp.global_position = global_position + Vector3(0, 0, size.z/2)
-		st_zn.global_position = global_position + Vector3(0, 0, -size.z/2)
-		
+		reset_size_tools()
 		middle_x = (st_xp.global_position + st_xn.global_position)/2
 		middle_y = (st_yp.global_position + st_yn.global_position)/2
 		middle_z = (st_zp.global_position + st_zn.global_position)/2
-		
 	
 	previous_middle_x = middle_x
 	previous_middle_y = middle_y
 	previous_middle_z = middle_z
+
+
+func reset_size_tools() -> void:
+	st_xp.global_position = global_position + Vector3(size.x/2, 0, 0)
+	st_xn.global_position = global_position + Vector3(-size.x/2, 0, 0)
+	st_yp.global_position = global_position + Vector3(0, size.y/2, 0)
+	st_yn.global_position = global_position + Vector3(0, -size.y/2, 0)
+	st_zp.global_position = global_position + Vector3(0, 0, size.z/2)
+	st_zn.global_position = global_position + Vector3(0, 0, -size.z/2)
+	middle_x = (st_xp.global_position + st_xn.global_position)/2
+	middle_y = (st_yp.global_position + st_yn.global_position)/2
+	middle_z = (st_zp.global_position + st_zn.global_position)/2
