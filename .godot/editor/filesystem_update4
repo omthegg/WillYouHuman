@@ -11,3 +11,4 @@ res://source/primitives/box/box.tscn
 res://source/level_editor/size_tool.tscn
 res://source/level_editor/player_camera.gd
 res://source/autoloads/global.gd
+res://source/primitives/box/box.gd

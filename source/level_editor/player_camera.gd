@@ -33,24 +33,24 @@ func _input(event: InputEvent) -> void:
 					if collider in editor.selected_objects:
 						editor.selected_objects.erase(collider)
 						Global.remove_editor_highlight(collider)
-						Global.remove_move_tool(collider)
+						Global.remove_gizmos(collider)
 					else:
 						editor.selected_objects.append(collider)
 						Global.add_editor_highlight(collider)
-						Global.add_move_tool(collider)
+						Global.add_gizmos(collider)
 					
 				else:
 					for object:Node in editor.selected_objects:
 						if object != collider:
 							Global.remove_editor_highlight(object)
-							Global.remove_move_tool(object)
+							Global.remove_gizmos(object)
+					
+					if !(collider in editor.selected_objects):
+						Global.add_editor_highlight(collider)
+						Global.add_gizmos(collider)
 					
 					editor.selected_objects.clear()
 					editor.selected_objects.append(collider)
-					
-					#if editor.selected_objects[0] != collider:
-					Global.add_editor_highlight(collider)
-					Global.add_move_tool(collider)
 	
 	
 	if Input.is_action_just_pressed("left_click"):

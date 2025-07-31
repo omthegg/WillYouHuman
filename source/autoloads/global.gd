@@ -116,13 +116,17 @@ func get_3d_aabb(node: Node) -> AABB:
 	return scene_aabb
 
 
-func add_move_tool(node3d: Node3D) -> void:
+func add_gizmos(node3d: Node3D) -> void:
 	var mt:Node3D = move_tool.instantiate()
 	node3d.add_child(mt, true)
-	#mt.global_position = node3d.global_position
+	if node3d is CSGBox3D:
+		node3d.enable_size_tools()
 
 
-func remove_move_tool(node3d:Node3D) -> void:
+func remove_gizmos(node3d:Node3D) -> void:
 	if is_instance_valid(node3d.get_node_or_null("MoveTool")):
 		node3d.get_node("MoveTool").name = "MoveToolDeleted"
 		node3d.get_node("MoveToolDeleted").queue_free()
+	
+	if node3d is CSGBox3D:
+		node3d.disable_size_tools()

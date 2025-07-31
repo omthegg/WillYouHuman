@@ -8,6 +8,8 @@ extends CSGBox3D
 @onready var st_zp:Node3D = $SizeToolZP
 @onready var st_zn:Node3D = $SizeToolZN
 
+@onready var size_tools:Array = [st_xp, st_xn, st_yp, st_yn, st_zp, st_zn]
+
 @onready var middle_x:Vector3 = (st_xp.global_position + st_xn.global_position)/2
 @onready var middle_y:Vector3 = (st_yp.global_position + st_yn.global_position)/2
 @onready var middle_z:Vector3 = (st_zp.global_position + st_zn.global_position)/2
@@ -19,6 +21,10 @@ extends CSGBox3D
 var middle_x_difference:Vector3 = Vector3.ZERO
 var middle_y_difference:Vector3 = Vector3.ZERO
 var middle_z_difference:Vector3 = Vector3.ZERO
+
+func _ready():
+	disable_size_tools()
+
 
 func _physics_process(_delta):
 	var distance_x:float = st_xp.global_position.distance_to(st_xn.global_position)
@@ -68,3 +74,14 @@ func reset_size_tools() -> void:
 	st_yn.global_position = global_position + Vector3(0, -size.y/2, 0)
 	st_zp.global_position = global_position + Vector3(0, 0, size.z/2)
 	st_zn.global_position = global_position + Vector3(0, 0, -size.z/2)
+
+
+func enable_size_tools() -> void:
+	for size_tool in size_tools:
+		size_tool.show()
+		size_tool.get_node("DraggingComponent/CollisionShape3D").disabled = false
+
+func disable_size_tools() -> void:
+	for size_tool in size_tools:
+		size_tool.hide()
+		size_tool.get_node("DraggingComponent/CollisionShape3D").disabled = true
