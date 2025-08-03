@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ccn2s86ki4uab" path="res://source/level_editor/dragging_component.gd" id="1_y4ujt"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_y4ujt"]
-radius = 0.2
+radius = 0.1
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_y4ujt"]
 

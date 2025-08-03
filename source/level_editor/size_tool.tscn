@@ -10,8 +10,8 @@ albedo_color = Color(1, 0.398438, 0.990601, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_fq5p2"]
 material = SubResource("StandardMaterial3D_fq5p2")
-radius = 0.2
-height = 0.4
+radius = 0.1
+height = 0.2
 radial_segments = 8
 rings = 4
 

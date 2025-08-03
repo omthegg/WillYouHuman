@@ -13,19 +13,23 @@ ambient_light_energy = 2.0
 environment = SubResource("Environment_qoovd")
 
 [node name="ObjectButton" type="TextureButton"]
+custom_minimum_size = Vector2(64, 64)
 anchors_preset = -1
 anchor_right = 0.0555556
 anchor_bottom = 0.0987654
+ignore_texture_size = true
+stretch_mode = 0
 script = ExtResource("1_qoovd")
 metadata/_edit_use_anchors_ = true
 
 [node name="SubViewport" type="SubViewport" parent="."]
 world_3d = SubResource("World3D_is48c")
-size = Vector2i(64, 64)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="SubViewport"]
+transparent_bg = true
+size = Vector2i(128, 128)
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport"]
 transform = Transform3D(0.707107, -0.40558, 0.579228, 0, 0.819152, 0.573576, -0.707107, -0.40558, 0.579228, 1.5, 1.5, 1.5)
 projection = 1
 size = 2.0
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

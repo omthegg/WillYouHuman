@@ -133,10 +133,14 @@ color = Color(0, 0, 0, 0.498039)
 [node name="ItemList" type="ItemList" parent="UI/ObjectMenu"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0555556
-anchor_top = 0.0987654
-anchor_right = 0.944444
-anchor_bottom = 0.901235
+anchor_left = 0.056
+anchor_top = 0.099
+anchor_right = 0.944
+anchor_bottom = 0.901
+offset_left = -0.511948
+offset_top = -0.152027
+offset_right = 0.511963
+offset_bottom = 0.151978
 metadata/_edit_use_anchors_ = true
 
 [node name="ObjectButton" parent="UI/ObjectMenu/ItemList" instance=ExtResource("4_g8vfu")]
@@ -144,13 +148,16 @@ layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
+scene = ExtResource("6_fvn2l")
 
 [node name="PropertyMenu" type="Control" parent="UI"]
-visible = false
 layout_mode = 1
-anchor_right = 0.0347222
-anchor_bottom = 0.0617284
-metadata/_edit_use_anchors_ = true
+anchor_left = 0.833
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.383911
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/PropertyMenu"]
 layout_mode = 1

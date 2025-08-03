@@ -3,7 +3,7 @@ extends Node3D
 @onready var Camera:Camera3D = $Camera3D
 @onready var dragging_raycast:RayCast3D = $DraggingRayCast
 @onready var selection_raycast:RayCast3D = $SelectionRayCast
-@onready var cursor:Node3D = get_parent().cursor
+@onready var cursor:Node3D = %"3DCursor"
 @onready var editor:Node3D = get_parent()
 
 var speed:int = 10
@@ -58,6 +58,9 @@ func _input(event: InputEvent) -> void:
 			var collider:CollisionObject3D = dragging_raycast.get_collider()
 			if collider.is_in_group("Draggable"):
 				collider.start_grab()
+		
+		elif editor.selected_objects.size() == 0:
+			place()
 
 
 func _physics_process(delta: float) -> void:
@@ -78,4 +81,9 @@ func _physics_process(delta: float) -> void:
 	selection_raycast.target_position = to
 	
 	if dragging_raycast.is_colliding():
-		%"3DCursor".position = round(dragging_raycast.get_collision_point())
+		cursor.global_position = round(dragging_raycast.get_collision_point())
+
+
+func place() -> void:
+	var object:Object = editor.selected_scene.instantiate()
+	

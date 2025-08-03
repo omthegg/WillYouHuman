@@ -2,9 +2,15 @@ extends Node3D
 
 @onready var PlayerCamera:Node3D = $PlayerCamera
 @onready var Grid:StaticBody3D = $Grid
-@onready var cursor:Node3D = %"3DCursor"
+#@onready var cursor:Node3D = $"3DCursor"
 
 var selected_objects:Array = []
+
+var selected_scene:PackedScene
+
+var editible_variables:Dictionary = {
+	"material" = "Material"
+}
 
 func _physics_process(_delta: float) -> void:
 	Grid.position.x = PlayerCamera.position.x

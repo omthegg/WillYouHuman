@@ -1,3 +1,4 @@
+TextureButton
 CSGBox3D
 Node3D
 MeshInstance3D
@@ -7,7 +8,6 @@ Area3D
 StaticBody3D
 Camera3D
 SubViewport
-TextureButton
 VBoxContainer
 Control
 ItemList
