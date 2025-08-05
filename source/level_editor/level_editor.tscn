@@ -111,6 +111,36 @@ offset_bottom = -1.0
 allow_greater = true
 allow_lesser = true
 
+[node name="PropertyMenu" type="Control" parent="UI"]
+visible = false
+layout_mode = 1
+anchor_left = 0.833
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.383911
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="UI/PropertyMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PropertyMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/PropertyMenu/VBoxContainer"]
+layout_mode = 2
+text = "No properties to edit"
+
 [node name="ObjectMenu" type="Control" parent="UI"]
 unique_name_in_owner = true
 visible = false
@@ -150,22 +180,18 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 scene = ExtResource("6_fvn2l")
 
-[node name="PropertyMenu" type="Control" parent="UI"]
+[node name="SaveButton" type="Button" parent="UI"]
+visible = false
 layout_mode = 1
-anchor_left = 0.833
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 0.383911
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/PropertyMenu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = -1
+anchor_left = 0.381944
+anchor_top = 0.0123457
+anchor_right = 0.420528
+anchor_bottom = 0.0597284
+offset_right = -0.448002
+offset_bottom = 0.295998
+text = "Save"
+metadata/_edit_use_anchors_ = true
 
 [node name="3DCursor" type="Node3D" parent="."]
 unique_name_in_owner = true

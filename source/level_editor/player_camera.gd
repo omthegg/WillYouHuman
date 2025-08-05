@@ -51,6 +51,8 @@ func _input(event: InputEvent) -> void:
 					
 					editor.selected_objects.clear()
 					editor.selected_objects.append(collider)
+				
+				editor.update_property_menu()
 	
 	
 	if Input.is_action_just_pressed("left_click"):
@@ -85,5 +87,6 @@ func _physics_process(delta: float) -> void:
 
 
 func place() -> void:
-	var object:Object = editor.selected_scene.instantiate()
+	if editor.selected_scene:
+		var object:Object = editor.selected_scene.instantiate()
 	

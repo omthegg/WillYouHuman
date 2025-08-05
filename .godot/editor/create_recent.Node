@@ -1,3 +1,8 @@
+MenuButton
+Button
+Panel
+Label
+GraphEdit
 TextureButton
 CSGBox3D
 Node3D
@@ -7,8 +12,3 @@ CollisionShape3D
 Area3D
 StaticBody3D
 Camera3D
-SubViewport
-VBoxContainer
-Control
-ItemList
-ColorRect
