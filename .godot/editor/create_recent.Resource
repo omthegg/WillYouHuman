@@ -1,1 +1,2 @@
+StandardMaterial3D
 Environment

@@ -1,7 +1,8 @@
 res://source/environments/env1.tres
-res://source/level_editor/grid.gdshader
-res://source/level_editor/property_setter.tscn
 res://source/level_editor/level_editor.tscn
+res://source/level_editor/grid.gdshader
+res://source/materials/Procedural.tres
+res://source/autoloads/global.gd
 res://source/player/player.tscn
 res://source/level_editor/object_button.tscn
 res://source/level_editor/move_tool.tscn
@@ -9,5 +10,4 @@ res://source/level_editor/move_arrow.tscn
 res://source/level_editor/dragging_component.tscn
 res://source/primitives/box/box.tscn
 res://source/level_editor/size_tool.tscn
-res://source/level_editor/player_camera.gd
-res://source/level_editor/level_editor.gd
+res://source/level_editor/property_setter.tscn
