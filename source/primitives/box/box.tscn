@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://p277wtd5kx8k" path="res://source/primitives/box/box.gd" id="1_dasfb"]
 [ext_resource type="PackedScene" uid="uid://bxnmakt4ofm0x" path="res://source/level_editor/size_tool.tscn" id="1_nrq82"]
-[ext_resource type="Material" uid="uid://vcboss1fp468" path="res://source/materials/Procedural.tres" id="1_yxhv5"]
+[ext_resource type="Material" uid="uid://vcboss1fp468" path="res://source/materials/procedural.tres" id="1_yxhv5"]
 
 [node name="Box" type="CSGBox3D"]
 use_collision = true

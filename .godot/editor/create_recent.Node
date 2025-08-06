@@ -1,7 +1,10 @@
+SpinBox
+LineEdit
+TextEdit
+Label
 MenuButton
 Button
 Panel
-Label
 GraphEdit
 TextureButton
 CSGBox3D
@@ -10,5 +13,3 @@ MeshInstance3D
 CSGPolygon3D
 CollisionShape3D
 Area3D
-StaticBody3D
-Camera3D

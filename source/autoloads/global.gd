@@ -4,7 +4,8 @@ var mouse_sens:float = 0.003
 
 var move_tool:PackedScene = preload("res://source/level_editor/move_tool.tscn")
 
-var procedural_material:StandardMaterial3D = preload("res://source/materials/Procedural.tres")
+var procedural_material:StandardMaterial3D = preload("res://source/materials/procedural.tres")
+var glass_material:StandardMaterial3D = preload("res://source/materials/glass.tres")
 
 func _ready() -> void:
 	#var sprite:Sprite2D = Sprite2D.new()
@@ -14,6 +15,7 @@ func _ready() -> void:
 	#sprite.texture = generate_random_texture()
 	procedural_material.albedo_texture = generate_random_texture()
 	procedural_material.albedo_color = Color.ORANGE
+	glass_material.albedo_color = Color.BLUE
 
 
 func generate_random_texture(size:int = 1024) -> Texture2D:
