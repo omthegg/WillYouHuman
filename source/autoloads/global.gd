@@ -88,7 +88,7 @@ func add_editor_highlight(node3d:Node3D) -> MeshInstance3D:
 	material.albedo_color = Color.DEEP_SKY_BLUE
 	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	material.albedo_color.a = 0.5
+	material.albedo_color.a = 0.2
 	
 	var mesh_instance:MeshInstance3D = MeshInstance3D.new()
 	node3d.add_child(mesh_instance)

@@ -41,3 +41,5 @@ func _on_MaterialButton_id_pressed(id: int) -> void:
 	for i in material_button_popup.item_count:
 		if i != id:
 			material_button_popup.set_item_checked(i, false)
+	
+	editor.set_selected_objects_property(variable_name, materials[id])

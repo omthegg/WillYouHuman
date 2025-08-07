@@ -13,3 +13,4 @@ res://source/primitives/box/box.tscn
 res://source/level_editor/size_tool.tscn
 res://source/level_editor/property_setter.gd
 res://source/materials/procedural.tres
+res://source/autoloads/global.gd

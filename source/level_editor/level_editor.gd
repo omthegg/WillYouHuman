@@ -66,3 +66,8 @@ func add_property_setters() -> void:
 		var property_setter:Node = property_setter_scene.instantiate()
 		property_menu_vbox_container.add_child(property_setter)
 		property_setter.variable_name = v
+
+
+func set_selected_objects_property(property_name:String, value:Variant) -> void:
+	for object in selected_objects:
+		object.set(property_name, value)
