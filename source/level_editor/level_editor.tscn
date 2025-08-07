@@ -137,7 +137,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="UI/PropertyMenu/VBoxContainer"]
+[node name="NoPropertiesLabel" type="Label" parent="UI/PropertyMenu/VBoxContainer"]
 layout_mode = 2
 text = "No properties to edit"
 

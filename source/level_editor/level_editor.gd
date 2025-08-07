@@ -3,14 +3,18 @@ extends Node3D
 @onready var PlayerCamera:Node3D = $PlayerCamera
 @onready var Grid:StaticBody3D = $Grid
 @onready var property_menu:Control = $UI/PropertyMenu
+@onready var property_menu_vbox_container:VBoxContainer = $UI/PropertyMenu/VBoxContainer
+@onready var no_properties_label:Label = $UI/PropertyMenu/VBoxContainer/NoPropertiesLabel
 #@onready var cursor:Node3D = $"3DCursor"
+
+var property_setter_scene:PackedScene = preload("res://source/level_editor/property_setter.tscn")
 
 var selected_objects:Array = []
 
 var selected_scene:PackedScene
 
-var editible_variables:Dictionary = {
-	"material" = Variant.Type.TYPE_OBJECT,
+var editable_variables:Dictionary = {
+	"material" = TYPE_OBJECT,
 }
 
 func _physics_process(_delta: float) -> void:
@@ -27,7 +31,38 @@ func _on_grid_spin_box_value_changed(value: float) -> void:
 
 
 func update_property_menu() -> void:
+	for child in property_menu_vbox_container.get_children():
+		if child != no_properties_label:
+			child.queue_free()
+	
 	if selected_objects.size() == 0:
 		property_menu.hide()
 	else:
 		property_menu.show()
+		if selected_objects_are_same_type():
+			add_property_setters()
+			if property_menu_vbox_container.get_child_count() == 1:
+				no_properties_label.show()
+			else:
+				no_properties_label.hide()
+
+
+func selected_objects_are_same_type() -> bool:
+	for object in selected_objects:
+		if object.get_class() != selected_objects[0].get_class():
+			return false
+	
+	return true
+
+
+func add_property_setters() -> void:
+	var variables:PackedStringArray = []
+	for k in editable_variables:
+		if selected_objects[0].get(k):
+			if editable_variables.get(k) == typeof(selected_objects[0].get(k)):
+				variables.append(k)
+	
+	for v in variables:
+		var property_setter:Node = property_setter_scene.instantiate()
+		property_menu_vbox_container.add_child(property_setter)
+		property_setter.variable_name = v

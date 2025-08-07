@@ -1,6 +1,7 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://vcboss1fp468"]
 
 [resource]
+resource_name = "ProceduralMaterial"
 shading_mode = 0
 uv1_scale = Vector3(0.1, 0.1, 0.1)
 uv1_triplanar = true
