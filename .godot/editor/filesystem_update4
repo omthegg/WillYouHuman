@@ -11,6 +11,6 @@ res://source/level_editor/dragging_component.tscn
 res://source/primitives/box/box.tscn
 res://source/level_editor/size_tool.tscn
 res://source/level_editor/property_setter.tscn
-res://source/level_editor/size_tool.gd
-res://source/level_editor/property_setter.gd
 res://source/level_editor/level_editor.gd
+res://source/level_editor/player_camera.gd
+res://source/primitives/box/box.gd

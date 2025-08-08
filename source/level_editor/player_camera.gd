@@ -3,6 +3,7 @@ extends Node3D
 @onready var Camera:Camera3D = $Camera3D
 @onready var dragging_raycast:RayCast3D = $DraggingRayCast
 @onready var selection_raycast:RayCast3D = $SelectionRayCast
+@onready var placement_raycast:RayCast3D = $PlacementRayCast
 @onready var cursor:Node3D = %"3DCursor"
 @onready var editor:Node3D = get_parent()
 
@@ -81,12 +82,23 @@ func _physics_process(delta: float) -> void:
 	dragging_raycast.target_position = to
 	selection_raycast.position = from
 	selection_raycast.target_position = to
+	placement_raycast.position = from
+	placement_raycast.target_position = to
 	
 	if dragging_raycast.is_colliding():
 		cursor.global_position = round(dragging_raycast.get_collision_point())
 
 
 func place() -> void:
-	if editor.selected_scene:
+	if editor.selected_scene and placement_raycast.is_colliding():
 		var object:Object = editor.selected_scene.instantiate()
-	
+		editor.level.add_child(object)
+		if object.has_method("reset_size_tools"):
+			object.set_size_tools_top_level(false)
+		object.global_position = placement_raycast.get_collision_point()
+		if object.has_method("reset_size_tools"):
+			#await get_tree().process_frame
+			object.reset_size_tools()
+			object.set_size_tools_top_level(true)
+			object.set_middles()
+			object.set_previous_middles()

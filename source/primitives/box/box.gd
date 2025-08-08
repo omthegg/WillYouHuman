@@ -22,6 +22,8 @@ var middle_x_difference:Vector3 = Vector3.ZERO
 var middle_y_difference:Vector3 = Vector3.ZERO
 var middle_z_difference:Vector3 = Vector3.ZERO
 
+var size_tools_enabled:bool = true
+
 func _ready():
 	disable_size_tools()
 
@@ -77,11 +79,22 @@ func reset_size_tools() -> void:
 
 
 func enable_size_tools() -> void:
+	size_tools_enabled = true
 	for size_tool in size_tools:
 		size_tool.show()
 		size_tool.get_node("DraggingComponent/CollisionShape3D").disabled = false
 
 func disable_size_tools() -> void:
+	size_tools_enabled = false
 	for size_tool in size_tools:
 		size_tool.hide()
 		size_tool.get_node("DraggingComponent/CollisionShape3D").disabled = true
+
+
+func set_size_tools_top_level(value:bool) -> void:
+	st_xp.top_level = value
+	st_xn.top_level = value
+	st_yp.top_level = value
+	st_yn.top_level = value
+	st_zp.top_level = value
+	st_zn.top_level = value

@@ -38,6 +38,8 @@ rings = 4
 script = ExtResource("1_cxict")
 
 [node name="Grid" type="StaticBody3D" parent="."]
+collision_layer = 4
+collision_mask = 4
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Grid"]
 material_override = SubResource("ShaderMaterial_uixsf")
@@ -46,11 +48,9 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Grid"]
 shape = SubResource("WorldBoundaryShape3D_cxict")
-disabled = true
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Grid"]
 shape = SubResource("WorldBoundaryShape3D_2uy5j")
-disabled = true
 
 [node name="PlayerCamera" type="Node3D" parent="."]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 5, 0)
@@ -66,6 +66,12 @@ top_level = true
 target_position = Vector3(0, 0, 0)
 collision_mask = 2
 collide_with_areas = true
+
+[node name="PlacementRayCast" type="RayCast3D" parent="PlayerCamera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+top_level = true
+target_position = Vector3(0, 0, 0)
+collision_mask = 4
 
 [node name="Camera3D" type="Camera3D" parent="PlayerCamera"]
 transform = Transform3D(1, 0, 0, 0, 0.819152, 0.573576, 0, -0.573576, 0.819152, 0, 0, 0)

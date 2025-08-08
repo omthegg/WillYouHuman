@@ -5,6 +5,7 @@ extends Node3D
 @onready var property_menu:Control = $UI/PropertyMenu
 @onready var property_menu_vbox_container:VBoxContainer = $UI/PropertyMenu/VBoxContainer
 @onready var no_properties_label:Label = $UI/PropertyMenu/VBoxContainer/NoPropertiesLabel
+@onready var level:Node3D = $Level
 #@onready var cursor:Node3D = $"3DCursor"
 
 var property_setter_scene:PackedScene = preload("res://source/level_editor/property_setter.tscn")
