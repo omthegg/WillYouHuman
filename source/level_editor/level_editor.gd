@@ -15,6 +15,7 @@ var selected_scene:PackedScene
 
 var editable_variables:Dictionary = {
 	"material" = TYPE_OBJECT,
+	"flip_faces" = TYPE_BOOL
 }
 
 func _physics_process(_delta: float) -> void:
@@ -58,7 +59,7 @@ func selected_objects_are_same_type() -> bool:
 func add_property_setters() -> void:
 	var variables:PackedStringArray = []
 	for k in editable_variables:
-		if selected_objects[0].get(k):
+		if selected_objects[0].get(k) != null:
 			if editable_variables.get(k) == typeof(selected_objects[0].get(k)):
 				variables.append(k)
 	

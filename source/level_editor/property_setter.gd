@@ -7,6 +7,7 @@ extends Control
 @onready var label:Label = $Label
 @onready var line_edit:LineEdit = $LineEdit
 @onready var spinbox:SpinBox = $SpinBox
+@onready var checkbox:CheckBox = $CheckBox
 
 
 var variable_name:String = "":
@@ -24,6 +25,12 @@ var variable_name:String = "":
 				
 				material_button_popup.set_item_checked(id, true)
 				#material_button.text = "Material: " + 
+			
+			TYPE_BOOL:
+				checkbox.text = variable_name.capitalize()
+				checkbox.show()
+				checkbox.button_pressed = editor.selected_objects[0].get(variable_name)
+				
 
 
 var materials = [
@@ -43,3 +50,7 @@ func _on_MaterialButton_id_pressed(id: int) -> void:
 			material_button_popup.set_item_checked(i, false)
 	
 	editor.set_selected_objects_property(variable_name, materials[id])
+
+
+func _on_check_box_toggled(toggled_on):
+	editor.set_selected_objects_property(variable_name, toggled_on)

@@ -1,3 +1,8 @@
+CheckBox
+CSGCombiner3D
+CSGPolygon3D
+Node3D
+OccluderInstance3D
 SpinBox
 LineEdit
 TextEdit
@@ -8,8 +13,3 @@ Panel
 GraphEdit
 TextureButton
 CSGBox3D
-Node3D
-MeshInstance3D
-CSGPolygon3D
-CollisionShape3D
-Area3D

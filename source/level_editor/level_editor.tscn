@@ -201,6 +201,8 @@ visible = false
 material_override = SubResource("StandardMaterial3D_cxict")
 mesh = SubResource("SphereMesh_g8vfu")
 
-[node name="Box" parent="." instance=ExtResource("6_fvn2l")]
+[node name="Level" type="Node3D" parent="."]
+
+[node name="Box" parent="Level" instance=ExtResource("6_fvn2l")]
 
 [connection signal="value_changed" from="UI/GridControl/GridSpinBox" to="." method="_on_grid_spin_box_value_changed"]
