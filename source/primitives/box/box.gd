@@ -56,6 +56,11 @@ func _physics_process(_delta):
 		set_middles()
 	
 	set_previous_middles()
+	
+	# Resize selection box if we have one
+	var highlight:MeshInstance3D = get_node_or_null("EditorHighlight")
+	if highlight:
+		highlight.mesh.size = size
 
 
 func set_middles() -> void:

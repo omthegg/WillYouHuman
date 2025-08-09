@@ -53,7 +53,7 @@ shape = SubResource("WorldBoundaryShape3D_cxict")
 shape = SubResource("WorldBoundaryShape3D_2uy5j")
 
 [node name="PlayerCamera" type="Node3D" parent="."]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 5, 0)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 5, 5, 5)
 script = ExtResource("2_uixsf")
 
 [node name="DraggingRayCast" type="RayCast3D" parent="PlayerCamera"]
@@ -114,6 +114,7 @@ anchor_bottom = 0.5
 offset_left = -0.064003
 offset_right = 0.471985
 offset_bottom = -1.0
+step = 0.5
 allow_greater = true
 allow_lesser = true
 

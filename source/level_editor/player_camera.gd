@@ -86,7 +86,7 @@ func _physics_process(delta: float) -> void:
 	placement_raycast.target_position = to
 	
 	if dragging_raycast.is_colliding():
-		cursor.global_position = round(dragging_raycast.get_collision_point())
+		cursor.global_position = snapped(dragging_raycast.get_collision_point(), Vector3(0.5, 0.5, 0.5))#round(dragging_raycast.get_collision_point())
 
 
 func place() -> void:
