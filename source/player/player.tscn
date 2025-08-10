@@ -1,6 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://dewylcfpmmaop"]
+[gd_scene load_steps=5 format=3 uid="uid://dewylcfpmmaop"]
 
 [ext_resource type="Script" uid="uid://qhivmob45286" path="res://source/player/player.gd" id="1_jct2x"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jct2x"]
+radius = 0.3
+height = 1.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jct2x"]
+shading_mode = 0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jct2x"]
+material = SubResource("StandardMaterial3D_jct2x")
+radius = 0.3
+height = 1.8
+
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_jct2x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_jct2x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_jct2x")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+fov = 90.0

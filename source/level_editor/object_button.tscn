@@ -23,6 +23,7 @@ script = ExtResource("1_qoovd")
 metadata/_edit_use_anchors_ = true
 
 [node name="SubViewport" type="SubViewport" parent="."]
+own_world_3d = true
 world_3d = SubResource("World3D_is48c")
 transparent_bg = true
 size = Vector2i(128, 128)

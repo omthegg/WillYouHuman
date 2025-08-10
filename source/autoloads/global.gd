@@ -1,6 +1,6 @@
 extends Node
 
-var mouse_sens:float = 0.003
+var mouse_sens:float = 0.14
 
 var move_tool:PackedScene = preload("res://source/level_editor/move_tool.tscn")
 

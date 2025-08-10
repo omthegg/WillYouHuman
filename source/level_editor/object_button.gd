@@ -11,6 +11,7 @@ func _ready() -> void:
 func set_texture() -> void:
 	await RenderingServer.frame_post_draw
 	var texture:Texture2D = $SubViewport.get_texture()
+	texture.resource_local_to_scene = true
 	texture_normal = texture
 
 

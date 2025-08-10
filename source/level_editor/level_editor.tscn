@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://dgp6t48gtx87i"]
+[gd_scene load_steps=14 format=3 uid="uid://dgp6t48gtx87i"]
 
 [ext_resource type="Script" uid="uid://b3t4ll2spixth" path="res://source/level_editor/level_editor.gd" id="1_cxict"]
 [ext_resource type="Shader" uid="uid://cde1yf6ft5ae4" path="res://source/level_editor/grid.gdshader" id="1_eqloa"]
 [ext_resource type="Script" uid="uid://bi47r05wp7dvv" path="res://source/level_editor/player_camera.gd" id="2_uixsf"]
 [ext_resource type="PackedScene" uid="uid://b1if00p2dy3s4" path="res://source/level_editor/object_button.tscn" id="4_g8vfu"]
 [ext_resource type="PackedScene" uid="uid://gfffbq34nqfh" path="res://source/primitives/box/box.tscn" id="6_fvn2l"]
+[ext_resource type="PackedScene" uid="uid://dewylcfpmmaop" path="res://source/player/player.tscn" id="6_r20ek"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uixsf"]
 render_priority = 0
@@ -167,25 +168,38 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.498039)
 
-[node name="ItemList" type="ItemList" parent="UI/ObjectMenu"]
+[node name="Panel" type="Panel" parent="UI/ObjectMenu"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.056
 anchor_top = 0.099
 anchor_right = 0.944
 anchor_bottom = 0.901
-offset_left = -0.511948
-offset_top = -0.152027
+offset_left = -0.512001
+offset_top = -0.152008
 offset_right = 0.511963
 offset_bottom = 0.151978
-metadata/_edit_use_anchors_ = true
 
-[node name="ObjectButton" parent="UI/ObjectMenu/ItemList" instance=ExtResource("4_g8vfu")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="GridContainer" type="GridContainer" parent="UI/ObjectMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.056
+anchor_top = 0.099
+anchor_right = 0.944
+anchor_bottom = 0.901
+offset_left = -0.512001
+offset_top = -0.152008
+offset_right = 0.511963
+offset_bottom = 0.151978
+columns = 16
+
+[node name="ObjectButton" parent="UI/ObjectMenu/GridContainer" instance=ExtResource("4_g8vfu")]
+layout_mode = 2
 scene = ExtResource("6_fvn2l")
+
+[node name="ObjectButton2" parent="UI/ObjectMenu/GridContainer" instance=ExtResource("4_g8vfu")]
+layout_mode = 2
+scene = ExtResource("6_r20ek")
 
 [node name="SaveButton" type="Button" parent="UI"]
 visible = false
