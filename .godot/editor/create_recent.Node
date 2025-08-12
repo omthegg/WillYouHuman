@@ -1,3 +1,6 @@
+FileDialog
+LineEdit
+Control
 Panel
 GridContainer
 OptionButton
@@ -10,6 +13,3 @@ CheckBox
 CSGCombiner3D
 CSGPolygon3D
 OccluderInstance3D
-SpinBox
-LineEdit
-TextEdit

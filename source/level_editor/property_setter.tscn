@@ -5,7 +5,7 @@
 [node name="PropertySetter" type="Control"]
 custom_minimum_size = Vector2(192, 64)
 layout_mode = 3
-anchor_right = 0.167
+anchor_right = 0.2295
 anchor_bottom = 0.099
 offset_right = -0.384018
 offset_bottom = -0.152008
@@ -61,6 +61,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+allow_greater = true
+allow_lesser = true
 
 [node name="CheckBox" type="CheckBox" parent="."]
 visible = false
@@ -88,5 +90,57 @@ popup/item_0/id = 0
 popup/item_1/text = "Glass"
 popup/item_1/id = 1
 
+[node name="Vector3SpinBoxes" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SpinBoxX" type="SpinBox" parent="Vector3SpinBoxes"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.333
+anchor_bottom = 1.0
+offset_right = 0.0880051
+grow_horizontal = 2
+grow_vertical = 2
+step = 0.05
+allow_greater = true
+allow_lesser = true
+
+[node name="SpinBoxY" type="SpinBox" parent="Vector3SpinBoxes"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.333
+anchor_right = 0.667
+anchor_bottom = 1.0
+offset_left = 0.0880051
+offset_right = -0.0880127
+grow_horizontal = 2
+grow_vertical = 2
+step = 0.05
+allow_greater = true
+allow_lesser = true
+
+[node name="SpinBoxZ" type="SpinBox" parent="Vector3SpinBoxes"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.667
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.0880127
+grow_horizontal = 2
+grow_vertical = 2
+step = 0.05
+allow_greater = true
+allow_lesser = true
+
+[connection signal="value_changed" from="SpinBox" to="." method="_on_spin_box_value_changed"]
 [connection signal="toggled" from="CheckBox" to="." method="_on_check_box_toggled"]
 [connection signal="item_selected" from="MaterialOptionButton" to="." method="_on_material_option_button_item_selected"]
+[connection signal="value_changed" from="Vector3SpinBoxes/SpinBoxX" to="." method="_on_spin_box_x_value_changed"]
+[connection signal="value_changed" from="Vector3SpinBoxes/SpinBoxY" to="." method="_on_spin_box_y_value_changed"]
+[connection signal="value_changed" from="Vector3SpinBoxes/SpinBoxZ" to="." method="_on_spin_box_z_value_changed"]

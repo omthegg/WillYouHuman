@@ -10,7 +10,10 @@ extends Control
 @onready var line_edit:LineEdit = $LineEdit
 @onready var spinbox:SpinBox = $SpinBox
 @onready var checkbox:CheckBox = $CheckBox
-
+@onready var vector3_spinboxes:Control = $Vector3SpinBoxes
+@onready var spinbox_x:SpinBox = $Vector3SpinBoxes/SpinBoxX
+@onready var spinbox_y:SpinBox = $Vector3SpinBoxes/SpinBoxY
+@onready var spinbox_z:SpinBox = $Vector3SpinBoxes/SpinBoxZ
 
 var variable_name:String = "":
 	set(value):
@@ -42,7 +45,24 @@ var variable_name:String = "":
 				checkbox.text = variable_name.capitalize()
 				checkbox.show()
 				checkbox.button_pressed = editor.selected_objects[0].get(variable_name)
-				
+			
+			TYPE_FLOAT:
+				label.text = variable_name
+				label.show()
+				spinbox.show()
+				spinbox.step = 0.01
+			
+			TYPE_VECTOR3:
+				label.text = variable_name
+				label.show()
+				vector3_spinboxes.show()
+				variable_vector3 = editor.selected_objects[0].get(variable_name)
+				spinbox_x.value = variable_vector3.x
+				spinbox_y.value = variable_vector3.y
+				spinbox_z.value = variable_vector3.z
+
+
+var variable_vector3:Vector3 = Vector3.ZERO
 
 
 var materials = [
@@ -70,3 +90,22 @@ func _on_check_box_toggled(toggled_on):
 
 func _on_material_option_button_item_selected(index):
 	editor.set_selected_objects_property(variable_name, materials[index])
+
+
+func _on_spin_box_value_changed(value):
+	editor.set_selected_objects_property(variable_name, value)
+
+
+func _on_spin_box_x_value_changed(value):
+	variable_vector3.x = value
+	editor.set_selected_objects_property(variable_name, variable_vector3)
+
+
+func _on_spin_box_y_value_changed(value):
+	variable_vector3.y = value
+	editor.set_selected_objects_property(variable_name, variable_vector3)
+
+
+func _on_spin_box_z_value_changed(value):
+	variable_vector3.z = value
+	editor.set_selected_objects_property(variable_name, variable_vector3)

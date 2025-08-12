@@ -12,7 +12,7 @@ render_priority = 0
 shader = ExtResource("1_eqloa")
 shader_parameter/line_width = 0.04
 shader_parameter/grid_size = 1.0
-shader_parameter/line_color = Color(1, 0, 0, 1)
+shader_parameter/line_color = Color(0.734375, 0, 0, 1)
 shader_parameter/fill_color = Color(0, 0, 0, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g8vfu"]
@@ -122,10 +122,10 @@ allow_lesser = true
 [node name="PropertyMenu" type="Control" parent="UI"]
 visible = false
 layout_mode = 1
-anchor_left = 0.833
+anchor_left = 0.771
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.383911
+offset_left = -0.192017
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -202,17 +202,41 @@ layout_mode = 2
 scene = ExtResource("6_r20ek")
 
 [node name="SaveButton" type="Button" parent="UI"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.381944
-anchor_top = 0.0123457
-anchor_right = 0.420528
-anchor_bottom = 0.0597284
+anchor_left = 0.333333
+anchor_right = 0.375389
+anchor_bottom = 0.0473827
 offset_right = -0.448002
 offset_bottom = 0.295998
 text = "Save"
 metadata/_edit_use_anchors_ = true
+
+[node name="LoadButton" type="Button" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.388889
+anchor_right = 0.430944
+anchor_bottom = 0.0473827
+offset_right = -0.448002
+offset_bottom = 0.295998
+text = "Load"
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayButton" type="Button" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.444444
+anchor_right = 0.486
+anchor_bottom = 0.0473827
+offset_right = 0.127991
+offset_bottom = 0.295998
+text = "Save"
+metadata/_edit_use_anchors_ = true
+
+[node name="FileDialog" type="FileDialog" parent="UI"]
+access = 2
+filters = PackedStringArray("*.tscn;Godot scene file")
 
 [node name="3DCursor" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -227,3 +251,5 @@ mesh = SubResource("SphereMesh_g8vfu")
 [node name="Box" parent="Level" instance=ExtResource("6_fvn2l")]
 
 [connection signal="value_changed" from="UI/GridControl/GridSpinBox" to="." method="_on_grid_spin_box_value_changed"]
+[connection signal="pressed" from="UI/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="file_selected" from="UI/FileDialog" to="." method="_on_file_dialog_file_selected"]

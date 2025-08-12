@@ -6,6 +6,7 @@ extends Node3D
 @onready var property_menu_vbox_container:VBoxContainer = $UI/PropertyMenu/VBoxContainer
 @onready var no_properties_label:Label = $UI/PropertyMenu/VBoxContainer/NoPropertiesLabel
 @onready var level:Node3D = $Level
+@onready var file_dialog:FileDialog = $UI/FileDialog
 #@onready var cursor:Node3D = $"3DCursor"
 
 var property_setter_scene:PackedScene = preload("res://source/level_editor/property_setter.tscn")
@@ -17,6 +18,7 @@ var selected_scene:PackedScene
 var editable_variables:Dictionary = {
 	"material" = TYPE_OBJECT,
 	"flip_faces" = TYPE_BOOL
+	#"global_position" = TYPE_VECTOR3
 }
 
 func _physics_process(_delta: float) -> void:
@@ -73,3 +75,22 @@ func add_property_setters() -> void:
 func set_selected_objects_property(property_name:String, value:Variant) -> void:
 	for object in selected_objects:
 		object.set(property_name, value)
+
+
+func save_level(path:String) -> void:
+	for child in level.get_children():
+		child.owner = level
+	
+	var save:PackedScene = PackedScene.new()
+	save.pack(level)
+	ResourceSaver.save(save, path)
+
+
+func _on_save_button_pressed() -> void:
+	file_dialog.file_mode = FileDialog.FILE_MODE_SAVE_FILE
+	file_dialog.popup(Rect2i(0, 0, 1152, 648))
+
+
+func _on_file_dialog_file_selected(path) -> void:
+	if file_dialog.file_mode == FileDialog.FILE_MODE_SAVE_FILE:
+		save_level(path)
