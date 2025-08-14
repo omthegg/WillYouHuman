@@ -11,12 +11,7 @@ var speed:int = 10
 
 var freelook:bool = false
 
-func _input(event: InputEvent) -> void:
-	if %ObjectMenu.visible:
-		return
-	if editor.file_dialog.visible:
-		return
-	
+func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		if !Input.is_action_pressed("left_click"):
 			if Input.is_action_pressed("right_click"):

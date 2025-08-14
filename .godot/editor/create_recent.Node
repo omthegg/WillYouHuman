@@ -1,3 +1,4 @@
+Decal
 ColorRect
 FileDialog
 LineEdit
@@ -12,4 +13,3 @@ CollisionShape3D
 RayCast3D
 CheckBox
 CSGCombiner3D
-CSGPolygon3D

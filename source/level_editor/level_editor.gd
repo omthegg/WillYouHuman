@@ -18,7 +18,8 @@ var selected_scene:PackedScene
 
 var editable_variables:Dictionary = {
 	"material" = TYPE_OBJECT,
-	"flip_faces" = TYPE_BOOL
+	"flip_faces" = TYPE_BOOL,
+	"use_collision" = TYPE_BOOL
 	#"global_position" = TYPE_VECTOR3
 }
 

@@ -8,11 +8,6 @@ var procedural_material:StandardMaterial3D = preload("res://source/materials/pro
 var glass_material:StandardMaterial3D = preload("res://source/materials/glass.tres")
 
 func _ready() -> void:
-	#var sprite:Sprite2D = Sprite2D.new()
-	#sprite.centered = false
-	#sprite.scale = Vector2(0.5, 0.5)
-	#add_child(sprite)
-	#sprite.texture = generate_random_texture()
 	procedural_material.albedo_texture = generate_random_texture()
 	procedural_material.albedo_color = Color.ORANGE
 	glass_material.albedo_color = Color.BLUE

@@ -26,13 +26,13 @@ var size_tools_enabled:bool = true
 
 func _ready():
 	disable_size_tools()
-	if !Global.is_in_level_editor(self):
-		st_xp.process_mode = Node.PROCESS_MODE_DISABLED
-		st_xn.process_mode = Node.PROCESS_MODE_DISABLED
-		st_yp.process_mode = Node.PROCESS_MODE_DISABLED
-		st_yn.process_mode = Node.PROCESS_MODE_DISABLED
-		st_zp.process_mode = Node.PROCESS_MODE_DISABLED
-		st_zn.process_mode = Node.PROCESS_MODE_DISABLED
+	#if !Global.is_in_level_editor(self):
+	#	st_xp.process_mode = Node.PROCESS_MODE_DISABLED
+	#	st_xn.process_mode = Node.PROCESS_MODE_DISABLED
+	#	st_yp.process_mode = Node.PROCESS_MODE_DISABLED
+	#	st_yn.process_mode = Node.PROCESS_MODE_DISABLED
+	#	st_zp.process_mode = Node.PROCESS_MODE_DISABLED
+	#	st_zn.process_mode = Node.PROCESS_MODE_DISABLED
 
 
 func _physics_process(_delta):
