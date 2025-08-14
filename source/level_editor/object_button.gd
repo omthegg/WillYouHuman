@@ -17,3 +17,4 @@ func set_texture() -> void:
 
 func _on_pressed():
 	level_editor.selected_scene = scene
+	get_node("../../SelectionOverlay").global_position = global_position

@@ -101,6 +101,10 @@ delete={
 3d_physics/layer_2="Level editor selecting"
 3d_physics/layer_3="Level editor placement"
 
+[physics]
+
+3d/default_gravity=15.0
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

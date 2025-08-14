@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var Camera:Camera3D = $Camera3D
+@onready var camera:Camera3D = $Camera3D
 @onready var dragging_raycast:RayCast3D = $DraggingRayCast
 @onready var selection_raycast:RayCast3D = $SelectionRayCast
 @onready var placement_raycast:RayCast3D = $PlacementRayCast
@@ -12,6 +12,11 @@ var speed:int = 10
 var freelook:bool = false
 
 func _input(event: InputEvent) -> void:
+	if %ObjectMenu.visible:
+		return
+	if editor.file_dialog.visible:
+		return
+	
 	if event is InputEventMouseMotion:
 		if !Input.is_action_pressed("left_click"):
 			if Input.is_action_pressed("right_click"):
@@ -20,8 +25,8 @@ func _input(event: InputEvent) -> void:
 				%GridSpinBox.get_line_edit().release_focus()
 		if freelook:
 			rotate_y(deg_to_rad(-event.relative.x * Global.mouse_sens))
-			Camera.rotate_x(deg_to_rad(-event.relative.y * Global.mouse_sens))
-			Camera.rotation_degrees.x = clamp(Camera.rotation_degrees.x, -90, 90)
+			camera.rotate_x(deg_to_rad(-event.relative.y * Global.mouse_sens))
+			camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, -90, 90)
 	
 	if Input.is_action_just_released("right_click"):
 		if freelook:
@@ -76,8 +81,8 @@ func _physics_process(delta: float) -> void:
 	
 	# Cast rays from mouse
 	var m_pos = get_viewport().get_mouse_position()
-	var from = Camera.project_ray_origin(m_pos)
-	var to = Camera.project_ray_normal(m_pos) * 100
+	var from = camera.project_ray_origin(m_pos)
+	var to = camera.project_ray_normal(m_pos) * 100
 	dragging_raycast.position = from
 	dragging_raycast.target_position = to
 	selection_raycast.position = from

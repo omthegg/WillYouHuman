@@ -1,3 +1,4 @@
+ColorRect
 FileDialog
 LineEdit
 Control
@@ -12,4 +13,3 @@ RayCast3D
 CheckBox
 CSGCombiner3D
 CSGPolygon3D
-OccluderInstance3D

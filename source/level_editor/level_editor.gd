@@ -7,6 +7,7 @@ extends Node3D
 @onready var no_properties_label:Label = $UI/PropertyMenu/VBoxContainer/NoPropertiesLabel
 @onready var level:Node3D = $Level
 @onready var file_dialog:FileDialog = $UI/FileDialog
+@onready var ui:Control = $UI
 #@onready var cursor:Node3D = $"3DCursor"
 
 var property_setter_scene:PackedScene = preload("res://source/level_editor/property_setter.tscn")
@@ -20,6 +21,12 @@ var editable_variables:Dictionary = {
 	"flip_faces" = TYPE_BOOL
 	#"global_position" = TYPE_VECTOR3
 }
+
+
+func _ready() -> void:
+	selected_scene = $UI/ObjectMenu/GridContainer.get_child(0).scene
+	$UI/ObjectMenu/SelectionOverlay.global_position = $UI/ObjectMenu/GridContainer.get_child(0).global_position
+
 
 func _physics_process(_delta: float) -> void:
 	Grid.position.x = PlayerCamera.position.x
@@ -78,12 +85,30 @@ func set_selected_objects_property(property_name:String, value:Variant) -> void:
 
 
 func save_level(path:String) -> void:
-	for child in level.get_children():
+	for child in Global.get_all_children(level):
 		child.owner = level
 	
 	var save:PackedScene = PackedScene.new()
 	save.pack(level)
 	ResourceSaver.save(save, path)
+
+
+func load_level(path:String) -> void:
+	level.queue_free()
+	add_child(load(path).instantiate())
+
+
+func play_level() -> void:
+	PlayerCamera.camera.current = false
+	var level_duplicate:Node3D = level.duplicate()
+	get_tree().root.add_child(level_duplicate)
+	for child in level_duplicate.get_children():
+		Global.remove_editor_highlight(child)
+		Global.remove_gizmos(child)
+	
+	hide()
+	ui.hide()
+	process_mode = Node.PROCESS_MODE_DISABLED
 
 
 func _on_save_button_pressed() -> void:
@@ -92,5 +117,17 @@ func _on_save_button_pressed() -> void:
 
 
 func _on_file_dialog_file_selected(path) -> void:
-	if file_dialog.file_mode == FileDialog.FILE_MODE_SAVE_FILE:
-		save_level(path)
+	match file_dialog.file_mode:
+		FileDialog.FILE_MODE_SAVE_FILE:
+			save_level(path)
+		FileDialog.FILE_MODE_OPEN_FILE:
+			load_level(path)
+
+
+func _on_play_button_pressed():
+	play_level()
+
+
+func _on_load_button_pressed():
+	file_dialog.file_mode = FileDialog.FILE_MODE_OPEN_FILE
+	file_dialog.popup(Rect2i(0, 0, 1152, 648))

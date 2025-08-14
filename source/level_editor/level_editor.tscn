@@ -201,6 +201,12 @@ scene = ExtResource("6_fvn2l")
 layout_mode = 2
 scene = ExtResource("6_r20ek")
 
+[node name="SelectionOverlay" type="ColorRect" parent="UI/ObjectMenu"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+color = Color(0, 1, 0, 0.117647)
+
 [node name="SaveButton" type="Button" parent="UI"]
 layout_mode = 1
 anchors_preset = -1
@@ -231,7 +237,7 @@ anchor_right = 0.486
 anchor_bottom = 0.0473827
 offset_right = 0.127991
 offset_bottom = 0.295998
-text = "Save"
+text = "Play"
 metadata/_edit_use_anchors_ = true
 
 [node name="FileDialog" type="FileDialog" parent="UI"]
@@ -252,4 +258,6 @@ mesh = SubResource("SphereMesh_g8vfu")
 
 [connection signal="value_changed" from="UI/GridControl/GridSpinBox" to="." method="_on_grid_spin_box_value_changed"]
 [connection signal="pressed" from="UI/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="UI/LoadButton" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="UI/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="file_selected" from="UI/FileDialog" to="." method="_on_file_dialog_file_selected"]

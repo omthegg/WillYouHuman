@@ -136,3 +136,21 @@ func remove_gizmos(node3d:Node3D) -> void:
 	
 	if node3d is CSGBox3D:
 		node3d.disable_size_tools()
+
+
+func is_in_level_editor(node:Node) -> bool:
+	if node.get_parent() is SubViewport:
+		return true
+	
+	if get_node_or_null("/root/LevelEditor/Level"):
+		if node in get_node("/root/LevelEditor/Level").get_children():
+			return true
+	
+	return false
+
+
+func get_all_children(in_node:Node, array:Array = []) -> Array:
+	array.push_back(in_node)
+	for child in in_node.get_children():
+		array = get_all_children(child, array)
+	return array
