@@ -1,12 +1,14 @@
 extends Area3D
 
+@export var auto_rotate_plane:bool = true
 @export var move_vector:Vector3 = Vector3.ZERO:
 	set(value):
 		move_vector = value
-		if cursor_plane:
+		if cursor_plane and auto_rotate_plane:
 			cursor_plane.look_at(move_vector)
 
 @export var toggles_top_level:bool = true
+@export var two_dimensional:bool = false
 
 @onready var collision_shape:CollisionShape3D = $CollisionShape3D
 @onready var cursor_plane_collision_shape1:CollisionShape3D = $CursorPlane/CollisionShape3D
@@ -18,14 +20,17 @@ var grabbed:bool = false
 var grab_origin:Vector3
 var origin:Vector3
 
-func _input(_event):
+func _input(_event) -> void:
 	if Input.is_action_just_released("left_click"):
 		if grabbed:
 			stop_grab()
 
 func _physics_process(_delta: float) -> void:
 	if grabbed:
-		get_parent().global_position = origin + (cursor.position - grab_origin) * abs(move_vector)
+		if two_dimensional:
+			get_parent().global_position = origin + (cursor.position - grab_origin)
+		else:
+			get_parent().global_position = origin + (cursor.position - grab_origin) * abs(move_vector)
 
 
 func start_grab() -> void:

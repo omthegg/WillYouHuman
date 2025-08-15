@@ -6,6 +6,8 @@ var move_tool:PackedScene = preload("res://source/level_editor/move_tool.tscn")
 
 var procedural_material:StandardMaterial3D = preload("res://source/materials/procedural.tres")
 var glass_material:StandardMaterial3D = preload("res://source/materials/glass.tres")
+var display_material:StandardMaterial3D = preload("res://source/materials/display.tres")
+
 
 func _ready() -> void:
 	procedural_material.albedo_texture = generate_random_texture()
@@ -92,6 +94,7 @@ func add_editor_highlight(node3d:Node3D) -> MeshInstance3D:
 	mesh_instance.name = "EditorHighlight"
 	mesh_instance.scale *= 1.01
 	mesh_instance.material_override = material
+	mesh_instance.process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	return mesh_instance
 
@@ -120,8 +123,12 @@ func get_3d_aabb(node: Node) -> AABB:
 func add_gizmos(node3d: Node3D) -> void:
 	var mt:Node3D = move_tool.instantiate()
 	node3d.add_child(mt, true)
+	mt.process_mode = Node.PROCESS_MODE_ALWAYS
+	
 	if node3d is CSGBox3D:
 		node3d.enable_size_tools()
+	if node3d is CSGPolygon3D:
+		node3d.enable_polygon_tools()
 
 
 func remove_gizmos(node3d:Node3D) -> void:
@@ -131,6 +138,8 @@ func remove_gizmos(node3d:Node3D) -> void:
 	
 	if node3d is CSGBox3D:
 		node3d.disable_size_tools()
+	if node3d is CSGPolygon3D:
+		node3d.disable_polygon_tools()
 
 
 func is_in_level_editor(node:Node) -> bool:

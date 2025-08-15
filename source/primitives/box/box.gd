@@ -45,11 +45,11 @@ func _physics_process(_delta):
 	size.z = distance_z
 	
 	if size.x == 0:
-		size.x = 2
+		size.x = 1
 	if size.y == 0:
-		size.y = 2
+		size.y = 1
 	if size.z == 0:
-		size.z = 2
+		size.z = 1
 	
 	set_middles()
 	

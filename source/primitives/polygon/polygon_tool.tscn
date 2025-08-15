@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcinmhuype5j8"]
+
+[ext_resource type="PackedScene" uid="uid://dk0m5b24l772" path="res://source/level_editor/dragging_component.tscn" id="1_g6rg4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g6rg4"]
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.40625, 1, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_4oi6t"]
+material = SubResource("StandardMaterial3D_g6rg4")
+radius = 0.1
+height = 0.2
+radial_segments = 8
+rings = 4
+
+[node name="PolygonTool" type="Node3D"]
+
+[node name="DraggingComponent" parent="." instance=ExtResource("1_g6rg4")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+auto_rotate_plane = false
+move_vector = Vector3(1, 1, 0)
+toggles_top_level = false
+two_dimensional = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_4oi6t")

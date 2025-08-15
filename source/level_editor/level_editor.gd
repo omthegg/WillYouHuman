@@ -19,7 +19,8 @@ var selected_scene:PackedScene
 var editable_variables:Dictionary = {
 	"material" = TYPE_OBJECT,
 	"flip_faces" = TYPE_BOOL,
-	"use_collision" = TYPE_BOOL
+	"use_collision" = TYPE_BOOL,
+	"depth" = TYPE_FLOAT
 	#"global_position" = TYPE_VECTOR3
 }
 
@@ -96,7 +97,9 @@ func save_level(path:String) -> void:
 
 func load_level(path:String) -> void:
 	level.queue_free()
-	add_child(load(path).instantiate())
+	level = load(path).instantiate()
+	level.process_mode = Node.PROCESS_MODE_DISABLED
+	add_child(level)
 
 
 func play_level() -> void:
@@ -110,6 +113,7 @@ func play_level() -> void:
 	hide()
 	ui.hide()
 	process_mode = Node.PROCESS_MODE_DISABLED
+	level.process_mode = Node.PROCESS_MODE_PAUSABLE
 
 
 func _on_save_button_pressed() -> void:

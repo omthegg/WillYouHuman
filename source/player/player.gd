@@ -11,15 +11,15 @@ var extra_jumps:int = 1
 
 func _ready() -> void:
 	$MeshInstance3D.mesh.material.albedo_color = Color.GREEN
-	in_level_editor = Global.is_in_level_editor(self)
-	if !in_level_editor:
-		camera.current = true
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	#in_level_editor = Global.is_in_level_editor(self)
+	#if !in_level_editor:
+	#	camera.current = true
+	#	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func _input(event) -> void:
-	if in_level_editor:
-		return
+	#if in_level_editor:
+	#	return
 	
 	if event is InputEventMouseMotion:
 		head.rotate_x(deg_to_rad(-event.relative.y * Global.mouse_sens))
@@ -28,8 +28,8 @@ func _input(event) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if in_level_editor:
-		return
+	#if in_level_editor:
+	#	return
 	
 	# Add the gravity.
 	if not is_on_floor():

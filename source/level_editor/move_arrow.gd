@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var line_length:float = 1.0:
+@export var line_length:float = 1.2:
 	set(value):
 		line_length = value
 		refresh_tip()

@@ -5,6 +5,7 @@
 [ext_resource type="Material" uid="uid://vcboss1fp468" path="res://source/materials/procedural.tres" id="1_yxhv5"]
 
 [node name="Box" type="CSGBox3D"]
+process_mode = 3
 use_collision = true
 collision_layer = 2
 collision_mask = 2

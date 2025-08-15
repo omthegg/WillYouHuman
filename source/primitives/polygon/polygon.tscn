@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpo55i42qfkhf"]
+
+[ext_resource type="Material" uid="uid://vcboss1fp468" path="res://source/materials/procedural.tres" id="1_1fy6r"]
+[ext_resource type="PackedScene" uid="uid://dcinmhuype5j8" path="res://source/primitives/polygon/polygon_tool.tscn" id="1_f3q5m"]
+[ext_resource type="Script" uid="uid://bh31do241gj5w" path="res://source/primitives/polygon/polygon.gd" id="1_kksxt"]
+
+[node name="Polygon" type="CSGPolygon3D"]
+process_mode = 3
+use_collision = true
+collision_layer = 2
+collision_mask = 2
+material = ExtResource("1_1fy6r")
+script = ExtResource("1_kksxt")
+
+[node name="PolygonTool0" parent="." instance=ExtResource("1_f3q5m")]
+
+[node name="PolygonTool1" parent="." instance=ExtResource("1_f3q5m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="PolygonTool2" parent="." instance=ExtResource("1_f3q5m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
+
+[node name="PolygonTool3" parent="." instance=ExtResource("1_f3q5m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)

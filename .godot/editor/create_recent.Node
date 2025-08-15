@@ -1,3 +1,5 @@
+MeshInstance3D
+CSGPolygon3D
 Decal
 ColorRect
 FileDialog
@@ -8,8 +10,5 @@ GridContainer
 OptionButton
 Camera3D
 Node3D
-MeshInstance3D
 CollisionShape3D
 RayCast3D
-CheckBox
-CSGCombiner3D

@@ -1,5 +1,6 @@
-res://source/materials
 res://source/materials/
+res://source/primitives/polygon
+res://source/materials
 res://source/level_editor
 res://source/primitives/box
 res://source/player
