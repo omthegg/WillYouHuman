@@ -23,6 +23,8 @@ func _physics_process(_delta) -> void:
 	if highlight:
 		highlight.mesh = get_meshes()[1]
 		highlight.position = Vector3(-0.005, -0.005, 0.005)
+	
+	reset_polygon_tools()
 
 
 func reset_polygon_tools() -> void:

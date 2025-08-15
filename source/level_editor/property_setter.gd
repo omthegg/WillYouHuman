@@ -50,6 +50,7 @@ var variable_name:String = "":
 				label.text = variable_name
 				label.show()
 				spinbox.show()
+				spinbox.value = editor.selected_objects[0].get(variable_name)
 				spinbox.step = 0.01
 			
 			TYPE_VECTOR3:
