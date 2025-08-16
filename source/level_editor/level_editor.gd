@@ -19,7 +19,7 @@ var selected_scene:PackedScene
 var editable_variables:Dictionary = {
 	"material" = TYPE_OBJECT,
 	"flip_faces" = TYPE_BOOL,
-	"use_collision" = TYPE_BOOL,
+	"collision" = TYPE_BOOL,
 	"depth" = TYPE_FLOAT
 	#"global_position" = TYPE_VECTOR3
 }
@@ -106,14 +106,11 @@ func play_level() -> void:
 	PlayerCamera.camera.current = false
 	var level_duplicate:Node3D = level.duplicate()
 	get_tree().root.add_child(level_duplicate)
-	for child in level_duplicate.get_children():
-		Global.remove_editor_highlight(child)
-		Global.remove_gizmos(child)
-	
+	Global.get_level_ready(level_duplicate)
 	hide()
 	ui.hide()
+	level_duplicate.process_mode = Node.PROCESS_MODE_PAUSABLE
 	process_mode = Node.PROCESS_MODE_DISABLED
-	level.process_mode = Node.PROCESS_MODE_PAUSABLE
 
 
 func _on_save_button_pressed() -> void:

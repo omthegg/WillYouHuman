@@ -158,3 +158,28 @@ func get_all_children(in_node:Node, array:Array = []) -> Array:
 	for child in in_node.get_children():
 		array = get_all_children(child, array)
 	return array
+
+
+func get_level_ready(level:Node3D) -> void:
+	for child in level.get_children():
+		remove_editor_highlight(child)
+		remove_gizmos(child)
+		
+		disable_editor_related_collision(child)
+		if child is CSGPrimitive3D:
+			if child.collision:
+				child.set_collision_layer_value(4, true)
+				child.set_collision_mask_value(4, true)
+		
+		if child is PhysicsBody3D:
+			child.set_collision_layer_value(4, true)
+			child.set_collision_mask_value(4, true)
+
+func disable_editor_related_collision(node:Node3D):
+	if node.has_method("set_collision_layer_value"):
+		node.set_collision_layer_value(1, false)
+		node.set_collision_layer_value(2, false)
+		node.set_collision_layer_value(3, false)
+		node.set_collision_mask_value(1, false)
+		node.set_collision_mask_value(2, false)
+		node.set_collision_mask_value(3, false)

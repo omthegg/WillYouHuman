@@ -1,5 +1,7 @@
 extends CSGBox3D
 
+@export var collision:bool = true
+
 # ST stands for SizeTool
 @onready var st_xp:Node3D = $SizeToolXP
 @onready var st_xn:Node3D = $SizeToolXN

@@ -5,6 +5,8 @@ extends CSGPolygon3D
 		cylinder_mode = value
 		mode = int(cylinder_mode)
 
+@export var collision:bool = true
+
 @onready var pt0:Node3D = $PolygonTool0
 @onready var pt1:Node3D = $PolygonTool1
 @onready var pt2:Node3D = $PolygonTool2
