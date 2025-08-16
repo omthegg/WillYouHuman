@@ -17,3 +17,4 @@ res://source/level_editor/level_editor.gd
 res://source/primitives/polygon/polygon.gd
 res://source/primitives/box/box.gd
 res://source/autoloads/global.gd
+res://source/player/player.gd

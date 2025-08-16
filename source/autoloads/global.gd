@@ -161,6 +161,7 @@ func get_all_children(in_node:Node, array:Array = []) -> Array:
 
 
 func get_level_ready(level:Node3D) -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	for child in level.get_children():
 		remove_editor_highlight(child)
 		remove_gizmos(child)
@@ -174,6 +175,9 @@ func get_level_ready(level:Node3D) -> void:
 		if child is PhysicsBody3D:
 			child.set_collision_layer_value(4, true)
 			child.set_collision_mask_value(4, true)
+		
+		#if child.name == "Player":
+
 
 func disable_editor_related_collision(node:Node3D):
 	if node.has_method("set_collision_layer_value"):
