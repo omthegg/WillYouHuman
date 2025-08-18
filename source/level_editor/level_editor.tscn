@@ -246,6 +246,26 @@ offset_bottom = 0.295998
 text = "Play"
 metadata/_edit_use_anchors_ = true
 
+[node name="DeleteButton" type="Button" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.569444
+anchor_right = 0.625
+anchor_bottom = 0.049
+offset_bottom = 0.247997
+text = "Delete"
+metadata/_edit_use_anchors_ = true
+
+[node name="DeleteButton2" type="Button" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.638889
+anchor_right = 0.708333
+anchor_bottom = 0.049
+offset_bottom = 0.247997
+text = "Deselect"
+metadata/_edit_use_anchors_ = true
+
 [node name="FileDialog" type="FileDialog" parent="UI"]
 access = 2
 filters = PackedStringArray("*.tscn;Godot scene file")
@@ -266,4 +286,5 @@ mesh = SubResource("SphereMesh_g8vfu")
 [connection signal="pressed" from="UI/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="UI/LoadButton" to="." method="_on_load_button_pressed"]
 [connection signal="pressed" from="UI/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="UI/DeleteButton" to="." method="_on_delete_button_pressed"]
 [connection signal="file_selected" from="UI/FileDialog" to="." method="_on_file_dialog_file_selected"]

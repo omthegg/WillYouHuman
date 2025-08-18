@@ -6,6 +6,10 @@ extends CSGPolygon3D
 		mode = int(cylinder_mode)
 
 @export var collision:bool = true
+@export var rotate_y_90_degrees:bool = false:
+	set(value):
+		rotate_y_90_degrees = value
+		rotation_degrees.y = 90 * int(value)
 
 @onready var pt0:Node3D = $PolygonTool0
 @onready var pt1:Node3D = $PolygonTool1

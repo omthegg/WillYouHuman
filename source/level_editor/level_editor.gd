@@ -20,7 +20,8 @@ var editable_variables:Dictionary = {
 	"material" = TYPE_OBJECT,
 	"flip_faces" = TYPE_BOOL,
 	"collision" = TYPE_BOOL,
-	"depth" = TYPE_FLOAT
+	"depth" = TYPE_FLOAT,
+	"rotate_y_90_degrees" = TYPE_BOOL
 	#"global_position" = TYPE_VECTOR3
 }
 
@@ -133,3 +134,11 @@ func _on_play_button_pressed():
 func _on_load_button_pressed():
 	file_dialog.file_mode = FileDialog.FILE_MODE_OPEN_FILE
 	file_dialog.popup(Rect2i(0, 0, 1152, 648))
+
+
+func _on_delete_button_pressed():
+	for object:Node in selected_objects:
+		object.queue_free()
+	
+	selected_objects.clear()
+	update_property_menu()
