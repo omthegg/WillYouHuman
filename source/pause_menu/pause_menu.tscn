@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhdggpe7io1pr"]
+
+[ext_resource type="Theme" uid="uid://cyoigwdix5pgn" path="res://source/themes/menu.tres" id="1_x8xkl"]
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0555556
+anchor_right = 0.227875
+anchor_bottom = 1.00023
+offset_right = -0.512001
+offset_bottom = -0.152008
+theme_override_constants/separation = 26
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ContinueButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+theme = ExtResource("1_x8xkl")
+text = "Continue"
+alignment = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="LevelsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+theme = ExtResource("1_x8xkl")
+text = "Levels"
+alignment = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+theme = ExtResource("1_x8xkl")
+text = "Settings"
+alignment = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+theme = ExtResource("1_x8xkl")
+text = "Exit Game"
+alignment = 0
+metadata/_edit_use_anchors_ = true

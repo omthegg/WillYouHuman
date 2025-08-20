@@ -6,6 +6,7 @@ var current_level:Node3D
 
 func _ready() -> void:
 	Global.scene_manager = self
+	#$MenuCanvasLayer/ColorRect.material.set_shader_parameter("LineColor", Color.DARK_ORANGE)
 
 
 func play_level(packed_level:PackedScene) -> void:

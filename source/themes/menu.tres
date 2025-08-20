@@ -1,0 +1,30 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cyoigwdix5pgn"]
+
+[ext_resource type="FontFile" uid="uid://cbe2criie0u3v" path="res://fonts/PressStart2P-Regular.ttf" id="1_tcjqr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g2srp"]
+bg_color = Color(0, 0, 0, 0)
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x8xkl"]
+bg_color = Color(0, 0, 0, 0)
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 0)
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tcjqr"]
+bg_color = Color(0, 0, 0, 0)
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+expand_margin_bottom = 5.0
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/font_sizes/font_size = 22
+Button/fonts/font = ExtResource("1_tcjqr")
+Button/styles/hover = SubResource("StyleBoxFlat_g2srp")
+Button/styles/normal = SubResource("StyleBoxFlat_x8xkl")
+Button/styles/pressed = SubResource("StyleBoxFlat_tcjqr")

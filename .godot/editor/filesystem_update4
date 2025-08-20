@@ -17,3 +17,8 @@ res://source/level_editor/dragging_component.tscn
 res://source/level_editor/property_setter.tscn
 res://source/primitives/polygon/polygon.tscn
 res://source/primitives/polygon/polygon_tool.tscn
+res://source/scene_manager/menu_background.gdshader
+res://source/pause_menu/pause_menu.tscn
+res://source/scene_manager/vignette.gdshader
+res://source/themes/menu.tres
+res://source/scene_manager/glow.gdshader
