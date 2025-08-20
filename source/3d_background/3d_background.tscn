@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://ycnn3r4aafnm"]
+
+[ext_resource type="Script" uid="uid://dg608la7br0a3" path="res://source/3d_background/3d_background.gd" id="1_xwyqu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7eoyu"]
+shading_mode = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_7eoyu"]
+material = SubResource("StandardMaterial3D_7eoyu")
+
+[sub_resource type="MultiMesh" id="MultiMesh_7eoyu"]
+transform_format = 1
+mesh = SubResource("BoxMesh_7eoyu")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xphnv"]
+shading_mode = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_xwyqu"]
+material = SubResource("StandardMaterial3D_xphnv")
+
+[node name="3DBackground" type="Node3D"]
+script = ExtResource("1_xwyqu")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="."]
+multimesh = SubResource("MultiMesh_7eoyu")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, -0.5, -0.5, 0, 0.707107, -0.707107, 0.707107, 0.5, 0.5, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.975, 1.195, -2.34)
+mesh = SubResource("BoxMesh_xwyqu")
+skeleton = NodePath("")

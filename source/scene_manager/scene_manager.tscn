@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://b4edouuae7wl4" path="res://source/scene_manager/scene_manager.gd" id="1_ivaf7"]
 [ext_resource type="PackedScene" uid="uid://bhdggpe7io1pr" path="res://source/pause_menu/pause_menu.tscn" id="2_y51ae"]
+[ext_resource type="PackedScene" uid="uid://ycnn3r4aafnm" path="res://source/3d_background/3d_background.tscn" id="3_2r2ke"]
 [ext_resource type="Shader" uid="uid://bq5t5kljewkwh" path="res://source/scene_manager/vignette.gdshader" id="4_7eoyu"]
-[ext_resource type="Texture2D" uid="uid://b5dcwdrgcval" path="res://icon.svg" id="6_nyf36"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2r2ke"]
 shader = ExtResource("4_7eoyu")
@@ -57,12 +57,11 @@ grow_vertical = 2
 
 [node name="SubViewport" type="SubViewport" parent="MenuCanvasLayer/SubViewportContainer"]
 world_3d = SubResource("World3D_2r2ke")
+handle_input_locally = false
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="Sprite2D" type="Sprite2D" parent="MenuCanvasLayer/SubViewportContainer/SubViewport"]
-position = Vector2(560, 336)
-texture = ExtResource("6_nyf36")
+[node name="3DBackground" parent="MenuCanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("3_2r2ke")]
 
 [node name="PauseMenu" parent="MenuCanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("2_y51ae")]
 metadata/_edit_use_anchors_ = true

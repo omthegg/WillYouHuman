@@ -22,3 +22,5 @@ res://source/pause_menu/pause_menu.tscn
 res://source/scene_manager/vignette.gdshader
 res://source/themes/menu.tres
 res://source/scene_manager/glow.gdshader
+res://source/3d_background/3d_background.tscn
+res://source/3d_background/3d_background.gd
