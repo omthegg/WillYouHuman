@@ -202,6 +202,7 @@ scene = ExtResource("6_fvn2l")
 [node name="ObjectButton2" parent="UI/ObjectMenu/GridContainer" instance=ExtResource("4_g8vfu")]
 layout_mode = 2
 scene = ExtResource("6_3gcyq")
+offset = Vector3(0, 0, 1)
 
 [node name="ObjectButton3" parent="UI/ObjectMenu/GridContainer" instance=ExtResource("4_g8vfu")]
 layout_mode = 2
@@ -256,7 +257,7 @@ offset_bottom = 0.247997
 text = "Delete"
 metadata/_edit_use_anchors_ = true
 
-[node name="DeleteButton2" type="Button" parent="UI"]
+[node name="DeselectButton" type="Button" parent="UI"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.638889

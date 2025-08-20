@@ -105,12 +105,11 @@ func load_level(path:String) -> void:
 
 func play_level() -> void:
 	PlayerCamera.camera.current = false
-	var level_duplicate:Node3D = level.duplicate()
-	get_tree().root.add_child(level_duplicate)
-	Global.get_level_ready(level_duplicate)
+	var packed_level:PackedScene = PackedScene.new()
+	packed_level.pack(level)
+	Global.scene_manager.play_level(packed_level)
 	hide()
 	ui.hide()
-	level_duplicate.process_mode = Node.PROCESS_MODE_PAUSABLE
 	process_mode = Node.PROCESS_MODE_DISABLED
 
 

@@ -1,4 +1,6 @@
 MeshInstance3D
+Label3D
+Camera3D
 CSGPolygon3D
 Decal
 ColorRect
@@ -8,7 +10,5 @@ Control
 Panel
 GridContainer
 OptionButton
-Camera3D
 Node3D
 CollisionShape3D
-RayCast3D
