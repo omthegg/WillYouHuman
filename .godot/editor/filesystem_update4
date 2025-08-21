@@ -27,3 +27,4 @@ res://source/level_editor/object_button.gd
 res://source/level_editor/property_setter.gd
 res://source/level_editor/dragging_component.gd
 res://source/level_editor/level_editor.gd
+res://source/level_editor/player_camera.gd

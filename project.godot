@@ -26,6 +26,7 @@ window/stretch/mode="canvas_items"
 [global_group]
 
 Draggable="A group for movement arrow gizmos"
+player=""
 
 [input]
 

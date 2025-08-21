@@ -219,6 +219,7 @@ anchor_right = 0.375389
 anchor_bottom = 0.0473827
 offset_right = -0.448002
 offset_bottom = 0.295998
+focus_mode = 0
 text = "Save"
 metadata/_edit_use_anchors_ = true
 
@@ -230,6 +231,7 @@ anchor_right = 0.430944
 anchor_bottom = 0.0473827
 offset_right = -0.448002
 offset_bottom = 0.295998
+focus_mode = 0
 text = "Load"
 metadata/_edit_use_anchors_ = true
 
@@ -241,6 +243,7 @@ anchor_right = 0.486
 anchor_bottom = 0.0473827
 offset_right = 0.127991
 offset_bottom = 0.295998
+focus_mode = 0
 text = "Play"
 metadata/_edit_use_anchors_ = true
 
@@ -251,6 +254,7 @@ anchor_left = 0.569444
 anchor_right = 0.625
 anchor_bottom = 0.049
 offset_bottom = 0.247997
+focus_mode = 0
 text = "Delete"
 metadata/_edit_use_anchors_ = true
 
@@ -261,6 +265,7 @@ anchor_left = 0.638889
 anchor_right = 0.708333
 anchor_bottom = 0.049
 offset_bottom = 0.247997
+focus_mode = 0
 text = "Deselect"
 metadata/_edit_use_anchors_ = true
 
@@ -280,6 +285,9 @@ mesh = SubResource("SphereMesh_g8vfu")
 process_mode = 4
 
 [node name="Box" parent="Level" instance=ExtResource("6_fvn2l")]
+
+[node name="Player" parent="Level" instance=ExtResource("6_r20ek")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [connection signal="value_changed" from="UI/GridControl/GridSpinBox" to="." method="_on_grid_spin_box_value_changed"]
 [connection signal="pressed" from="UI/SaveButton" to="." method="_on_save_button_pressed"]

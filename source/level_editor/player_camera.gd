@@ -90,15 +90,25 @@ func _physics_process(delta: float) -> void:
 
 
 func place() -> void:
-	if editor.selected_scene and placement_raycast.is_colliding():
-		var object:Object = editor.selected_scene.instantiate()
-		editor.level.add_child(object)
-		if object.has_method("reset_size_tools"):
-			object.set_size_tools_top_level(false)
-		object.global_position = placement_raycast.get_collision_point()
-		if object.has_method("reset_size_tools"):
-			#await get_tree().process_frame
-			object.reset_size_tools()
-			object.set_size_tools_top_level(true)
-			object.set_middles()
-			object.set_previous_middles()
+	if !(editor.selected_scene and placement_raycast.is_colliding()):
+		return
+	
+	var object:Node = editor.selected_scene.instantiate()
+	editor.level.add_child(object)
+	
+	if object.is_in_group("player"):
+		for child in editor.level.get_children():
+			if child == object:
+				continue
+			if child.is_in_group("player"):
+				child.queue_free()
+	
+	if object.has_method("reset_size_tools"):
+		object.set_size_tools_top_level(false)
+	object.global_position = placement_raycast.get_collision_point()
+	if object.has_method("reset_size_tools"):
+		#await get_tree().process_frame
+		object.reset_size_tools()
+		object.set_size_tools_top_level(true)
+		object.set_middles()
+		object.set_previous_middles()

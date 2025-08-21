@@ -4,7 +4,6 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jct2x"]
 radius = 0.3
-height = 1.8
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jct2x"]
 shading_mode = 0
@@ -12,9 +11,8 @@ shading_mode = 0
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_jct2x"]
 material = SubResource("StandardMaterial3D_jct2x")
 radius = 0.3
-height = 1.8
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["player"]]
 disable_mode = 1
 collision_layer = 2
 collision_mask = 2

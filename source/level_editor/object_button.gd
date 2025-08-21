@@ -3,7 +3,7 @@ extends TextureButton
 @export var scene:PackedScene
 @export var offset:Vector3 = Vector3.ZERO
 
-@onready var level_editor:Node3D = Global.scene_manager.level_editor
+@onready var level_editor:Node3D
 
 func _ready() -> void:
 	var scene_instance:Node = scene.instantiate()
@@ -28,5 +28,6 @@ func set_texture() -> void:
 
 
 func _on_pressed():
+	level_editor = Global.scene_manager.level_editor
 	level_editor.selected_scene = scene
 	get_node("../../SelectionOverlay").global_position = global_position
