@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode cull_disabled;
+render_mode cull_disabled, unshaded;
 
 // source: https://godotshaders.com/shader/simple-world-triplanar-grid-allows-transparency/
 

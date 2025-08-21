@@ -14,11 +14,12 @@ extends Area3D
 @onready var cursor_plane_collision_shape1:CollisionShape3D = $CursorPlane/CollisionShape3D
 @onready var cursor_plane_collision_shape2:CollisionShape3D = $CursorPlane/CollisionShape3D2
 @onready var cursor_plane:StaticBody3D = $CursorPlane
-@onready var cursor:Node3D = get_node_or_null("/root/LevelEditor/3DCursor")
+@onready var editor:Node3D
 
 var grabbed:bool = false
 var grab_origin:Vector3
 var origin:Vector3
+
 
 func _input(_event) -> void:
 	if Input.is_action_just_released("left_click"):
@@ -26,11 +27,12 @@ func _input(_event) -> void:
 			stop_grab()
 
 func _physics_process(_delta: float) -> void:
+	editor = Global.scene_manager.level_editor
 	if grabbed:
 		if two_dimensional:
-			get_parent().global_position = origin + (cursor.position - grab_origin)
+			get_parent().global_position = origin + (editor.cursor.position - grab_origin)
 		else:
-			get_parent().global_position = origin + (cursor.position - grab_origin) * abs(move_vector)
+			get_parent().global_position = origin + (editor.cursor.position - grab_origin) * abs(move_vector)
 
 
 func start_grab() -> void:
@@ -38,7 +40,7 @@ func start_grab() -> void:
 	cursor_plane_collision_shape1.disabled = false
 	cursor_plane_collision_shape2.disabled = false
 	collision_shape.disabled = true
-	grab_origin = cursor.position
+	grab_origin = editor.cursor.position
 	origin = get_parent().global_position
 	if toggles_top_level:
 		get_parent().top_level = true

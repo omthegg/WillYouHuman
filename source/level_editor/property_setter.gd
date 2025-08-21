@@ -1,6 +1,6 @@
 extends Control
 
-@onready var editor:Node3D = get_tree().root.get_node("LevelEditor")
+@onready var editor:Node3D = Global.scene_manager.level_editor
 
 @onready var material_list_button:MenuButton = $MaterialListButton
 @onready var material_list_button_popup:PopupMenu = material_list_button.get_popup()

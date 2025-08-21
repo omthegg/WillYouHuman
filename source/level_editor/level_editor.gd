@@ -8,7 +8,7 @@ extends Node3D
 @onready var level:Node3D = $Level
 @onready var file_dialog:FileDialog = $UI/FileDialog
 @onready var ui:Control = $UI
-#@onready var cursor:Node3D = $"3DCursor"
+@onready var cursor:Node3D = $"3DCursor"
 
 var property_setter_scene:PackedScene = preload("res://source/level_editor/property_setter.tscn")
 
@@ -126,16 +126,16 @@ func _on_file_dialog_file_selected(path) -> void:
 			load_level(path)
 
 
-func _on_play_button_pressed():
-	play_level()
+func _on_play_button_pressed() -> void:
+	play_level() # Look inside the function before you change this line
 
 
-func _on_load_button_pressed():
+func _on_load_button_pressed() -> void:
 	file_dialog.file_mode = FileDialog.FILE_MODE_OPEN_FILE
 	file_dialog.popup(Rect2i(0, 0, 1152, 648))
 
 
-func _on_delete_button_pressed():
+func _on_delete_button_pressed() -> void:
 	for object:Node in selected_objects:
 		object.queue_free()
 	

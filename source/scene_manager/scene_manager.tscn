@@ -31,6 +31,7 @@ ambient_light_energy = 0.1
 environment = SubResource("Environment_2r2ke")
 
 [node name="SceneManager" type="Node3D"]
+process_mode = 3
 script = ExtResource("1_ivaf7")
 
 [node name="ColorRect3" type="ColorRect" parent="."]
@@ -43,6 +44,7 @@ grow_vertical = 2
 color = Color(0.578391, 0.39798, 0.628906, 1)
 
 [node name="HUDCanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Vignette" type="ColorRect" parent="HUDCanvasLayer"]
 material = SubResource("ShaderMaterial_2r2ke")

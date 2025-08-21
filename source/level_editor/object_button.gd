@@ -3,7 +3,7 @@ extends TextureButton
 @export var scene:PackedScene
 @export var offset:Vector3 = Vector3.ZERO
 
-@onready var level_editor:Node3D = get_tree().root.get_node("LevelEditor")
+@onready var level_editor:Node3D = Global.scene_manager.level_editor
 
 func _ready() -> void:
 	var scene_instance:Node = scene.instantiate()
