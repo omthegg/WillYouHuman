@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cf8xs20c4n22m"]
+[gd_scene load_steps=10 format=3 uid="uid://cf8xs20c4n22m"]
 
 [ext_resource type="Script" uid="uid://b4edouuae7wl4" path="res://source/scene_manager/scene_manager.gd" id="1_ivaf7"]
 [ext_resource type="PackedScene" uid="uid://bhdggpe7io1pr" path="res://source/pause_menu/pause_menu.tscn" id="2_y51ae"]
@@ -21,6 +21,14 @@ glow_blend_mode = 0
 
 [sub_resource type="World3D" id="World3D_2r2ke"]
 environment = SubResource("Environment_7eoyu")
+
+[sub_resource type="Environment" id="Environment_2r2ke"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.1
+
+[sub_resource type="World3D" id="World3D_nyf36"]
+environment = SubResource("Environment_2r2ke")
 
 [node name="SceneManager" type="Node3D"]
 script = ExtResource("1_ivaf7")
@@ -61,7 +69,39 @@ handle_input_locally = false
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="3DBackground" parent="MenuCanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("3_2r2ke")]
+[node name="ColorRect" type="ColorRect" parent="MenuCanvasLayer/SubViewportContainer/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.379028, 0, 0.421875, 1)
+
+[node name="Vignette" type="ColorRect" parent="MenuCanvasLayer/SubViewportContainer/SubViewport"]
+material = SubResource("ShaderMaterial_2r2ke")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MenuCanvasLayer/SubViewportContainer/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="MenuCanvasLayer/SubViewportContainer/SubViewport/SubViewportContainer"]
+world_3d = SubResource("World3D_nyf36")
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="3DBackground" parent="MenuCanvasLayer/SubViewportContainer/SubViewport/SubViewportContainer/SubViewport" instance=ExtResource("3_2r2ke")]
 
 [node name="PauseMenu" parent="MenuCanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("2_y51ae")]
 metadata/_edit_use_anchors_ = true

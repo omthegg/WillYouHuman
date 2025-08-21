@@ -1,11 +1,11 @@
 SubViewport
 SubViewportContainer
+ColorRect
 Node3D
 MeshInstance3D
 DirectionalLight3D
 MultiMeshInstance3D
 Camera3D
-ColorRect
 Sprite2D
 WorldEnvironment
 Camera2D
