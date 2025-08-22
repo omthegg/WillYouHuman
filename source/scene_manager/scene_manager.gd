@@ -52,6 +52,9 @@ func get_level_ready(level:Node3D) -> void:
 		if child is PhysicsBody3D:
 			child.set_collision_layer_value(4, true)
 			child.set_collision_mask_value(4, true)
+		
+		if child.is_in_group("Player"):
+			child.camera.current = true
 
 
 func disable_editor_related_collision(node:Node3D) -> void:

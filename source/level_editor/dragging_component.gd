@@ -30,9 +30,9 @@ func _physics_process(_delta: float) -> void:
 	editor = Global.scene_manager.level_editor
 	if grabbed:
 		if two_dimensional:
-			get_parent().global_position = origin + (editor.cursor.position - grab_origin)
+			get_parent().global_position = origin + (editor.dragging_cursor.position - grab_origin)
 		else:
-			get_parent().global_position = origin + (editor.cursor.position - grab_origin) * abs(move_vector)
+			get_parent().global_position = origin + (editor.dragging_cursor.position - grab_origin) * abs(move_vector)
 
 
 func start_grab() -> void:
@@ -40,7 +40,7 @@ func start_grab() -> void:
 	cursor_plane_collision_shape1.disabled = false
 	cursor_plane_collision_shape2.disabled = false
 	collision_shape.disabled = true
-	grab_origin = editor.cursor.position
+	grab_origin = editor.dragging_cursor.position
 	origin = get_parent().global_position
 	if toggles_top_level:
 		get_parent().top_level = true

@@ -8,7 +8,8 @@ extends Node3D
 @onready var level:Node3D = $Level
 @onready var file_dialog:FileDialog = $UI/FileDialog
 @onready var ui:Control = $UI
-@onready var cursor:Node3D = $"3DCursor"
+@onready var dragging_cursor:Node3D = $DraggingCursor
+@onready var placement_cursor:Node3D = $PlacementCursor
 
 var property_setter_scene:PackedScene = preload("res://source/level_editor/property_setter.tscn")
 
@@ -106,11 +107,23 @@ func load_level(path:String) -> void:
 func play_level() -> void:
 	PlayerCamera.camera.current = false
 	var packed_level:PackedScene = PackedScene.new()
+	for child in Global.get_all_children(level):
+		child.owner = level
+	
 	packed_level.pack(level)
 	Global.scene_manager.play_level(packed_level)
 	hide()
 	ui.hide()
 	process_mode = Node.PROCESS_MODE_DISABLED
+
+
+func deselect_all_objects() -> void:
+	for object in selected_objects:
+		Global.remove_editor_highlight(object)
+		Global.remove_gizmos(object)
+	
+	selected_objects.clear()
+	update_property_menu()
 
 
 func _on_save_button_pressed() -> void:
@@ -141,3 +154,7 @@ func _on_delete_button_pressed() -> void:
 	
 	selected_objects.clear()
 	update_property_menu()
+
+
+func _on_deselect_button_pressed() -> void:
+	deselect_all_objects()

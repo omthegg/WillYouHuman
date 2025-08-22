@@ -61,3 +61,4 @@ alignment = 0
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

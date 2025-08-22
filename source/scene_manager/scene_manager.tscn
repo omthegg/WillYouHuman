@@ -8,8 +8,8 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2r2ke"]
 shader = ExtResource("4_7eoyu")
 shader_parameter/inner_radius = 0.1
-shader_parameter/outer_radius = 1.0
-shader_parameter/vignette_strength = 1.0
+shader_parameter/outer_radius = 1.21
+shader_parameter/vignette_strength = 0.875
 shader_parameter/dither_strength = 0.03
 shader_parameter/vignette_color = Color(0, 0, 0, 1)
 
@@ -46,6 +46,14 @@ color = Color(0.578391, 0.39798, 0.628906, 1)
 [node name="HUDCanvasLayer" type="CanvasLayer" parent="."]
 visible = false
 
+[node name="ColorRect" type="ColorRect" parent="HUDCanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Vignette" type="ColorRect" parent="HUDCanvasLayer"]
 material = SubResource("ShaderMaterial_2r2ke")
 anchors_preset = 15
@@ -57,6 +65,7 @@ mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="MenuCanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="MenuCanvasLayer"]
 anchors_preset = 15
@@ -69,7 +78,7 @@ grow_vertical = 2
 world_3d = SubResource("World3D_2r2ke")
 handle_input_locally = false
 size = Vector2i(1152, 648)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="ColorRect" type="ColorRect" parent="MenuCanvasLayer/SubViewportContainer/SubViewport"]
 anchors_preset = 15

@@ -273,11 +273,17 @@ metadata/_edit_use_anchors_ = true
 access = 2
 filters = PackedStringArray("*.tscn;Godot scene file")
 
-[node name="3DCursor" type="Node3D" parent="."]
-unique_name_in_owner = true
+[node name="DraggingCursor" type="Node3D" parent="."]
 visible = false
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="3DCursor"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DraggingCursor"]
+material_override = SubResource("StandardMaterial3D_cxict")
+mesh = SubResource("SphereMesh_g8vfu")
+
+[node name="PlacementCursor" type="Node3D" parent="."]
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlacementCursor"]
 material_override = SubResource("StandardMaterial3D_cxict")
 mesh = SubResource("SphereMesh_g8vfu")
 
@@ -294,4 +300,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 [connection signal="pressed" from="UI/LoadButton" to="." method="_on_load_button_pressed"]
 [connection signal="pressed" from="UI/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="UI/DeleteButton" to="." method="_on_delete_button_pressed"]
+[connection signal="pressed" from="UI/DeselectButton" to="." method="_on_deselect_button_pressed"]
 [connection signal="file_selected" from="UI/FileDialog" to="." method="_on_file_dialog_file_selected"]
