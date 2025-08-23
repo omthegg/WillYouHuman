@@ -27,6 +27,7 @@ window/stretch/mode="canvas_items"
 
 Draggable="A group for movement arrow gizmos"
 player=""
+conveyor_belt=""
 
 [input]
 

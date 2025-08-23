@@ -122,6 +122,13 @@ func get_3d_aabb(node: Node) -> AABB:
 
 
 func add_gizmos(node3d: Node3D) -> void:
+	if node3d.is_in_group("conveyor_belt"):
+		var mt1:Node3D = move_tool.instantiate()
+		node3d.start.add_child(mt1, true)
+		var mt2:Node3D = move_tool.instantiate()
+		node3d.end.add_child(mt2, true)
+		return
+	
 	var mt:Node3D = move_tool.instantiate()
 	node3d.add_child(mt, true)
 	mt.process_mode = Node.PROCESS_MODE_ALWAYS
@@ -136,6 +143,14 @@ func remove_gizmos(node3d:Node3D) -> void:
 	if is_instance_valid(node3d.get_node_or_null("MoveTool")):
 		node3d.get_node("MoveTool").name = "MoveToolDeleted"
 		node3d.get_node("MoveToolDeleted").queue_free()
+	
+	if node3d.is_in_group("conveyor_belt"):
+		if is_instance_valid(node3d.start.get_node_or_null("MoveTool")):
+			node3d.start.get_node("MoveTool").name = "MoveToolDeleted"
+			node3d.start.get_node("MoveToolDeleted").queue_free()
+		if is_instance_valid(node3d.end.get_node_or_null("MoveTool")):
+			node3d.end.get_node("MoveTool").name = "MoveToolDeleted"
+			node3d.end.get_node("MoveToolDeleted").queue_free()
 	
 	if node3d is CSGBox3D:
 		node3d.disable_size_tools()

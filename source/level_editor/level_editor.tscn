@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dgp6t48gtx87i"]
+[gd_scene load_steps=15 format=3 uid="uid://dgp6t48gtx87i"]
 
 [ext_resource type="Script" uid="uid://b3t4ll2spixth" path="res://source/level_editor/level_editor.gd" id="1_cxict"]
 [ext_resource type="Shader" uid="uid://cde1yf6ft5ae4" path="res://source/level_editor/grid.gdshader" id="1_eqloa"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bpo55i42qfkhf" path="res://source/primitives/polygon/polygon.tscn" id="6_3gcyq"]
 [ext_resource type="PackedScene" uid="uid://gfffbq34nqfh" path="res://source/primitives/box/box.tscn" id="6_fvn2l"]
 [ext_resource type="PackedScene" uid="uid://dewylcfpmmaop" path="res://source/player/player.tscn" id="6_r20ek"]
+[ext_resource type="PackedScene" uid="uid://dnus2qku88gfk" path="res://source/conveyor_belt/conveyor_belt.tscn" id="8_3gcyq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uixsf"]
 render_priority = 0
@@ -204,6 +205,10 @@ offset = Vector3(0, 0, 1)
 [node name="ObjectButton3" parent="UI/ObjectMenu/GridContainer" instance=ExtResource("4_g8vfu")]
 layout_mode = 2
 scene = ExtResource("6_r20ek")
+
+[node name="ObjectButton4" parent="UI/ObjectMenu/GridContainer" instance=ExtResource("4_g8vfu")]
+layout_mode = 2
+scene = ExtResource("8_3gcyq")
 
 [node name="SelectionOverlay" type="ColorRect" parent="UI/ObjectMenu"]
 layout_mode = 0

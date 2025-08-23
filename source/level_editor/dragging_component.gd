@@ -45,6 +45,7 @@ func start_grab() -> void:
 	if toggles_top_level:
 		get_parent().top_level = true
 
+
 func stop_grab() -> void:
 	grabbed = false
 	cursor_plane_collision_shape1.disabled = true
