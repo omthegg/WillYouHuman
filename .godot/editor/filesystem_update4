@@ -25,3 +25,4 @@ res://source/conveyor_belt/conveyor_belt.gd
 res://source/level_editor/player_camera.gd
 res://source/autoloads/global.gd
 res://source/level_editor/dragging_component.gd
+res://source/level_editor/level_editor.gd

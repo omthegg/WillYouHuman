@@ -1,5 +1,7 @@
 extends StaticBody3D
 
+@export var belt_speed:float = 3.0
+
 @onready var start:Node3D = $Start
 @onready var end:Node3D = $End
 @onready var collision_shape:CollisionShape3D = $CollisionShape3D
@@ -30,6 +32,10 @@ func _physics_process(_delta) -> void:
 	refresh()
 
 
+func _process(delta) -> void:
+	animate(delta)
+
+
 func refresh() -> void:
 	var length:float = start.position.distance_to(end.position)
 	x_mesh.size.x = length
@@ -53,3 +59,8 @@ func refresh() -> void:
 		editor_highlight.mesh.size.z = length
 		editor_highlight.mesh.size.y = 0.5
 		editor_highlight.rotation = model.rotation
+
+
+func animate(delta:float) -> void:
+	y_material.uv1_offset.y -= belt_speed * delta
+	z_material.uv1_offset.y -= belt_speed * delta

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnus2qku88gfk"]
+[gd_scene load_steps=10 format=3 uid="uid://dnus2qku88gfk"]
 
 [ext_resource type="Script" uid="uid://o4f6ne8s8nc0" path="res://source/conveyor_belt/conveyor_belt.gd" id="1_ntvlh"]
 [ext_resource type="Texture2D" uid="uid://bvmuyvpw5gvxa" path="res://textures/conveyorbelt.png" id="2_ntvlh"]
@@ -16,6 +16,14 @@ uv1_triplanar = true
 texture_filter = 2
 
 [sub_resource type="QuadMesh" id="QuadMesh_3bx7i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ntvlh"]
+resource_local_to_scene = true
+shading_mode = 0
+albedo_texture = ExtResource("2_ntvlh")
+uv1_offset = Vector3(0.5, 0.25, 0)
+uv1_triplanar = true
+texture_filter = 2
 
 [sub_resource type="QuadMesh" id="QuadMesh_ntvlh"]
 resource_local_to_scene = true
@@ -60,13 +68,13 @@ skeleton = NodePath("../..")
 
 [node name="Back" type="MeshInstance3D" parent="Model"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
-material_override = SubResource("StandardMaterial3D_25s2w")
+material_override = SubResource("StandardMaterial3D_ntvlh")
 mesh = SubResource("QuadMesh_ntvlh")
 skeleton = NodePath("../..")
 
 [node name="Front" type="MeshInstance3D" parent="Model"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, -0.5)
-material_override = SubResource("StandardMaterial3D_25s2w")
+material_override = SubResource("StandardMaterial3D_ntvlh")
 mesh = SubResource("QuadMesh_ntvlh")
 skeleton = NodePath("../..")
 
