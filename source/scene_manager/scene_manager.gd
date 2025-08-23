@@ -2,6 +2,7 @@ extends Node3D
 
 @onready var menu_canvas_layer:CanvasLayer = $MenuCanvasLayer
 @onready var hud_canvas_layer:CanvasLayer = $HUDCanvasLayer
+@onready var pause_menu:Control = $MenuCanvasLayer/SubViewportContainer/SubViewport/PauseMenu
 
 var packed_level_editor:PackedScene = preload("res://source/level_editor/level_editor.tscn")
 var packed_current_level:PackedScene
@@ -35,6 +36,12 @@ func play_level(packed_level:PackedScene) -> void:
 	current_level = child
 	get_level_ready(child)
 	child.process_mode = Node.PROCESS_MODE_PAUSABLE
+	
+	if level_editor:
+		pause_menu.editor_button.show()
+		return
+	
+	pause_menu.editor_button.hide()
 
 
 func get_level_ready(level:Node3D) -> void:
@@ -81,3 +88,14 @@ func set_game_paused(paused:bool = true) -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	else:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
+func return_to_level_editor() -> void:
+	current_level.queue_free()
+	pause_menu.editor_button.hide()
+	level_editor.show()
+	level_editor.ui.show()
+	set_game_paused(false)
+	hud_canvas_layer.hide()
+	level_editor.process_mode = Node.PROCESS_MODE_INHERIT
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

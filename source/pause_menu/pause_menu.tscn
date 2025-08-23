@@ -33,6 +33,16 @@ text = "Continue"
 alignment = 0
 metadata/_edit_use_anchors_ = true
 
+[node name="EditorButton" type="Button" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+theme = ExtResource("1_x8xkl")
+text = "Editor"
+alignment = 0
+metadata/_edit_use_anchors_ = true
+
 [node name="LevelsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
@@ -61,4 +71,5 @@ alignment = 0
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/EditorButton" to="." method="_on_editor_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
