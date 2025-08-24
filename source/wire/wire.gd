@@ -16,10 +16,8 @@ func update_model() -> void:
 	var pos1:Vector3 = devices[0].global_position
 	var pos2:Vector3 = devices[1].global_position
 	if devices[0].get_node_or_null("Outlet"):
-		print("E")
 		pos1 = devices[0].get_node("Outlet").global_position
 	if devices[1].get_node_or_null("Outlet"):
-		print("E")
 		pos2 = devices[1].get_node("Outlet").global_position
 	
 	var distance:float = pos1.distance_to(pos2)
