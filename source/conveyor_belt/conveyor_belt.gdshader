@@ -72,7 +72,7 @@ void fragment() {
 	vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
 	float roughness_tex = dot(triplanar_texture(texture_roughness, uv1_power_normal, uv1_triplanar_pos, UV), roughness_texture_channel);
 	ROUGHNESS = roughness_tex * roughness;
-	
+
 	if ((UV.y >= 0.5 && UV.x <= 1.0/3.0))
 	{
 		ALBEDO = vec3(1.0, 1.0, 1.0);

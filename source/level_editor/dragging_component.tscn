@@ -1,9 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dk0m5b24l772"]
 
 [ext_resource type="Script" uid="uid://ccn2s86ki4uab" path="res://source/level_editor/dragging_component.gd" id="1_y4ujt"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_y4ujt"]
-radius = 0.1
+[ext_resource type="Shape3D" uid="uid://cfsg6s02yhw5p" path="res://source/level_editor/dragging_component_shape_sphere.tres" id="2_38gy0"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_y4ujt"]
 
@@ -14,7 +12,7 @@ plane = Plane(0, -1, 0, 0)
 script = ExtResource("1_y4ujt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_y4ujt")
+shape = ExtResource("2_38gy0")
 
 [node name="CursorPlane" type="StaticBody3D" parent="."]
 

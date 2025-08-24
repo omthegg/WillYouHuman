@@ -10,6 +10,12 @@ extends Area3D
 @export var toggles_top_level:bool = true
 @export var two_dimensional:bool = false
 
+@export var shape:Shape3D = preload("res://source/level_editor/dragging_component_shape_sphere.tres"):
+	set(value):
+		shape = value
+		$CollisionShape3D.shape = shape
+
+
 @onready var collision_shape:CollisionShape3D = $CollisionShape3D
 @onready var cursor_plane_collision_shape1:CollisionShape3D = $CursorPlane/CollisionShape3D
 @onready var cursor_plane_collision_shape2:CollisionShape3D = $CursorPlane/CollisionShape3D2

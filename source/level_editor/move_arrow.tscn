@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmt5d1syw3k4n"]
+[gd_scene load_steps=7 format=3 uid="uid://dmt5d1syw3k4n"]
 
 [ext_resource type="Script" uid="uid://by52ul68bhs5b" path="res://source/level_editor/move_arrow.gd" id="1_mchm3"]
 [ext_resource type="PackedScene" uid="uid://dk0m5b24l772" path="res://source/level_editor/dragging_component.tscn" id="2_43m04"]
@@ -20,6 +20,9 @@ resource_local_to_scene = true
 no_depth_test = true
 shading_mode = 0
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_43m04"]
+size = Vector3(0.3, 0.3, 0.3)
+
 [node name="MoveArrow" type="Node3D"]
 script = ExtResource("1_mchm3")
 
@@ -35,3 +38,4 @@ skeleton = NodePath("../..")
 material_override = SubResource("StandardMaterial3D_43m04")
 
 [node name="DraggingComponent" parent="." instance=ExtResource("2_43m04")]
+shape = SubResource("BoxShape3D_43m04")
