@@ -1,40 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://dnus2qku88gfk"]
+[gd_scene load_steps=9 format=3 uid="uid://dnus2qku88gfk"]
 
 [ext_resource type="Script" uid="uid://o4f6ne8s8nc0" path="res://source/conveyor_belt/conveyor_belt.gd" id="1_ntvlh"]
-[ext_resource type="Texture2D" uid="uid://bvmuyvpw5gvxa" path="res://textures/conveyorbelt.png" id="2_ntvlh"]
+[ext_resource type="Material" uid="uid://c0rhsit1yp1h2" path="res://source/conveyor_belt/y_material.tres" id="2_oxpmr"]
+[ext_resource type="QuadMesh" uid="uid://bwkipxa8tfqst" path="res://source/conveyor_belt/y_mesh.tres" id="3_5djkk"]
+[ext_resource type="QuadMesh" uid="uid://ca6vvcer7oa6k" path="res://source/conveyor_belt/z_mesh.tres" id="4_0arfl"]
+[ext_resource type="Material" uid="uid://co8f2rkx4mmnh" path="res://source/conveyor_belt/z_material.tres" id="4_oxpmr"]
+[ext_resource type="QuadMesh" uid="uid://neau3epe6jwo" path="res://source/conveyor_belt/x_mesh.tres" id="5_ds4k1"]
+[ext_resource type="Material" uid="uid://dykppf4fv3dr2" path="res://source/conveyor_belt/x_material.tres" id="6_y1hjk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_25s2w"]
 resource_local_to_scene = true
 size = Vector3(1, 0.5, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_25s2w"]
-resource_local_to_scene = true
-shading_mode = 0
-albedo_texture = ExtResource("2_ntvlh")
-uv1_offset = Vector3(0.5, 0, 0)
-uv1_triplanar = true
-texture_filter = 2
-
-[sub_resource type="QuadMesh" id="QuadMesh_3bx7i"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ntvlh"]
-resource_local_to_scene = true
-shading_mode = 0
-albedo_texture = ExtResource("2_ntvlh")
-uv1_offset = Vector3(0.5, 0.25, 0)
-uv1_triplanar = true
-texture_filter = 2
-
-[sub_resource type="QuadMesh" id="QuadMesh_ntvlh"]
-resource_local_to_scene = true
-size = Vector2(1, 0.5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3bx7i"]
-shading_mode = 0
-
-[sub_resource type="QuadMesh" id="QuadMesh_5djkk"]
-resource_local_to_scene = true
-size = Vector2(1, 0.5)
 
 [node name="ConveyorBelt" type="StaticBody3D" groups=["conveyor_belt"]]
 process_mode = 3
@@ -56,36 +32,36 @@ shape = SubResource("BoxShape3D_25s2w")
 
 [node name="Top" type="MeshInstance3D" parent="Model"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.25, 0)
-material_override = SubResource("StandardMaterial3D_25s2w")
-mesh = SubResource("QuadMesh_3bx7i")
+material_override = ExtResource("2_oxpmr")
+mesh = ExtResource("3_5djkk")
 skeleton = NodePath("../..")
 
 [node name="Bottom" type="MeshInstance3D" parent="Model"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.25, 0)
-material_override = SubResource("StandardMaterial3D_25s2w")
-mesh = SubResource("QuadMesh_3bx7i")
+material_override = ExtResource("2_oxpmr")
+mesh = ExtResource("3_5djkk")
 skeleton = NodePath("../..")
 
 [node name="Back" type="MeshInstance3D" parent="Model"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
-material_override = SubResource("StandardMaterial3D_ntvlh")
-mesh = SubResource("QuadMesh_ntvlh")
+material_override = ExtResource("4_oxpmr")
+mesh = ExtResource("4_0arfl")
 skeleton = NodePath("../..")
 
 [node name="Front" type="MeshInstance3D" parent="Model"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, -0.5)
-material_override = SubResource("StandardMaterial3D_ntvlh")
-mesh = SubResource("QuadMesh_ntvlh")
+material_override = ExtResource("4_oxpmr")
+mesh = ExtResource("4_0arfl")
 skeleton = NodePath("../..")
 
 [node name="Right" type="MeshInstance3D" parent="Model"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.5, 0, 0)
-material_override = SubResource("StandardMaterial3D_3bx7i")
-mesh = SubResource("QuadMesh_5djkk")
+material_override = ExtResource("6_y1hjk")
+mesh = ExtResource("5_ds4k1")
 skeleton = NodePath("../..")
 
 [node name="Left" type="MeshInstance3D" parent="Model"]
 transform = Transform3D(-4.37114e-08, -8.74228e-08, -1, 0, -1, 8.74228e-08, -1, 3.82137e-15, 4.37114e-08, -0.5, 0, 0)
-material_override = SubResource("StandardMaterial3D_3bx7i")
-mesh = SubResource("QuadMesh_5djkk")
+material_override = ExtResource("6_y1hjk")
+mesh = ExtResource("5_ds4k1")
 skeleton = NodePath("../..")

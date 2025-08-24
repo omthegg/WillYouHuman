@@ -2,16 +2,7 @@
 
 [ext_resource type="Script" uid="uid://nq0ojdlgewrv" path="res://source/wire/wire.gd" id="1_7jpwb"]
 [ext_resource type="Material" uid="uid://bdtox4ox4v57b" path="res://source/materials/wire.tres" id="2_dg3mo"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_7jpwb"]
-resource_local_to_scene = true
-top_radius = 0.05
-bottom_radius = 0.05
-height = 1.0
-radial_segments = 6
-rings = 0
-cap_top = false
-cap_bottom = false
+[ext_resource type="CylinderMesh" uid="uid://dqch3ee5031p3" path="res://source/wire/mesh.tres" id="3_2ec36"]
 
 [node name="Wire" type="Node3D"]
 script = ExtResource("1_7jpwb")
@@ -19,4 +10,4 @@ script = ExtResource("1_7jpwb")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 material_override = ExtResource("2_dg3mo")
-mesh = SubResource("CylinderMesh_7jpwb")
+mesh = ExtResource("3_2ec36")

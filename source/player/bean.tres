@@ -1,0 +1,8 @@
+[gd_resource type="CapsuleMesh" load_steps=2 format=3 uid="uid://dwtq8f6jm3ua6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jct2x"]
+shading_mode = 0
+
+[resource]
+material = SubResource("StandardMaterial3D_jct2x")
+radius = 0.3

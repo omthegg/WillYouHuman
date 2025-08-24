@@ -1,15 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dewylcfpmmaop"]
+[gd_scene load_steps=4 format=3 uid="uid://dewylcfpmmaop"]
 
 [ext_resource type="Script" uid="uid://qhivmob45286" path="res://source/player/player.gd" id="1_jct2x"]
+[ext_resource type="CapsuleMesh" uid="uid://dwtq8f6jm3ua6" path="res://source/player/bean.tres" id="2_xim07"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jct2x"]
-radius = 0.3
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jct2x"]
-shading_mode = 0
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_jct2x"]
-material = SubResource("StandardMaterial3D_jct2x")
 radius = 0.3
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
@@ -22,7 +16,7 @@ script = ExtResource("1_jct2x")
 shape = SubResource("CapsuleShape3D_jct2x")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_jct2x")
+mesh = ExtResource("2_xim07")
 
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)

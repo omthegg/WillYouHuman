@@ -1,10 +1,11 @@
+res://source/short_range_antenna
+res://source/wire
+res://source/conveyor_belt
+res://source/player
 res://source/wiring_component
 res://source/materials
 res://source/autoloads
-res://source/short_range_antenna
-res://source/wire
 res://source/level_editor
-res://source/conveyor_belt
 res://source/3d_background
 res://source/themes
 res://source/pause_menu
@@ -12,5 +13,4 @@ res://source/scene_manager
 res://source/materials/
 res://source/primitives/polygon
 res://source/primitives/box
-res://source/player
 res://source/environments

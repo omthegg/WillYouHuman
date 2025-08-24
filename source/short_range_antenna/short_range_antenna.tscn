@@ -2,16 +2,10 @@
 
 [ext_resource type="Material" uid="uid://oc3eysusdqw1" path="res://source/materials/antenna.tres" id="1_dmtlc"]
 [ext_resource type="Script" uid="uid://dq3spnjdkp155" path="res://source/short_range_antenna/short_range_antenna.gd" id="1_gi8so"]
+[ext_resource type="BoxMesh" uid="uid://cwwuke7mooaxn" path="res://source/short_range_antenna/mesh1.tres" id="3_crb1p"]
 [ext_resource type="PackedScene" uid="uid://d0r2ddtnbrj4p" path="res://source/wiring_component/wiring_component.tscn" id="3_pnx0f"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_aqenh"]
-size = Vector3(0.2, 3, 0.2)
-
-[sub_resource type="BoxMesh" id="BoxMesh_dmtlc"]
-size = Vector3(0.2, 0.1, 0.7)
-
-[sub_resource type="BoxMesh" id="BoxMesh_gi8so"]
-size = Vector3(0.7, 0.1, 0.2)
+[ext_resource type="BoxMesh" uid="uid://cv6c6utt3qcn6" path="res://source/short_range_antenna/mesh2.tres" id="4_isvkp"]
+[ext_resource type="BoxMesh" uid="uid://cvilhwikq7ffa" path="res://source/short_range_antenna/mesh3.tres" id="5_rjl6c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aqenh"]
 size = Vector3(0.5, 3, 0.5)
@@ -29,17 +23,17 @@ script = ExtResource("1_gi8so")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 material_override = ExtResource("1_dmtlc")
-mesh = SubResource("BoxMesh_aqenh")
+mesh = ExtResource("3_crb1p")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.85, 0)
 material_override = ExtResource("1_dmtlc")
-mesh = SubResource("BoxMesh_dmtlc")
+mesh = ExtResource("4_isvkp")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.85, 0)
 material_override = ExtResource("1_dmtlc")
-mesh = SubResource("BoxMesh_gi8so")
+mesh = ExtResource("5_rjl6c")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)

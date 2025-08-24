@@ -1,5 +1,5 @@
 res://source/environments/env1.tres
-res://source/level_editor/level_editor.tscn
+res://source/player/player.tscn
 res://source/materials/procedural.tres
 res://source/materials/glass_edge.gdshader
 res://source/materials/glass.tres
@@ -11,18 +11,10 @@ res://source/materials/glass_edge2.gdshader
 res://source/scene_manager/menu_background.gdshader
 res://source/scene_manager/glow.gdshader
 res://source/conveyor_belt/conveyor_belt.gdshader
-res://source/player/player.tscn
+res://source/level_editor/level_editor.tscn
 res://source/scene_manager/scene_manager.tscn
 res://source/conveyor_belt/conveyor_belt.tscn
 res://source/wire/wire.tscn
 res://source/short_range_antenna/short_range_antenna.tscn
-res://source/level_editor/player_camera.gd
-res://source/3d_background/3d_background.tscn
-res://source/3d_background/3d_background.gd
-res://source/short_range_antenna/short_range_antenna.gd
-res://source/scene_manager/scene_manager.gd
-res://source/wire/wire.gd
-res://source/player/player.gd
-res://source/autoloads/color_manager.gd
 res://source/wiring_component/wiring_component.tscn
-res://source/wiring_component/wiring_component.gd
+res://source/level_editor/level_editor.gd
