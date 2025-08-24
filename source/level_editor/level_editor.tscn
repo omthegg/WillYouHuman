@@ -300,6 +300,8 @@ process_mode = 4
 [node name="Player" parent="Level" instance=ExtResource("6_r20ek")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
+[node name="Networks" type="Node" parent="Level"]
+
 [connection signal="value_changed" from="UI/GridControl/GridSpinBox" to="." method="_on_grid_spin_box_value_changed"]
 [connection signal="pressed" from="UI/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="UI/LoadButton" to="." method="_on_load_button_pressed"]

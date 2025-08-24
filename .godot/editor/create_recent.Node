@@ -1,6 +1,7 @@
-CollisionShape3D
+Node
 Node3D
 MeshInstance3D
+CollisionShape3D
 StaticBody3D
 Marker3D
 ColorRect
