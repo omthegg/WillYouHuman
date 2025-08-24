@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://source/autoloads/global.gd"
+ColorManager="*res://source/autoloads/color_manager.gd"
 
 [display]
 
@@ -28,6 +29,7 @@ window/stretch/mode="canvas_items"
 Draggable="A group for movement arrow gizmos"
 player=""
 conveyor_belt=""
+antenna=""
 
 [input]
 

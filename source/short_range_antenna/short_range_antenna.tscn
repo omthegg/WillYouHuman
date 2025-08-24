@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://conw2p348yry5"]
+
+[ext_resource type="Material" uid="uid://oc3eysusdqw1" path="res://source/materials/antenna.tres" id="1_dmtlc"]
+[ext_resource type="Script" uid="uid://dq3spnjdkp155" path="res://source/short_range_antenna/short_range_antenna.gd" id="1_gi8so"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_aqenh"]
+size = Vector3(0.1, 3, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dmtlc"]
+size = Vector3(0.1, 0.1, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gi8so"]
+size = Vector3(0.5, 0.1, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aqenh"]
+size = Vector3(0.5, 3, 0.5)
+
+[node name="ShortRangeAntenna" type="StaticBody3D" groups=["antenna"]]
+process_mode = 3
+disable_mode = 1
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_gi8so")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+material_override = ExtResource("1_dmtlc")
+mesh = SubResource("BoxMesh_aqenh")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.85, 0)
+material_override = ExtResource("1_dmtlc")
+mesh = SubResource("BoxMesh_dmtlc")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.85, 0)
+material_override = ExtResource("1_dmtlc")
+mesh = SubResource("BoxMesh_gi8so")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_aqenh")

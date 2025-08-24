@@ -47,10 +47,17 @@ func play_level(packed_level:PackedScene) -> void:
 func get_level_ready(level:Node3D) -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	for child in level.get_children():
+		if !(child is Node3D):
+			continue
+		
 		Global.remove_editor_highlight(child)
 		Global.remove_gizmos(child)
 		
 		disable_editor_related_collision(child)
+		
+		if child.is_in_group("antenna"):
+			continue
+		
 		if child is CSGPrimitive3D:
 			if child.collision:
 				child.set_collision_layer_value(4, true)

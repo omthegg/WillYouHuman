@@ -1,8 +1,8 @@
-Node
-Node3D
-MeshInstance3D
 CollisionShape3D
 StaticBody3D
+MeshInstance3D
+Node
+Node3D
 Marker3D
 ColorRect
 SubViewport
@@ -12,4 +12,3 @@ MultiMeshInstance3D
 Camera3D
 Sprite2D
 WorldEnvironment
-Camera2D

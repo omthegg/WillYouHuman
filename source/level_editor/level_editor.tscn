@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dgp6t48gtx87i"]
+[gd_scene load_steps=17 format=3 uid="uid://dgp6t48gtx87i"]
 
 [ext_resource type="Script" uid="uid://b3t4ll2spixth" path="res://source/level_editor/level_editor.gd" id="1_cxict"]
 [ext_resource type="Shader" uid="uid://cde1yf6ft5ae4" path="res://source/level_editor/grid.gdshader" id="1_eqloa"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://gfffbq34nqfh" path="res://source/primitives/box/box.tscn" id="6_fvn2l"]
 [ext_resource type="PackedScene" uid="uid://dewylcfpmmaop" path="res://source/player/player.tscn" id="6_r20ek"]
 [ext_resource type="PackedScene" uid="uid://dnus2qku88gfk" path="res://source/conveyor_belt/conveyor_belt.tscn" id="8_3gcyq"]
+[ext_resource type="PackedScene" uid="uid://conw2p348yry5" path="res://source/short_range_antenna/short_range_antenna.tscn" id="9_8h47r"]
+[ext_resource type="Script" uid="uid://cymm6ax0bs4tw" path="res://source/level_editor/level.gd" id="10_ka004"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uixsf"]
 render_priority = 0
@@ -210,6 +212,10 @@ scene = ExtResource("6_r20ek")
 layout_mode = 2
 scene = ExtResource("8_3gcyq")
 
+[node name="ObjectButton5" parent="UI/ObjectMenu/GridContainer" instance=ExtResource("4_g8vfu")]
+layout_mode = 2
+scene = ExtResource("9_8h47r")
+
 [node name="SelectionOverlay" type="ColorRect" parent="UI/ObjectMenu"]
 layout_mode = 0
 offset_right = 64.0
@@ -294,13 +300,12 @@ mesh = SubResource("SphereMesh_g8vfu")
 
 [node name="Level" type="Node3D" parent="."]
 process_mode = 4
+script = ExtResource("10_ka004")
 
 [node name="Box" parent="Level" instance=ExtResource("6_fvn2l")]
 
 [node name="Player" parent="Level" instance=ExtResource("6_r20ek")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-
-[node name="Networks" type="Node" parent="Level"]
 
 [connection signal="value_changed" from="UI/GridControl/GridSpinBox" to="." method="_on_grid_spin_box_value_changed"]
 [connection signal="pressed" from="UI/SaveButton" to="." method="_on_save_button_pressed"]
