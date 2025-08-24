@@ -4,6 +4,8 @@ extends Node3D
 @onready var hud_canvas_layer:CanvasLayer = $HUDCanvasLayer
 @onready var pause_menu:Control = $MenuCanvasLayer/SubViewportContainer/SubViewport/PauseMenu
 
+var wire:PackedScene = preload("res://source/wire/wire.tscn")
+
 var packed_level_editor:PackedScene = preload("res://source/level_editor/level_editor.tscn")
 var packed_current_level:PackedScene
 var current_level:Node3D

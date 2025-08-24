@@ -21,6 +21,7 @@ shading_mode = 2
 
 [sub_resource type="BoxMesh" id="BoxMesh_xwyqu"]
 material = SubResource("StandardMaterial3D_xphnv")
+size = Vector3(0.4, 0.4, 0.4)
 
 [node name="3DBackground" type="Node3D"]
 script = ExtResource("1_xwyqu")
@@ -35,7 +36,7 @@ transform = Transform3D(0.707107, -0.5, -0.5, 0, 0.707107, -0.707107, 0.707107, 
 light_energy = 0.9
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.46734, 1.195, -2.34)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 1.195, -10)
 visible = false
 mesh = SubResource("BoxMesh_xwyqu")
 skeleton = NodePath("")

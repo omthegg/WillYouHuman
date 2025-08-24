@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0r2ddtnbrj4p"]
+
+[ext_resource type="Script" uid="uid://8pdvuqxruu3a" path="res://source/wiring_component/wiring_component.gd" id="1_nqe0j"]
+
+[node name="WiringComponent" type="Area3D"]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_nqe0j")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

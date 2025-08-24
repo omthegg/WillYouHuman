@@ -1,8 +1,10 @@
+Node3D
+XRHandModifier3D
 CollisionShape3D
+Area3D
 StaticBody3D
 MeshInstance3D
 Node
-Node3D
 Marker3D
 ColorRect
 SubViewport
@@ -10,5 +12,3 @@ SubViewportContainer
 DirectionalLight3D
 MultiMeshInstance3D
 Camera3D
-Sprite2D
-WorldEnvironment

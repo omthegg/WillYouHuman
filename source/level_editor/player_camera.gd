@@ -63,6 +63,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 		elif editor.selected_objects.size() == 0:
 			place()
+	
+	
+	if Input.is_action_just_pressed("wire"):
+		pass
 
 
 func _physics_process(delta: float) -> void:
@@ -114,3 +118,7 @@ func place() -> void:
 		object.set_size_tools_top_level(true)
 		object.set_middles()
 		object.set_previous_middles()
+
+
+func wire() -> void:
+	pass

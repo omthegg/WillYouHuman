@@ -9,6 +9,8 @@ const JUMP_VELOCITY = 6.0
 var in_level_editor:bool = false
 var extra_jumps:int = 1
 
+var dragged_wire:Node3D
+
 func _ready() -> void:
 	$MeshInstance3D.mesh.material.albedo_color = Color.GREEN
 
@@ -46,7 +48,21 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, direction.x * SPEED, SPEED/2)
 		velocity.z = move_toward(velocity.z, direction.z * SPEED, SPEED/2)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED/4)
-		velocity.z = move_toward(velocity.z, 0, SPEED/4)
+		velocity.x = move_toward(velocity.x, 0, SPEED/6)
+		velocity.z = move_toward(velocity.z, 0, SPEED/6)
 
 	move_and_slide()
+	
+	if !dragged_wire:
+		return
+	if !is_instance_valid(dragged_wire):
+		return
+	dragged_wire.update_model()
+
+
+func _exit_tree():
+	if !dragged_wire:
+		return
+	if !is_instance_valid(dragged_wire):
+		return
+	dragged_wire.queue_free()
