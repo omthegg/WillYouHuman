@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dewylcfpmmaop"]
+[gd_scene load_steps=5 format=3 uid="uid://dewylcfpmmaop"]
 
 [ext_resource type="Script" uid="uid://qhivmob45286" path="res://source/player/player.gd" id="1_jct2x"]
+[ext_resource type="Material" uid="uid://bkyigbm1u3q4j" path="res://source/materials/player_material1.tres" id="2_u10tu"]
 [ext_resource type="CapsuleMesh" uid="uid://dwtq8f6jm3ua6" path="res://source/player/bean.tres" id="2_xim07"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jct2x"]
@@ -16,6 +17,7 @@ script = ExtResource("1_jct2x")
 shape = SubResource("CapsuleShape3D_jct2x")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_u10tu")
 mesh = ExtResource("2_xim07")
 
 [node name="Head" type="Node3D" parent="."]

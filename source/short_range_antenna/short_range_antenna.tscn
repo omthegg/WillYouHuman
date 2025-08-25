@@ -3,14 +3,14 @@
 [ext_resource type="Material" uid="uid://oc3eysusdqw1" path="res://source/materials/antenna.tres" id="1_dmtlc"]
 [ext_resource type="Script" uid="uid://dq3spnjdkp155" path="res://source/short_range_antenna/short_range_antenna.gd" id="1_gi8so"]
 [ext_resource type="BoxMesh" uid="uid://cwwuke7mooaxn" path="res://source/short_range_antenna/mesh1.tres" id="3_crb1p"]
-[ext_resource type="PackedScene" uid="uid://d0r2ddtnbrj4p" path="res://source/wiring_component/wiring_component.tscn" id="3_pnx0f"]
+[ext_resource type="PackedScene" uid="uid://cta154fvmvnj1" path="res://source/wiring_component/wiring_component.tscn" id="3_pnx0f"]
 [ext_resource type="BoxMesh" uid="uid://cv6c6utt3qcn6" path="res://source/short_range_antenna/mesh2.tres" id="4_isvkp"]
 [ext_resource type="BoxMesh" uid="uid://cvilhwikq7ffa" path="res://source/short_range_antenna/mesh3.tres" id="5_rjl6c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aqenh"]
 size = Vector3(0.5, 3, 0.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_gi8so"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_rjl6c"]
 size = Vector3(1, 3, 1)
 
 [node name="ShortRangeAntenna" type="StaticBody3D" groups=["antenna"]]
@@ -41,11 +41,6 @@ shape = SubResource("BoxShape3D_aqenh")
 
 [node name="WiringComponent" parent="." instance=ExtResource("3_pnx0f")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WiringComponent"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="WiringComponent"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-shape = SubResource("BoxShape3D_gi8so")
-
-[node name="Outlet" type="Node3D" parent="WiringComponent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.85, 0)
-
-[editable path="WiringComponent"]
+shape = SubResource("BoxShape3D_rjl6c")

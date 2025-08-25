@@ -11,9 +11,6 @@ var extra_jumps:int = 1
 
 var dragged_wire:Node3D
 
-func _ready() -> void:
-	$MeshInstance3D.mesh.material.albedo_color = Color.GREEN
-
 
 func _input(event) -> void:
 	if event is InputEventMouseMotion:

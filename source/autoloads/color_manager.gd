@@ -4,6 +4,7 @@ var procedural_material:StandardMaterial3D = preload("res://source/materials/pro
 var glass_material:StandardMaterial3D = preload("res://source/materials/glass.tres")
 var antenna_material:StandardMaterial3D = preload("res://source/materials/antenna.tres")
 var wire_material:StandardMaterial3D = preload("res://source/materials/wire.tres")
+var player_material:StandardMaterial3D = preload("res://source/materials/player_material1.tres")
 
 func _ready() -> void:
 	procedural_material.albedo_texture = Global.generate_random_texture()
@@ -11,3 +12,4 @@ func _ready() -> void:
 	glass_material.albedo_color = Color.BLUE
 	antenna_material.albedo_color = Color.BLUE
 	wire_material.albedo_color = Color.LIGHT_SKY_BLUE
+	player_material.albedo_color = Color.GREEN

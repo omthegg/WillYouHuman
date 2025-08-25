@@ -1,8 +1,8 @@
+res://source/wiring_component
+res://source/player
 res://source/short_range_antenna
 res://source/wire
 res://source/conveyor_belt
-res://source/player
-res://source/wiring_component
 res://source/materials
 res://source/autoloads
 res://source/level_editor

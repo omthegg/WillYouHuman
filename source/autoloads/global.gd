@@ -155,9 +155,13 @@ func is_in_level_editor(node:Node) -> bool:
 	if node.get_parent() is SubViewport:
 		return true
 	
-	if get_node_or_null("/root/LevelEditor/Level"):
-		if node in get_node("/root/LevelEditor/Level").get_children():
-			return true
+	if !scene_manager.level_editor:
+		return false
+	if !is_instance_valid(scene_manager.level_editor):
+		return false
+	
+	if node in get_all_children(scene_manager.level_editor):
+		return true
 	
 	return false
 
