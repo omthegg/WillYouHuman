@@ -44,3 +44,6 @@ shape = SubResource("BoxShape3D_aqenh")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="WiringComponent"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_rjl6c")
+
+[node name="Outlet" type="Node3D" parent="WiringComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.85, 0)

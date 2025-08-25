@@ -25,7 +25,7 @@ func _on_body_entered(body:Node3D) -> void:
 				body.dragged_wire.queue_free()
 				var network = Global.scene_manager.current_level.create_network([new_wire], [self, other_device])
 				$Label3D.text = "Network: " + str(network)
-				#print("E")
+				other_device.get_node("Label3D").text = "Network: " + str(network)
 	
 	body.dragged_wire = create_wire([self, body])
 
