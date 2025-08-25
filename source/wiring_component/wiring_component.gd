@@ -32,6 +32,6 @@ func _on_body_entered(body:Node3D) -> void:
 
 func create_wire(devices:Array) -> Node3D:
 	var wire:Node3D = Global.scene_manager.wire.instantiate()
-	Global.scene_manager.add_child(wire)
+	Global.scene_manager.current_level.add_child(wire)
 	wire.devices = devices
 	return wire
