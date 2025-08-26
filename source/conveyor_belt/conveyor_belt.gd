@@ -56,8 +56,7 @@ func refresh() -> void:
 	var editor_highlight:MeshInstance3D = get_node_or_null("EditorHighlight")
 	if editor_highlight:
 		editor_highlight.position = mid_point
-		editor_highlight.mesh.size.z = length
-		editor_highlight.mesh.size.y = 0.5
+		editor_highlight.mesh.size = Vector3(1.0, 0.5, length)
 		editor_highlight.rotation = model.rotation
 
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c1hf17pn4r3c2"]
 
 [ext_resource type="Script" uid="uid://nq0ojdlgewrv" path="res://source/wire/wire.gd" id="1_7jpwb"]
-[ext_resource type="Material" uid="uid://bdtox4ox4v57b" path="res://source/materials/wire.tres" id="2_dg3mo"]
+[ext_resource type="Material" uid="uid://bdtox4ox4v57b" path="res://source/wire/wire.tres" id="2_dg3mo"]
 [ext_resource type="CylinderMesh" uid="uid://dqch3ee5031p3" path="res://source/wire/mesh.tres" id="3_2ec36"]
 
 [node name="Wire" type="Node3D"]

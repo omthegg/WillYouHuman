@@ -127,9 +127,13 @@ func deselect_all_objects() -> void:
 	update_property_menu()
 
 
+func show_file_dialog() -> void:
+	file_dialog.popup(Rect2i(8, 32, 1136, 610))
+
+
 func _on_save_button_pressed() -> void:
 	file_dialog.file_mode = FileDialog.FILE_MODE_SAVE_FILE
-	file_dialog.popup(Rect2i(0, 0, 1152, 648))
+	show_file_dialog()
 
 
 func _on_file_dialog_file_selected(path) -> void:
@@ -146,7 +150,7 @@ func _on_play_button_pressed() -> void:
 
 func _on_load_button_pressed() -> void:
 	file_dialog.file_mode = FileDialog.FILE_MODE_OPEN_FILE
-	file_dialog.popup(Rect2i(0, 0, 1152, 648))
+	show_file_dialog()
 
 
 func _on_delete_button_pressed() -> void:

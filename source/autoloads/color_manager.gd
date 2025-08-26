@@ -2,9 +2,9 @@ extends Node
 
 var procedural_material:StandardMaterial3D = preload("res://source/materials/procedural.tres")
 var glass_material:StandardMaterial3D = preload("res://source/materials/glass.tres")
-var antenna_material:StandardMaterial3D = preload("res://source/materials/antenna.tres")
-var wire_material:StandardMaterial3D = preload("res://source/materials/wire.tres")
-var player_material:StandardMaterial3D = preload("res://source/materials/player_material1.tres")
+var antenna_material:StandardMaterial3D = preload("res://source/short_range_antenna/antenna.tres")
+var wire_material:StandardMaterial3D = preload("res://source/wire/wire.tres")
+var player_material:StandardMaterial3D = preload("res://source/player/player_material1.tres")
 
 func _ready() -> void:
 	procedural_material.albedo_texture = Global.generate_random_texture()

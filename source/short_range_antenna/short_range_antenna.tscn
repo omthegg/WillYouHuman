@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://conw2p348yry5"]
 
-[ext_resource type="Material" uid="uid://oc3eysusdqw1" path="res://source/materials/antenna.tres" id="1_dmtlc"]
+[ext_resource type="Material" uid="uid://oc3eysusdqw1" path="res://source/short_range_antenna/antenna.tres" id="1_dmtlc"]
 [ext_resource type="Script" uid="uid://dq3spnjdkp155" path="res://source/short_range_antenna/short_range_antenna.gd" id="1_gi8so"]
 [ext_resource type="BoxMesh" uid="uid://cwwuke7mooaxn" path="res://source/short_range_antenna/mesh1.tres" id="3_crb1p"]
 [ext_resource type="PackedScene" uid="uid://cta154fvmvnj1" path="res://source/wiring_component/wiring_component.tscn" id="3_pnx0f"]
