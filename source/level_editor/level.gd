@@ -17,6 +17,7 @@ func create_network(wires:Array, devices:Array) -> Network:
 	network.wires = wires
 	network.devices = devices
 	networks.append(network)
+	update_network_devices_labels(network)
 	return network
 
 
@@ -30,8 +31,30 @@ func merge_overlapping_networks(network1:Network, network2:Network, overlapping_
 	merged_network.devices.append_array(network2.devices)
 	merged_network.wires.append_array(network2.wires)
 	networks.append(merged_network)
+	update_network_devices_labels(merged_network)
 	return merged_network
 
 
 func update_networks() -> void:
 	pass
+
+
+func update_network_devices_labels(network:Network) -> void:
+	for device in network.devices:
+		device.display_network_id(network)
+
+
+func fix_network_overlap(network:Network, overlapping_device:Object) -> Network:
+	for n:Network in networks:
+		if n == network:
+			continue
+		if !(overlapping_device in n.devices):
+			continue
+		
+		var merged_network = merge_overlapping_networks(network, n, overlapping_device)
+		print("E")
+		return merged_network
+	
+	print("F")
+	update_network_devices_labels(network)
+	return network

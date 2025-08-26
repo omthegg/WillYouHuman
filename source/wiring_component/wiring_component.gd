@@ -1,5 +1,7 @@
 extends Area3D
 
+@onready var label:Label3D = $Label3D
+
 var neighbor_devices:Array = []
 
 func _ready() -> void:
@@ -28,8 +30,10 @@ func _on_body_entered(body:Node3D) -> void:
 		
 		var new_wire = create_wire([self, other_device])
 		var network = Global.scene_manager.current_level.create_network([new_wire], [self, other_device])
-		display_network_id(network)
-		other_device.display_network_id(network)
+		var fixed_network = Global.scene_manager.current_level.fix_network_overlap(network, self)
+		fixed_network = Global.scene_manager.current_level.fix_network_overlap(network, other_device)
+		#display_network_id(fixed_network)
+		#other_device.display_network_id(fixed_network)
 		other_device.neighbor_devices.append(self)
 		neighbor_devices.append(other_device)
 	
@@ -41,7 +45,7 @@ func player_has_dragged_wire(player:Node3D) -> bool:
 
 
 func display_network_id(network) -> void:
-	$Label3D.text = "Network: " + str(network)
+	label.text = "Network: " + str(network)
 
 
 func create_wire(devices:Array) -> Node3D:

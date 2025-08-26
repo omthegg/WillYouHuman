@@ -24,5 +24,5 @@ res://source/conveyor_belt/conveyor_belt.tscn
 res://source/wire/wire.tscn
 res://source/short_range_antenna/short_range_antenna.tscn
 res://source/wiring_component/wiring_component.tscn
-res://source/conveyor_belt/conveyor_belt.gd
-res://source/level_editor/level_editor.gd
+res://source/level_editor/level.gd
+res://source/wiring_component/wiring_component.gd
