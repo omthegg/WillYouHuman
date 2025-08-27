@@ -11,3 +11,8 @@ script = ExtResource("1_7jpwb")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 material_override = ExtResource("2_dg3mo")
 mesh = ExtResource("3_2ec36")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+billboard = 1
+text = "Network"

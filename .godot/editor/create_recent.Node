@@ -1,9 +1,9 @@
+Label3D
 MeshInstance3D
 Node3D
 CollisionShape3D
 Area3D
 Sprite3D
-Label3D
 XRHandModifier3D
 StaticBody3D
 Node

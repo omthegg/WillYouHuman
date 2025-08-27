@@ -8,6 +8,7 @@ extends Node3D
 		update_model()
 
 @onready var mesh_instance:MeshInstance3D = $MeshInstance3D
+@onready var label:Label3D = $Label3D
 
 func update_model() -> void:
 	if devices.size() != 2:
@@ -25,3 +26,7 @@ func update_model() -> void:
 	var mid_point:Vector3 = (pos1 + pos2)/2
 	global_position = mid_point
 	look_at(pos1)
+
+
+func display_network_id(network) -> void:
+	label.text = "Network: " + str(network)
