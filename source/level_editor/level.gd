@@ -52,9 +52,9 @@ func fix_network_overlap(network:Network, overlapping_device:Object) -> Network:
 			continue
 		
 		var merged_network = merge_overlapping_networks(network, n, overlapping_device)
-		print("E")
+		#print("E")
 		return merged_network
 	
-	print("F")
+	#print("F")
 	update_network_devices_labels(network)
 	return network

@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://cta154fvmvnj1"]
+[gd_scene load_steps=5 format=3 uid="uid://cta154fvmvnj1"]
 
 [ext_resource type="Script" uid="uid://ckyy2reemn176" path="res://source/wiring_component/wiring_component.gd" id="1_nqe0j"]
+[ext_resource type="Shape3D" uid="uid://ct6rgdl7wvf3" path="res://source/wiring_component/range_shape.tres" id="2_pxryx"]
+[ext_resource type="Material" uid="uid://bxfvlh7pm8mjj" path="res://source/wiring_component/range_material.tres" id="2_t4kx7"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_t4kx7"]
+flip_faces = true
+radius = 8.0
+height = 16.0
+radial_segments = 8
+rings = 4
 
 [node name="WiringComponent" type="Area3D"]
 collision_layer = 0
@@ -11,3 +20,15 @@ script = ExtResource("1_nqe0j")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2, 0)
 billboard = 1
 text = "Network"
+
+[node name="Range" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Range"]
+shape = ExtResource("2_pxryx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Range"]
+visible = false
+material_override = ExtResource("2_t4kx7")
+mesh = SubResource("SphereMesh_t4kx7")
+
+[connection signal="body_exited" from="Range" to="." method="_on_range_body_exited"]
