@@ -17,4 +17,4 @@ func _ready() -> void:
 	player_material.albedo_color = Color.GREEN
 	wire_range_material.albedo_color = Color.DODGER_BLUE
 	wire_range_material.albedo_color.a = 0.1
-	wire_powered_material.albedo_color = Color.SKY_BLUE
+	wire_powered_material.albedo_color = Color.WHITE

@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://d0vp8m84b8jc2"]
+[gd_scene load_steps=13 format=3 uid="uid://d0vp8m84b8jc2"]
 
+[ext_resource type="Script" uid="uid://bnvm3vb58bxek" path="res://source/short_range_battery/short_range_battery.gd" id="1_1eva4"]
 [ext_resource type="Material" uid="uid://oc3eysusdqw1" path="res://source/short_range_antenna/antenna.tres" id="1_wajck"]
 [ext_resource type="Texture2D" uid="uid://dfbfak20abc5h" path="res://textures/battery_overlay.png" id="2_onbgj"]
 [ext_resource type="BoxMesh" uid="uid://cwwuke7mooaxn" path="res://source/short_range_antenna/mesh1.tres" id="3_k8wan"]
@@ -28,7 +29,11 @@ size = Vector3(1, 3, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_k8wan"]
 size = Vector3(1.5, 3, 1.5)
 
-[node name="ShortRangeBattery" type="StaticBody3D"]
+[node name="ShortRangeBattery" type="StaticBody3D" groups=["antenna"]]
+process_mode = 3
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_1eva4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
@@ -78,6 +83,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_1eva4")
 
 [node name="WiringComponent" parent="." instance=ExtResource("6_a4ab2")]
+is_source = true
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="WiringComponent"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)

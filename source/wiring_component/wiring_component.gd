@@ -1,12 +1,15 @@
 extends Area3D
 
 @export var limited_range:bool = true
+@export var is_source:bool = false
 
 @onready var label:Label3D = $Label3D
 @onready var range_mesh_instance:MeshInstance3D = $Range/MeshInstance3D
 @onready var range:Area3D = $Range
 
 var neighbor_devices:Array = []
+
+var powered:bool = false
 
 func _ready() -> void:
 	connect("body_entered", Callable(self, "_on_body_entered"))
@@ -36,8 +39,10 @@ func _on_body_entered(body:Node3D) -> void:
 		
 		var new_wire = create_wire([self, other_device])
 		var network = Global.scene_manager.current_level.create_network([new_wire], [self, other_device])
-		var fixed_network = Global.scene_manager.current_level.fix_network_overlap(network, self)
-		fixed_network = Global.scene_manager.current_level.fix_network_overlap(network, other_device)
+		#var fixed_network = 
+		Global.scene_manager.current_level.fix_network_overlap(network, self)
+		#fixed_network = 
+		Global.scene_manager.current_level.fix_network_overlap(network, other_device)
 		#display_network_id(fixed_network)
 		#other_device.display_network_id(fixed_network)
 		other_device.neighbor_devices.append(self)

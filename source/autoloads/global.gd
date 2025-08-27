@@ -5,8 +5,13 @@ var mouse_sens:float = 0.14
 var move_tool:PackedScene = preload("res://source/level_editor/move_tool.tscn")
 
 var display_material:StandardMaterial3D = preload("res://source/materials/display.tres")
+var highlight_material:StandardMaterial3D = preload("res://source/materials/editor_highlight.tres")
 
 var scene_manager:Node3D
+
+func _ready() -> void:
+	highlight_material.albedo_color = Color.DEEP_SKY_BLUE
+	highlight_material.albedo_color.a = 0.2
 
 
 func generate_random_texture(size:int = 1024) -> Texture2D:
@@ -75,19 +80,13 @@ func add_editor_highlight(node3d:Node3D) -> MeshInstance3D:
 	var box_mesh:BoxMesh = BoxMesh.new()
 	box_mesh.size = aabb.size
 	
-	var material = StandardMaterial3D.new()
-	material.albedo_color = Color.DEEP_SKY_BLUE
-	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	material.albedo_color.a = 0.2
-	
 	var mesh_instance:MeshInstance3D = MeshInstance3D.new()
 	node3d.add_child(mesh_instance)
 	mesh_instance.mesh = box_mesh
 	mesh_instance.global_position = node3d.global_position
 	mesh_instance.name = "EditorHighlight"
 	mesh_instance.scale *= 1.01
-	mesh_instance.material_override = material
+	mesh_instance.material_override = highlight_material
 	mesh_instance.process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	return mesh_instance
