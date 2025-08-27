@@ -23,7 +23,7 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
+	
 	if is_on_floor():
 		extra_jumps = 1
 	
@@ -34,7 +34,7 @@ func _physics_process(delta: float) -> void:
 		elif extra_jumps > 0:
 			velocity.y = JUMP_VELOCITY
 			extra_jumps -= 1
-
+	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
@@ -47,14 +47,14 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED/6)
 		velocity.z = move_toward(velocity.z, 0, SPEED/6)
-
+	
 	move_and_slide()
 	
 	if !dragged_wire:
 		return
 	if !is_instance_valid(dragged_wire):
 		return
-	dragged_wire.update_model()
+	#dragged_wire.update_model()
 
 
 func _exit_tree():

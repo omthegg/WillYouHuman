@@ -9,6 +9,8 @@ extends Node3D
 
 @onready var mesh_instance:MeshInstance3D = $MeshInstance3D
 @onready var label:Label3D = $Label3D
+@onready var raycast:RayCast3D = $RayCast3D
+@onready var power_indicator:MeshInstance3D = $PowerIndicator
 
 func update_model() -> void:
 	if devices.size() != 2:
@@ -23,9 +25,15 @@ func update_model() -> void:
 	
 	var distance:float = pos1.distance_to(pos2)
 	mesh_instance.mesh.height = distance
+	power_indicator.mesh.height = distance
 	var mid_point:Vector3 = (pos1 + pos2)/2
 	global_position = mid_point
 	look_at(pos1)
+	power_indicator.visible = powered
+
+
+func _physics_process(_delta):
+	update_model()
 
 
 func display_network_id(network) -> void:

@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1hf17pn4r3c2"]
+[gd_scene load_steps=6 format=3 uid="uid://c1hf17pn4r3c2"]
 
 [ext_resource type="Script" uid="uid://nq0ojdlgewrv" path="res://source/wire/wire.gd" id="1_7jpwb"]
-[ext_resource type="Material" uid="uid://bdtox4ox4v57b" path="res://source/wire/wire.tres" id="2_dg3mo"]
-[ext_resource type="CylinderMesh" uid="uid://dqch3ee5031p3" path="res://source/wire/mesh.tres" id="3_2ec36"]
+[ext_resource type="Material" uid="uid://bdtox4ox4v57b" path="res://source/wire/wire_material.tres" id="2_dg3mo"]
+[ext_resource type="CylinderMesh" uid="uid://dqch3ee5031p3" path="res://source/wire/wire_mesh.tres" id="3_2ec36"]
+[ext_resource type="Material" uid="uid://babpmlmyot1ny" path="res://source/wire/wire_powered_material.tres" id="4_iqaly"]
+[ext_resource type="CylinderMesh" uid="uid://cd8emijqu8dak" path="res://source/wire/wire_powered_mesh.tres" id="5_16y3u"]
 
 [node name="Wire" type="Node3D"]
 script = ExtResource("1_7jpwb")
@@ -12,7 +14,17 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 
 material_override = ExtResource("2_dg3mo")
 mesh = ExtResource("3_2ec36")
 
+[node name="PowerIndicator" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+visible = false
+material_override = ExtResource("4_iqaly")
+mesh = ExtResource("5_16y3u")
+
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 billboard = 1
 text = "Network"
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, 0)
+collision_mask = 0
