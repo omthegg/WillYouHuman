@@ -21,7 +21,7 @@ shader_parameter/line_color = Color(0.734375, 0, 0, 1)
 shader_parameter/fill_color = Color(0, 0, 0, 0)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_8j87u"]
-size = Vector2(50, 50)
+size = Vector2(100, 100)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_cxict"]
 
@@ -216,12 +216,14 @@ scene = ExtResource("8_3gcyq")
 [node name="ObjectButton5" parent="UI/ObjectMenu/GridContainer" instance=ExtResource("4_g8vfu")]
 layout_mode = 2
 scene = ExtResource("9_8h47r")
-offset = Vector3(1, -1, 1)
+offset = Vector3(-1, -2.5, -1)
+camera_size = 3.5
 
 [node name="ObjectButton6" parent="UI/ObjectMenu/GridContainer" instance=ExtResource("4_g8vfu")]
 layout_mode = 2
 scene = ExtResource("10_wl6bt")
-offset = Vector3(1, -1, 1)
+offset = Vector3(-1, -2.5, -1)
+camera_size = 3.5
 
 [node name="SelectionOverlay" type="ColorRect" parent="UI/ObjectMenu"]
 layout_mode = 0

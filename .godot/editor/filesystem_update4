@@ -29,3 +29,8 @@ res://source/wiring_component/wiring_component.tscn
 res://source/short_range_battery/short_range_battery.tscn
 res://source/level_editor/level.gd
 res://source/autoloads/global.gd
+res://source/wire/wire_mesh.tres
+res://source/wire/wire.gd
+res://source/player/player.gd
+res://source/level_editor/object_button.gd
+res://source/level_editor/object_button.tscn

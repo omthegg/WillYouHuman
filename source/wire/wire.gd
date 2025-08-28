@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var powered:bool = false
+var powered:bool = false
 
 @export var devices:Array = []:
 	set(value):
@@ -29,10 +29,11 @@ func update_model() -> void:
 	var mid_point:Vector3 = (pos1 + pos2)/2
 	global_position = mid_point
 	look_at(pos1)
-	if devices[0].is_in_group("antenna") and devices[1].is_in_group("antenna"):
-		power_indicator.visible = devices[0].powered and devices[1].powered
-	else:
-		power_indicator.hide()
+	power_indicator.visible = powered
+	#if devices[0].is_in_group("antenna") and devices[1].is_in_group("antenna"):
+	#	power_indicator.visible = devices[0].powered and devices[1].powered
+	#else:
+	#	power_indicator.hide()
 
 
 func _physics_process(_delta) -> void:

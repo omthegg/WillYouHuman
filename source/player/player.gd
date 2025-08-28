@@ -9,6 +9,9 @@ const JUMP_VELOCITY = 6.0
 var in_level_editor:bool = false
 var extra_jumps:int = 1
 
+var camera_tilt_angle:float = 1.0
+var camera_tilt_speed:float = 10.0
+
 var dragged_wire:Node3D
 
 
@@ -48,6 +51,8 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED/6)
 		velocity.z = move_toward(velocity.z, 0, SPEED/6)
 	
+	tilt_camera(input_dir.x, delta)
+	
 	move_and_slide()
 	
 	if !dragged_wire:
@@ -63,3 +68,16 @@ func _exit_tree():
 	if !is_instance_valid(dragged_wire):
 		return
 	dragged_wire.queue_free()
+
+
+func tilt_camera(factor:float, delta_time:float) -> void:
+	if factor > 0.0:
+		camera.rotation.z = lerp_angle(camera.rotation.z
+		, deg_to_rad(-camera_tilt_angle), camera_tilt_speed*delta_time)
+	if factor < 0.0:
+		camera.rotation.z = lerp_angle(camera.rotation.z
+		, deg_to_rad(camera_tilt_angle), camera_tilt_speed*delta_time)
+	if factor == 0.0:
+		camera.rotation.z = lerp_angle(camera.rotation.z
+		, deg_to_rad(0), camera_tilt_speed*delta_time)
+	

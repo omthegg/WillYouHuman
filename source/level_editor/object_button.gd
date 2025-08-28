@@ -2,8 +2,10 @@ extends TextureButton
 
 @export var scene:PackedScene
 @export var offset:Vector3 = Vector3.ZERO
+@export var camera_size:float = 2.0
 
 @onready var level_editor:Node3D
+@onready var camera:Camera3D = $SubViewport/Camera3D
 
 func _ready() -> void:
 	var scene_instance:Node = scene.instantiate()
@@ -18,6 +20,8 @@ func _ready() -> void:
 	
 	scene_instance.process_mode = Node.PROCESS_MODE_DISABLED
 	scene_instance.position += offset
+	
+	camera.size = camera_size
 	set_texture()
 
 func set_texture() -> void:

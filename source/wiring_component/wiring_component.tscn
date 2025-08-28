@@ -6,8 +6,8 @@
 
 [sub_resource type="SphereMesh" id="SphereMesh_t4kx7"]
 flip_faces = true
-radius = 8.0
-height = 16.0
+radius = 8.5
+height = 17.0
 radial_segments = 8
 rings = 4
 

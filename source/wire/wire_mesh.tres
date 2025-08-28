@@ -2,8 +2,8 @@
 
 [resource]
 resource_local_to_scene = true
-top_radius = 0.05
-bottom_radius = 0.05
+top_radius = 0.03
+bottom_radius = 0.03
 height = 1.0
 radial_segments = 6
 rings = 0
