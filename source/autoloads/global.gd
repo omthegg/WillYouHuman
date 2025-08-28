@@ -170,3 +170,13 @@ func get_all_children(in_node:Node, array:Array = []) -> Array:
 	for child in in_node.get_children():
 		array = get_all_children(child, array)
 	return array
+
+
+func erase_duplicates(array: Array) -> Array:
+	var unique: Array = []
+	
+	for item in array:
+		if not unique.has(item):
+			unique.append(item)
+	
+	return unique

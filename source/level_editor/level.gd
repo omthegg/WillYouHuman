@@ -34,28 +34,31 @@ func merge_overlapping_networks(network1:Network, network2:Network, overlapping_
 	merged_network.devices.erase(overlapping_device)
 	merged_network.devices.append_array(network2.devices)
 	merged_network.wires.append_array(network2.wires)
+	merged_network.devices = Global.erase_duplicates(merged_network.devices)
+	merged_network.wires = Global.erase_duplicates(merged_network.wires)
 	networks.append(merged_network)
 	update_network(merged_network)
 	return merged_network
 
 
 func update_network(network:Network) -> void:
+	#print(network.devices.size())
 	for device in network.devices:
 		if device.is_source:
 			network.powered = true
 		
 		device.powered = network.powered
-		#device.display_network_id(network)
+		device.display_network_id(network)
 	
-	#for wire in network.wires:
-	#	wire.powered = network.powered
-		#wire.display_network_id(network)
+	for wire in network.wires:
+		wire.powered = network.powered
+		wire.display_network_id(network)
 
 
 func fix_network_overlap(network:Network, overlapping_device:Object) -> void:# -> Network:
 	for n:Network in networks:
 		if networks.size() == 1:
-			print("E")
+			#print("E")
 			return
 		
 		if n == network:
@@ -65,7 +68,7 @@ func fix_network_overlap(network:Network, overlapping_device:Object) -> void:# -
 		
 		var merged_network = merge_overlapping_networks(network, n, overlapping_device)
 		
-		print(str(n))
+		#print(str(n))
 		#return merged_network
 	
 	#print("F")
