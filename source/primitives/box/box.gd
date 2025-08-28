@@ -3,6 +3,7 @@ extends StaticBody3D
 @export var size:Vector3 = Vector3.ONE
 @export var collision:bool = true
 @export var material:Material = ColorManager.procedural_material
+@export var flip_faces:bool = false
 
 # ST stands for SizeTool
 @onready var st_xp:Node3D = $SizeToolXP
@@ -71,8 +72,7 @@ func _physics_process(_delta):
 	
 	set_previous_middles()
 	
-	change_size()
-	mesh_instance.material_override = material
+	change_appearance()
 	
 	# Resize selection box if we have one
 	var highlight:MeshInstance3D = get_node_or_null("EditorHighlight")
@@ -123,6 +123,9 @@ func set_size_tools_top_level(value:bool) -> void:
 	st_zn.top_level = value
 
 
-func change_size() -> void:
+func change_appearance() -> void:
 	mesh_instance.mesh.size = size
+	mesh_instance.mesh.flip_faces = flip_faces
 	collision_shape.shape.size = size
+	collision_shape.disabled = !collision
+	mesh_instance.material_override = material
