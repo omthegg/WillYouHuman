@@ -1,10 +1,10 @@
+MeshInstance3D
+CollisionShape3D
+StaticBody3D
 Node3D
 Node
-MeshInstance3D
-StaticBody3D
 RayCast3D
 Label3D
-CollisionShape3D
 Area3D
 Sprite3D
 XRHandModifier3D

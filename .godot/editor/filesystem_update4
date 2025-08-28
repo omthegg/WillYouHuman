@@ -34,3 +34,6 @@ res://source/wire/wire.gd
 res://source/player/player.gd
 res://source/level_editor/object_button.gd
 res://source/level_editor/object_button.tscn
+res://source/primitives/box/box.tscn
+res://source/primitives/box/box.gd
+res://source/scene_manager/scene_manager.gd

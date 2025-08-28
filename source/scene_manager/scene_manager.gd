@@ -60,7 +60,7 @@ func get_level_ready(level:Node3D) -> void:
 		if child.is_in_group("antenna"):
 			continue
 		
-		if child is CSGPrimitive3D:
+		if child.get("collision"):
 			if child.collision:
 				child.set_collision_layer_value(4, true)
 				child.set_collision_mask_value(4, true)

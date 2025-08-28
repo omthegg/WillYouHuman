@@ -313,10 +313,10 @@ mesh = SubResource("SphereMesh_g8vfu")
 process_mode = 4
 script = ExtResource("10_ka004")
 
-[node name="Box" parent="Level" instance=ExtResource("6_fvn2l")]
-
 [node name="Player" parent="Level" instance=ExtResource("6_r20ek")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="Box" parent="Level" instance=ExtResource("6_fvn2l")]
 
 [connection signal="value_changed" from="UI/GridControl/GridSpinBox" to="." method="_on_grid_spin_box_value_changed"]
 [connection signal="pressed" from="UI/SaveButton" to="." method="_on_save_button_pressed"]

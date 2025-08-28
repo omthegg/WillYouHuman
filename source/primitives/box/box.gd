@@ -1,6 +1,8 @@
-extends CSGBox3D
+extends StaticBody3D
 
+@export var size:Vector3 = Vector3.ONE
 @export var collision:bool = true
+@export var material:Material = ColorManager.procedural_material
 
 # ST stands for SizeTool
 @onready var st_xp:Node3D = $SizeToolXP
@@ -19,6 +21,9 @@ extends CSGBox3D
 @onready var previous_middle_x:Vector3 = (st_xp.global_position + st_xn.global_position)/2
 @onready var previous_middle_y:Vector3 = (st_yp.global_position + st_yn.global_position)/2
 @onready var previous_middle_z:Vector3 = (st_zp.global_position + st_zn.global_position)/2
+
+@onready var mesh_instance:MeshInstance3D = $MeshInstance3D
+@onready var collision_shape:CollisionShape3D = $CollisionShape3D
 
 var middle_x_difference:Vector3 = Vector3.ZERO
 var middle_y_difference:Vector3 = Vector3.ZERO
@@ -66,6 +71,9 @@ func _physics_process(_delta):
 	
 	set_previous_middles()
 	
+	change_size()
+	mesh_instance.material_override = material
+	
 	# Resize selection box if we have one
 	var highlight:MeshInstance3D = get_node_or_null("EditorHighlight")
 	if highlight:
@@ -76,6 +84,7 @@ func set_middles() -> void:
 	middle_x = (st_xp.global_position + st_xn.global_position)/2
 	middle_y = (st_yp.global_position + st_yn.global_position)/2
 	middle_z = (st_zp.global_position + st_zn.global_position)/2
+
 
 func set_previous_middles() -> void:
 	previous_middle_x = middle_x
@@ -112,3 +121,8 @@ func set_size_tools_top_level(value:bool) -> void:
 	st_yn.top_level = value
 	st_zp.top_level = value
 	st_zn.top_level = value
+
+
+func change_size() -> void:
+	mesh_instance.mesh.size = size
+	collision_shape.shape.size = size

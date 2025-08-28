@@ -30,6 +30,7 @@ Draggable="A group for movement arrow gizmos"
 player=""
 conveyor_belt=""
 antenna=""
+box=""
 
 [input]
 

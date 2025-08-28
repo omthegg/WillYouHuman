@@ -1,15 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://gfffbq34nqfh"]
+[gd_scene load_steps=5 format=3 uid="uid://gfffbq34nqfh"]
 
 [ext_resource type="Script" uid="uid://p277wtd5kx8k" path="res://source/primitives/box/box.gd" id="1_dasfb"]
 [ext_resource type="PackedScene" uid="uid://bxnmakt4ofm0x" path="res://source/level_editor/size_tool.tscn" id="1_nrq82"]
-[ext_resource type="Material" uid="uid://vcboss1fp468" path="res://source/materials/procedural.tres" id="1_yxhv5"]
 
-[node name="Box" type="CSGBox3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_dasfb"]
+resource_local_to_scene = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_dasfb"]
+resource_local_to_scene = true
+
+[node name="Box" type="StaticBody3D" groups=["box"]]
 process_mode = 3
-use_collision = true
 collision_layer = 2
 collision_mask = 2
-material = ExtResource("1_yxhv5")
 script = ExtResource("1_dasfb")
 
 [node name="SizeToolXP" parent="." instance=ExtResource("1_nrq82")]
@@ -41,3 +44,9 @@ move_vector = Vector3(0, 0, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 top_level = true
 move_vector = Vector3(0, 0, -1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_dasfb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_dasfb")
