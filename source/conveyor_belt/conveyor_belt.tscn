@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnus2qku88gfk"]
+[gd_scene load_steps=10 format=3 uid="uid://dnus2qku88gfk"]
 
 [ext_resource type="Script" uid="uid://o4f6ne8s8nc0" path="res://source/conveyor_belt/conveyor_belt.gd" id="1_ntvlh"]
 [ext_resource type="Material" uid="uid://c0rhsit1yp1h2" path="res://source/conveyor_belt/y_material.tres" id="2_oxpmr"]
@@ -11,6 +11,9 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_25s2w"]
 resource_local_to_scene = true
 size = Vector3(1, 0.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y1hjk"]
+resource_local_to_scene = true
 
 [node name="ConveyorBelt" type="StaticBody3D" groups=["conveyor_belt"]]
 process_mode = 3
@@ -65,3 +68,11 @@ transform = Transform3D(-4.37114e-08, -8.74228e-08, -1, 0, -1, 8.74228e-08, -1, 
 material_override = ExtResource("6_y1hjk")
 mesh = ExtResource("5_ds4k1")
 skeleton = NodePath("../..")
+
+[node name="ObjectDetector" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ObjectDetector"]
+shape = SubResource("BoxShape3D_y1hjk")
+
+[connection signal="body_entered" from="ObjectDetector" to="." method="_on_object_detector_body_entered"]
+[connection signal="body_exited" from="ObjectDetector" to="." method="_on_object_detector_body_exited"]

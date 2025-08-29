@@ -5,6 +5,8 @@ extends StaticBody3D
 @onready var start:Node3D = $Start
 @onready var end:Node3D = $End
 @onready var collision_shape:CollisionShape3D = $CollisionShape3D
+@onready var object_detector:Area3D = $ObjectDetector
+@onready var object_detector_collision_shape:CollisionShape3D = $ObjectDetector/CollisionShape3D
 
 @onready var top:MeshInstance3D = $Model/Top
 @onready var bottom:MeshInstance3D = $Model/Bottom
@@ -21,6 +23,8 @@ extends StaticBody3D
 @onready var x_material:StandardMaterial3D = left.material_override
 @onready var y_material:StandardMaterial3D = top.material_override
 @onready var z_material:StandardMaterial3D = front.material_override
+
+var objects_in_contact:Array = []
 
 func _ready() -> void:
 	x_material.albedo_color = Color.ORANGE_RED
@@ -53,6 +57,10 @@ func refresh() -> void:
 	
 	collision_shape.position = mid_point
 	
+	object_detector.position = mid_point
+	object_detector_collision_shape.shape.size = collision_shape.shape.size + Vector3(0.1, 0.1, 0.1)
+	
+	
 	var editor_highlight:MeshInstance3D = get_node_or_null("EditorHighlight")
 	if editor_highlight:
 		editor_highlight.position = mid_point
@@ -63,3 +71,11 @@ func refresh() -> void:
 func animate(delta:float) -> void:
 	y_material.uv1_offset.y -= belt_speed * delta
 	z_material.uv1_offset.y -= belt_speed * delta
+
+
+func _on_object_detector_body_entered(body:Node3D) -> void:
+	objects_in_contact.append(body)
+
+
+func _on_object_detector_body_exited(body:Node3D) -> void:
+	objects_in_contact.erase(body)

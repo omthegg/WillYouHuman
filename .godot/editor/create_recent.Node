@@ -1,11 +1,11 @@
-MeshInstance3D
 CollisionShape3D
+Area3D
+MeshInstance3D
 StaticBody3D
 Node3D
 Node
 RayCast3D
 Label3D
-Area3D
 Sprite3D
 XRHandModifier3D
 Marker3D
