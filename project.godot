@@ -31,6 +31,7 @@ player=""
 conveyor_belt=""
 antenna=""
 box=""
+moved_by_conveyor_belt=""
 
 [input]
 

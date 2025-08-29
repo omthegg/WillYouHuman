@@ -70,6 +70,8 @@ mesh = ExtResource("5_ds4k1")
 skeleton = NodePath("../..")
 
 [node name="ObjectDetector" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ObjectDetector"]
 shape = SubResource("BoxShape3D_y1hjk")

@@ -1,6 +1,6 @@
 extends StaticBody3D
 
-@export var belt_speed:float = 3.0
+@export var belt_speed:float = 5.0
 
 @onready var start:Node3D = $Start
 @onready var end:Node3D = $End
@@ -32,12 +32,11 @@ func _ready() -> void:
 	z_material.albedo_color = Color.ORANGE_RED
 
 
-func _physics_process(_delta) -> void:
+func _physics_process(delta) -> void:
 	refresh()
-
-
-func _process(delta) -> void:
 	animate(delta)
+	if !Global.is_in_level_editor(self):
+		move_objects_in_contact(delta)
 
 
 func refresh() -> void:
@@ -53,7 +52,7 @@ func refresh() -> void:
 	model.position = mid_point
 	
 	var vector:Vector3 = end.position - start.position
-	model.look_at(model.global_position + vector)
+	model.look_at(model.global_position + vector.normalized())
 	
 	collision_shape.position = mid_point
 	
@@ -73,9 +72,17 @@ func animate(delta:float) -> void:
 	z_material.uv1_offset.y -= belt_speed * delta
 
 
+func move_objects_in_contact(delta) -> void:
+	for object:Node3D in objects_in_contact:
+		var vector:Vector3 = end.position - start.position
+		object.global_position += vector.normalized() * belt_speed * delta
+
+
 func _on_object_detector_body_entered(body:Node3D) -> void:
-	objects_in_contact.append(body)
+	if body.is_in_group("moved_by_conveyor_belt"):
+		objects_in_contact.append(body)
 
 
 func _on_object_detector_body_exited(body:Node3D) -> void:
-	objects_in_contact.erase(body)
+	if body in objects_in_contact:
+		objects_in_contact.erase(body)
