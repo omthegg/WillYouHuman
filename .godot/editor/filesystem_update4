@@ -29,3 +29,5 @@ res://source/wiring_component/wiring_component.tscn
 res://source/short_range_battery/short_range_battery.tscn
 res://source/primitives/box/box.tscn
 res://source/wiring_component/wiring_component.gd
+res://source/primitives/box/box.gd
+res://source/level_editor/move_tool.gd
