@@ -24,6 +24,9 @@ func _on_body_entered(body:Node3D) -> void:
 	if !body.is_in_group("player"):
 		return
 	
+	if limited_range:
+		range_mesh_instance.show()
+	
 	if player_has_dragged_wire(body):
 		if self in body.dragged_wire.devices:
 			return
@@ -31,6 +34,9 @@ func _on_body_entered(body:Node3D) -> void:
 		var previous_wire_devices = body.dragged_wire.devices.duplicate()
 		previous_wire_devices.erase(body)
 		var other_device = previous_wire_devices[0]
+		
+		if other_device.limited_range:
+			other_device.range_mesh_instance.hide()
 		
 		body.dragged_wire.queue_free()
 		if other_device in neighbor_devices:
@@ -47,12 +53,8 @@ func _on_body_entered(body:Node3D) -> void:
 		#other_device.display_network_id(fixed_network)
 		other_device.neighbor_devices.append(self)
 		neighbor_devices.append(other_device)
-		if other_device.limited_range:
-			other_device.range_mesh_instance.hide()
 	
 	body.dragged_wire = create_wire([self, body])
-	if limited_range:
-		range_mesh_instance.show()
 
 
 func player_has_dragged_wire(player:Node3D) -> bool:
@@ -77,9 +79,10 @@ func _on_range_body_exited(body:Node3D) -> void:
 	if !body.is_in_group("player"):
 		return
 	
+	range_mesh_instance.hide()
+	
 	if !player_has_dragged_wire(body):
 		return
 	
 	if self in body.dragged_wire.devices:
 		body.dragged_wire.queue_free()
-		range_mesh_instance.hide()
