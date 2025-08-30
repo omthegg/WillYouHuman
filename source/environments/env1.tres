@@ -3,7 +3,8 @@
 [resource]
 ambient_light_source = 2
 glow_enabled = true
-glow_bloom = 0.25
+glow_intensity = 1.0
+glow_bloom = 0.5
 glow_blend_mode = 0
 fog_enabled = true
 fog_mode = 1

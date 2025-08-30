@@ -27,3 +27,10 @@ res://source/scene_manager/scene_manager.tscn
 res://source/scene_manager/scene_manager.gd
 res://source/player/player.tscn
 res://source/player/player.gd
+res://source/level_editor/level_editor.tscn
+res://source/conveyor_belt/conveyor_belt.tscn
+res://source/wire/wire.tscn
+res://source/short_range_antenna/short_range_antenna.tscn
+res://source/wiring_component/wiring_component.tscn
+res://source/short_range_battery/short_range_battery.tscn
+res://source/primitives/box/box.tscn

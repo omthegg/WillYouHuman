@@ -59,7 +59,6 @@ grow_vertical = 2
 visible = false
 
 [node name="Vignette" type="ColorRect" parent="HUDCanvasLayer"]
-visible = false
 material = SubResource("ShaderMaterial_2r2ke")
 anchors_preset = 15
 anchor_right = 1.0

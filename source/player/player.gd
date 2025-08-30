@@ -10,7 +10,7 @@ var in_level_editor:bool = false
 var extra_jumps:int = 1
 
 var camera_tilt_angle:float = 1.0
-var camera_tilt_speed:float = 10.0
+var camera_tilt_speed:float = 15.0
 
 var dragged_wire:Node3D
 
@@ -20,6 +20,9 @@ func _input(event) -> void:
 		head.rotate_x(deg_to_rad(-event.relative.y * Global.mouse_sens))
 		rotate_y(deg_to_rad(-event.relative.x * Global.mouse_sens))
 		head.rotation_degrees.x = clampf(head.rotation_degrees.x, -90.0, 90.0)
+	
+	if Input.is_action_just_pressed("kill"):
+		die()
 
 
 func _physics_process(delta: float) -> void:
@@ -83,4 +86,5 @@ func tilt_camera(factor:float, delta_time:float) -> void:
 
 
 func die() -> void:
-	pass
+	Global.scene_manager.death_screen.show()
+	process_mode = Node.PROCESS_MODE_DISABLED

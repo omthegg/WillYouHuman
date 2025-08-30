@@ -23,6 +23,9 @@ func _input(event) -> void:
 		if !current_level and !level_editor:
 			return
 		set_game_paused(!get_tree().paused)
+	
+	if Input.is_action_just_pressed("restart"):
+		restart_current_level()
 
 
 func play_level(packed_level:PackedScene) -> void:
@@ -40,11 +43,12 @@ func play_level(packed_level:PackedScene) -> void:
 	get_level_ready(child)
 	child.process_mode = Node.PROCESS_MODE_PAUSABLE
 	
+	death_screen.hide()
+	
 	if level_editor:
 		pause_menu.editor_button.show()
-		return
-	
-	pause_menu.editor_button.hide()
+	else:
+		pause_menu.editor_button.hide()
 
 
 func get_level_ready(level:Node3D) -> void:
