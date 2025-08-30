@@ -3,6 +3,7 @@ extends Node3D
 @onready var menu_canvas_layer:CanvasLayer = $MenuCanvasLayer
 @onready var hud_canvas_layer:CanvasLayer = $HUDCanvasLayer
 @onready var pause_menu:Control = $MenuCanvasLayer/SubViewportContainer/SubViewport/PauseMenu
+@onready var death_screen:Control = $HUDCanvasLayer/DeathScreen
 
 var wire:PackedScene = preload("res://source/wire/wire.tscn")
 
@@ -108,3 +109,11 @@ func return_to_level_editor() -> void:
 	hud_canvas_layer.hide()
 	level_editor.process_mode = Node.PROCESS_MODE_INHERIT
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+
+func restart_current_level() -> void:
+	if !(current_level and is_instance_valid(current_level)):
+		return
+	
+	current_level.queue_free()
+	play_level(packed_current_level)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cf8xs20c4n22m"]
+[gd_scene load_steps=11 format=3 uid="uid://cf8xs20c4n22m"]
 
 [ext_resource type="Script" uid="uid://b4edouuae7wl4" path="res://source/scene_manager/scene_manager.gd" id="1_ivaf7"]
+[ext_resource type="PackedScene" uid="uid://bxeewtm154074" path="res://source/death_screen/death_screen.tscn" id="2_2r2ke"]
 [ext_resource type="PackedScene" uid="uid://bhdggpe7io1pr" path="res://source/pause_menu/pause_menu.tscn" id="2_y51ae"]
 [ext_resource type="PackedScene" uid="uid://ycnn3r4aafnm" path="res://source/3d_background/3d_background.tscn" id="3_2r2ke"]
 [ext_resource type="Shader" uid="uid://bq5t5kljewkwh" path="res://source/scene_manager/vignette.gdshader" id="4_7eoyu"]
@@ -44,7 +45,7 @@ grow_vertical = 2
 color = Color(0.578391, 0.39798, 0.628906, 1)
 
 [node name="HUDCanvasLayer" type="CanvasLayer" parent="."]
-visible = false
+process_mode = 3
 
 [node name="ColorRect" type="ColorRect" parent="HUDCanvasLayer"]
 visible = false
@@ -54,7 +55,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="DeathScreen" parent="HUDCanvasLayer" instance=ExtResource("2_2r2ke")]
+visible = false
+
 [node name="Vignette" type="ColorRect" parent="HUDCanvasLayer"]
+visible = false
 material = SubResource("ShaderMaterial_2r2ke")
 anchors_preset = 15
 anchor_right = 1.0

@@ -80,4 +80,7 @@ func tilt_camera(factor:float, delta_time:float) -> void:
 	if factor == 0.0:
 		camera.rotation.z = lerp_angle(camera.rotation.z
 		, deg_to_rad(0), camera_tilt_speed*delta_time)
-	
+
+
+func die() -> void:
+	pass

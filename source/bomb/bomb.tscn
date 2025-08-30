@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://gi0ctap8uwno"]
+
+[ext_resource type="Script" uid="uid://b0583w8nukcyj" path="res://source/bomb/bomb.gd" id="1_1vhmw"]
+[ext_resource type="Material" uid="uid://dep3jpnedfb51" path="res://source/bomb/bomb_material.tres" id="2_wswl0"]
+[ext_resource type="BoxMesh" uid="uid://dljfk7oqj6x6j" path="res://source/bomb/bomb_mesh.tres" id="3_b74q8"]
+[ext_resource type="Material" uid="uid://bqx2uy3cg2f7j" path="res://source/bomb/bomb_outline_material.tres" id="4_wswl0"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_myefq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_myefq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1vhmw"]
+radius = 3.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_wswl0"]
+size = Vector2(6.015, 6)
+
+[node name="Bomb" type="RigidBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_myefq")
+script = ExtResource("1_1vhmw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_wswl0")
+mesh = ExtResource("3_b74q8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_myefq")
+
+[node name="Range" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Range"]
+shape = SubResource("SphereShape3D_1vhmw")
+
+[node name="Outline" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+material_override = ExtResource("4_wswl0")
+mesh = SubResource("QuadMesh_wswl0")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, -3, 0)
+collision_mask = 8
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]
+[connection signal="body_exited" from="Range" to="." method="_on_range_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
