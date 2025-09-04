@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @onready var head:Node3D = $Head
 @onready var camera:Camera3D = $Head/Camera3D
+@onready var health_component:Node = $HealthComponent
 
 const SPEED = 10.0
 const JUMP_VELOCITY = 6.0
@@ -16,13 +17,16 @@ var dragged_wire:Node3D
 
 
 func _input(event) -> void:
+	if health_component.health <= 0:
+		return
+	
 	if event is InputEventMouseMotion:
 		head.rotate_x(deg_to_rad(-event.relative.y * Global.mouse_sens))
 		rotate_y(deg_to_rad(-event.relative.x * Global.mouse_sens))
 		head.rotation_degrees.x = clampf(head.rotation_degrees.x, -90.0, 90.0)
 	
 	if Input.is_action_just_pressed("kill"):
-		die()
+		health_component.damage()
 
 
 func _physics_process(delta: float) -> void:
@@ -33,6 +37,17 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		extra_jumps = 1
 	
+	if health_component.health > 0:
+		move_around(delta)
+	
+	if !dragged_wire:
+		return
+	if !is_instance_valid(dragged_wire):
+		return
+	#dragged_wire.update_model()
+
+
+func move_around(delta:float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor():
@@ -57,12 +72,6 @@ func _physics_process(delta: float) -> void:
 	tilt_camera(input_dir.x, delta)
 	
 	move_and_slide()
-	
-	if !dragged_wire:
-		return
-	if !is_instance_valid(dragged_wire):
-		return
-	#dragged_wire.update_model()
 
 
 func _exit_tree():
@@ -85,6 +94,6 @@ func tilt_camera(factor:float, delta_time:float) -> void:
 		, deg_to_rad(0), camera_tilt_speed*delta_time)
 
 
-func die() -> void:
+func _on_health_component_died():
 	Global.scene_manager.death_screen.show()
-	process_mode = Node.PROCESS_MODE_DISABLED
+	#process_mode = Node.PROCESS_MODE_DISABLED
