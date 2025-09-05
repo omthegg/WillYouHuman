@@ -15,7 +15,7 @@ func _ready() -> void:
 
 func _physics_process(_delta) -> void:
 	outline.global_position = raycast.get_collision_point() + Vector3(0.0, 0.1, 0.0)
-	outline.scale = Vector3.ONE * (global_position.y - raycast.get_collision_point().y)*3
+	outline.scale = Vector3.ONE * (3.0 - (global_position.y - raycast.get_collision_point().y))/2.5
 
 
 func explode() -> void:
