@@ -39,6 +39,7 @@ func _physics_process(delta: float) -> void:
 	
 	if health_component.health > 0:
 		move_around(delta)
+		push_rigidbodies()
 	
 	if !dragged_wire:
 		return
@@ -72,6 +73,13 @@ func move_around(delta:float) -> void:
 	tilt_camera(input_dir.x, delta)
 	
 	move_and_slide()
+
+
+func push_rigidbodies() -> void:
+	for i in get_slide_collision_count():
+		var collision:KinematicCollision3D = get_slide_collision(i)
+		if collision.get_collider() is RigidBody3D:
+			collision.get_collider().apply_central_impulse(-collision.get_normal() * 4.0)
 
 
 func _exit_tree():

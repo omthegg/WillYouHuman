@@ -36,3 +36,5 @@ res://source/death_screen/death_screen.tscn
 res://source/health_component/health_component.tscn
 res://source/scene_manager/scene_manager.gd
 res://source/bomb/bomb.gd
+res://source/conveyor_belt/conveyor_belt.tscn
+res://source/player/player.gd
