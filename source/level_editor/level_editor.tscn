@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dgp6t48gtx87i"]
+[gd_scene load_steps=19 format=3 uid="uid://dgp6t48gtx87i"]
 
 [ext_resource type="Script" uid="uid://b3t4ll2spixth" path="res://source/level_editor/level_editor.gd" id="1_cxict"]
 [ext_resource type="Shader" uid="uid://cde1yf6ft5ae4" path="res://source/level_editor/grid.gdshader" id="1_eqloa"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://conw2p348yry5" path="res://source/short_range_antenna/short_range_antenna.tscn" id="9_8h47r"]
 [ext_resource type="Script" uid="uid://cymm6ax0bs4tw" path="res://source/level_editor/level.gd" id="10_ka004"]
 [ext_resource type="PackedScene" uid="uid://d0vp8m84b8jc2" path="res://source/short_range_battery/short_range_battery.tscn" id="10_wl6bt"]
+[ext_resource type="PackedScene" uid="uid://dbhvosa1q7hpu" path="res://source/bomb_spawner/bomb_spawner.tscn" id="11_gkgqx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uixsf"]
 render_priority = 0
@@ -224,6 +225,10 @@ layout_mode = 2
 scene = ExtResource("10_wl6bt")
 offset = Vector3(-1, -2.5, -1)
 camera_size = 3.5
+
+[node name="ObjectButton7" parent="UI/ObjectMenu/GridContainer" instance=ExtResource("4_g8vfu")]
+layout_mode = 2
+scene = ExtResource("11_gkgqx")
 
 [node name="SelectionOverlay" type="ColorRect" parent="UI/ObjectMenu"]
 layout_mode = 0

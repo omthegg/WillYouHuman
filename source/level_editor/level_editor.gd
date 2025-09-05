@@ -23,7 +23,9 @@ var editable_variables:Dictionary = {
 	"collision" = TYPE_BOOL,
 	"depth" = TYPE_FLOAT,
 	"rotate_y_90_degrees" = TYPE_BOOL,
-	"belt_speed" = TYPE_FLOAT
+	"belt_speed" = TYPE_FLOAT,
+	"time" = TYPE_FLOAT,
+	"bomb_time" = TYPE_FLOAT
 	#"global_position" = TYPE_VECTOR3
 }
 
@@ -103,6 +105,8 @@ func load_level(path:String) -> void:
 	level = load(path).instantiate()
 	level.process_mode = Node.PROCESS_MODE_DISABLED
 	add_child(level)
+	selected_objects.clear()
+	update_property_menu()
 
 
 func play_level() -> void:

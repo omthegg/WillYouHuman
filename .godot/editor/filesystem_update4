@@ -2,9 +2,9 @@ res://source/environments/env1.tres
 res://source/bomb_spawner/bomb_spawner.tscn
 res://source/materials/editor_highlight.tres
 res://source/materials/procedural.tres
-res://source/materials/glass_edge.gdshader
 res://source/materials/glass.tres
 res://source/wiring_component/range_material.tres
+res://source/bomb/bomb_material.tres
 res://source/level_editor/grid.gdshader
 res://source/player/bean.tres
 res://source/conveyor_belt/y_material.tres
@@ -14,14 +14,15 @@ res://source/conveyor_belt/z_material.tres
 res://source/conveyor_belt/x_mesh.tres
 res://source/conveyor_belt/x_material.tres
 res://source/short_range_antenna/mesh3.tres
+res://source/bomb/bomb_outline_material.tres
 res://source/themes/menu.tres
 res://source/scene_manager/vignette.gdshader
-res://source/bomb/bomb_material.tres
-res://source/bomb/bomb_outline_material.tres
+res://source/materials/glass_edge.gdshader
 res://source/materials/glass_edge2.gdshader
 res://source/scene_manager/menu_background.gdshader
 res://source/scene_manager/glow.gdshader
 res://source/conveyor_belt/conveyor_belt.gdshader
+res://source/bomb_spawner/bomb_spawner.gd
 res://source/level_editor/level_editor.tscn
 res://source/player/player.tscn
 res://source/scene_manager/scene_manager.tscn
@@ -33,6 +34,5 @@ res://source/primitives/box/box.tscn
 res://source/bomb/bomb.tscn
 res://source/death_screen/death_screen.tscn
 res://source/health_component/health_component.tscn
-res://source/bomb_spawner/bomb_spawner.gd
-res://source/health_component/health_component.gd
-res://source/autoloads/color_manager.gd
+res://source/scene_manager/scene_manager.gd
+res://source/bomb/bomb.gd

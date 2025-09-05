@@ -32,6 +32,7 @@ conveyor_belt=""
 antenna=""
 box=""
 moved_by_conveyor_belt=""
+no_collision=""
 
 [input]
 

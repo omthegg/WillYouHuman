@@ -62,7 +62,7 @@ func get_level_ready(level:Node3D) -> void:
 		
 		disable_editor_related_collision(child)
 		
-		if child.is_in_group("antenna"):
+		if child.is_in_group("no_collision"):
 			continue
 		
 		if child.get("collision"):

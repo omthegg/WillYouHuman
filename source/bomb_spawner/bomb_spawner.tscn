@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dbhvosa1q7hpu"]
+[gd_scene load_steps=8 format=3 uid="uid://dbhvosa1q7hpu"]
 
 [ext_resource type="BoxMesh" uid="uid://dljfk7oqj6x6j" path="res://source/bomb/bomb_mesh.tres" id="1_mk7lu"]
 [ext_resource type="Script" uid="uid://b3pm0d0kyph2l" path="res://source/bomb_spawner/bomb_spawner.gd" id="1_w3fs3"]
 [ext_resource type="Material" uid="uid://dep3jpnedfb51" path="res://source/bomb/bomb_material.tres" id="2_glb5r"]
 [ext_resource type="Texture2D" uid="uid://c1y7w5o3qfsl5" path="res://textures/square_outline.png" id="4_glb5r"]
+[ext_resource type="Shape3D" uid="uid://dil01wd83cs2y" path="res://source/bomb_spawner/bomb_spawner_shape.tres" id="5_fl1ef"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w3fs3"]
 transparency = 2
@@ -17,7 +18,10 @@ texture_filter = 2
 
 [sub_resource type="BoxMesh" id="BoxMesh_htbm6"]
 
-[node name="BombSpawner" type="Node3D"]
+[node name="BombSpawner" type="StaticBody3D" groups=["no_collision"]]
+disable_mode = 1
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_w3fs3")
 
 [node name="BombMeshInstance" type="MeshInstance3D" parent="."]
@@ -31,5 +35,8 @@ mesh = SubResource("BoxMesh_htbm6")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = ExtResource("5_fl1ef")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

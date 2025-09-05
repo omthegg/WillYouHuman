@@ -16,6 +16,11 @@ radius = 3.0
 size = Vector2(6.015, 6)
 
 [node name="Bomb" type="RigidBody3D"]
+collision_layer = 8
+collision_mask = 8
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 physics_material_override = SubResource("PhysicsMaterial_myefq")
 script = ExtResource("1_1vhmw")
 
