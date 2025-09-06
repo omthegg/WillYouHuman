@@ -105,7 +105,7 @@ func get_3d_aabb(node: Node) -> AABB:
 		scene_aabb = node.get_aabb()
 	
 	for child in node.get_children():
-		if child is Node3D:
+		if child is VisualInstance3D:
 			var child_aabb:AABB = get_3d_aabb(child)
 			if child_aabb.size != Vector3.ZERO: # Ignore empty AABBs
 				scene_aabb = scene_aabb.merge(child_aabb)

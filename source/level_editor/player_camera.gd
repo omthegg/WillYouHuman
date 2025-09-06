@@ -10,6 +10,9 @@ var speed:int = 10
 
 var freelook:bool = false
 
+var dragged_wire:Node3D
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		if !Input.is_action_pressed("left_click"):
@@ -66,7 +69,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	
 	if Input.is_action_just_pressed("wire"):
-		pass
+		wire()
 
 
 func _physics_process(delta: float) -> void:
@@ -121,4 +124,23 @@ func place() -> void:
 
 
 func wire() -> void:
-	pass
+	var collider:Node3D = selection_raycast.get_collider()
+	if !collider:
+		return
+	
+	var wiring_component:Area3D = collider.get_node_or_null("WiringComponent")
+	if !wiring_component:
+		return
+	
+	if has_dragged_wire():
+		pass
+	else:
+		pass
+
+
+func has_dragged_wire() -> bool:
+	if !dragged_wire:
+		return false
+	if !is_instance_valid(dragged_wire):
+		return false
+	return true
