@@ -133,9 +133,11 @@ func wire() -> void:
 		return
 	
 	if has_dragged_wire():
-		pass
+		dragged_wire.devices[1] = wiring_component
+		dragged_wire.update_model()
+		dragged_wire = null
 	else:
-		pass
+		dragged_wire = wiring_component.create_wire([wiring_component, wiring_component])
 
 
 func has_dragged_wire() -> bool:

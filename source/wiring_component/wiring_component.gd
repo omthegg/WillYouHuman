@@ -67,7 +67,10 @@ func display_network_id(network) -> void:
 
 func create_wire(devices:Array) -> Node3D:
 	var wire:Node3D = Global.scene_manager.wire.instantiate()
-	Global.scene_manager.current_level.add_child(wire)
+	if Global.is_in_level_editor(self):
+		Global.scene_manager.level_editor.level.add_child(wire)
+	else:
+		Global.scene_manager.current_level.add_child(wire)
 	wire.devices = devices
 	return wire
 

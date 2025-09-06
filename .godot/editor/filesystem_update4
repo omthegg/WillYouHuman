@@ -39,3 +39,4 @@ res://source/button/button_top_material_activated.tres
 res://source/level_editor/level_editor.gd
 res://source/autoloads/global.gd
 res://source/level_editor/player_camera.gd
+res://source/wiring_component/wiring_component.gd
