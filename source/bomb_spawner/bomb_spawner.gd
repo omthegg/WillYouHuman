@@ -10,6 +10,9 @@ extends StaticBody3D
 var bomb_scene:PackedScene = preload("res://source/bomb/bomb.tscn")
 
 func _ready() -> void:
+	if time <= 0.0:
+		time = 1.0
+	
 	timer.wait_time = time
 	timer.start()
 	

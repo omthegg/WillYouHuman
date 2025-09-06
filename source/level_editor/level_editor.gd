@@ -25,7 +25,8 @@ var editable_variables:Dictionary = {
 	"rotate_y_90_degrees" = TYPE_BOOL,
 	"belt_speed" = TYPE_FLOAT,
 	"time" = TYPE_FLOAT,
-	"bomb_time" = TYPE_FLOAT
+	"bomb_time" = TYPE_FLOAT,
+	"one_time_press" = TYPE_BOOL
 	#"global_position" = TYPE_VECTOR3
 }
 

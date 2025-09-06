@@ -67,8 +67,8 @@ func move_around(delta:float) -> void:
 		velocity.x = move_toward(velocity.x, direction.x * SPEED, SPEED/2)
 		velocity.z = move_toward(velocity.z, direction.z * SPEED, SPEED/2)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED/6)
-		velocity.z = move_toward(velocity.z, 0, SPEED/6)
+		velocity.x = move_toward(velocity.x, 0, SPEED/4)
+		velocity.z = move_toward(velocity.z, 0, SPEED/4)
 	
 	tilt_camera(input_dir.x, delta)
 	

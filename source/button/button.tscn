@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=3 uid="uid://t34vv0d242ri"]
+
+[ext_resource type="Script" uid="uid://d1c7qwy4h1otv" path="res://source/button/button.gd" id="1_0b8t0"]
+[ext_resource type="BoxMesh" uid="uid://blmgidi0ng0et" path="res://source/button/button_base_mesh.tres" id="2_t0apa"]
+[ext_resource type="Material" uid="uid://cg72br27435ic" path="res://source/button/button_base_material.tres" id="2_wa2px"]
+[ext_resource type="BoxMesh" uid="uid://b87hihm4qc0ld" path="res://source/button/button_top_mesh.tres" id="3_uv5tn"]
+[ext_resource type="Material" uid="uid://b60t80svfkyyb" path="res://source/button/button_top_material.tres" id="4_dflay"]
+[ext_resource type="Shape3D" uid="uid://exr81xo4cgb4" path="res://source/button/button_activation_area_shape.tres" id="4_wa2px"]
+[ext_resource type="Shape3D" uid="uid://64hr1uruleec" path="res://source/button/button_shape.tres" id="5_dflay"]
+[ext_resource type="PackedScene" uid="uid://cta154fvmvnj1" path="res://source/wiring_component/wiring_component.tscn" id="8_dflay"]
+
+[node name="Button" type="StaticBody3D" groups=["no_collision"]]
+disable_mode = 1
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_0b8t0")
+
+[node name="Base" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+material_override = ExtResource("2_wa2px")
+mesh = ExtResource("2_t0apa")
+
+[node name="Top" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+material_override = ExtResource("4_dflay")
+mesh = ExtResource("3_uv5tn")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = ExtResource("4_wa2px")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = ExtResource("5_dflay")
+
+[node name="WiringComponent" parent="." instance=ExtResource("8_dflay")]
+limited_range = false
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

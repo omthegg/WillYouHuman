@@ -30,3 +30,11 @@ res://source/death_screen/death_screen.tscn
 res://source/bomb_spawner/bomb_spawner.tscn
 res://source/health_component/health_component.tscn
 res://source/conveyor_belt/conveyor_belt.tscn
+res://source/bomb_spawner/bomb_spawner.gd
+res://source/button/button.tscn
+res://source/button/button.gd
+res://source/autoloads/color_manager.gd
+res://source/player/player.gd
+res://source/button/button_top_material_activated.tres
+res://source/level_editor/level_editor.gd
+res://source/autoloads/global.gd

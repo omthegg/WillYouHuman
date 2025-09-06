@@ -12,6 +12,9 @@ var objects_near:Array = []
 var shake_timer:float = 0.0
 
 func _ready() -> void:
+	if time == -1.0:
+		return
+	
 	timer.wait_time = time
 	timer.start()
 
