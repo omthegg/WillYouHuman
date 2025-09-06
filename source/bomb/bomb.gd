@@ -5,21 +5,25 @@ extends RigidBody3D
 @onready var raycast:RayCast3D = $RayCast3D
 @onready var outline:MeshInstance3D = $Outline
 @onready var timer:Timer = $Timer
+@onready var mesh_instance:MeshInstance3D = $MeshInstance3D
 
 var objects_near:Array = []
+
+var shake_timer:float = 0.0
 
 func _ready() -> void:
 	timer.wait_time = time
 	timer.start()
 
 
-func _physics_process(_delta) -> void:
-	if !raycast.is_colliding():
-		outline.scale = Vector3.ONE * 0.1
-		return
+func _physics_process(delta) -> void:
+	shake(delta)
 	
-	outline.global_position = raycast.get_collision_point() + Vector3(0.0, 0.1, 0.0)
-	outline.scale = Vector3.ONE * (3.0 - (global_position.y - raycast.get_collision_point().y))/2.5
+	if raycast.is_colliding():
+		outline.global_position = raycast.get_collision_point() + Vector3(0.0, 0.1, 0.0)
+		outline.scale = Vector3.ONE * (3.0 - (global_position.y - raycast.get_collision_point().y))/2.5
+	else:
+		outline.scale = Vector3.ONE * 0.1
 
 
 func explode() -> void:
@@ -28,6 +32,17 @@ func explode() -> void:
 			object.get_node("HealthComponent").damage()
 	
 	queue_free()
+
+
+func shake(delta:float) -> void:
+	shake_timer += delta
+	if shake_timer >= 0.01:
+		shake_timer = 0.0
+		var progress:float = pow(abs(timer.time_left - timer.wait_time), 3) / 30.0
+		mesh_instance.rotation_degrees.x = randf_range(-progress, progress)
+		mesh_instance.rotation_degrees.y = randf_range(-progress, progress)
+		mesh_instance.rotation_degrees.z = randf_range(-progress, progress)
+		mesh_instance.scale = Vector3.ONE * (progress/40.0 + 1)
 
 
 func _on_timer_timeout() -> void:
