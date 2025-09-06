@@ -32,6 +32,8 @@ mesh = ExtResource("3_b74q8")
 shape = SubResource("BoxShape3D_myefq")
 
 [node name="Range" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Range"]
 shape = SubResource("SphereShape3D_1vhmw")
