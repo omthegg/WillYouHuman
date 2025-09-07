@@ -12,6 +12,9 @@ class Network:
 # merge the two networks
 # Create wires when first connecting two devices
 
+# When disconnecting two devices from each other, go through all neighbor devices
+# and put them in a new network
+
 
 func create_network(wires:Array, devices:Array) -> Network:
 	var network:Network = Network.new()
@@ -53,6 +56,7 @@ func update_network(network:Network) -> void:
 	for wire in network.wires:
 		wire.powered = network.powered
 		wire.display_network_id(network)
+		wire.update_model()
 
 
 func fix_network_overlap(network:Network, overlapping_device:Object) -> void:# -> Network:
@@ -74,3 +78,47 @@ func fix_network_overlap(network:Network, overlapping_device:Object) -> void:# -
 	#print("F")
 	#update_network(network)
 	#return network
+
+
+func split_network_by_wire(wire:Node3D) -> void:
+	var network:Network
+	for n:Network in networks:
+		if wire in n.wires:
+			network = n
+	
+	if !network:
+		return
+	
+	var device1 = wire.devices[0]
+	var device2 = wire.devices[1]
+	
+	device1.neighbor_devices.erase(device2)
+	device2.neighbor_devices.erase(device1)
+	
+	if device2 in get_neighbors_recursive(device1):
+		return
+	
+	var new_network:Network = Network.new()
+	
+	network.devices.erase(device2)
+	var device2_neighbors:Array = get_neighbors_recursive(device2)
+	for neighbor in device2_neighbors:
+		network.devices.erase(neighbor)
+		for w in network.wires:
+			if neighbor in w.devices:
+				new_network.wires.append(w)
+	
+	new_network.devices += device2_neighbors
+	new_network.append(device2)
+	
+	update_network(network)
+	update_network(new_network)
+	#network.devices -= get_neighbors_recursive(device2)
+
+
+func get_neighbors_recursive(device:Node3D) -> Array:
+	var neighbors = []
+	for neighbor in device.neighbor_devices:
+		neighbors += get_neighbors_recursive(neighbor)
+	
+	return neighbors

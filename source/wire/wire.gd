@@ -1,6 +1,6 @@
 extends Node3D
 
-var powered:bool = false
+@export var powered:bool = false
 
 @export var devices:Array = []:
 	set(value):
@@ -13,6 +13,9 @@ var powered:bool = false
 @onready var power_indicator:MeshInstance3D = $PowerIndicator
 
 func update_model() -> void:
+	if !is_instance_valid(mesh_instance):
+		return
+	
 	if devices.size() != 2:
 		return
 	

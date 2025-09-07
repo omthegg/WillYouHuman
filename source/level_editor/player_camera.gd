@@ -134,7 +134,19 @@ func wire() -> void:
 	
 	if has_dragged_wire():
 		dragged_wire.devices[1] = wiring_component
-		dragged_wire.update_model()
+		
+		var new_network = editor.level.create_network([dragged_wire], [dragged_wire.devices[0], dragged_wire.devices[1]])
+		#var fixed_network = 
+		editor.level.fix_network_overlap(new_network, dragged_wire.devices[0])
+		#fixed_network = 
+		editor.level.fix_network_overlap(new_network, dragged_wire.devices[1])
+		#display_network_id(fixed_network)
+		#other_device.display_network_id(fixed_network)
+		dragged_wire.devices[0].neighbor_devices.append(dragged_wire.devices[1])
+		dragged_wire.devices[1].neighbor_devices.append(dragged_wire.devices[0])
+		
+		editor.level.update_network(new_network)
+		
 		dragged_wire = null
 	else:
 		dragged_wire = wiring_component.create_wire([wiring_component, wiring_component])
