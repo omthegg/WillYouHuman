@@ -2,6 +2,8 @@ extends Node3D
 
 @export var networks:Array = []
 
+var visited_neighbors = [] # See get_neighbors_recursive
+
 class Network:
 	var powered:bool = false
 	var devices:Array = []
@@ -104,10 +106,17 @@ func split_network_by_wire(wire:Node3D) -> void:
 	var new_network:Network = Network.new()
 	
 	network.devices.erase(device2)
-	var device2_neighbors:Array = get_neighbors_recursive(device2)
+	var device2_neighbors:Array = get_neighbors(device2)
 	for neighbor in device2_neighbors:
 		network.devices.erase(neighbor)
+		if !is_instance_valid(network):
+			networks.erase(network)
+			continue
 		for w in network.wires:
+			if !is_instance_valid(w):
+				network.wires.erase(w)
+				continue
+			
 			if neighbor in w.devices:
 				new_network.wires.append(w)
 	
@@ -126,13 +135,20 @@ func split_network_by_wire(wire:Node3D) -> void:
 	if new_network.devices.size() <= 1:
 		networks.erase(new_network)
 		device2.label.text = "Network"
-	#network.devices -= get_neighbors_recursive(device2)
 
 
-func get_neighbors_recursive(device:Node3D) -> Array:
+func get_neighbors(device:Node3D) -> Array:
+	visited_neighbors = []
+	return get_neighbors_recursive(device)
+
+
+func get_neighbors_recursive(device:Node3D, neighbors_list:Array=[]) -> Array:
 	var neighbors = []
+	visited_neighbors.append(device)
 	for neighbor in device.neighbor_devices:
-		neighbors += get_neighbors_recursive(neighbor)
+		if !(neighbor in visited_neighbors):
+			neighbors.append(neighbor)
+			neighbors += get_neighbors_recursive(neighbor, neighbors)
 	
 	return neighbors
 
