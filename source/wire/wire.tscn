@@ -6,7 +6,7 @@
 [ext_resource type="Material" uid="uid://babpmlmyot1ny" path="res://source/wire/wire_powered_material.tres" id="4_iqaly"]
 [ext_resource type="CylinderMesh" uid="uid://cd8emijqu8dak" path="res://source/wire/wire_powered_mesh.tres" id="5_16y3u"]
 
-[node name="Wire" type="Node3D"]
+[node name="Wire" type="Node3D" groups=["wire"]]
 script = ExtResource("1_7jpwb")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

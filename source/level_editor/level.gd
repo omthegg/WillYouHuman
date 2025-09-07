@@ -76,13 +76,6 @@ func fix_network_overlap(network:Network, overlapping_device:Object) -> void:# -
 			continue
 		
 		var merged_network = merge_overlapping_networks(network, n, overlapping_device)
-		
-		#print(str(n))
-		#return merged_network
-	
-	#print("F")
-	#update_network(network)
-	#return network
 
 
 func split_network_by_wire(wire:Node3D) -> void:
@@ -136,17 +129,33 @@ func split_network_by_wire(wire:Node3D) -> void:
 		networks.erase(new_network)
 		device2.label.text = "Network"
 	
-	if is_instance_valid(network):
-		fix_network_overlap(network, device1)
-		fix_network_overlap(network, device2)
-	if is_instance_valid(new_network):
-		fix_network_overlap(new_network, device1)
-		fix_network_overlap(new_network, device2)
+	#if is_instance_valid(network):
+	#	fix_network_overlap(network, device1)
+	#	fix_network_overlap(network, device2)
+	#if is_instance_valid(new_network):
+	#	fix_network_overlap(new_network, device1)
+	#	fix_network_overlap(new_network, device2)
+	
+	erase_network_duplicates()
+	erase_stray_wires()
+	
+	for n in networks:
+		if n.devices.size() < 2:
+			networks.erase(n)
+		if n.wires.size() < 2:
+			networks.erase(n)
+	
+	for n in networks:
+		update_network(n)
+	
+	print(networks)
+	
+	# TODO: Erase useless networks
 
 
 func get_neighbors(device:Node3D) -> Array:
 	visited_neighbors = []
-	return get_neighbors_recursive(device)
+	return Global.erase_duplicates(get_neighbors_recursive(device))
 
 
 func get_neighbors_recursive(device:Node3D, neighbors_list:Array=[]) -> Array:
@@ -170,3 +179,25 @@ func get_wire_between_devices(device1:Node3D, device2:Node3D) -> Node3D:
 				return wire
 	
 	return null
+
+
+func erase_network_duplicates() -> void:
+	networks = Global.erase_duplicates(networks)
+	for n in networks:
+		n.devices = Global.erase_duplicates(n.devices)
+		n.wires = Global.erase_duplicates(n.wires)
+
+
+func erase_stray_wires() -> void:
+	for child in get_children():
+		if !child.is_in_group("wire"):
+			continue
+		
+		var in_a_network:bool = false
+		for network in networks:
+			if child in network.wires:
+				in_a_network = true
+				break
+		
+		if !in_a_network:
+			child.queue_free()
