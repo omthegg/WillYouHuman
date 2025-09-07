@@ -54,6 +54,9 @@ func update_network(network:Network) -> void:
 		device.display_network_id(network)
 	
 	for wire in network.wires:
+		if !is_instance_valid(wire):
+			continue
+		
 		wire.powered = network.powered
 		wire.display_network_id(network)
 		wire.update_model()
@@ -109,10 +112,20 @@ func split_network_by_wire(wire:Node3D) -> void:
 				new_network.wires.append(w)
 	
 	new_network.devices += device2_neighbors
-	new_network.append(device2)
+	new_network.devices.append(device2)
+	
+	network.wires.erase(wire)
+	new_network.wires.erase(wire)
 	
 	update_network(network)
 	update_network(new_network)
+	
+	if network.devices.size() <= 1:
+		networks.erase(network)
+		device1.label.text = "Network"
+	if new_network.devices.size() <= 1:
+		networks.erase(new_network)
+		device2.label.text = "Network"
 	#network.devices -= get_neighbors_recursive(device2)
 
 
@@ -122,3 +135,15 @@ func get_neighbors_recursive(device:Node3D) -> Array:
 		neighbors += get_neighbors_recursive(neighbor)
 	
 	return neighbors
+
+
+func get_wire_between_devices(device1:Node3D, device2:Node3D) -> Node3D:
+	for network in networks:
+		for wire in network.wires:
+			if !is_instance_valid(wire):
+				continue
+			
+			if (device1 in wire.devices) and (device2 in wire.devices):
+				return wire
+	
+	return null
