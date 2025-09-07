@@ -135,6 +135,13 @@ func split_network_by_wire(wire:Node3D) -> void:
 	if new_network.devices.size() <= 1:
 		networks.erase(new_network)
 		device2.label.text = "Network"
+	
+	if is_instance_valid(network):
+		fix_network_overlap(network, device1)
+		fix_network_overlap(network, device2)
+	if is_instance_valid(new_network):
+		fix_network_overlap(new_network, device1)
+		fix_network_overlap(new_network, device2)
 
 
 func get_neighbors(device:Node3D) -> Array:
