@@ -10,6 +10,7 @@ extends Node3D
 @onready var ui:Control = $UI
 @onready var dragging_cursor:Node3D = $DraggingCursor
 @onready var placement_cursor:Node3D = $PlacementCursor
+@onready var networks_text_edit:TextEdit = $UI/NetworksTextEdit
 
 var property_setter_scene:PackedScene = preload("res://source/level_editor/property_setter.tscn")
 
@@ -45,6 +46,7 @@ func _physics_process(_delta: float) -> void:
 	
 	if level:
 		level.update_debug_info()
+		networks_text_edit.text = str(level.networks).replace(", ", "\n").replace("[", "").replace("]", "")
 
 
 func _on_grid_spin_box_value_changed(value: float) -> void:
@@ -171,3 +173,7 @@ func _on_delete_button_pressed() -> void:
 
 func _on_deselect_button_pressed() -> void:
 	deselect_all_objects()
+
+
+func _on_networks_button_pressed():
+	networks_text_edit.visible = !networks_text_edit.visible

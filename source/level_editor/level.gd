@@ -112,42 +112,27 @@ func split_network_by_wire(wire:Node3D) -> void:
 			
 			if neighbor in w.devices:
 				new_network.wires.append(w)
+				network.wires.erase(w)
 	
-	new_network.devices += device2_neighbors
+	new_network.devices.append_array(device2_neighbors)
 	new_network.devices.append(device2)
 	
 	network.wires.erase(wire)
 	new_network.wires.erase(wire)
+	wire.queue_free()
 	
 	update_network(network)
 	update_network(new_network)
 	
-	if network.devices.size() <= 1:
+	if network.devices.size() < 2:
 		networks.erase(network)
 		device1.label.text = "Network"
-	if new_network.devices.size() <= 1:
+	if new_network.devices.size() < 2:
 		networks.erase(new_network)
 		device2.label.text = "Network"
 	
-	#if is_instance_valid(network):
-	#	fix_network_overlap(network, device1)
-	#	fix_network_overlap(network, device2)
-	#if is_instance_valid(new_network):
-	#	fix_network_overlap(new_network, device1)
-	#	fix_network_overlap(new_network, device2)
-	
 	erase_network_duplicates()
 	erase_stray_wires()
-	
-	#for n in networks:
-	#	for d in n.devices:
-	#		fix_network_overlap(n, d)
-		#if n.devices.size() < 2:
-		#	networks.erase(n)
-		#if n.wires.size() < 2:
-		#	networks.erase(n)
-	
-	
 	
 	for n in networks:
 		update_network(n)
