@@ -42,6 +42,9 @@ func _physics_process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed("object_menu"):
 		%ObjectMenu.visible = !%ObjectMenu.visible
+	
+	if level:
+		level.update_debug_info()
 
 
 func _on_grid_spin_box_value_changed(value: float) -> void:

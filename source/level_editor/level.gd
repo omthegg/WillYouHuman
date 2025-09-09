@@ -93,7 +93,7 @@ func split_network_by_wire(wire:Node3D) -> void:
 	device1.neighbor_devices.erase(device2)
 	device2.neighbor_devices.erase(device1)
 	
-	if device2 in get_neighbors_recursive(device1):
+	if device2 in get_neighbors(device1):
 		return
 	
 	var new_network:Network = Network.new()
@@ -102,9 +102,9 @@ func split_network_by_wire(wire:Node3D) -> void:
 	var device2_neighbors:Array = get_neighbors(device2)
 	for neighbor in device2_neighbors:
 		network.devices.erase(neighbor)
-		if !is_instance_valid(network):
-			networks.erase(network)
-			continue
+		#if !is_instance_valid(network):
+		#	networks.erase(network)
+		#	continue
 		for w in network.wires:
 			if !is_instance_valid(w):
 				network.wires.erase(w)
@@ -139,20 +139,32 @@ func split_network_by_wire(wire:Node3D) -> void:
 	erase_network_duplicates()
 	erase_stray_wires()
 	
-	for n in networks:
-		if n.devices.size() < 2:
-			networks.erase(n)
-		if n.wires.size() < 2:
-			networks.erase(n)
+	#for n in networks:
+	#	for d in n.devices:
+	#		fix_network_overlap(n, d)
+		#if n.devices.size() < 2:
+		#	networks.erase(n)
+		#if n.wires.size() < 2:
+		#	networks.erase(n)
+	
+	
 	
 	for n in networks:
 		update_network(n)
 	
-	print(networks)
+	print("---Networks---")
+	for n in networks:
+		print("Network id: ", str(network))
+		print("Devices: ")
+		print(n.devices)
+		print("Wires: ")
+		print(n.wires)
 	
-	# TODO: Erase useless networks
+	
+	# TODO: Erase stray networks
 
 
+# This function works as intended.
 func get_neighbors(device:Node3D) -> Array:
 	visited_neighbors = []
 	return Global.erase_duplicates(get_neighbors_recursive(device))
@@ -201,3 +213,13 @@ func erase_stray_wires() -> void:
 		
 		if !in_a_network:
 			child.queue_free()
+
+
+func update_debug_info() -> void:
+	for child in get_children():
+		if !child.get_node_or_null("WiringComponent"):
+			continue
+		
+		var device = child.get_node("WiringComponent")
+		device.get_node("Label3D2").text = str(get_neighbors(device)).replace(",", "\n")
+		device.get_node("Label3D3").text = str(device)
