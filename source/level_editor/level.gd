@@ -128,6 +128,10 @@ func split_network_by_wire(wire:Node3D) -> void:
 	device1.neighbor_devices.erase(device2)
 	device2.neighbor_devices.erase(device1)
 	
+	network.wires.erase(wire)
+	#new_network.wires.erase(wire)
+	wire.queue_free()
+	
 	if device2 in get_neighbors(device1):
 		return
 	
@@ -152,10 +156,6 @@ func split_network_by_wire(wire:Node3D) -> void:
 				network.wires.erase(w)
 	
 	#new_network.devices.append_array(device2_neighbors)
-	
-	network.wires.erase(wire)
-	new_network.wires.erase(wire)
-	wire.queue_free()
 	
 	update_network(network)
 	update_network(new_network)
