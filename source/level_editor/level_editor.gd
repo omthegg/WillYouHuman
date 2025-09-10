@@ -31,6 +31,7 @@ var editable_variables:Dictionary = {
 	#"global_position" = TYPE_VECTOR3
 }
 
+var overlap_fixing_thread:Thread = Thread.new()
 
 func _ready() -> void:
 	selected_scene = $UI/ObjectMenu/GridContainer.get_child(0).scene
@@ -45,6 +46,9 @@ func _physics_process(_delta: float) -> void:
 		%ObjectMenu.visible = !%ObjectMenu.visible
 	
 	if level:
+		level.fix_all_network_overlaps()
+		#if !overlap_fixing_thread.is_started():
+		#	overlap_fixing_thread.start(Callable(level, "fix_all_network_overlaps"))
 		level.update_debug_info()
 		networks_text_edit.text = str(level.networks).replace(", ", "\n").replace("[", "").replace("]", "")
 

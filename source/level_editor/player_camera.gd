@@ -123,6 +123,7 @@ func place() -> void:
 		object.set_previous_middles()
 
 
+# The problem is that networks are not merging
 func wire() -> void:
 	var collider:Node3D = selection_raycast.get_collider()
 	if !collider:
@@ -139,25 +140,12 @@ func wire() -> void:
 	var wire_between_devices:Node3D = editor.level.get_wire_between_devices(dragged_wire.devices[0], wiring_component)
 	if wire_between_devices:
 		editor.level.split_network_by_wire(wire_between_devices)
-		wire_between_devices.queue_free()
 		dragged_wire.queue_free()
 		dragged_wire = null
 		return
 	
-	dragged_wire.devices[1] = wiring_component
-	
-	var new_network = editor.level.create_network([dragged_wire], [dragged_wire.devices[0], dragged_wire.devices[1]])
-	#var fixed_network = 
-	editor.level.fix_network_overlap(new_network, dragged_wire.devices[0])
-	#fixed_network = 
-	editor.level.fix_network_overlap(new_network, dragged_wire.devices[1])
-	#display_network_id(fixed_network)
-	#other_device.display_network_id(fixed_network)
-	dragged_wire.devices[0].neighbor_devices.append(dragged_wire.devices[1])
-	dragged_wire.devices[1].neighbor_devices.append(dragged_wire.devices[0])
-	
-	editor.level.update_network(new_network)
-	
+	editor.level.connect_devices(dragged_wire.devices[0], wiring_component)
+	dragged_wire.queue_free()
 	dragged_wire = null
 
 

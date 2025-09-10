@@ -43,16 +43,17 @@ func _on_body_entered(body:Node3D) -> void:
 			body.dragged_wire = create_wire([self, body])
 			return
 		
-		var new_wire = create_wire([self, other_device])
-		var network = Global.scene_manager.current_level.create_network([new_wire], [self, other_device])
+		Global.scene_manager.current_level.connect_devices(self, other_device, )
+		#var new_wire = create_wire([self, other_device])
+		#var network = Global.scene_manager.current_level.create_network([new_wire], [self, other_device])
 		#var fixed_network = 
-		Global.scene_manager.current_level.fix_network_overlap(network, self)
+		#Global.scene_manager.current_level.fix_network_overlap(network, self)
 		#fixed_network = 
-		Global.scene_manager.current_level.fix_network_overlap(network, other_device)
+		#Global.scene_manager.current_level.fix_network_overlap(network, other_device)
 		#display_network_id(fixed_network)
 		#other_device.display_network_id(fixed_network)
-		other_device.neighbor_devices.append(self)
-		neighbor_devices.append(other_device)
+		#other_device.neighbor_devices.append(self)
+		#neighbor_devices.append(other_device)
 	
 	body.dragged_wire = create_wire([self, body])
 
@@ -66,12 +67,12 @@ func display_network_id(network) -> void:
 
 
 func create_wire(devices:Array) -> Node3D:
-	var wire:Node3D = Global.scene_manager.wire.instantiate()
+	var wire:Node3D
 	if Global.is_in_level_editor(self):
-		Global.scene_manager.level_editor.level.add_child(wire)
+		wire = Global.scene_manager.level_editor.level.create_wire(devices)
 	else:
-		Global.scene_manager.current_level.add_child(wire)
-	wire.devices = devices
+		wire = Global.scene_manager.current_level.create_wire(devices)
+	
 	return wire
 
 

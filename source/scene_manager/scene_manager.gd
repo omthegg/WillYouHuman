@@ -4,6 +4,7 @@ extends Node3D
 @onready var hud_canvas_layer:CanvasLayer = $HUDCanvasLayer
 @onready var pause_menu:Control = $MenuCanvasLayer/SubViewportContainer/SubViewport/PauseMenu
 @onready var death_screen:Control = $HUDCanvasLayer/DeathScreen
+@onready var networks_text_edit:TextEdit = $HUDCanvasLayer/NetworksTextEdit
 
 var wire:PackedScene = preload("res://source/wire/wire.tscn")
 
@@ -16,6 +17,12 @@ func _ready() -> void:
 	Global.scene_manager = self
 	set_game_paused(true)
 	play_level(packed_level_editor)
+
+
+func _physics_process(_delta) -> void:
+	if current_level and is_instance_valid(current_level):
+		current_level.update_debug_info()
+		networks_text_edit.text = str(current_level.networks).replace(", ", "\n").replace("[", "").replace("]", "")
 
 
 func _input(event) -> void:
