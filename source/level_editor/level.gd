@@ -73,10 +73,17 @@ func merge_overlapping_networks(network1:Network, network2:Network, overlapping_
 
 func update_network(network:Network) -> void:
 	#print(network.devices.size())
+	var has_power_source = false
 	for device in network.devices:
-		if device.is_source:
-			network.powered = true
+		if !is_instance_valid(device):
+			continue
 		
+		if device.is_source:
+			has_power_source = true
+	
+	network.powered = has_power_source
+	
+	for device in network.devices:
 		device.powered = network.powered
 		device.display_network_id(network)
 	
@@ -111,11 +118,12 @@ func split_network_by_wire(wire:Node3D) -> void:
 			network = n
 	
 	if !network:
-		print("E")
 		return
 	
 	var device1 = wire.devices[0]
 	var device2 = wire.devices[1]
+	
+	erase_network_duplicates()
 	
 	device1.neighbor_devices.erase(device2)
 	device2.neighbor_devices.erase(device1)
@@ -126,9 +134,11 @@ func split_network_by_wire(wire:Node3D) -> void:
 	var new_network:Network = create_network([], [])
 	
 	network.devices.erase(device2)
+	new_network.devices.append(device2)
 	var device2_neighbors:Array = get_neighbors(device2)
 	for neighbor in device2_neighbors:
 		network.devices.erase(neighbor)
+		new_network.devices.append(neighbor)
 		#if !is_instance_valid(network):
 		#	networks.erase(network)
 		#	continue
@@ -141,8 +151,7 @@ func split_network_by_wire(wire:Node3D) -> void:
 				new_network.wires.append(w)
 				network.wires.erase(w)
 	
-	new_network.devices.append_array(device2_neighbors)
-	new_network.devices.append(device2)
+	#new_network.devices.append_array(device2_neighbors)
 	
 	network.wires.erase(wire)
 	new_network.wires.erase(wire)
@@ -151,11 +160,12 @@ func split_network_by_wire(wire:Node3D) -> void:
 	update_network(network)
 	update_network(new_network)
 	
-	
-	for device in network.devices:
-		fix_network_overlap(network, device)
-	for device in network.devices:
-		fix_network_overlap(new_network, device)
+	fix_network_overlap(network, device1)
+	fix_network_overlap(new_network, device2)
+	#for device in network.devices:
+	#	fix_network_overlap(network, device)
+	#for device in network.devices:
+	#	fix_network_overlap(new_network, device)
 	
 	#if network.devices.size() < 2:
 	#	networks.erase(network)
@@ -167,12 +177,15 @@ func split_network_by_wire(wire:Node3D) -> void:
 	erase_network_duplicates()
 	erase_stray_wires()
 	
-	for n:Network in networks:
-		update_network(n)
-		if (n.devices.size() < 2) or (n.wires.size() < 1):
-			for device in n.devices:
-				device.label.text = "Network"
-			networks.erase(n)
+	#for n:Network in networks:
+	#	update_network(n)
+		#if (n.devices.size() < 2) or (n.wires.size() < 1):
+		#	for device in n.devices:
+		#		device.label.text = "Network"
+		#	networks.erase(n)
+	
+	#for n:Network in networks:
+	#	print(str(n.devices))
 
 
 func get_neighbors(device:Node3D) -> Array:
@@ -214,6 +227,10 @@ func erase_stray_wires() -> void:
 	for child in get_children():
 		if !child.is_in_group("wire"):
 			continue
+		
+		if Global.is_in_level_editor(self):
+			if child == Global.scene_manager.level_editor.player_camera.dragged_wire:
+				continue
 		
 		var in_a_network:bool = false
 		for network in networks:

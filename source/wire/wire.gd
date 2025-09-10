@@ -33,6 +33,7 @@ func update_model() -> void:
 	global_position = mid_point
 	look_at(pos1)
 	power_indicator.visible = powered
+	$Label3D2.text = str(devices)
 	#if devices[0].is_in_group("antenna") and devices[1].is_in_group("antenna"):
 	#	power_indicator.visible = devices[0].powered and devices[1].powered
 	#else:

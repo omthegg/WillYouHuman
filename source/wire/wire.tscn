@@ -25,6 +25,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 billboard = 1
 text = "Network"
 
+[node name="Label3D2" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+billboard = 1
+modulate = Color(0, 1, 0.976562, 1)
+text = "Devices"
+
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, 0)
 collision_mask = 0

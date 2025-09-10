@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var PlayerCamera:Node3D = $PlayerCamera
+@onready var player_camera:Node3D = $PlayerCamera
 @onready var Grid:StaticBody3D = $Grid
 @onready var property_menu:Control = $UI/PropertyMenu
 @onready var property_menu_vbox_container:VBoxContainer = $UI/PropertyMenu/VBoxContainer
@@ -39,14 +39,17 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	Grid.position.x = PlayerCamera.position.x
-	Grid.position.z = PlayerCamera.position.z
+	Grid.position.x = player_camera.position.x
+	Grid.position.z = player_camera.position.z
 	
 	if Input.is_action_just_pressed("object_menu"):
 		%ObjectMenu.visible = !%ObjectMenu.visible
 	
 	if level:
-		level.fix_all_network_overlaps()
+		for network in level.networks:
+			level.update_network(network)
+		
+		level.erase_stray_wires()
 		#if !overlap_fixing_thread.is_started():
 		#	overlap_fixing_thread.start(Callable(level, "fix_all_network_overlaps"))
 		level.update_debug_info()
@@ -120,7 +123,7 @@ func load_level(path:String) -> void:
 
 
 func play_level() -> void:
-	PlayerCamera.camera.current = false
+	player_camera.camera.current = false
 	var packed_level:PackedScene = PackedScene.new()
 	for child in Global.get_all_children(level):
 		child.owner = level
