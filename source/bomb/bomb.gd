@@ -1,6 +1,10 @@
 extends RigidBody3D
 
-@export var time:float = 5.0
+@export var time:float = 5.0:
+	set(value):
+		time = value
+		timer.wait_time = time
+		timer.start()
 
 @onready var raycast:RayCast3D = $RayCast3D
 @onready var outline:MeshInstance3D = $Outline

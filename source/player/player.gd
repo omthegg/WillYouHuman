@@ -16,11 +16,6 @@ var camera_tilt_speed:float = 15.0
 var dragged_wire:Node3D
 
 
-func _ready() -> void:
-	if get_parent() == Global.scene_manager.current_level:
-		get_parent().player = self
-
-
 func _input(event) -> void:
 	if health_component.health <= 0:
 		return
@@ -72,8 +67,8 @@ func move_around(delta:float) -> void:
 		velocity.x = move_toward(velocity.x, direction.x * SPEED, SPEED/2)
 		velocity.z = move_toward(velocity.z, direction.z * SPEED, SPEED/2)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED/4)
-		velocity.z = move_toward(velocity.z, 0, SPEED/4)
+		velocity.x = move_toward(velocity.x, 0, SPEED/6)
+		velocity.z = move_toward(velocity.z, 0, SPEED/6)
 	
 	tilt_camera(input_dir.x, delta)
 	

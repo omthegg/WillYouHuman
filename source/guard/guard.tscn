@@ -91,15 +91,18 @@ mesh = ExtResource("5_tpd4u")
 skeleton = NodePath("../..")
 
 [node name="ShootingArm" type="Node3D" parent="Model"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.235, 0.465, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.235, 0.465, 0)
 
-[node name="ArmRight" type="MeshInstance3D" parent="Model/ShootingArm"]
+[node name="Node3D" type="Node3D" parent="Model/ShootingArm"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="ArmRight" type="MeshInstance3D" parent="Model/ShootingArm/Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005, -0.42, 0)
 material_override = ExtResource("1_pt6iq")
 mesh = ExtResource("3_4sqj2")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="Revolver" type="MeshInstance3D" parent="Model/ShootingArm"]
+[node name="Revolver" type="MeshInstance3D" parent="Model/ShootingArm/Node3D"]
 transform = Transform3D(-0.5, 4.37114e-08, -1.91069e-15, 0, -2.18557e-08, -0.5, -4.37114e-08, -0.5, 2.18557e-08, 0, -0.816, 0.028)
 mesh = SubResource("ArrayMesh_8dmw1")
 skeleton = NodePath("")
