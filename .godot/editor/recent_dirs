@@ -1,3 +1,6 @@
+res://source/weapon_pickup
+res://source/revolver
+res://source/hitscan_component
 res://source/guard
 res://source/button
 res://source/bomb_spawner
@@ -17,6 +20,3 @@ res://source/level_editor
 res://source/3d_background
 res://source/themes
 res://source/pause_menu
-res://source/scene_manager
-res://source/primitives/polygon
-res://source/primitives/box

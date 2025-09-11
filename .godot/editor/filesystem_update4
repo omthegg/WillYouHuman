@@ -36,3 +36,8 @@ res://source/button/button.tscn
 res://source/wire/wire.tscn
 res://source/wiring_component/wiring_component.tscn
 res://source/player/player.gd
+res://source/hitscan_component/hitscan_component.tscn
+res://source/hitscan_component/hitscan_component.gd
+res://source/revolver/revolver.tscn
+res://source/weapon_pickup/weapon_pickup.tscn
+res://source/weapon_pickup/weapon_pickup.gd

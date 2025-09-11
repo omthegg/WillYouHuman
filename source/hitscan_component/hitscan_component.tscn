@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cu2nu7mn2h3d3"]
+
+[ext_resource type="Script" uid="uid://cioe0r3sx7ttf" path="res://source/hitscan_component/hitscan_component.gd" id="1_55fcs"]
+
+[node name="HitscanComponent" type="Node3D"]
+script = ExtResource("1_55fcs")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, 0)
+collision_mask = 8
