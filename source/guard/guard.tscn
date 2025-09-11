@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://c5pqvs8eq8ftd"]
+[gd_scene load_steps=12 format=4 uid="uid://c5pqvs8eq8ftd"]
 
 [ext_resource type="Material" uid="uid://ci67pqclyynb3" path="res://source/guard/guard_material.tres" id="1_pt6iq"]
 [ext_resource type="Script" uid="uid://tqdou832hlbh" path="res://source/guard/guard.gd" id="1_qd5tm"]
@@ -6,6 +6,7 @@
 [ext_resource type="BoxMesh" uid="uid://c8onfoib6oil5" path="res://source/guard/guard_limb_mesh.tres" id="3_4sqj2"]
 [ext_resource type="QuadMesh" uid="uid://dmfnami0tkvki" path="res://source/guard/guard_visor_mesh.tres" id="5_tpd4u"]
 [ext_resource type="Material" uid="uid://db56bq14ua1vu" path="res://source/guard/guard_visor_material.tres" id="5_wc6fa"]
+[ext_resource type="PackedScene" uid="uid://bnpvba8utgjab" path="res://source/health_component/health_component.tscn" id="7_43r6e"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mifed"]
 radius = 0.4
@@ -47,7 +48,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_du3c4")
 
-[node name="Guard" type="CharacterBody3D"]
+[node name="Guard" type="CharacterBody3D" groups=["enemy"]]
 disable_mode = 1
 collision_layer = 2
 collision_mask = 2
@@ -102,3 +103,5 @@ skeleton = NodePath("../..")
 transform = Transform3D(-0.5, 4.37114e-08, -1.91069e-15, 0, -2.18557e-08, -0.5, -4.37114e-08, -0.5, 2.18557e-08, 0, -0.816, 0.028)
 mesh = SubResource("ArrayMesh_8dmw1")
 skeleton = NodePath("")
+
+[node name="HealthComponent" parent="." instance=ExtResource("7_43r6e")]

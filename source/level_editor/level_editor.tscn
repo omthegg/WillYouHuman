@@ -239,7 +239,6 @@ scene = ExtResource("12_13bih")
 [node name="ObjectButton9" parent="UI/ObjectMenu/GridContainer" instance=ExtResource("4_g8vfu")]
 layout_mode = 2
 scene = ExtResource("13_5d336")
-camera_size = 3.0
 scene_rotation = Vector3(0, 180, 0)
 
 [node name="SelectionOverlay" type="ColorRect" parent="UI/ObjectMenu"]

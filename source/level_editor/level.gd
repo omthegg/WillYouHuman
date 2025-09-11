@@ -2,6 +2,8 @@ extends Node3D
 
 @export var networks:Array = []
 
+var player:CharacterBody3D
+
 var visited_neighbors = [] # See get_neighbors_recursive
 
 class Network:

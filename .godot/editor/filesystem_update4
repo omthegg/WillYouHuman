@@ -38,3 +38,6 @@ res://source/autoloads/color_manager.gd
 res://source/level_editor/object_button.gd
 res://source/guard/guard_limb_mesh.tres
 res://source/guard/guard_visor_mesh.tres
+res://source/guard/guard.gd
+res://source/player/player.gd
+res://source/bomb/bomb.tscn

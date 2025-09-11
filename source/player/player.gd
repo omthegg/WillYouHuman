@@ -16,6 +16,11 @@ var camera_tilt_speed:float = 15.0
 var dragged_wire:Node3D
 
 
+func _ready() -> void:
+	if get_parent() == Global.scene_manager.current_level:
+		get_parent().player = self
+
+
 func _input(event) -> void:
 	if health_component.health <= 0:
 		return
