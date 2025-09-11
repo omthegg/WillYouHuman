@@ -94,6 +94,11 @@ func update_network(network:Network) -> void:
 		wire.powered = network.powered
 		wire.display_network_id(network)
 		wire.update_model()
+	
+	#if (network.devices.size() < 2) or (network.wires.size() < 1):
+	#	for device in network.devices:
+	#		device.label.text = "Network"
+	#	networks.erase(network)
 
 
 func fix_network_overlap(network:Network, overlapping_device:Object) -> void:# -> Network:
@@ -179,10 +184,6 @@ func split_network_by_wire(wire:Node3D) -> void:
 	
 	#for n:Network in networks:
 	#	update_network(n)
-		#if (n.devices.size() < 2) or (n.wires.size() < 1):
-		#	for device in n.devices:
-		#		device.label.text = "Network"
-		#	networks.erase(n)
 	
 	#for n:Network in networks:
 	#	print(str(n.devices))
