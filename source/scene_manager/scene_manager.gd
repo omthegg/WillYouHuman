@@ -5,6 +5,7 @@ extends Node3D
 @onready var pause_menu:Control = $MenuCanvasLayer/SubViewportContainer/SubViewport/PauseMenu
 @onready var death_screen:Control = $HUDCanvasLayer/DeathScreen
 @onready var networks_text_edit:TextEdit = $HUDCanvasLayer/NetworksTextEdit
+@onready var navigation_region:NavigationRegion3D = $NavigationRegion3D
 
 var wire:PackedScene = preload("res://source/wire/wire.tscn")
 
@@ -35,10 +36,10 @@ func _input(event) -> void:
 		restart_current_level()
 
 
-func play_level(packed_level:PackedScene) -> void:
+func play_level(packed_level:PackedScene, bake_navmesh:bool = true) -> void:
 	packed_current_level = packed_level
 	var child:Node3D = packed_level.instantiate()
-	add_child(child)
+	navigation_region.add_child(child)
 	
 	if packed_level == packed_level_editor:
 		level_editor = child
@@ -56,6 +57,9 @@ func play_level(packed_level:PackedScene) -> void:
 		pause_menu.editor_button.show()
 	else:
 		pause_menu.editor_button.hide()
+	
+	if bake_navmesh:
+		navigation_region.bake_navigation_mesh()
 
 
 func get_level_ready(level:Node3D) -> void:
@@ -127,4 +131,4 @@ func restart_current_level() -> void:
 		return
 	
 	current_level.queue_free()
-	play_level(packed_current_level)
+	play_level(packed_current_level, false)

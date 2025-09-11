@@ -1,3 +1,4 @@
+NavigationRegion3D
 TextEdit
 VBoxContainer
 CollisionShape3D
@@ -12,4 +13,3 @@ RayCast3D
 RigidBody3D
 Node3D
 Label3D
-Sprite3D

@@ -31,3 +31,4 @@ res://source/button/button.tscn
 res://source/wire/wire.tscn
 res://source/wiring_component/wiring_component.tscn
 res://source/level_editor/level.gd
+res://source/scene_manager/scene_manager.gd
