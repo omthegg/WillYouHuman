@@ -12,6 +12,7 @@ var button_top_material:StandardMaterial3D = preload("res://source/button/button
 var button_base_material:StandardMaterial3D = preload("res://source/button/button_base_material.tres")
 var button_top_material_activated:StandardMaterial3D = preload("res://source/button/button_top_material_activated.tres")
 var button_base_material_activated:StandardMaterial3D = preload("res://source/button/button_base_material_activated.tres")
+var guard_material:StandardMaterial3D = preload("res://source/guard/guard_material.tres")
 
 func _ready() -> void:
 	procedural_material.albedo_texture = Global.generate_random_texture()
@@ -28,3 +29,4 @@ func _ready() -> void:
 	button_base_material.albedo_color = Color.BLUE
 	button_top_material_activated.albedo_color = Color.ORANGE_RED
 	button_base_material_activated.albedo_color = Color.RED
+	guard_material.albedo_color = Color.RED

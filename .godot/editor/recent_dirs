@@ -1,3 +1,4 @@
+res://source/guard
 res://source/button
 res://source/bomb_spawner
 res://source/health_component
@@ -19,4 +20,3 @@ res://source/pause_menu
 res://source/scene_manager
 res://source/primitives/polygon
 res://source/primitives/box
-res://source/environments
