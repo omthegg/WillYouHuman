@@ -1,3 +1,4 @@
+res://source/environments
 res://source/weapon_pickup
 res://source/revolver
 res://source/hitscan_component
@@ -19,4 +20,3 @@ res://source/autoloads
 res://source/level_editor
 res://source/3d_background
 res://source/themes
-res://source/pause_menu

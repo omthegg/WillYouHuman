@@ -10,7 +10,7 @@ func _ready() -> void:
 
 
 func _physics_process(_delta):
-	if for_player:
+	if for_player and visible:
 		if Input.is_action_just_pressed("left_click"):
 			shoot()
 

@@ -1,12 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://dewylcfpmmaop"]
+[gd_scene load_steps=9 format=3 uid="uid://dewylcfpmmaop"]
 
 [ext_resource type="Script" uid="uid://qhivmob45286" path="res://source/player/player.gd" id="1_jct2x"]
 [ext_resource type="Material" uid="uid://bkyigbm1u3q4j" path="res://source/player/player_material1.tres" id="2_u10tu"]
 [ext_resource type="CapsuleMesh" uid="uid://dwtq8f6jm3ua6" path="res://source/player/bean.tres" id="2_xim07"]
+[ext_resource type="PackedScene" uid="uid://tv2j88wg8fre" path="res://source/revolver/revolver.tscn" id="4_favdl"]
 [ext_resource type="PackedScene" uid="uid://bnpvba8utgjab" path="res://source/health_component/health_component.tscn" id="4_glqx2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jct2x"]
 radius = 0.3
+
+[sub_resource type="Environment" id="Environment_favdl"]
+glow_enabled = true
+glow_bloom = 0.1
+glow_blend_mode = 0
+
+[sub_resource type="World3D" id="World3D_favdl"]
+environment = SubResource("Environment_favdl")
 
 [node name="Player" type="CharacterBody3D" groups=["moved_by_conveyor_belt", "player"]]
 disable_mode = 1
@@ -27,7 +36,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 [node name="Camera3D" type="Camera3D" parent="Head"]
 fov = 90.0
 
+[node name="CanvasLayer" type="CanvasLayer" parent="Head"]
+layer = 0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Head/CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SubViewport" type="SubViewport" parent="Head/CanvasLayer/SubViewportContainer"]
+world_3d = SubResource("World3D_favdl")
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Revolver" parent="Head/CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("4_favdl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, -0.385)
+visible = false
+
+[node name="Revolver" parent="Head/CanvasLayer/SubViewportContainer/SubViewport/Revolver" index="0"]
+layers = 2
+
+[node name="Camera3D" type="Camera3D" parent="Head/CanvasLayer/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+cull_mask = 2
+fov = 90.0
+
 [node name="HealthComponent" parent="." instance=ExtResource("4_glqx2")]
 delete_parent_on_death = false
 
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
+
+[editable path="Head/CanvasLayer/SubViewportContainer/SubViewport/Revolver"]

@@ -1,3 +1,7 @@
+CanvasLayer
+Camera3D
+SubViewport
+SubViewportContainer
 MeshInstance3D
 Node3D
 CollisionShape3D
@@ -9,6 +13,3 @@ CharacterBody3D
 NavigationRegion3D
 TextEdit
 VBoxContainer
-Timer
-Node
-Label

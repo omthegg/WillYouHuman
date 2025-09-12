@@ -3,6 +3,7 @@ extends CharacterBody3D
 @onready var head:Node3D = $Head
 @onready var camera:Camera3D = $Head/Camera3D
 @onready var health_component:Node = $HealthComponent
+@onready var revolver:Node3D = $Head/CanvasLayer/SubViewportContainer/SubViewport/Revolver
 
 const SPEED = 10.0
 const JUMP_VELOCITY = 6.0
@@ -58,7 +59,6 @@ func move_around(delta:float) -> void:
 			extra_jumps -= 1
 	
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -100,6 +100,14 @@ func tilt_camera(factor:float, delta_time:float) -> void:
 	if factor == 0.0:
 		camera.rotation.z = lerp_angle(camera.rotation.z
 		, deg_to_rad(0), camera_tilt_speed*delta_time)
+
+
+func set_weapon(weapon:int=0):
+	match weapon:
+		0:
+			revolver.hide()
+		1:
+			revolver.show()
 
 
 func _on_health_component_died():

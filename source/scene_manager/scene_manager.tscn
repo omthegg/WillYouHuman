@@ -17,6 +17,7 @@ shader_parameter/vignette_color = Color(0, 0, 0, 1)
 [sub_resource type="Environment" id="Environment_7eoyu"]
 background_mode = 3
 glow_enabled = true
+glow_intensity = 1.5
 glow_bloom = 0.1
 glow_blend_mode = 0
 
@@ -27,6 +28,10 @@ environment = SubResource("Environment_7eoyu")
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.1
+glow_intensity = 8.0
+glow_strength = 2.0
+glow_bloom = 1.0
+glow_blend_mode = 0
 
 [sub_resource type="World3D" id="World3D_nyf36"]
 environment = SubResource("Environment_2r2ke")

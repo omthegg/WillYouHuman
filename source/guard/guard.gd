@@ -2,11 +2,13 @@ extends CharacterBody3D
 
 @onready var shooting_arm:Node3D = $Model/ShootingArm
 @onready var animation_player:AnimationPlayer = $AnimationPlayer
-@onready var shooting_raycast:RayCast3D = $Model/ShootingArm/Node3D/Revolver/HitscanComponent/RayCast3D
+@onready var shooting_raycast:Node3D = $Model/ShootingArm/Node3D/Revolver/HitscanComponent/RayCast3D
 
 var speed:float = 6.0
 
 func _ready() -> void:
+	#shooting_raycast = $Model/ShootingArm/Node3D/Revolver/HitscanComponent/RayCast3D
+	#print(shooting_raycast)
 	shooting_raycast.global_position = $Model/Head.global_position
 
 
