@@ -64,3 +64,7 @@ func _on_range_body_entered(body) -> void:
 func _on_range_body_exited(body) -> void:
 	if body in objects_near:
 		objects_near.erase(body)
+
+
+func _on_health_component_died() -> void:
+	explode()

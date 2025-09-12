@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dewylcfpmmaop"]
+[gd_scene load_steps=10 format=3 uid="uid://dewylcfpmmaop"]
 
 [ext_resource type="Script" uid="uid://qhivmob45286" path="res://source/player/player.gd" id="1_jct2x"]
 [ext_resource type="Material" uid="uid://bkyigbm1u3q4j" path="res://source/player/player_material1.tres" id="2_u10tu"]
@@ -8,6 +8,9 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jct2x"]
 radius = 0.3
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_favdl"]
+blend_mode = 1
 
 [sub_resource type="Environment" id="Environment_favdl"]
 glow_enabled = true
@@ -40,6 +43,7 @@ fov = 90.0
 layer = 0
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Head/CanvasLayer"]
+material = SubResource("CanvasItemMaterial_favdl")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -49,7 +53,6 @@ mouse_filter = 2
 
 [node name="SubViewport" type="SubViewport" parent="Head/CanvasLayer/SubViewportContainer"]
 world_3d = SubResource("World3D_favdl")
-transparent_bg = true
 handle_input_locally = false
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
