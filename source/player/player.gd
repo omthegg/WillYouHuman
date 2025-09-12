@@ -18,8 +18,8 @@ var dragged_wire:Node3D
 
 
 func _ready() -> void:
-	revolver.get_node("HitscanComponent/RayCast3D").global_position = camera.global_position
-	#$Head/Camera3D/CanvasLayer/SubViewportContainer/SubViewport.world_3d = get_tree().root.world_3d
+	#revolver.get_node("HitscanComponent/RayCast3D").global_position = camera.global_position
+	$Head/Camera3D/CanvasLayer/SubViewportContainer/SubViewport.world_3d = get_tree().root.world_3d
 
 
 func _input(event) -> void:
