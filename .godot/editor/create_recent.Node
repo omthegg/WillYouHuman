@@ -1,3 +1,7 @@
+Node2D
+ColorRect
+Sprite2D
+AnimationPlayer
 CanvasLayer
 Camera3D
 SubViewport
@@ -8,8 +12,3 @@ CollisionShape3D
 Area3D
 StaticBody3D
 RayCast3D
-AnimationPlayer
-CharacterBody3D
-NavigationRegion3D
-TextEdit
-VBoxContainer

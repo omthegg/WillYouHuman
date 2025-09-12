@@ -27,7 +27,8 @@ var editable_variables:Dictionary = {
 	"belt_speed" = TYPE_FLOAT,
 	"time" = TYPE_FLOAT,
 	"bomb_time" = TYPE_FLOAT,
-	"one_time_press" = TYPE_BOOL
+	"one_time_press" = TYPE_BOOL,
+	"weapon" = TYPE_INT
 	#"global_position" = TYPE_VECTOR3
 }
 

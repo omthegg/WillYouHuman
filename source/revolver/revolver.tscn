@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=4 uid="uid://tv2j88wg8fre"]
+[gd_scene load_steps=9 format=4 uid="uid://tv2j88wg8fre"]
 
+[ext_resource type="Script" uid="uid://2q3sbhrh60ar" path="res://source/revolver/revolver.gd" id="1_ucx4m"]
 [ext_resource type="PackedScene" uid="uid://cu2nu7mn2h3d3" path="res://source/hitscan_component/hitscan_component.tscn" id="2_ucx4m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x7gs4"]
@@ -39,11 +40,80 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_du3c4")
 
+[sub_resource type="Animation" id="Animation_dfldb"]
+resource_name = "shoot"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Revolver:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.1), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Revolver:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0), Vector3(-0.261799, -3.14159, 0), Vector3(0, -3.14159, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ucx4m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Revolver:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Revolver:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x8ika"]
+_data = {
+&"RESET": SubResource("Animation_ucx4m"),
+&"shoot": SubResource("Animation_dfldb")
+}
+
 [node name="Revolver" type="Node3D"]
+script = ExtResource("1_ucx4m")
 
 [node name="Revolver" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 0, 0, 0)
+transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 0, 0)
 mesh = SubResource("ArrayMesh_e5xom")
 skeleton = NodePath("")
 
 [node name="HitscanComponent" parent="." instance=ExtResource("2_ucx4m")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_x8ika")
+}
+
+[connection signal="shot" from="HitscanComponent" to="." method="_on_hitscan_component_shot"]

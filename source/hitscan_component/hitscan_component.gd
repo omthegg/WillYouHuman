@@ -1,5 +1,7 @@
 extends Node3D
 
+signal shot
+
 @export var range:float = 100.0
 @export var for_player:bool = false
 
@@ -18,6 +20,8 @@ func _physics_process(_delta):
 
  
 func shoot() -> void:
+	emit_signal("shot")
+	
 	var collider:Node3D = raycast.get_collider()
 	#print(collider)
 	if !collider:

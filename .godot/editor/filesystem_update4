@@ -38,3 +38,6 @@ res://source/revolver/revolver.tscn
 res://source/weapon_pickup/weapon_pickup.tscn
 res://source/bomb/bomb.tscn
 res://source/hitscan_component/hitscan_component.gd
+res://source/revolver/revolver.gd
+res://source/weapon_pickup/weapon_pickup.gd
+res://source/level_editor/level_editor.gd

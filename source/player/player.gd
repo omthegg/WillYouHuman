@@ -4,6 +4,7 @@ extends CharacterBody3D
 @onready var camera:Camera3D = $Head/Camera3D
 @onready var health_component:Node = $HealthComponent
 @onready var revolver:Node3D = $Head/Camera3D/CanvasLayer/SubViewportContainer/SubViewport/Revolver
+@onready var crosshair:Node2D = $Head/Camera3D/CanvasLayer/Crosshair
 
 const SPEED = 10.0
 const JUMP_VELOCITY = 6.0
@@ -111,8 +112,10 @@ func set_weapon(weapon:int=0):
 	match weapon:
 		0:
 			revolver.hide()
+			crosshair.hide()
 		1:
 			revolver.show()
+			crosshair.show()
 
 
 func _on_health_component_died():
