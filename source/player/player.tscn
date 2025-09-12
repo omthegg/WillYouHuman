@@ -67,6 +67,7 @@ cull_mask = 2
 fov = 90.0
 
 [node name="Crosshair" type="Node2D" parent="Head/Camera3D/CanvasLayer"]
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Head/Camera3D/CanvasLayer/Crosshair"]
 visible = false
