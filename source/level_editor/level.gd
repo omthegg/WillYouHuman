@@ -19,8 +19,14 @@ class Network:
 # When disconnecting two devices from each other, go through all neighbor devices
 # and put them in a new network
 
+func _ready() -> void:
+	for child in get_children():
+		if child.is_in_group("player"):
+			player = child
+			break
 
-func connect_devices(device1:Node3D, device2:Node3D):
+
+func connect_devices(device1:Node3D, device2:Node3D) -> void:
 	if device1 == device2:
 		return
 	

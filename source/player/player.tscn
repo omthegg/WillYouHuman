@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dewylcfpmmaop"]
+[gd_scene load_steps=8 format=3 uid="uid://dewylcfpmmaop"]
 
 [ext_resource type="Script" uid="uid://qhivmob45286" path="res://source/player/player.gd" id="1_jct2x"]
 [ext_resource type="Material" uid="uid://bkyigbm1u3q4j" path="res://source/player/player_material1.tres" id="2_u10tu"]
@@ -11,14 +11,6 @@ radius = 0.3
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_favdl"]
 blend_mode = 1
-
-[sub_resource type="Environment" id="Environment_favdl"]
-glow_enabled = true
-glow_bloom = 0.1
-glow_blend_mode = 0
-
-[sub_resource type="World3D" id="World3D_favdl"]
-environment = SubResource("Environment_favdl")
 
 [node name="Player" type="CharacterBody3D" groups=["moved_by_conveyor_belt", "player"]]
 disable_mode = 1
@@ -37,12 +29,14 @@ mesh = ExtResource("2_xim07")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
+cull_mask = 1048573
 fov = 90.0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Head"]
+[node name="CanvasLayer" type="CanvasLayer" parent="Head/Camera3D"]
 layer = 0
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Head/CanvasLayer"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Head/Camera3D/CanvasLayer"]
+modulate = Color(0.5, 0.5, 0.5, 1)
 material = SubResource("CanvasItemMaterial_favdl")
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,20 +45,22 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="SubViewport" type="SubViewport" parent="Head/CanvasLayer/SubViewportContainer"]
-world_3d = SubResource("World3D_favdl")
+[node name="SubViewport" type="SubViewport" parent="Head/Camera3D/CanvasLayer/SubViewportContainer"]
 handle_input_locally = false
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="Revolver" parent="Head/CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("4_favdl")]
+[node name="Revolver" parent="Head/Camera3D/CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("4_favdl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, -0.385)
 visible = false
 
-[node name="Revolver" parent="Head/CanvasLayer/SubViewportContainer/SubViewport/Revolver" index="0"]
+[node name="Revolver" parent="Head/Camera3D/CanvasLayer/SubViewportContainer/SubViewport/Revolver" index="0"]
 layers = 2
 
-[node name="Camera3D" type="Camera3D" parent="Head/CanvasLayer/SubViewportContainer/SubViewport"]
+[node name="HitscanComponent" parent="Head/Camera3D/CanvasLayer/SubViewportContainer/SubViewport/Revolver" index="1"]
+for_player = true
+
+[node name="Camera3D" type="Camera3D" parent="Head/Camera3D/CanvasLayer/SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 cull_mask = 2
 fov = 90.0
@@ -74,4 +70,4 @@ delete_parent_on_death = false
 
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
 
-[editable path="Head/CanvasLayer/SubViewportContainer/SubViewport/Revolver"]
+[editable path="Head/Camera3D/CanvasLayer/SubViewportContainer/SubViewport/Revolver"]

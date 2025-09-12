@@ -1,3 +1,4 @@
+res://source/player
 res://source/environments
 res://source/weapon_pickup
 res://source/revolver
@@ -12,7 +13,6 @@ res://source/materials/
 res://source/short_range_battery
 res://source/wire
 res://source/wiring_component
-res://source/player
 res://source/short_range_antenna
 res://source/conveyor_belt
 res://source/materials

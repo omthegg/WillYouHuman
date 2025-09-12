@@ -17,6 +17,7 @@ func _physics_process(_delta):
  
 func shoot() -> void:
 	var collider:Node3D = raycast.get_collider()
+	#print(collider)
 	if !collider:
 		return
 	

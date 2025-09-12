@@ -3,7 +3,7 @@ extends CharacterBody3D
 @onready var head:Node3D = $Head
 @onready var camera:Camera3D = $Head/Camera3D
 @onready var health_component:Node = $HealthComponent
-@onready var revolver:Node3D = $Head/CanvasLayer/SubViewportContainer/SubViewport/Revolver
+@onready var revolver:Node3D = $Head/Camera3D/CanvasLayer/SubViewportContainer/SubViewport/Revolver
 
 const SPEED = 10.0
 const JUMP_VELOCITY = 6.0
@@ -15,6 +15,11 @@ var camera_tilt_angle:float = 1.0
 var camera_tilt_speed:float = 15.0
 
 var dragged_wire:Node3D
+
+
+func _ready() -> void:
+	revolver.get_node("HitscanComponent/RayCast3D").global_position = camera.global_position
+	#$Head/Camera3D/CanvasLayer/SubViewportContainer/SubViewport.world_3d = get_tree().root.world_3d
 
 
 func _input(event) -> void:
