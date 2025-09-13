@@ -56,6 +56,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, -0.385)
 visible = false
 
 [node name="Revolver" parent="Head/Camera3D/CanvasLayer/SubViewportContainer/SubViewport/Revolver" index="0"]
+transform = Transform3D(-0.5, 0, -1.26759e-06, 0, 0.5, 0, 1.26759e-06, 0, -0.5, 0, 0, 0)
 layers = 2
 
 [node name="HitscanComponent" parent="Head/Camera3D/CanvasLayer/SubViewportContainer/SubViewport/Revolver" index="1"]
