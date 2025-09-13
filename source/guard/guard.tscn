@@ -206,6 +206,3 @@ libraries = {
 speed_scale = 2.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-
-[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
-vertices = PackedVector3Array(0.4, -1, 0.4, -0.4, -1, 0.4, -0.4, -1, -0.4, 0.4, -1, -0.4)

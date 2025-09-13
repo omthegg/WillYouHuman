@@ -31,10 +31,11 @@ func _physics_process(delta:float) -> void:
 
 func find_path_to_player(player:CharacterBody3D) -> void:
 	await get_tree().physics_frame
-	navigation_agent.target_position = player.global_position
+	navigation_agent.set_target_position(player.global_position)
 
 
 func move_to_path() -> void:
 	var next_path_position:Vector3 = navigation_agent.get_next_path_position()
+	print(next_path_position)
 	velocity = global_position.direction_to(next_path_position) * speed
 	move_and_slide()

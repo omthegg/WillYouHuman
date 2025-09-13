@@ -39,6 +39,7 @@ environment = SubResource("Environment_2r2ke")
 [sub_resource type="NavigationMesh" id="NavigationMesh_2r2ke"]
 geometry_parsed_geometry_type = 1
 geometry_collision_mask = 4294967288
+cell_height = 0.5
 agent_height = 2.0
 
 [node name="SceneManager" type="Node3D"]
