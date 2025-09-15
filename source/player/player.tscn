@@ -1,11 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://dewylcfpmmaop"]
+[gd_scene load_steps=13 format=3 uid="uid://dewylcfpmmaop"]
 
 [ext_resource type="Script" uid="uid://qhivmob45286" path="res://source/player/player.gd" id="1_jct2x"]
 [ext_resource type="Material" uid="uid://bkyigbm1u3q4j" path="res://source/player/player_material1.tres" id="2_u10tu"]
-[ext_resource type="CapsuleMesh" uid="uid://dwtq8f6jm3ua6" path="res://source/player/bean.tres" id="2_xim07"]
 [ext_resource type="PackedScene" uid="uid://tv2j88wg8fre" path="res://source/revolver/revolver.tscn" id="4_favdl"]
 [ext_resource type="PackedScene" uid="uid://bnpvba8utgjab" path="res://source/health_component/health_component.tscn" id="4_glqx2"]
 [ext_resource type="Script" uid="uid://c5s47qdxa7jfe" path="res://source/player/crosshair.gd" id="5_asuwg"]
+[ext_resource type="BoxMesh" uid="uid://l0xoohhrfkkc" path="res://source/player/player_limb_mesh.tres" id="8_7t8kb"]
+[ext_resource type="BoxMesh" uid="uid://bemaum7jqbf4b" path="res://source/player/player_torso_mesh.tres" id="8_q3bky"]
+[ext_resource type="Material" uid="uid://db56bq14ua1vu" path="res://source/guard/guard_visor_material.tres" id="9_72fmy"]
+[ext_resource type="BoxMesh" uid="uid://qsrq73burat5" path="res://source/player/player_head_mesh.tres" id="10_72fmy"]
+[ext_resource type="QuadMesh" uid="uid://cjbo8o10xu8xy" path="res://source/player/player_visor_mesh.tres" id="12_li2ga"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jct2x"]
 radius = 0.3
@@ -22,15 +26,11 @@ script = ExtResource("1_jct2x")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_jct2x")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-material_override = ExtResource("2_u10tu")
-mesh = ExtResource("2_xim07")
-
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
-cull_mask = 1048573
+cull_mask = 1048569
 fov = 90.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Head/Camera3D"]
@@ -77,6 +77,58 @@ delete_parent_on_death = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 height = 2.0
 vertices = PackedVector3Array(0.4, 0, 0.4, 0.4, 0, -0.4, -0.4, 0, -0.4, -0.4, 0, 0.4)
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="Torso" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17, 0)
+layers = 4
+material_override = ExtResource("2_u10tu")
+mesh = ExtResource("8_q3bky")
+
+[node name="LegRight" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, -0.55, 0)
+layers = 4
+material_override = ExtResource("2_u10tu")
+mesh = ExtResource("8_7t8kb")
+
+[node name="LegLeft" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(0.999981, -0.00621333, 0, 0.00621333, 0.999981, 0, 0, 0, 1, -0.1, -0.55, 0)
+layers = 4
+material_override = ExtResource("2_u10tu")
+mesh = ExtResource("8_7t8kb")
+
+[node name="ArmLeft" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.185, 0.045, 0)
+layers = 4
+material_override = ExtResource("2_u10tu")
+mesh = ExtResource("8_7t8kb")
+
+[node name="Head" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+layers = 4
+material_override = ExtResource("2_u10tu")
+mesh = ExtResource("10_72fmy")
+
+[node name="Visor" type="MeshInstance3D" parent="Model/Head"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.055)
+layers = 4
+material_override = ExtResource("9_72fmy")
+mesh = ExtResource("12_li2ga")
+skeleton = NodePath("../..")
+
+[node name="ShootingArm" type="Node3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.185, 0.465, 0)
+
+[node name="Node3D" type="Node3D" parent="Model/ShootingArm"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="ArmRight" type="MeshInstance3D" parent="Model/ShootingArm/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005, -0.42, 0)
+layers = 4
+material_override = ExtResource("2_u10tu")
+mesh = ExtResource("8_7t8kb")
+skeleton = NodePath("../../..")
 
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
 

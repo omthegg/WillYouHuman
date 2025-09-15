@@ -213,6 +213,7 @@ offset = Vector3(0, 0, 1)
 [node name="ObjectButton3" parent="UI/ObjectMenu/GridContainer" instance=ExtResource("4_g8vfu")]
 layout_mode = 2
 scene = ExtResource("6_r20ek")
+scene_rotation = Vector3(0, 180, 0)
 
 [node name="ObjectButton4" parent="UI/ObjectMenu/GridContainer" instance=ExtResource("4_g8vfu")]
 layout_mode = 2

@@ -28,3 +28,5 @@ res://source/autoloads/settings.gd
 res://source/pause_menu/pause_menu.gd
 res://source/pause_menu/pause_menu.tscn
 res://source/scene_manager/scene_manager.gd
+res://source/player/player_torso_mesh.tres
+res://source/player/player_visor_mesh.tres

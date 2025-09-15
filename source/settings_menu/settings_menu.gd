@@ -13,7 +13,7 @@ func add_settings_elements() -> void:
 		v_box_container.add_child(h_box_container, true)
 		
 		var label:Label = Label.new()
-		label.text = key
+		label.text = key.capitalize()
 		h_box_container.add_child(label, true)
 		
 		match typeof(Settings.settings.get(key)):

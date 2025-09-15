@@ -40,6 +40,12 @@ func _input(event) -> void:
 	
 	if Input.is_action_just_pressed("restart"):
 		restart_current_level()
+	
+	if Input.is_action_just_pressed("fullscreen"):
+		if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		else:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 
 
 func play_level(packed_level:PackedScene, bake_navmesh:bool = true) -> void:
