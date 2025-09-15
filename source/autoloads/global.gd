@@ -1,13 +1,13 @@
 extends Node
 
-var mouse_sens:float = 0.14
-
 var move_tool:PackedScene = preload("res://source/level_editor/move_tool.tscn")
 
 var display_material:StandardMaterial3D = preload("res://source/materials/display.tres")
 var highlight_material:StandardMaterial3D = preload("res://source/materials/editor_highlight.tres")
 
 var scene_manager:Node3D
+
+var predicted_player_position:Vector3
 
 func _ready() -> void:
 	highlight_material.albedo_color = Color.DEEP_SKY_BLUE

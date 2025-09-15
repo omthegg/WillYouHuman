@@ -206,3 +206,13 @@ libraries = {
 speed_scale = 2.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="MoveTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="RandomTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
+[connection signal="timeout" from="RandomTimer" to="." method="_on_random_timer_timeout"]

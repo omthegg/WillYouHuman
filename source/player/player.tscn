@@ -5,7 +5,7 @@
 [ext_resource type="CapsuleMesh" uid="uid://dwtq8f6jm3ua6" path="res://source/player/bean.tres" id="2_xim07"]
 [ext_resource type="PackedScene" uid="uid://tv2j88wg8fre" path="res://source/revolver/revolver.tscn" id="4_favdl"]
 [ext_resource type="PackedScene" uid="uid://bnpvba8utgjab" path="res://source/health_component/health_component.tscn" id="4_glqx2"]
-[ext_resource type="Texture2D" uid="uid://c1y7w5o3qfsl5" path="res://textures/square_outline.png" id="5_asuwg"]
+[ext_resource type="Script" uid="uid://c5s47qdxa7jfe" path="res://source/player/crosshair.gd" id="5_asuwg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jct2x"]
 radius = 0.3
@@ -56,7 +56,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, -0.385)
 visible = false
 
 [node name="Revolver" parent="Head/Camera3D/CanvasLayer/SubViewportContainer/SubViewport/Revolver" index="0"]
-transform = Transform3D(-0.5, 0, -1.26759e-06, 0, 0.5, 0, 1.26759e-06, 0, -0.5, 0, 0, 0)
 layers = 2
 
 [node name="HitscanComponent" parent="Head/Camera3D/CanvasLayer/SubViewportContainer/SubViewport/Revolver" index="1"]
@@ -69,21 +68,15 @@ fov = 90.0
 
 [node name="Crosshair" type="Node2D" parent="Head/Camera3D/CanvasLayer"]
 visible = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Head/Camera3D/CanvasLayer/Crosshair"]
-visible = false
-position = Vector2(576, 324)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("5_asuwg")
-
-[node name="ColorRect" type="ColorRect" parent="Head/Camera3D/CanvasLayer/Crosshair"]
-offset_left = 569.995
-offset_top = 318.0
-offset_right = 581.995
-offset_bottom = 330.0
+script = ExtResource("5_asuwg")
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_glqx2")]
 delete_parent_on_death = false
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+height = 2.0
+vertices = PackedVector3Array(0.4, 0, 0.4, 0.4, 0, -0.4, -0.4, 0, -0.4, -0.4, 0, 0.4)
 
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
 

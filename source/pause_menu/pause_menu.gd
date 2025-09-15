@@ -12,3 +12,7 @@ func _on_exit_button_pressed() -> void:
 
 func _on_editor_button_pressed() -> void:
 	Global.scene_manager.return_to_level_editor()
+
+
+func _on_settings_button_pressed() -> void:
+	Global.scene_manager.go_to_settings()

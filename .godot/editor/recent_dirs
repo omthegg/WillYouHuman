@@ -1,3 +1,5 @@
+res://source/settings_menu
+res://source/autoloads
 res://source/player
 res://source/environments
 res://source/weapon_pickup
@@ -16,7 +18,5 @@ res://source/wiring_component
 res://source/short_range_antenna
 res://source/conveyor_belt
 res://source/materials
-res://source/autoloads
 res://source/level_editor
 res://source/3d_background
-res://source/themes

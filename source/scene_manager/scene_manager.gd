@@ -6,6 +6,8 @@ extends Node3D
 @onready var death_screen:Control = $HUDCanvasLayer/DeathScreen
 @onready var networks_text_edit:TextEdit = $HUDCanvasLayer/NetworksTextEdit
 @onready var navigation_region:NavigationRegion3D = $NavigationRegion3D
+@onready var fps_label:Label = $DebugCanvasLayer/FPSLabel
+@onready var settings_menu:Control = $MenuCanvasLayer/SubViewportContainer/SubViewport/SettingsMenu
 
 var wire:PackedScene = preload("res://source/wire/wire.tscn")
 
@@ -18,6 +20,10 @@ func _ready() -> void:
 	Global.scene_manager = self
 	set_game_paused(true)
 	play_level(packed_level_editor)
+
+
+func _process(delta: float) -> void:
+	fps_label.text = str(int(Engine.get_frames_per_second()))
 
 
 func _physics_process(_delta) -> void:
@@ -132,3 +138,8 @@ func restart_current_level() -> void:
 	
 	current_level.queue_free()
 	play_level(packed_current_level, false)
+
+
+func go_to_settings() -> void:
+	pause_menu.hide()
+	settings_menu.show()

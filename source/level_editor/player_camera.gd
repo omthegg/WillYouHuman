@@ -21,8 +21,8 @@ func _unhandled_input(event: InputEvent) -> void:
 				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 				%GridSpinBox.get_line_edit().release_focus()
 		if freelook:
-			rotate_y(deg_to_rad(-event.relative.x * Global.mouse_sens))
-			camera.rotate_x(deg_to_rad(-event.relative.y * Global.mouse_sens))
+			rotate_y(deg_to_rad(-event.relative.x * Settings.mouse_sensitivity))
+			camera.rotate_x(deg_to_rad(-event.relative.y * Settings.mouse_sensitivity))
 			camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, -90, 90)
 	
 	if Input.is_action_just_released("right_click"):

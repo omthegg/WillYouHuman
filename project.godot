@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*res://source/autoloads/global.gd"
 ColorManager="*res://source/autoloads/color_manager.gd"
+Settings="*res://source/autoloads/settings.gd"
 
 [display]
 

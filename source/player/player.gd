@@ -28,8 +28,8 @@ func _input(event) -> void:
 		return
 	
 	if event is InputEventMouseMotion:
-		head.rotate_x(deg_to_rad(-event.relative.y * Global.mouse_sens))
-		rotate_y(deg_to_rad(-event.relative.x * Global.mouse_sens))
+		head.rotate_x(deg_to_rad(-event.relative.y * Settings.mouse_sensitivity))
+		rotate_y(deg_to_rad(-event.relative.x * Settings.mouse_sensitivity))
 		head.rotation_degrees.x = clampf(head.rotation_degrees.x, -90.0, 90.0)
 	
 	if Input.is_action_just_pressed("kill"):
