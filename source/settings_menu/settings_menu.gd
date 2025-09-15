@@ -40,8 +40,17 @@ func create_checkbox(key) -> CheckBox:
 
 func apply_settings() -> void:
 	for key in Settings.settings:
-		var h_box_container:HBoxContainer = v_box_container.get_node(key)
+		var h_box_container:HBoxContainer = v_box_container.get_node(NodePath(str(key)))
+		var value:Variant = null
+		match typeof(Settings.settings.get(key)):
+			TYPE_FLOAT:
+				value = h_box_container.get_node("SpinBox").value
+			TYPE_BOOL:
+				value = h_box_container.get_node("CheckBox").button_pressed
 		
+		Settings.settings.set(key, value)
+	
+	Settings.apply_settings()
 
 
 func _on_button_pressed() -> void:
