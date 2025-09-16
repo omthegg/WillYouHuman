@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5dwprun3va6t"]
+
+[ext_resource type="Script" uid="uid://d4hgx3hbnbsne" path="res://source/level_select/level_select.gd" id="1_rprnw"]
+[ext_resource type="Theme" uid="uid://cyoigwdix5pgn" path="res://source/themes/menu.tres" id="1_u1csh"]
+
+[node name="LevelSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_u1csh")
+script = ExtResource("1_rprnw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0555556
+anchor_top = 0.0987654
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.111111
+anchor_top = 0.0123457
+anchor_right = 0.187167
+anchor_bottom = 0.0672361
+offset_right = 0.383995
+offset_bottom = -0.0559998
+text = "Back"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

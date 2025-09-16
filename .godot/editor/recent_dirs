@@ -1,3 +1,4 @@
+res://source/level_select
 res://source/player
 res://source/settings_menu
 res://source/autoloads
@@ -19,4 +20,3 @@ res://source/short_range_antenna
 res://source/conveyor_belt
 res://source/materials
 res://source/level_editor
-res://source/3d_background

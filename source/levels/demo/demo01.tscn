@@ -1,0 +1,502 @@
+[gd_scene load_steps=41 format=4]
+
+[ext_resource type="Script" path="res://source/level_editor/level.gd" id="1_l6707"]
+[ext_resource type="PackedScene" path="res://source/player/player.tscn" id="2_033n2"]
+[ext_resource type="Script" path="res://source/player/player.gd" id="3_p2iw8"]
+[ext_resource type="Environment" path="res://source/environments/env1.tres" id="4_bqgou"]
+[ext_resource type="PackedScene" path="res://source/revolver/revolver.tscn" id="5_qaljo"]
+[ext_resource type="Script" path="res://source/revolver/revolver.gd" id="6_l48gy"]
+[ext_resource type="PackedScene" path="res://source/hitscan_component/hitscan_component.tscn" id="7_rrdgu"]
+[ext_resource type="Script" path="res://source/hitscan_component/hitscan_component.gd" id="8_121y8"]
+[ext_resource type="Script" path="res://source/player/crosshair.gd" id="9_pf420"]
+[ext_resource type="PackedScene" path="res://source/health_component/health_component.tscn" id="10_nt1vo"]
+[ext_resource type="Script" path="res://source/health_component/health_component.gd" id="11_7jd5l"]
+[ext_resource type="Material" path="res://source/player/player_material1.tres" id="12_xs32n"]
+[ext_resource type="BoxMesh" path="res://source/player/player_torso_mesh.tres" id="13_li8r4"]
+[ext_resource type="BoxMesh" path="res://source/player/player_limb_mesh.tres" id="14_o3nqj"]
+[ext_resource type="BoxMesh" path="res://source/player/player_head_mesh.tres" id="15_m8uvl"]
+[ext_resource type="Material" path="res://source/guard/guard_visor_material.tres" id="16_mpocs"]
+[ext_resource type="QuadMesh" path="res://source/player/player_visor_mesh.tres" id="17_cg8fl"]
+[ext_resource type="PackedScene" path="res://source/primitives/box/box.tscn" id="18_dtd65"]
+[ext_resource type="Script" path="res://source/primitives/box/box.gd" id="19_r03ki"]
+[ext_resource type="Material" path="res://source/materials/procedural.tres" id="20_16bpt"]
+[ext_resource type="PackedScene" path="res://source/level_editor/size_tool.tscn" id="21_5pm7v"]
+[ext_resource type="Script" path="res://source/level_editor/size_tool.gd" id="22_o4vos"]
+[ext_resource type="PackedScene" path="res://source/level_editor/dragging_component.tscn" id="23_hdcc7"]
+[ext_resource type="Script" path="res://source/level_editor/dragging_component.gd" id="24_acjw4"]
+[ext_resource type="Shape3D" path="res://source/level_editor/dragging_component_shape_sphere.tres" id="25_j8yuw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jct2x"]
+radius = 0.3
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_favdl"]
+blend_mode = 1
+
+[sub_resource type="World3D" id="World3D_dv8j0"]
+fallback_environment = ExtResource("4_bqgou")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x7gs4"]
+shading_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_du3c4"]
+_surfaces = [{
+"aabb": AABB(-0.07, -0.01, -0.05, 0.14, 0.39, 0.8),
+"format": 34359742465,
+"index_count": 132,
+"index_data": PackedByteArray("EQABAAIAAwARAAIAAwAAABEABAADAAIAAAADAAQAAAAEAAYABAACAAUABgAEAAUAAAAGABIAAAASABEABgAFABIAAgAHAAUAAgABAAcABQATABIABQAHABMAEgAUABEAEQAUAAEAEgATABQAAQALAAcAEwAVABQACAABABQAFAAVAAgAEwAKABUACgAIABUACQAKABMABwAJABMACgAJAAgABwALABYABwAWAAkAAQAMAAsACAAMAAEADAAWAAsACQANAAgADAAXABYACAAXAAwAFgAPAAkACQAPAA0AFwAQABYAFgAQAA8ACAAOABcACAANAA4AFwAOABAADwAOAA0ADwAQAA4A"),
+"lods": [0.0355931, PackedByteArray("AAABAAIAAwAAAAIAAAADAAQABAADAAIABAACAAUAAAAEAAYABgAEAAUAAgAHAAUABQAHAAYAAgABAAcABgAIAAAACAABAAAABwAJAAYABgAKAAgACQAKAAYACgAJAAgABwALAAkAAQALAAcACAAMAAEAAQAMAAsACQANAAgACAAOAAwACAANAA4ADAAOAAsACQAPAA0ADwAOAA0ACwAPAAkADwAQAA4ADgAQAAsACwAQAA8A")],
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("08xMvSbXI7zTzEy908xMve1ROD58FC4+08xMvdDMzD3vUbg908xMvQAA4LKYwnU908xMPQAA4LKYwnU908xMPdDMzD3vUbg908xMPSbXI7zTzEy908xMPe1ROD58FC4+LFyPvSlcjz66HgU+LFyPPSlcjz66HgU+08xMPSlcjz7mUbg908xMPe1ROD5I4To/08xMve1ROD5I4To/08xMvVyPwj58FC4+08xMvVyPwj5I4To/08xMPVyPwj58FC4+08xMPVyPwj5I4To/08xMvdDMzD0Z16O808xMPdDMzD0Z16O808xMPe1ROD761qM808xMve1ROD761qM808xMvSlcjz7mUbg9LFyPPSlcjz4AAEA/LFyPvSlcjz4AAEA/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_e5xom"]
+resource_name = "wyh_revolver_Cube"
+_surfaces = [{
+"aabb": AABB(-0.07, -0.01, -0.05, 0.14, 0.39, 0.8),
+"attribute_data": PackedByteArray("AADAPgAAQD8AACA/AACAPwAAID8AAIA/AADAPgAAgD8AACA/AACAPwAAID8AAIA/AAAgPwAAgD8AACA/AACAPwAAwD4AAAA/AADAPgAAQD8AACA/AAAAPwAAID8AAIA+AAAgPwAAgD4AAGA/AACAPgAAYD8AAIA+AABgPwAAgD4AACA/AACAPgAAwD4AAIA+AAAgPwAAAAAAACA/AACAPgAAwD4AAAAAAAAAPgAAAD8AAMA+AACAPgAAwD4AAAA/AAAAPgAAgD4AAMA+AAAAPwAAwD4AAIA+AAAgPwAAgD4AACA/AACAPgAAID8AAIA+AAAgPwAAgD4AACA/AACAPgAAID8AAIA+AAAgPwAAAAAAACA/AACAPgAAID8AAIA+AAAgPwAAAAAAACA/AAAAAAAAID8AAIA+AAAgPwAAgD4AACA/AAAAAAAAID8AAAAAAAAgPwAAAAAAACA/AACAPgAAID8AAIA+AAAgPwAAgD4AAGA/AACAPgAAYD8AAIA+AAAgPwAAgD4AACA/AABAPwAAID8AAIA/AAAgPwAAQD8AACA/AAAAPwAAID8AAAA/AAAgPwAAgD4AACA/AAAAPwAAID8AAEA/AAAgPwAAQD8AACA/AABAPwAAID8AAAA/AAAgPwAAQD8AACA/AABAPwAAID8AAAA/AAAgPwAAAD8AAGA/AAAAPwAAID8AAAA/AAAgPwAAQD8AACA/AABAPwAAID8AAIA+AAAgPwAAAD8AACA/AACAPgAAID8AAIA+AAAgPwAAAAAAACA/AACAPwAAID8AAIA/AAAgPwAAQD8AACA/AACAPgAAID8AAIA/AAAgPwAAgD8AACA/AAAAAAAAID8AAIA+AAAgPwAAgD4AACA/AAAAPwAAID8AAAA/"),
+"format": 34359742487,
+"index_count": 132,
+"index_data": PackedByteArray("MQAyAAIAMQAzADIAAwAxAAIAAwAAADEAEQASABMAEQAUABIAFQAWABcAFQAYABYAGQAbADQAGQAaABsAGwA1ADQAGwA2ADUACQA3ADgACQAIADcAOQA6AAQAOwA8AD0AOwA+ADwAIQAiACMAIQAkACIAPwANAEAAPwAMAA0AJQAmACcAJQAoACYAQQBCAEMAQQAKAEIAHABEAEUAHABGAEQAHAAeAEYAKQBHACsAKQBIAEcASQAFAAEASQBKAAUASQABAEsATAAfAB0ATAAgAB8ALQAuAC8ALQAwAC4ATQAGAE4ATQAHAAYACwAOAA8ACwAQAA4ATwAsAFAATwAqACwAUQBSAFMA"),
+"lods": [0.0355931, PackedByteArray("AAABAAIAAwAAAAIABAABAAAABAAFAAEABAAGAAUABAAHAAYACAAEAAkACAAKAAQACwAKAAgACgAMAA0ACwAOAA8ACwAQAA4AEQASABMAEQAUABIAFQAWABcAFQAYABYAGQAaABsAGwAcABkAHAAdABkAHAAeAB0AHgAfAB0AHgAgAB8AIQAiACMAIQAkACIAJQAmACcAJQAoACYAKQAqACsAKgAsACsALQAuAC8ALQAwAC4A")],
+"material": SubResource("StandardMaterial3D_x7gs4"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 84,
+"vertex_data": PackedByteArray("08xMvSbXI7zTzEy908xMve1ROD58FC4+08xMvdDMzD3vUbg908xMvQAA4LKYwnU9LFyPvSlcjz66HgU+08xMve1ROD5I4To/08xMvVyPwj5I4To/08xMvVyPwj58FC4+08xMPSbXI7zTzEy908xMvSbXI7zTzEy908xMPSlcjz7mUbg9LFyPPSlcjz66HgU+LFyPPSlcjz66HgU+LFyPvSlcjz66HgU+08xMvVyPwj58FC4+LFyPvSlcjz66HgU+08xMPVyPwj58FC4+08xMPQAA4LKYwnU908xMvdDMzD3vUbg908xMPdDMzD3vUbg908xMvQAA4LKYwnU908xMvSbXI7zTzEy908xMPQAA4LKYwnU908xMPSbXI7zTzEy908xMvQAA4LKYwnU908xMPSbXI7zTzEy908xMPQAA4LKYwnU908xMPdDMzD3vUbg908xMPe1ROD58FC4+LFyPPSlcjz66HgU+08xMPe1ROD5I4To/08xMPVyPwj58FC4+08xMPVyPwj5I4To/08xMvdDMzD3vUbg908xMPe1ROD58FC4+08xMPdDMzD3vUbg908xMve1ROD58FC4+08xMve1ROD58FC4+08xMPe1ROD5I4To/08xMPe1ROD58FC4+08xMve1ROD5I4To/08xMve1ROD5I4To/08xMvVyPwj5I4To/08xMPe1ROD5I4To/08xMPVyPwj5I4To/08xMPVyPwj58FC4+08xMvVyPwj5I4To/08xMvVyPwj58FC4+08xMPVyPwj5I4To/08xMvdDMzD0Z16O808xMve1ROD58FC4+08xMve1ROD761qM808xMPdDMzD0Z16O808xMPe1ROD761qM808xMPe1ROD58FC4+08xMPdDMzD0Z16O808xMvdDMzD0Z16O808xMve1ROD761qM808xMvSlcjz7mUbg908xMPdDMzD0Z16O808xMve1ROD761qM808xMvdDMzD0Z16O808xMPe1ROD761qM808xMPSlcjz7mUbg908xMvSlcjz7mUbg908xMPe1ROD761qM808xMvSlcjz7mUbg908xMve1ROD761qM8LFyPPSlcjz66HgU+08xMPe1ROD761qM8LFyPPSlcjz4AAEA/LFyPPSlcjz4AAEA/LFyPvSlcjz4AAEA/LFyPvSlcjz66HgU+LFyPvSlcjz4AAEA/08xMve1ROD761qM8LFyPPSlcjz4AAEA/LFyPvSlcjz66HgU+LFyPvSlcjz4AAEA/LFyPvSlcjz4AAEA/LFyPPSlcjz4AAEA/LFyPPSlcjz66HgU+08xMPSlcjz7mUbg908xMPe1ROD761qM8AAD/f/9/SPJUFapq////vwAA/3//fzrxAAD/f/9/wfE3GM+6////v1QVqmr///+/VBVUlf///79UFVSV////v5Hk////f0jykeT///9/SPJJy///////v2zb//////+//3///wAA/7//f///AAD/v2zb//////+/bNv//////79s2///////v/9/dmL/fzrx/392Yv9/OvH/f3Zi/3868f9/dmL/fzrx/3+pCv///7//f6kK////v/9/qQr///+//3+pCv///7////9//3/H8f///3//fzrx////f/9/xfGq6qpq////v6rqVJX///+/quqqav///7+q6lSV////v6rqVJX///+//3//P////z//f/8/////P/9//z////8//3//P////z//fwAA////v/9/AAD///+//38AAP///7//fwAA////v/9/qmr///8//39Ulf///z//f6pq////P/9/VJX///8//3///////7//f///////v/9///////+//3///////78AAP9//3/D8QAA/3////+/AAD/f////7////9//39I8v///3////+/////f////7+R5P///39I8pHk////f0jyNxjPuv///783GM+6////v1TV//////+/VNX//////79U1f//////v1TV//////+//3///wAA/7//f///AAD/v0nL//////+/Scv//////79Jy///////v6rqqmr///+/quqqav///7+q6qpq////v/9/qmr///8//3+qav///z9UFapq////v1QVqmr///+/VBWqav///7+q6lSV////v1QVVJX///+/VBVUlf///7//f1SV////P/9/VJX///8/x+fPuv///7/H58+6////v8fnz7r///+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_du3c4")
+
+[sub_resource type="Animation" id="Animation_ucx4m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Revolver:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Revolver:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dfldb"]
+resource_name = "shoot"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Revolver:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.1), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Revolver:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0), Vector3(-0.261799, -3.14159, 0), Vector3(0, -3.14159, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x8ika"]
+_data = {
+&"RESET": SubResource("Animation_ucx4m"),
+&"shoot": SubResource("Animation_dfldb")
+}
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_y4ujt"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_38gy0"]
+plane = Plane(0, -1, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fq5p2"]
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(1, 0.398438, 0.990601, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_fq5p2"]
+material = SubResource("StandardMaterial3D_fq5p2")
+radius = 0.1
+height = 0.2
+radial_segments = 8
+rings = 4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x0dql"]
+resource_local_to_scene = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_jepg6"]
+resource_local_to_scene = true
+
+[node name="Level" type="Node3D"]
+process_mode = 4
+script = ExtResource("1_l6707")
+
+[node name="Player" type="CharacterBody3D" parent="." groups=["moved_by_conveyor_belt", "player"] instance=ExtResource("2_033n2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+disable_mode = 1
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_p2iw8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_jct2x")
+
+[node name="Head" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player/Head"]
+cull_mask = 1048569
+fov = 90.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Player/Head/Camera3D"]
+layer = 0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Player/Head/Camera3D/CanvasLayer"]
+modulate = Color(0.5, 0.5, 0.5, 1)
+material = SubResource("CanvasItemMaterial_favdl")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SubViewport" type="SubViewport" parent="Player/Head/Camera3D/CanvasLayer/SubViewportContainer"]
+world_3d = SubResource("World3D_dv8j0")
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Revolver" parent="Player/Head/Camera3D/CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("5_qaljo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, -0.385)
+visible = false
+script = ExtResource("6_l48gy")
+
+[node name="Revolver" type="MeshInstance3D" parent="Player/Head/Camera3D/CanvasLayer/SubViewportContainer/SubViewport/Revolver"]
+transform = Transform3D(-0.5, 0, -1.26759e-06, 0, 0.5, 0, 1.26759e-06, 0, -0.5, 0, 0, 0)
+layers = 2
+mesh = SubResource("ArrayMesh_e5xom")
+skeleton = NodePath("")
+
+[node name="HitscanComponent" type="Node3D" parent="Player/Head/Camera3D/CanvasLayer/SubViewportContainer/SubViewport/Revolver" instance=ExtResource("7_rrdgu")]
+script = ExtResource("8_121y8")
+for_player = true
+
+[node name="RayCast3D" type="RayCast3D" parent="Player/Head/Camera3D/CanvasLayer/SubViewportContainer/SubViewport/Revolver/HitscanComponent"]
+target_position = Vector3(0, 0, -100)
+collision_mask = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Head/Camera3D/CanvasLayer/SubViewportContainer/SubViewport/Revolver"]
+libraries = {
+&"": SubResource("AnimationLibrary_x8ika")
+}
+
+[node name="Camera3D" type="Camera3D" parent="Player/Head/Camera3D/CanvasLayer/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+cull_mask = 2
+current = true
+fov = 90.0
+
+[node name="Crosshair" type="Node2D" parent="Player/Head/Camera3D/CanvasLayer"]
+visible = false
+script = ExtResource("9_pf420")
+
+[node name="HealthComponent" type="Node" parent="Player" instance=ExtResource("10_nt1vo")]
+script = ExtResource("11_7jd5l")
+delete_parent_on_death = false
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+height = 2.0
+vertices = PackedVector3Array(0.4, 0, 0.4, 0.4, 0, -0.4, -0.4, 0, -0.4, -0.4, 0, 0.4)
+
+[node name="Model" type="Node3D" parent="Player"]
+
+[node name="Torso" type="MeshInstance3D" parent="Player/Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17, 0)
+layers = 4
+material_override = ExtResource("12_xs32n")
+mesh = ExtResource("13_li8r4")
+
+[node name="LegRight" type="MeshInstance3D" parent="Player/Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, -0.55, 0)
+layers = 4
+material_override = ExtResource("12_xs32n")
+mesh = ExtResource("14_o3nqj")
+
+[node name="LegLeft" type="MeshInstance3D" parent="Player/Model"]
+transform = Transform3D(0.999981, -0.00621333, 0, 0.00621333, 0.999981, 0, 0, 0, 1, -0.1, -0.55, 0)
+layers = 4
+material_override = ExtResource("12_xs32n")
+mesh = ExtResource("14_o3nqj")
+
+[node name="ArmLeft" type="MeshInstance3D" parent="Player/Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.185, 0.045, 0)
+layers = 4
+material_override = ExtResource("12_xs32n")
+mesh = ExtResource("14_o3nqj")
+
+[node name="Head" type="MeshInstance3D" parent="Player/Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+layers = 4
+material_override = ExtResource("12_xs32n")
+mesh = ExtResource("15_m8uvl")
+
+[node name="Visor" type="MeshInstance3D" parent="Player/Model/Head"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.055)
+layers = 4
+material_override = ExtResource("16_mpocs")
+mesh = ExtResource("17_cg8fl")
+skeleton = NodePath("../..")
+
+[node name="ShootingArm" type="Node3D" parent="Player/Model"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.185, 0.465, 0)
+
+[node name="Node3D" type="Node3D" parent="Player/Model/ShootingArm"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="ArmRight" type="MeshInstance3D" parent="Player/Model/ShootingArm/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005, -0.42, 0)
+layers = 4
+material_override = ExtResource("12_xs32n")
+mesh = ExtResource("14_o3nqj")
+skeleton = NodePath("../../..")
+
+[node name="Box" type="StaticBody3D" parent="." groups=["box"] instance=ExtResource("18_dtd65")]
+process_mode = 3
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("19_r03ki")
+material = ExtResource("20_16bpt")
+
+[node name="SizeToolXP" type="Node3D" parent="Box" instance=ExtResource("21_5pm7v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+top_level = true
+visible = false
+script = ExtResource("22_o4vos")
+move_vector = Vector3(1, 0, 0)
+
+[node name="DraggingComponent" type="Area3D" parent="Box/SizeToolXP" groups=["Draggable"] instance=ExtResource("23_hdcc7")]
+script = ExtResource("24_acjw4")
+move_vector = Vector3(1, 0, 0)
+toggles_top_level = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box/SizeToolXP/DraggingComponent"]
+shape = ExtResource("25_j8yuw")
+disabled = true
+
+[node name="CursorPlane" type="StaticBody3D" parent="Box/SizeToolXP/DraggingComponent"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box/SizeToolXP/DraggingComponent/CursorPlane"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_y4ujt")
+disabled = true
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Box/SizeToolXP/DraggingComponent/CursorPlane"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_38gy0")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Box/SizeToolXP"]
+mesh = SubResource("SphereMesh_fq5p2")
+
+[node name="SizeToolXN" type="Node3D" parent="Box" instance=ExtResource("21_5pm7v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+top_level = true
+visible = false
+script = ExtResource("22_o4vos")
+move_vector = Vector3(-1, 0, 0)
+
+[node name="DraggingComponent" type="Area3D" parent="Box/SizeToolXN" groups=["Draggable"] instance=ExtResource("23_hdcc7")]
+script = ExtResource("24_acjw4")
+move_vector = Vector3(-1, 0, 0)
+toggles_top_level = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box/SizeToolXN/DraggingComponent"]
+shape = ExtResource("25_j8yuw")
+disabled = true
+
+[node name="CursorPlane" type="StaticBody3D" parent="Box/SizeToolXN/DraggingComponent"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box/SizeToolXN/DraggingComponent/CursorPlane"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_y4ujt")
+disabled = true
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Box/SizeToolXN/DraggingComponent/CursorPlane"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_38gy0")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Box/SizeToolXN"]
+mesh = SubResource("SphereMesh_fq5p2")
+
+[node name="SizeToolYP" type="Node3D" parent="Box" instance=ExtResource("21_5pm7v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+top_level = true
+visible = false
+script = ExtResource("22_o4vos")
+move_vector = Vector3(0, 1, 0)
+
+[node name="DraggingComponent" type="Area3D" parent="Box/SizeToolYP" groups=["Draggable"] instance=ExtResource("23_hdcc7")]
+script = ExtResource("24_acjw4")
+move_vector = Vector3(0, 1, 0)
+toggles_top_level = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box/SizeToolYP/DraggingComponent"]
+shape = ExtResource("25_j8yuw")
+disabled = true
+
+[node name="CursorPlane" type="StaticBody3D" parent="Box/SizeToolYP/DraggingComponent"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box/SizeToolYP/DraggingComponent/CursorPlane"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_y4ujt")
+disabled = true
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Box/SizeToolYP/DraggingComponent/CursorPlane"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_38gy0")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Box/SizeToolYP"]
+mesh = SubResource("SphereMesh_fq5p2")
+
+[node name="SizeToolYN" type="Node3D" parent="Box" instance=ExtResource("21_5pm7v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+top_level = true
+visible = false
+script = ExtResource("22_o4vos")
+move_vector = Vector3(0, -1, 0)
+
+[node name="DraggingComponent" type="Area3D" parent="Box/SizeToolYN" groups=["Draggable"] instance=ExtResource("23_hdcc7")]
+script = ExtResource("24_acjw4")
+move_vector = Vector3(0, -1, 0)
+toggles_top_level = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box/SizeToolYN/DraggingComponent"]
+shape = ExtResource("25_j8yuw")
+disabled = true
+
+[node name="CursorPlane" type="StaticBody3D" parent="Box/SizeToolYN/DraggingComponent"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box/SizeToolYN/DraggingComponent/CursorPlane"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_y4ujt")
+disabled = true
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Box/SizeToolYN/DraggingComponent/CursorPlane"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_38gy0")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Box/SizeToolYN"]
+mesh = SubResource("SphereMesh_fq5p2")
+
+[node name="SizeToolZP" type="Node3D" parent="Box" instance=ExtResource("21_5pm7v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+top_level = true
+visible = false
+script = ExtResource("22_o4vos")
+move_vector = Vector3(0, 0, 1)
+
+[node name="DraggingComponent" type="Area3D" parent="Box/SizeToolZP" groups=["Draggable"] instance=ExtResource("23_hdcc7")]
+script = ExtResource("24_acjw4")
+move_vector = Vector3(0, 0, 1)
+toggles_top_level = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box/SizeToolZP/DraggingComponent"]
+shape = ExtResource("25_j8yuw")
+disabled = true
+
+[node name="CursorPlane" type="StaticBody3D" parent="Box/SizeToolZP/DraggingComponent"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box/SizeToolZP/DraggingComponent/CursorPlane"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_y4ujt")
+disabled = true
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Box/SizeToolZP/DraggingComponent/CursorPlane"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_38gy0")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Box/SizeToolZP"]
+mesh = SubResource("SphereMesh_fq5p2")
+
+[node name="SizeToolZN" type="Node3D" parent="Box" instance=ExtResource("21_5pm7v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+top_level = true
+visible = false
+script = ExtResource("22_o4vos")
+move_vector = Vector3(0, 0, -1)
+
+[node name="DraggingComponent" type="Area3D" parent="Box/SizeToolZN" groups=["Draggable"] instance=ExtResource("23_hdcc7")]
+script = ExtResource("24_acjw4")
+move_vector = Vector3(0, 0, -1)
+toggles_top_level = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box/SizeToolZN/DraggingComponent"]
+shape = ExtResource("25_j8yuw")
+disabled = true
+
+[node name="CursorPlane" type="StaticBody3D" parent="Box/SizeToolZN/DraggingComponent"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box/SizeToolZN/DraggingComponent/CursorPlane"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_y4ujt")
+disabled = true
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Box/SizeToolZN/DraggingComponent/CursorPlane"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_38gy0")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Box/SizeToolZN"]
+mesh = SubResource("SphereMesh_fq5p2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box"]
+shape = SubResource("BoxShape3D_x0dql")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Box"]
+material_override = ExtResource("20_16bpt")
+mesh = SubResource("BoxMesh_jepg6")
+
+[connection signal="shot" from="Player/Head/Camera3D/CanvasLayer/SubViewportContainer/SubViewport/Revolver/HitscanComponent" to="Player/Head/Camera3D/CanvasLayer/SubViewportContainer/SubViewport/Revolver" method="_on_hitscan_component_shot"]
+[connection signal="died" from="Player/HealthComponent" to="Player" method="_on_health_component_died"]
+
+[editable path="Player/Head/Camera3D/CanvasLayer/SubViewportContainer/SubViewport/Revolver"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cf8xs20c4n22m"]
+[gd_scene load_steps=15 format=3 uid="uid://cf8xs20c4n22m"]
 
 [ext_resource type="Script" uid="uid://b4edouuae7wl4" path="res://source/scene_manager/scene_manager.gd" id="1_ivaf7"]
 [ext_resource type="PackedScene" uid="uid://bxeewtm154074" path="res://source/death_screen/death_screen.tscn" id="2_2r2ke"]
@@ -7,6 +7,7 @@
 [ext_resource type="Shader" uid="uid://bq5t5kljewkwh" path="res://source/scene_manager/vignette.gdshader" id="4_7eoyu"]
 [ext_resource type="PackedScene" uid="uid://cmankigoxmh7k" path="res://source/settings_menu/settings_menu.tscn" id="6_077nh"]
 [ext_resource type="Theme" uid="uid://cyoigwdix5pgn" path="res://source/themes/menu.tres" id="6_nyf36"]
+[ext_resource type="PackedScene" uid="uid://b5dwprun3va6t" path="res://source/level_select/level_select.tscn" id="7_ttu5v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2r2ke"]
 shader = ExtResource("4_7eoyu")
@@ -150,6 +151,9 @@ render_target_update_mode = 4
 metadata/_edit_use_anchors_ = true
 
 [node name="SettingsMenu" parent="MenuCanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("6_077nh")]
+visible = false
+
+[node name="LevelSelect" parent="MenuCanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("7_ttu5v")]
 visible = false
 
 [node name="DebugCanvasLayer" type="CanvasLayer" parent="."]

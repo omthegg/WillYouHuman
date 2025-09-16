@@ -16,3 +16,7 @@ func _on_editor_button_pressed() -> void:
 
 func _on_settings_button_pressed() -> void:
 	Global.scene_manager.go_to_settings()
+
+
+func _on_levels_button_pressed() -> void:
+	Global.scene_manager.go_to_level_select()

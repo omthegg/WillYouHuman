@@ -8,6 +8,7 @@ extends Node3D
 @onready var navigation_region:NavigationRegion3D = $NavigationRegion3D
 @onready var fps_label:Label = $DebugCanvasLayer/FPSLabel
 @onready var settings_menu:Control = $MenuCanvasLayer/SubViewportContainer/SubViewport/SettingsMenu
+@onready var level_select:Control = $MenuCanvasLayer/SubViewportContainer/SubViewport/LevelSelect
 
 var wire:PackedScene = preload("res://source/wire/wire.tscn")
 
@@ -117,6 +118,7 @@ func set_game_paused(paused:bool = true) -> void:
 	
 	menu_canvas_layer.visible = paused
 	get_tree().paused = paused
+	
 	if !current_level:
 		return
 	
@@ -149,3 +151,8 @@ func restart_current_level() -> void:
 func go_to_settings() -> void:
 	pause_menu.hide()
 	settings_menu.show()
+
+
+func go_to_level_select() -> void:
+	pause_menu.hide()
+	level_select.show()

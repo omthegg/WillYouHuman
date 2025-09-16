@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bslbciecordvh"]
+
+[ext_resource type="Script" uid="uid://y5r5gswv3ffb" path="res://source/level_select/level_button.gd" id="1_br706"]
+
+[node name="LevelButton" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+size_flags_horizontal = 0
+alignment = 0
+script = ExtResource("1_br706")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

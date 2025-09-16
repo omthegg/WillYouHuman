@@ -1,6 +1,6 @@
 Button
-SpinBox
 VBoxContainer
+SpinBox
 Timer
 NavigationObstacle3D
 Label
@@ -12,4 +12,3 @@ Sprite2D
 AnimationPlayer
 Camera3D
 SubViewport
-SubViewportContainer
