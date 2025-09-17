@@ -1,3 +1,5 @@
+res://source/mover
+res://source/mover_component
 res://source/level_select
 res://source/player
 res://source/settings_menu
@@ -18,5 +20,3 @@ res://source/wire
 res://source/wiring_component
 res://source/short_range_antenna
 res://source/conveyor_belt
-res://source/materials
-res://source/level_editor

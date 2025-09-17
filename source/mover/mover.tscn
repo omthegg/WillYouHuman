@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://bch78s7n11gev"]
+
+[ext_resource type="Script" uid="uid://drr75lqlcolea" path="res://source/mover/mover.gd" id="1_0kgfm"]
+[ext_resource type="Material" uid="uid://0dpvlbvewq62" path="res://source/mover/mover_material.tres" id="2_0g06g"]
+[ext_resource type="PackedScene" uid="uid://cta154fvmvnj1" path="res://source/wiring_component/wiring_component.tscn" id="2_1qrqx"]
+[ext_resource type="BoxMesh" uid="uid://ba7ohnqwwn5ui" path="res://source/mover/mover_mesh.tres" id="3_wqswg"]
+[ext_resource type="Shape3D" uid="uid://j10h2v42phcm" path="res://source/mover/mover_shape.tres" id="4_updmw"]
+[ext_resource type="PackedScene" uid="uid://di38dj6tjlciw" path="res://source/mover_component/mover_component.tscn" id="6_klgfv"]
+
+[node name="Mover" type="StaticBody3D" groups=["no_collision"]]
+disable_mode = 1
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_0kgfm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_0g06g")
+mesh = ExtResource("3_wqswg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = ExtResource("4_updmw")
+
+[node name="WiringComponent" parent="." instance=ExtResource("2_1qrqx")]
+limited_range = false
+
+[node name="MoverComponent" parent="." instance=ExtResource("6_klgfv")]

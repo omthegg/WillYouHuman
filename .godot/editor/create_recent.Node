@@ -1,3 +1,8 @@
+Label3D
+LineEdit
+CollisionShape3D
+MeshInstance3D
+StaticBody3D
 Button
 VBoxContainer
 SpinBox
@@ -8,7 +13,3 @@ CanvasLayer
 NavigationAgent3D
 Node2D
 ColorRect
-Sprite2D
-AnimationPlayer
-Camera3D
-SubViewport

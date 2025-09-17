@@ -15,3 +15,14 @@ res://source/scene_manager/scene_manager.gd
 res://source/level_editor/dragging_component.gd
 res://source/level_editor/level_editor.tscn
 res://source/level_editor/level_editor.gd
+res://source/level_select/level_select.tscn
+res://source/level_select/level_select.gd
+res://source/hitscan_component/hitscan_component.tscn
+res://source/hitscan_component/hitscan_component.gd
+res://source/player/player.tscn
+res://source/mover_component/mover_component.tscn
+res://source/mover_component/mover_component.gd
+res://source/mover/mover.tscn
+res://source/mover/mover.gd
+res://source/level_editor/property_setter.tscn
+res://source/level_editor/property_setter.gd

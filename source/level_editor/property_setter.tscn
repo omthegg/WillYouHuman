@@ -138,6 +138,7 @@ step = 0.05
 allow_greater = true
 allow_lesser = true
 
+[connection signal="text_changed" from="LineEdit" to="." method="_on_line_edit_text_changed"]
 [connection signal="value_changed" from="SpinBox" to="." method="_on_spin_box_value_changed"]
 [connection signal="toggled" from="CheckBox" to="." method="_on_check_box_toggled"]
 [connection signal="item_selected" from="MaterialOptionButton" to="." method="_on_material_option_button_item_selected"]

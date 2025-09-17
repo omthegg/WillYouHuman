@@ -21,9 +21,9 @@ func add_levels_elements() -> void:
 		chapter_folder.list_dir_begin()
 		for level_file_name:String in chapter_folder.get_files():
 			var level_button:Button = packed_level_button.instantiate()
-			var level_name:String = level_file_name.replace(" ", "").replace(".tscn", "")
+			var level_name:String = level_file_name.replace(".tscn", "")
 			level_button.name = level_name
-			level_button.text = level_name.capitalize()
+			level_button.text = level_name.capitalize().replace(" ", "")
 			level_button.packed_level_scene = load("res://source/levels/" + chapter_folder_name + "/" + level_file_name)
 			v_box_container.add_child(level_button, true)
 
@@ -31,3 +31,11 @@ func add_levels_elements() -> void:
 func _on_back_button_pressed() -> void:
 	hide()
 	Global.scene_manager.pause_menu.show()
+
+
+func _on_level_editor_button_pressed() -> void:
+	hide()
+	Global.scene_manager.pause_menu.show()
+	Global.scene_manager.set_game_paused(false)
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	Global.scene_manager.play_level(Global.scene_manager.packed_level_editor, false, false)

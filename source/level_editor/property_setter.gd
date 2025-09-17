@@ -61,6 +61,12 @@ var variable_name:String = "":
 				spinbox_x.value = variable_vector3.x
 				spinbox_y.value = variable_vector3.y
 				spinbox_z.value = variable_vector3.z
+			
+			TYPE_STRING:
+				label.text = variable_name
+				label.show()
+				line_edit.show()
+				line_edit.text = editor.selected_objects[0].get(variable_name)
 
 
 var variable_vector3:Vector3 = Vector3.ZERO
@@ -85,28 +91,32 @@ func _on_MaterialListButton_id_pressed(id: int) -> void:
 	editor.set_selected_objects_property(variable_name, materials[id])
 
 
-func _on_check_box_toggled(toggled_on):
+func _on_check_box_toggled(toggled_on:bool) -> void:
 	editor.set_selected_objects_property(variable_name, toggled_on)
 
 
-func _on_material_option_button_item_selected(index):
+func _on_material_option_button_item_selected(index:int) -> void:
 	editor.set_selected_objects_property(variable_name, materials[index])
 
 
-func _on_spin_box_value_changed(value):
+func _on_spin_box_value_changed(value:float) -> void:
 	editor.set_selected_objects_property(variable_name, value)
 
 
-func _on_spin_box_x_value_changed(value):
+func _on_spin_box_x_value_changed(value:float) -> void:
 	variable_vector3.x = value
 	editor.set_selected_objects_property(variable_name, variable_vector3)
 
 
-func _on_spin_box_y_value_changed(value):
+func _on_spin_box_y_value_changed(value:float) -> void:
 	variable_vector3.y = value
 	editor.set_selected_objects_property(variable_name, variable_vector3)
 
 
-func _on_spin_box_z_value_changed(value):
+func _on_spin_box_z_value_changed(value:float) -> void:
 	variable_vector3.z = value
 	editor.set_selected_objects_property(variable_name, variable_vector3)
+
+
+func _on_line_edit_text_changed(new_text: String) -> void:
+	editor.set_selected_objects_property(variable_name, new_text)

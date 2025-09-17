@@ -2,13 +2,13 @@ extends Node3D
 
 signal shot
 
-@export var range:float = 100.0
+@export var bullet_range:float = 100.0
 @export var for_player:bool = false
 
 @onready var raycast:RayCast3D = $RayCast3D
 
 func _ready() -> void:
-	raycast.target_position.z = -range
+	raycast.target_position.z = -bullet_range
 
 
 func _physics_process(_delta):
