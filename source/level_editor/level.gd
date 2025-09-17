@@ -1,6 +1,7 @@
 extends Node3D
 
 @export var networks:Array = []
+@export var indexed_networks:Array = []
 
 var player:CharacterBody3D
 
@@ -11,6 +12,7 @@ class Network:
 	var devices:Array = []
 	var wires:Array = [] # This is only for knowing the wires to show as powered
 
+
 # When connecting two devices together, first create a new network
 # If the object with updated wiring is in two networks at the same time,
 # merge the two networks
@@ -19,11 +21,24 @@ class Network:
 # When disconnecting two devices from each other, go through all neighbor devices
 # and put them in a new network
 
+# TODO: Make it so networks don't hold references to the devices themselves
+# and instead have their indexes (see get_index() and get_child()).
+# By using indexes instead of references to the devices, networks
+# don't break when the level is played or saved.
+# If you can't do it, make it so at least when saving it makes a version of 
+# the networks array that has the indexes
+
 func _ready() -> void:
 	for child in get_children():
 		if child.is_in_group("player"):
 			player = child
 			break
+
+
+func _physics_process(_delta: float) -> void:
+	if !Global.is_in_level_editor(self):
+		for network in networks:
+			update_network(network)
 
 
 func connect_devices(device1:Node3D, device2:Node3D) -> void:
@@ -81,11 +96,8 @@ func merge_overlapping_networks(network1:Network, network2:Network, overlapping_
 
 func update_network(network:Network) -> void:
 	#print(network.devices.size())
-	var has_power_source = false
+	var has_power_source:bool = false
 	for device in network.devices:
-		if !is_instance_valid(device):
-			continue
-		
 		if device.is_source:
 			has_power_source = true
 	
@@ -267,3 +279,19 @@ func fix_all_network_overlaps() -> void:
 		for device in network.devices:
 			pass
 			#fix_network_overlap(network, device)
+
+
+func create_indexed_networks() -> void:
+	indexed_networks.clear()
+	for network:Network in networks:
+		var devices:Array = []
+		for device in network.devices:
+			devices.append(device.get_index())
+		
+		var wires:Array = []
+		for wire in network.wires:
+			var indexed_wire:Node3D = create_wire([wire.devices[0].get_index(), wire.devices[1].get_index()])
+			wires.append(indexed_wire)
+		
+		var indexed_network:Network = create_network(wires, devices)
+		indexed_networks.append(indexed_network)

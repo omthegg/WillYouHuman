@@ -19,6 +19,8 @@ var variable_name:String = "":
 	set(value):
 		variable_name = value
 		var type:int = editor.editable_variables.get(variable_name)
+		label.text = variable_name.capitalize()
+		label.show()
 		match type:
 			TYPE_OBJECT:
 				#material_list_button.show()
@@ -31,8 +33,6 @@ var variable_name:String = "":
 				material_list_button_popup.set_item_checked(id, true)
 				#material_button.text = "Material: " + 
 				
-				label.text = variable_name
-				label.show()
 				material_option_button.show()
 				var index:int = 0
 				for i in material_option_button_popup.item_count:
@@ -42,20 +42,17 @@ var variable_name:String = "":
 				material_option_button.select(index)
 			
 			TYPE_BOOL:
+				label.hide()
 				checkbox.text = variable_name.capitalize()
 				checkbox.show()
 				checkbox.button_pressed = editor.selected_objects[0].get(variable_name)
 			
 			TYPE_FLOAT:
-				label.text = variable_name
-				label.show()
 				spinbox.show()
 				spinbox.value = editor.selected_objects[0].get(variable_name)
 				spinbox.step = 0.01
 			
 			TYPE_VECTOR3:
-				label.text = variable_name
-				label.show()
 				vector3_spinboxes.show()
 				variable_vector3 = editor.selected_objects[0].get(variable_name)
 				spinbox_x.value = variable_vector3.x
@@ -63,8 +60,6 @@ var variable_name:String = "":
 				spinbox_z.value = variable_vector3.z
 			
 			TYPE_STRING:
-				label.text = variable_name
-				label.show()
 				line_edit.show()
 				line_edit.text = editor.selected_objects[0].get(variable_name)
 
