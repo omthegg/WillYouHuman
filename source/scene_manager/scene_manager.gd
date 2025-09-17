@@ -33,7 +33,7 @@ func _physics_process(_delta) -> void:
 		networks_text_edit.text = str(current_level.networks).replace(", ", "\n").replace("[", "").replace("]", "")
 
 
-func _input(event) -> void:
+func _input(_event) -> void:
 	if Input.is_action_just_pressed("pause"):
 		if !current_level and !level_editor:
 			return
@@ -49,8 +49,12 @@ func _input(event) -> void:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 
 
-func play_level(packed_level:PackedScene, bake_navmesh:bool = true) -> void:
+func play_level(packed_level:PackedScene, bake_navmesh:bool = true, from_level_editor:bool = false) -> void:
 	packed_current_level = packed_level
+	
+	if current_level:
+		current_level.queue_free()
+	
 	var child:Node3D = packed_level.instantiate()
 	navigation_region.add_child(child)
 	
@@ -59,6 +63,11 @@ func play_level(packed_level:PackedScene, bake_navmesh:bool = true) -> void:
 		hud_canvas_layer.hide()
 		return
 	
+	if !from_level_editor:
+		if is_instance_valid(level_editor):
+			level_editor.queue_free()
+			level_editor = null
+	
 	hud_canvas_layer.show()
 	current_level = child
 	get_level_ready(child)
@@ -66,7 +75,7 @@ func play_level(packed_level:PackedScene, bake_navmesh:bool = true) -> void:
 	
 	death_screen.hide()
 	
-	if level_editor:
+	if is_instance_valid(level_editor):
 		pause_menu.editor_button.show()
 	else:
 		pause_menu.editor_button.hide()

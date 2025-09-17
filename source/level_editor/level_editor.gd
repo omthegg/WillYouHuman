@@ -130,7 +130,7 @@ func play_level() -> void:
 		child.owner = level
 	
 	packed_level.pack(level)
-	Global.scene_manager.play_level(packed_level)
+	Global.scene_manager.play_level(packed_level, true, true)
 	hide()
 	ui.hide()
 	process_mode = Node.PROCESS_MODE_DISABLED

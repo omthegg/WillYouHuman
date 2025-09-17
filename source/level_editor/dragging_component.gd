@@ -33,6 +33,8 @@ func _input(_event) -> void:
 			stop_grab()
 
 func _physics_process(_delta: float) -> void:
+	if !is_instance_valid(Global.scene_manager.level_editor):
+		return
 	editor = Global.scene_manager.level_editor
 	if grabbed:
 		if two_dimensional:
