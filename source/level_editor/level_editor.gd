@@ -52,7 +52,7 @@ func _physics_process(_delta: float) -> void:
 		for network in level.networks:
 			level.update_network(network)
 		
-		level.erase_stray_wires()
+		#level.erase_stray_wires()
 		#if !overlap_fixing_thread.is_started():
 		#	overlap_fixing_thread.start(Callable(level, "fix_all_network_overlaps"))
 		level.update_debug_info()
@@ -111,8 +111,6 @@ func save_level(path:String) -> void:
 	for child in Global.get_all_children(level):
 		child.owner = level
 	
-	level.create_indexed_networks()
-	
 	var save:PackedScene = PackedScene.new()
 	save.pack(level)
 	ResourceSaver.save(save, path)
@@ -123,7 +121,6 @@ func load_level(path:String) -> void:
 	level = load(path).instantiate()
 	level.process_mode = Node.PROCESS_MODE_DISABLED
 	add_child(level, true)
-	level.recreate_networks_from_indices()
 	selected_objects.clear()
 	update_property_menu()
 
@@ -133,8 +130,6 @@ func play_level() -> void:
 	var packed_level:PackedScene = PackedScene.new()
 	for child in Global.get_all_children(level):
 		child.owner = level
-	
-	level.create_indexed_networks()
 	
 	packed_level.pack(level)
 	Global.scene_manager.play_level(packed_level, true, true)

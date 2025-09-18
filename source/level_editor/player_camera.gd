@@ -140,8 +140,8 @@ func wire() -> void:
 	if editor.level.get_path_to(wiring_component) in dragged_wire.devices:
 		return
 	
-	var wire_between_devices:Node3D = editor.level.get_wire_between_devices(dragged_wire.devices[0], editor.level.get_path_to(wiring_component))
-	if wire_between_devices:
+	var wire_between_devices:NodePath = editor.level.get_wire_between_devices(dragged_wire.devices[0], editor.level.get_path_to(wiring_component))
+	if wire_between_devices != NodePath(""):
 		editor.level.split_network_by_wire(wire_between_devices)
 	else:
 		editor.level.connect_devices(dragged_wire.devices[0], editor.level.get_path_to(wiring_component))
