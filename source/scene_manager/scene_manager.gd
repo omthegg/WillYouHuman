@@ -109,6 +109,8 @@ func get_level_ready(level:Node3D) -> void:
 		
 		if child.is_in_group("Player"):
 			child.camera.current = true
+	
+	level.recreate_networks_from_indices()
 
 
 func disable_editor_related_collision(node:Node3D) -> void:

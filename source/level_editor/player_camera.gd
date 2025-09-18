@@ -134,17 +134,17 @@ func wire() -> void:
 		return
 	
 	if !has_dragged_wire():
-		dragged_wire = wiring_component.create_wire([wiring_component, wiring_component])
+		dragged_wire = wiring_component.create_wire([editor.level.get_path_to(wiring_component), editor.level.get_path_to(wiring_component)])
 		return
 	
-	if wiring_component in dragged_wire.devices:
+	if editor.level.get_path_to(wiring_component) in dragged_wire.devices:
 		return
 	
-	var wire_between_devices:Node3D = editor.level.get_wire_between_devices(dragged_wire.devices[0], wiring_component)
+	var wire_between_devices:Node3D = editor.level.get_wire_between_devices(dragged_wire.devices[0], editor.level.get_path_to(wiring_component))
 	if wire_between_devices:
 		editor.level.split_network_by_wire(wire_between_devices)
 	else:
-		editor.level.connect_devices(dragged_wire.devices[0], wiring_component)
+		editor.level.connect_devices(dragged_wire.devices[0], editor.level.get_path_to(wiring_component))
 	
 	dragged_wire.queue_free()
 	dragged_wire = null

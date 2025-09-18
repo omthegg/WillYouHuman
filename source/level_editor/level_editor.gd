@@ -111,6 +111,8 @@ func save_level(path:String) -> void:
 	for child in Global.get_all_children(level):
 		child.owner = level
 	
+	level.create_indexed_networks()
+	
 	var save:PackedScene = PackedScene.new()
 	save.pack(level)
 	ResourceSaver.save(save, path)
@@ -120,7 +122,8 @@ func load_level(path:String) -> void:
 	level.queue_free()
 	level = load(path).instantiate()
 	level.process_mode = Node.PROCESS_MODE_DISABLED
-	add_child(level)
+	add_child(level, true)
+	level.recreate_networks_from_indices()
 	selected_objects.clear()
 	update_property_menu()
 
@@ -130,6 +133,8 @@ func play_level() -> void:
 	var packed_level:PackedScene = PackedScene.new()
 	for child in Global.get_all_children(level):
 		child.owner = level
+	
+	level.create_indexed_networks()
 	
 	packed_level.pack(level)
 	Global.scene_manager.play_level(packed_level, true, true)

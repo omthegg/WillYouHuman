@@ -28,22 +28,22 @@ func _on_body_entered(body:Node3D) -> void:
 		range_mesh_instance.show()
 	
 	if player_has_dragged_wire(body):
-		if self in body.dragged_wire.devices:
+		if get_parent().get_parent().get_path_to(self) in body.dragged_wire.devices:
 			return
 		
-		var previous_wire_devices = body.dragged_wire.devices.duplicate()
-		previous_wire_devices.erase(body)
+		var previous_wire_devices:Array = body.dragged_wire.devices.duplicate()
+		previous_wire_devices.erase(get_parent().get_parent().get_path_to(body))
 		var other_device = previous_wire_devices[0]
 		
 		if other_device.limited_range:
 			other_device.range_mesh_instance.hide()
 		
 		body.dragged_wire.queue_free()
-		if other_device in neighbor_devices:
-			body.dragged_wire = create_wire([self, body])
+		if get_parent().get_parent().get_path_to(other_device) in neighbor_devices:
+			body.dragged_wire = create_wire([get_parent().get_parent().get_path_to(self), get_parent().get_parent().get_path_to(body)])
 			return
 		
-		Global.scene_manager.current_level.connect_devices(self, other_device, )
+		get_parent().get_parent().connect_devices(get_parent().get_parent().get_path_to(self), get_parent().get_parent().get_path_to(body))
 		#var new_wire = create_wire([self, other_device])
 		#var network = Global.scene_manager.current_level.create_network([new_wire], [self, other_device])
 		#var fixed_network = 
@@ -68,10 +68,11 @@ func display_network_id(network) -> void:
 
 func create_wire(devices:Array) -> Node3D:
 	var wire:Node3D
-	if Global.is_in_level_editor(self):
-		wire = Global.scene_manager.level_editor.level.create_wire(devices)
-	else:
-		wire = Global.scene_manager.current_level.create_wire(devices)
+	#if Global.is_in_level_editor(self):
+	#	wire = Global.scene_manager.level_editor.level.create_wire(devices)
+	#else:
+	#	wire = Global.scene_manager.current_level.create_wire(devices)
+	wire = get_parent().get_parent().create_wire(devices)
 	
 	return wire
 
@@ -88,5 +89,5 @@ func _on_range_body_exited(body:Node3D) -> void:
 	if !player_has_dragged_wire(body):
 		return
 	
-	if self in body.dragged_wire.devices:
+	if get_parent().get_parent().get_path_to(self) in body.dragged_wire.devices:
 		body.dragged_wire.queue_free()

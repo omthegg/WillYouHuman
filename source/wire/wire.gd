@@ -19,12 +19,17 @@ func update_model() -> void:
 	if devices.size() != 2:
 		return
 	
-	var pos1:Vector3 = devices[0].global_position
-	var pos2:Vector3 = devices[1].global_position
-	if devices[0].get_node_or_null("Outlet"):
-		pos1 = devices[0].get_node("Outlet").global_position
-	if devices[1].get_node_or_null("Outlet"):
-		pos2 = devices[1].get_node("Outlet").global_position
+	#if !(devices[0] is Node3D):
+	#	return
+	#if !(devices[1] is Node3D):
+	#	return
+	
+	var pos1:Vector3 = get_parent().get_node(devices[0]).global_position
+	var pos2:Vector3 = get_parent().get_node(devices[1]).global_position
+	if get_parent().get_node(devices[0]).get_node_or_null("Outlet"):
+		pos1 = get_parent().get_node(devices[0]).get_node("Outlet").global_position
+	if get_parent().get_node(devices[1]).get_node_or_null("Outlet"):
+		pos2 = get_parent().get_node(devices[1]).get_node("Outlet").global_position
 	
 	var distance:float = pos1.distance_to(pos2)
 	mesh_instance.mesh.height = distance
