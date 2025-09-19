@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceafwmxfuw3ri"]
+
+[ext_resource type="Script" uid="uid://c44u8jqgoulhe" path="res://source/group_setter/group_setter.gd" id="1_tbn8h"]
+
+[node name="GroupSetter" type="Control"]
+custom_minimum_size = Vector2(264, 32)
+layout_mode = 3
+anchor_right = 0.22900002
+anchor_bottom = 0.049000002
+offset_right = 0.19198608
+offset_bottom = 0.24799919
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tbn8h")
+metadata/_edit_use_anchors_ = true
+
+[node name="DeleteButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8787879
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "X"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.87927276
+anchor_bottom = 1.0002501
+offset_right = -0.12800217
+offset_bottom = -0.0080013275
+text = "group_name"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="DeleteButton" to="." method="_on_delete_button_pressed"]

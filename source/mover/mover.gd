@@ -27,6 +27,4 @@ func get_objects() -> void:
 
 func move() -> void:
 	get_objects()
-	var tween:Tween = create_tween()
-	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-	tween.tween_property(self, "global_position", global_position + movement_vector, time)
+	mover_component.move(movement_vector, time)

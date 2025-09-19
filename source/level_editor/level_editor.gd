@@ -3,16 +3,20 @@ extends Node3D
 @onready var player_camera:Node3D = $PlayerCamera
 @onready var Grid:StaticBody3D = $Grid
 @onready var property_menu:Control = $UI/PropertyMenu
-@onready var property_menu_vbox_container:VBoxContainer = $UI/PropertyMenu/VBoxContainer
-@onready var no_properties_label:Label = $UI/PropertyMenu/VBoxContainer/NoPropertiesLabel
+@onready var property_menu_vbox_container:VBoxContainer = $UI/PropertyMenu/TabContainer/Properties
+@onready var no_properties_label:Label = $UI/PropertyMenu/TabContainer/Properties/NoPropertiesLabel
 @onready var level:Node3D = $Level
 @onready var file_dialog:FileDialog = $UI/FileDialog
 @onready var ui:Control = $UI
 @onready var dragging_cursor:Node3D = $DraggingCursor
 @onready var placement_cursor:Node3D = $PlacementCursor
 @onready var networks_text_edit:TextEdit = $UI/NetworksTextEdit
+@onready var groups_menu_vbox_container:VBoxContainer = $UI/PropertyMenu/TabContainer/Groups
+@onready var group_adding_control:Control = $UI/PropertyMenu/TabContainer/Groups/GroupAdding
+@onready var group_line_edit:LineEdit = $UI/PropertyMenu/TabContainer/Groups/GroupAdding/GroupLineEdit
 
 var property_setter_scene:PackedScene = preload("res://source/level_editor/property_setter.tscn")
+var group_setter_scene:PackedScene = preload("res://source/group_setter/group_setter.tscn")
 
 var selected_objects:Array = []
 
@@ -34,7 +38,18 @@ var editable_variables:Dictionary = {
 	#"global_position" = TYPE_VECTOR3
 }
 
-var overlap_fixing_thread:Thread = Thread.new()
+var hidden_groups:Array = [
+	"box",
+	"player",
+	"antenna",
+	"conveyor_belt",
+	"Draggable",
+	"enemy",
+	"moved_by_conveyor_belt",
+	"no_collision",
+	"wire"
+]
+
 
 func _ready() -> void:
 	selected_scene = $UI/ObjectMenu/GridContainer.get_child(0).scene
@@ -52,9 +67,6 @@ func _physics_process(_delta: float) -> void:
 		for network in level.networks:
 			level.update_network(network)
 		
-		#level.erase_stray_wires()
-		#if !overlap_fixing_thread.is_started():
-		#	overlap_fixing_thread.start(Callable(level, "fix_all_network_overlaps"))
 		level.update_debug_info()
 		networks_text_edit.text = str(level.networks).replace(", ", "\n").replace("[", "").replace("]", "")
 
@@ -69,6 +81,10 @@ func update_property_menu() -> void:
 		if child != no_properties_label:
 			child.queue_free()
 	
+	for child in groups_menu_vbox_container.get_children():
+		if child != group_adding_control:
+			child.queue_free()
+	
 	if selected_objects.size() == 0:
 		property_menu.hide()
 	else:
@@ -79,6 +95,8 @@ func update_property_menu() -> void:
 				no_properties_label.show()
 			else:
 				no_properties_label.hide()
+		
+		add_group_setters()
 
 
 func selected_objects_are_same_type() -> bool:
@@ -147,6 +165,29 @@ func deselect_all_objects() -> void:
 	update_property_menu()
 
 
+func add_group_setters() -> void:
+	var groups_found:PackedStringArray = []
+	for selected_object:Node3D in selected_objects:
+		for group_name:StringName in selected_object.get_groups():
+			if group_name in hidden_groups:
+				continue
+			
+			if group_name.begins_with("_"):
+				continue
+			
+			if group_name in groups_found:
+				continue
+			
+			groups_found.append(str(group_name))
+	
+	for group_name:String in groups_found:
+		var group_setter:Control = group_setter_scene.instantiate()
+		group_setter.name = group_name
+		groups_menu_vbox_container.add_child(group_setter, true)
+		group_setter.group_name = group_name
+		group_setter.label.text = group_name
+
+
 func show_file_dialog() -> void:
 	file_dialog.popup(Rect2i(8, 32, 1136, 610))
 
@@ -187,3 +228,17 @@ func _on_deselect_button_pressed() -> void:
 
 func _on_networks_button_pressed():
 	networks_text_edit.visible = !networks_text_edit.visible
+
+
+func _on_add_group_button_pressed():
+	if group_line_edit.text == "":
+		return
+	
+	var group_name:String = group_line_edit.text
+	group_line_edit.text = ""
+	
+	var group_setter:Control = group_setter_scene.instantiate()
+	group_setter.name = group_name
+	groups_menu_vbox_container.add_child(group_setter, true)
+	group_setter.group_name = group_name
+	group_setter.add_selected_objects_to_group()

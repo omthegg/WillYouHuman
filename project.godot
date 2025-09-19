@@ -130,6 +130,7 @@ kill={
 3d_render/layer_1="World objects"
 3d_render/layer_2="Viewmodels"
 3d_render/layer_3="Player model"
+3d_render/layer_4="Hidden editor objects"
 3d_physics/layer_1="Level editor dragging"
 3d_physics/layer_2="Level editor selecting"
 3d_physics/layer_3="Level editor placement"

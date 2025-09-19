@@ -30,7 +30,7 @@ shape = SubResource("CapsuleShape3D_jct2x")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
-cull_mask = 1048569
+cull_mask = 1048561
 fov = 90.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Head/Camera3D"]
