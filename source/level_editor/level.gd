@@ -12,6 +12,12 @@ class Network:
 	var devices:Array = []
 	var wires:Array = [] # This is only for knowing the wires to show as powered
 
+var empty_network:Dictionary = {
+	"powered" = false,
+	"devices" = [],
+	"wires" = []
+}
+
 
 # When connecting two devices together, first create a new network
 # If the object with updated wiring is in two networks at the same time,
@@ -21,8 +27,7 @@ class Network:
 # When disconnecting two devices from each other, go through all neighbor devices
 # and put them in a new network
 
-# TODO: Make it so networks and wires keep NodePaths to devices instead
-# of direct references.
+# TODO: Make networks dictionaries instead of classes (because classes get freed)
 
 func _ready() -> void:
 	for child in get_children():
@@ -60,29 +65,29 @@ func create_wire(devices:Array) -> Node3D:
 	return wire
 
 
-func create_network(wires:Array, devices:Array) -> Network:
-	var network:Network = Network.new()
-	network.wires = wires
-	network.devices = devices
+func create_network(wires:Array, devices:Array) -> Dictionary:
+	var network:Dictionary = empty_network.duplicate(true)
+	network["wires"] = wires
+	network["devices"] = devices
 	networks.append(network)
 	update_network(network)
 	return network
 
 
 func set_network_power(network:Network, powered:bool) -> void:
-	network.powered = powered
+	network["powered"] = powered
 
 
-func merge_overlapping_networks(network1:Network, network2:Network, overlapping_device:NodePath) -> Network:
+func merge_overlapping_networks(network1:Dictionary, network2:Dictionary, overlapping_device:NodePath) -> Dictionary:
 	if network1 == network2:
 		return network1
 	
-	var merged_network:Network = network1
-	merged_network.devices.erase(overlapping_device)
-	merged_network.devices.append_array(network2.devices)
-	merged_network.wires.append_array(network2.wires)
-	merged_network.devices = Global.erase_duplicates(merged_network.devices)
-	merged_network.wires = Global.erase_duplicates(merged_network.wires)
+	var merged_network:Dictionary = network1
+	merged_network["devices"].erase(overlapping_device)
+	merged_network["devices"].append_array(network2["devices"])
+	merged_network["wires"].append_array(network2["wires"])
+	merged_network["devices"] = Global.erase_duplicates(merged_network["devices"])
+	merged_network["wires"] = Global.erase_duplicates(merged_network["wires"])
 	networks.append(merged_network)
 	update_network(merged_network)
 	networks.erase(network2)
@@ -90,7 +95,7 @@ func merge_overlapping_networks(network1:Network, network2:Network, overlapping_
 	return merged_network
 
 
-func update_network(network:Network) -> void:
+func update_network(network:Dictionary) -> void:
 	#print(network.devices.size())
 	var has_power_source:bool = false
 	if network in indexed_networks:
@@ -100,17 +105,17 @@ func update_network(network:Network) -> void:
 		if get_node(device).is_source:
 			has_power_source = true
 	
-	network.powered = has_power_source
+	network["powered"] = has_power_source
 	
 	for device in network.devices:
-		get_node(device).powered = network.powered
+		get_node(device).powered = network["powered"]
 		get_node(device).display_network_id(network)
 	
 	for wire in network.wires:
 		if !is_instance_valid(get_node_or_null(wire)):
 			continue
 		
-		get_node(wire).powered = network.powered
+		get_node(wire).powered = network["powered"]
 		get_node(wire).display_network_id(network)
 		get_node(wire).update_model()
 	
@@ -120,15 +125,15 @@ func update_network(network:Network) -> void:
 	#	networks.erase(network)
 
 
-func fix_network_overlap(network:Network, overlapping_device:NodePath) -> void:# -> Network:
-	for n:Network in networks:
+func fix_network_overlap(network:Dictionary, overlapping_device:NodePath) -> void:# -> Network:
+	for n:Dictionary in networks:
 		if networks.size() == 1:
 			#print("E")
 			return
 		
 		if n == network:
 			continue
-		if !(overlapping_device in n.devices):
+		if !(overlapping_device in n["devices"]):
 			continue
 		#print("E")
 		
@@ -137,9 +142,9 @@ func fix_network_overlap(network:Network, overlapping_device:NodePath) -> void:#
 
 
 func split_network_by_wire(wire:NodePath) -> void:
-	var network:Network
-	for n:Network in networks:
-		if wire in n.wires:
+	var network:Dictionary
+	for n:Dictionary in networks:
+		if wire in n["wires"]:
 			network = n
 	
 	if !network:
@@ -153,32 +158,32 @@ func split_network_by_wire(wire:NodePath) -> void:
 	get_node(device1).neighbor_devices.erase(device2)
 	get_node(device2).neighbor_devices.erase(device1)
 	
-	network.wires.erase(wire)
+	network["wires"].erase(wire)
 	#new_network.wires.erase(wire)
 	get_node(wire).queue_free()
 	
 	if device2 in get_neighbors(device1):
 		return
 	
-	var new_network:Network = create_network([], [])
+	var new_network:Dictionary = create_network([], [])
 	
-	network.devices.erase(device2)
-	new_network.devices.append(device2)
+	network["devices"].erase(device2)
+	new_network["devices"].append(device2)
 	var device2_neighbors:Array = get_neighbors(device2)
 	for neighbor in device2_neighbors:
-		network.devices.erase(neighbor)
-		new_network.devices.append(neighbor)
+		network["devices"].erase(neighbor)
+		new_network["devices"].append(neighbor)
 		#if !is_instance_valid(network):
 		#	networks.erase(network)
 		#	continue
 		for w in network.wires:
 			if !is_instance_valid(get_node_or_null(w)):
-				network.wires.erase(w)
+				network["wires"].erase(w)
 				continue
 			
 			if neighbor in get_node(w).devices:
-				new_network.wires.append(w)
-				network.wires.erase(w)
+				new_network["wires"].append(w)
+				network["wires"].erase(w)
 	
 	#new_network.devices.append_array(device2_neighbors)
 	
@@ -227,7 +232,7 @@ func get_neighbors_recursive(device:NodePath, neighbors_list:Array=[]) -> Array:
 
 func get_wire_between_devices(device1:NodePath, device2:NodePath) -> NodePath:
 	for network in networks:
-		for wire in network.wires:
+		for wire in network["wires"]:
 			if !is_instance_valid(get_node_or_null(wire)):
 				continue
 			
@@ -240,8 +245,8 @@ func get_wire_between_devices(device1:NodePath, device2:NodePath) -> NodePath:
 func erase_network_duplicates() -> void:
 	networks = Global.erase_duplicates(networks)
 	for n in networks:
-		n.devices = Global.erase_duplicates(n.devices)
-		n.wires = Global.erase_duplicates(n.wires)
+		n["devices"] = Global.erase_duplicates(n["devices"])
+		n["wires"] = Global.erase_duplicates(n["wires"])
 
 
 func erase_stray_wires() -> void:
@@ -255,7 +260,7 @@ func erase_stray_wires() -> void:
 		
 		var in_a_network:bool = false
 		for network in networks:
-			if child in network.wires:
+			if child in network["wires"]:
 				in_a_network = true
 				break
 		
@@ -276,6 +281,6 @@ func update_debug_info() -> void:
 ## Broken. Do not use.
 func fix_all_network_overlaps() -> void:
 	for network in networks:
-		for device in network.devices:
+		for device in network["devices"]:
 			pass
 			#fix_network_overlap(network, device)
