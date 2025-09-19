@@ -25,3 +25,5 @@ shape = ExtResource("4_updmw")
 limited_range = false
 
 [node name="MoverComponent" parent="." instance=ExtResource("6_klgfv")]
+
+[connection signal="finished_moving" from="MoverComponent" to="." method="_on_mover_component_finished_moving"]

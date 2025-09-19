@@ -13,4 +13,4 @@ func _on_delete_button_pressed() -> void:
 
 func add_selected_objects_to_group() -> void:
 	for selected_object:Node3D in editor.selected_objects:
-		selected_object.add_to_group(group_name)
+		selected_object.add_to_group(group_name, true)
