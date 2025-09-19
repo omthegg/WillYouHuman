@@ -241,4 +241,5 @@ func _on_add_group_button_pressed():
 	group_setter.name = group_name
 	groups_menu_vbox_container.add_child(group_setter, true)
 	group_setter.group_name = group_name
+	group_setter.label.text = group_name
 	group_setter.add_selected_objects_to_group()
