@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://byt21fy3gmcxc"]
+
+[ext_resource type="Texture2D" uid="uid://c1y7w5o3qfsl5" path="res://textures/square_outline.png" id="1_ghfvx"]
+[ext_resource type="PackedScene" uid="uid://c5xfugkwkukxr" path="res://source/box_gizmo_component/box_gizmo_component.tscn" id="2_0khh4"]
+[ext_resource type="PackedScene" uid="uid://di38dj6tjlciw" path="res://source/mover_component/mover_component.tscn" id="3_lkjh5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3bhhu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3bhhu"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = ExtResource("1_ghfvx")
+uv1_scale = Vector3(3, 2, 1)
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_ghfvx"]
+
+[node name="PlayerMover" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_3bhhu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_3bhhu")
+mesh = SubResource("BoxMesh_ghfvx")
+
+[node name="BoxGizmoComponent" parent="." instance=ExtResource("2_0khh4")]
+
+[node name="MoverComponent" parent="." instance=ExtResource("3_lkjh5")]
