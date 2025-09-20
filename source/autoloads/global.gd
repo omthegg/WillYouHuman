@@ -126,7 +126,7 @@ func add_gizmos(node3d: Node3D) -> void:
 	mt.process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	if node3d.is_in_group("box"):
-		node3d.enable_size_tools()
+		node3d.box_gizmo_component.enable_size_tools()
 	if node3d is CSGPolygon3D:
 		node3d.enable_polygon_tools()
 
@@ -145,7 +145,7 @@ func remove_gizmos(node3d:Node3D) -> void:
 			node3d.end.get_node("MoveToolDeleted").queue_free()
 	
 	if node3d.is_in_group("box"):
-		node3d.disable_size_tools()
+		node3d.box_gizmo_component.disable_size_tools()
 	if node3d is CSGPolygon3D:
 		node3d.disable_polygon_tools()
 

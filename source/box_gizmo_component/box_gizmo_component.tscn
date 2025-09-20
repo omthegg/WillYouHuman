@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5xfugkwkukxr"]
+
+[ext_resource type="Script" uid="uid://c6cir3sbe0i1c" path="res://source/box_gizmo_component/box_gizmo_component.gd" id="1_8yf26"]
+[ext_resource type="PackedScene" uid="uid://bxnmakt4ofm0x" path="res://source/level_editor/size_tool.tscn" id="1_jq1rl"]
+
+[node name="BoxGizmoComponent" type="Node3D"]
+script = ExtResource("1_8yf26")
+
+[node name="SizeToolXP" parent="." instance=ExtResource("1_jq1rl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+top_level = true
+move_vector = Vector3(1, 0, 0)
+
+[node name="SizeToolXN" parent="." instance=ExtResource("1_jq1rl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+top_level = true
+move_vector = Vector3(-1, 0, 0)
+
+[node name="SizeToolYP" parent="." instance=ExtResource("1_jq1rl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+top_level = true
+move_vector = Vector3(0, 1, 0)
+
+[node name="SizeToolYN" parent="." instance=ExtResource("1_jq1rl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+top_level = true
+move_vector = Vector3(0, -1, 0)
+
+[node name="SizeToolZP" parent="." instance=ExtResource("1_jq1rl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+top_level = true
+move_vector = Vector3(0, 0, 1)
+
+[node name="SizeToolZN" parent="." instance=ExtResource("1_jq1rl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+top_level = true
+move_vector = Vector3(0, 0, -1)

@@ -1,3 +1,4 @@
+res://source/box_gizmo_component
 res://source/group_setter
 res://source/mover
 res://source/mover_component
@@ -19,4 +20,3 @@ res://source/materials/
 res://source/short_range_battery
 res://source/wire
 res://source/wiring_component
-res://source/short_range_antenna

@@ -35,7 +35,8 @@ var editable_variables:Dictionary = {
 	"weapon" = TYPE_INT,
 	"group_to_move" = TYPE_STRING,
 	"movement_vector" = TYPE_VECTOR3,
-	"one_time_activation" = TYPE_BOOL
+	"one_time_activation" = TYPE_BOOL,
+	"cylinder_mode" = TYPE_BOOL
 	#"global_position" = TYPE_VECTOR3
 }
 

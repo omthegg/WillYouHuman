@@ -13,7 +13,7 @@ func _ready() -> void:
 	$SubViewport.add_child(scene_instance)
 	
 	if scene_instance.name == "Box":
-		scene_instance.enable_size_tools()
+		scene_instance.box_gizmo_component.enable_size_tools()
 		scene_instance.material = Global.display_material
 	elif scene_instance.name == "Polygon":
 		scene_instance.enable_polygon_tools()
