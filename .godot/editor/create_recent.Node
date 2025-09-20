@@ -1,5 +1,5 @@
-Area3D
 MeshInstance3D
+Area3D
 CollisionShape3D
 StaticBody3D
 Button
@@ -12,4 +12,3 @@ TabContainer
 TabBar
 Label3D
 SpinBox
-Timer

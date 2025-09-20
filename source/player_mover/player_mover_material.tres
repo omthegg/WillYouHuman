@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://5fh6jbc8w4q0"]
+
+[ext_resource type="Texture2D" uid="uid://c1y7w5o3qfsl5" path="res://textures/square_outline.png" id="1_7633q"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_7633q")
+uv1_scale = Vector3(3, 2, 1)
+texture_filter = 2

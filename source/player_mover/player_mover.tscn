@@ -1,21 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://byt21fy3gmcxc"]
+[gd_scene load_steps=10 format=3 uid="uid://byt21fy3gmcxc"]
 
-[ext_resource type="Texture2D" uid="uid://c1y7w5o3qfsl5" path="res://textures/square_outline.png" id="1_ghfvx"]
 [ext_resource type="Script" uid="uid://byj4cak1tn73n" path="res://source/player_mover/player_mover.gd" id="2_0khh4"]
+[ext_resource type="Material" uid="uid://5fh6jbc8w4q0" path="res://source/player_mover/player_mover_material.tres" id="2_uomoy"]
 [ext_resource type="PackedScene" uid="uid://di38dj6tjlciw" path="res://source/mover_component/mover_component.tscn" id="3_lkjh5"]
 [ext_resource type="PackedScene" uid="uid://c5xfugkwkukxr" path="res://source/box_gizmo_component/box_gizmo_component.tscn" id="3_oyfn8"]
+[ext_resource type="Material" uid="uid://bulkaw2p4cb56" path="res://source/player_mover/player_mover_icon_material.tres" id="5_uomoy"]
+[ext_resource type="QuadMesh" uid="uid://b6p0uqjm4x33c" path="res://source/player_mover/player_mover_icon_mesh.tres" id="6_0ykpp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oyfn8"]
 resource_local_to_scene = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3bhhu"]
-transparency = 2
-alpha_scissor_threshold = 0.5
-alpha_antialiasing_mode = 0
-shading_mode = 0
-albedo_texture = ExtResource("1_ghfvx")
-uv1_scale = Vector3(3, 2, 1)
-texture_filter = 2
 
 [sub_resource type="BoxMesh" id="BoxMesh_ghfvx"]
 
@@ -33,7 +26,7 @@ shape = SubResource("BoxShape3D_oyfn8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 layers = 8
-material_override = SubResource("StandardMaterial3D_3bhhu")
+material_override = ExtResource("2_uomoy")
 mesh = SubResource("BoxMesh_ghfvx")
 
 [node name="BoxGizmoComponent" parent="." instance=ExtResource("3_oyfn8")]
@@ -46,6 +39,11 @@ collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_3bhhu")
+
+[node name="Icon" type="MeshInstance3D" parent="."]
+layers = 8
+material_override = ExtResource("5_uomoy")
+mesh = ExtResource("6_0ykpp")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

@@ -20,3 +20,7 @@ res://source/level_editor/level_editor.tscn
 res://source/level_editor/level_editor.gd
 res://source/mover/mover.tscn
 res://source/level_editor/move_tool.gd
+res://source/player_mover/player_mover_material.tres
+res://source/scene_manager/scene_manager.tscn
+res://source/scene_manager/scene_manager.gd
+res://source/mover_component/mover_component.gd

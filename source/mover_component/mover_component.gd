@@ -12,7 +12,7 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	for object in objects:
-		object.global_position += last_global_position - global_position
+		object.global_position += global_position - last_global_position
 	
 	last_global_position = global_position
 

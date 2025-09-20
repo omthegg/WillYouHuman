@@ -154,7 +154,8 @@ func restart_current_level() -> void:
 		return
 	
 	current_level.queue_free()
-	play_level(packed_current_level, false)
+	var has_level_editor:bool = is_instance_valid(level_editor)
+	play_level(packed_current_level, false, has_level_editor)
 
 
 func go_to_settings() -> void:

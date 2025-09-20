@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bulkaw2p4cb56"]
+
+[ext_resource type="Texture2D" uid="uid://djrt7fstp7ib1" path="res://textures/mover2.png" id="1_ou3rn"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = ExtResource("1_ou3rn")
+texture_filter = 2
+billboard_mode = 1
