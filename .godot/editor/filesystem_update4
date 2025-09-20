@@ -18,3 +18,5 @@ res://source/autoloads/global.gd
 res://source/level_editor/object_button.gd
 res://source/level_editor/level_editor.tscn
 res://source/level_editor/level_editor.gd
+res://source/mover/mover.tscn
+res://source/level_editor/move_tool.gd

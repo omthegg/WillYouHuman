@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bxnmakt4ofm0x" path="res://source/level_editor/size_tool.tscn" id="1_jq1rl"]
 
 [node name="BoxGizmoComponent" type="Node3D"]
+process_mode = 3
 script = ExtResource("1_8yf26")
 
 [node name="SizeToolXP" parent="." instance=ExtResource("1_jq1rl")]

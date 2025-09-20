@@ -10,13 +10,9 @@ extends StaticBody3D
 @onready var box_gizmo_component:Node3D = $BoxGizmoComponent
 
 
-func _physics_process(_delta: float) -> void:
-	change_appearance()
-
-
 func change_appearance() -> void:
 	mesh_instance.mesh.size = box_gizmo_component.size
 	mesh_instance.mesh.flip_faces = flip_faces
-	collision_shape.shape.size = size
+	collision_shape.shape.size = box_gizmo_component.size
 	collision_shape.disabled = !collision
 	mesh_instance.material_override = material

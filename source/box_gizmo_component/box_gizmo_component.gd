@@ -28,6 +28,10 @@ var size_tools_enabled:bool = true
 
 func _ready():
 	disable_size_tools()
+	await get_tree().physics_frame
+	reset_size_tools()
+	set_middles()
+	set_previous_middles()
 	#if !Global.is_in_level_editor(self):
 	#	st_xp.process_mode = Node.PROCESS_MODE_DISABLED
 	#	st_xn.process_mode = Node.PROCESS_MODE_DISABLED
@@ -70,6 +74,9 @@ func _physics_process(_delta):
 	var highlight:MeshInstance3D = get_parent().get_node_or_null("EditorHighlight")
 	if highlight:
 		highlight.mesh.size = size
+	
+	if get_parent().has_method("change_appearance"):
+		get_parent().change_appearance()
 
 
 func set_middles() -> void:

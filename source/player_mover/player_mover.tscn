@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://byt21fy3gmcxc"]
+[gd_scene load_steps=9 format=3 uid="uid://byt21fy3gmcxc"]
 
 [ext_resource type="Texture2D" uid="uid://c1y7w5o3qfsl5" path="res://textures/square_outline.png" id="1_ghfvx"]
-[ext_resource type="PackedScene" uid="uid://c5xfugkwkukxr" path="res://source/box_gizmo_component/box_gizmo_component.tscn" id="2_0khh4"]
+[ext_resource type="Script" uid="uid://byj4cak1tn73n" path="res://source/player_mover/player_mover.gd" id="2_0khh4"]
 [ext_resource type="PackedScene" uid="uid://di38dj6tjlciw" path="res://source/mover_component/mover_component.tscn" id="3_lkjh5"]
+[ext_resource type="PackedScene" uid="uid://c5xfugkwkukxr" path="res://source/box_gizmo_component/box_gizmo_component.tscn" id="3_oyfn8"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_3bhhu"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_oyfn8"]
+resource_local_to_scene = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3bhhu"]
 transparency = 2
@@ -17,15 +19,33 @@ texture_filter = 2
 
 [sub_resource type="BoxMesh" id="BoxMesh_ghfvx"]
 
-[node name="PlayerMover" type="StaticBody3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_3bhhu"]
+resource_local_to_scene = true
+
+[node name="PlayerMover" type="StaticBody3D" groups=["box", "no_collision"]]
+disable_mode = 1
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_0khh4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_3bhhu")
+shape = SubResource("BoxShape3D_oyfn8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 8
 material_override = SubResource("StandardMaterial3D_3bhhu")
 mesh = SubResource("BoxMesh_ghfvx")
 
-[node name="BoxGizmoComponent" parent="." instance=ExtResource("2_0khh4")]
+[node name="BoxGizmoComponent" parent="." instance=ExtResource("3_oyfn8")]
 
 [node name="MoverComponent" parent="." instance=ExtResource("3_lkjh5")]
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_3bhhu")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
