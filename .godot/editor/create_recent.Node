@@ -1,5 +1,5 @@
-Timer
 MeshInstance3D
+Timer
 Area3D
 CollisionShape3D
 StaticBody3D

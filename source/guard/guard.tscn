@@ -219,6 +219,7 @@ libraries = {
 speed_scale = 2.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+max_speed = 5.0
 
 [node name="MoveTimer" type="Timer" parent="."]
 wait_time = 3.0
