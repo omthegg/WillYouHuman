@@ -6,6 +6,10 @@ extends CharacterBody3D
 @onready var navigation_agent:NavigationAgent3D = $NavigationAgent3D
 @onready var move_timer:Timer = $MoveTimer
 @onready var random_timer:Timer = $RandomTimer
+@onready var shoot_timer:Timer = $ShootTimer
+@onready var target_timer:Timer = $TargetTimer
+@onready var revolver_hitscan_component:Node3D = $Model/ShootingArm/Node3D/Revolver/HitscanComponent
+@onready var laser:MeshInstance3D = $Model/ShootingArm/Node3D/Laser
 
 var player:CharacterBody3D
 
@@ -23,12 +27,13 @@ func _ready() -> void:
 	random_timer.start()
 
 
-func _physics_process(delta:float) -> void:
+func _physics_process(_delta:float) -> void:
 	player = Global.scene_manager.current_level.player
 	if player:
-		look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z))
-		shooting_arm.look_at(player.head.global_position + Vector3(0, -0.3, 0.0))
-		shooting_raycast.look_at(player.head.global_position)
+		if target_timer.time_left == 0.0 and shoot_timer.time_left == 0.0:
+			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z))
+			shooting_arm.look_at(player.head.global_position + Vector3(0, -0.3, 0.0))
+			shooting_raycast.look_at(player.head.global_position)
 		
 		move_to_path()
 	
@@ -38,7 +43,7 @@ func _physics_process(delta:float) -> void:
 		animation_player.play("stand")
 
 
-func find_path_to_player(player:CharacterBody3D) -> void:
+func find_path_to_player() -> void:
 	await get_tree().physics_frame
 	navigation_agent.set_target_position(player.global_position + 
 	Vector3(randf_range(-6.0, 6.0), 0.0, randf_range(-6.0, 6.0)))
@@ -49,14 +54,35 @@ func move_to_path() -> void:
 	velocity = global_position.direction_to(next_path_position) * speed
 	if navigation_agent.is_target_reached():
 		velocity = Vector3.ZERO
+		if target_timer.time_left == 0.0 and shoot_timer.time_left == 0.0:
+			target()
 	
 	move_and_slide()
 
 
+func target() -> void:
+	laser.show()
+	target_timer.start()
+
+
+func shoot() -> void:
+	shooting_arm.look_at(Global.scene_manager.future_player_position)
+	shoot_timer.start()
+
+
 func _on_move_timer_timeout() -> void:
-	find_path_to_player(player)
-	move_timer.start()
+	find_path_to_player()
 
 
 func _on_random_timer_timeout() -> void:
 	move_timer.start()
+
+
+func _on_shoot_timer_timeout() -> void:
+	revolver_hitscan_component.shoot()
+	laser.hide()
+	move_timer.start()
+
+
+func _on_target_timer_timeout() -> void:
+	shoot()

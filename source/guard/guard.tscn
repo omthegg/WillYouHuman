@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c5pqvs8eq8ftd"]
+[gd_scene load_steps=17 format=3 uid="uid://c5pqvs8eq8ftd"]
 
 [ext_resource type="Material" uid="uid://ci67pqclyynb3" path="res://source/guard/guard_material.tres" id="1_pt6iq"]
 [ext_resource type="Script" uid="uid://tqdou832hlbh" path="res://source/guard/guard.gd" id="1_qd5tm"]
@@ -14,6 +14,13 @@ radius = 0.4
 
 [sub_resource type="BoxMesh" id="BoxMesh_4sqj2"]
 size = Vector3(0.3, 0.3, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ma5mu"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xau1h"]
+size = Vector3(0.02, 20, 0.02)
 
 [sub_resource type="Animation" id="Animation_xau1h"]
 length = 0.001
@@ -197,6 +204,12 @@ skeleton = NodePath("../../..")
 [node name="Revolver" parent="Model/ShootingArm/Node3D" instance=ExtResource("7_ma5mu")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.816, 0.028)
 
+[node name="Laser" type="MeshInstance3D" parent="Model/ShootingArm/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11, -0.115)
+visible = false
+material_override = SubResource("StandardMaterial3D_ma5mu")
+mesh = SubResource("BoxMesh_xau1h")
+
 [node name="HealthComponent" parent="." instance=ExtResource("7_43r6e")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -214,5 +227,15 @@ one_shot = true
 [node name="RandomTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="TargetTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
 [connection signal="timeout" from="RandomTimer" to="." method="_on_random_timer_timeout"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="timeout" from="TargetTimer" to="." method="_on_target_timer_timeout"]

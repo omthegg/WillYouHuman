@@ -52,7 +52,7 @@ size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
 [node name="Revolver" parent="Head/Camera3D/CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("4_favdl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, -0.385)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.35, -0.385)
 visible = false
 
 [node name="Revolver" parent="Head/Camera3D/CanvasLayer/SubViewportContainer/SubViewport/Revolver" index="0"]

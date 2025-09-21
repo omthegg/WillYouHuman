@@ -12,3 +12,5 @@ res://source/conveyor_belt/conveyor_belt.gdshader
 res://source/player/player.gd
 res://source/scene_manager/scene_manager.tscn
 res://source/scene_manager/scene_manager.gd
+res://source/guard/guard.tscn
+res://source/guard/guard.gd
