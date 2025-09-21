@@ -17,10 +17,20 @@ var packed_current_level:PackedScene
 var current_level:Node3D
 var level_editor:Node3D
 
+var future_player_position:Vector3 = Vector3.ZERO
+
+var prediction_mesh_instance:MeshInstance3D = MeshInstance3D.new()
+
 func _ready() -> void:
 	Global.scene_manager = self
 	set_game_paused(true)
 	play_level(packed_level_editor)
+	
+	add_child(prediction_mesh_instance, true)
+	prediction_mesh_instance.mesh = BoxMesh.new()
+	prediction_mesh_instance.material_override = StandardMaterial3D.new()
+	prediction_mesh_instance.material_override.shading_mode = 0
+	prediction_mesh_instance.hide()
 
 
 func _process(delta: float) -> void:
@@ -31,6 +41,8 @@ func _physics_process(_delta) -> void:
 	if current_level and is_instance_valid(current_level):
 		current_level.update_debug_info()
 		networks_text_edit.text = str(current_level.networks).replace(", ", "\n").replace("[", "").replace("]", "")
+	
+	prediction_mesh_instance.global_position = future_player_position
 
 
 func _input(_event) -> void:

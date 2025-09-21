@@ -1,4 +1,5 @@
 res://source/environments/env1.tres
+res://source/player/player.tscn
 res://source/materials/glass.tres
 res://source/level_editor/grid.gdshader
 res://source/themes/menu.tres
@@ -8,19 +9,6 @@ res://source/materials/glass_edge2.gdshader
 res://source/scene_manager/menu_background.gdshader
 res://source/scene_manager/glow.gdshader
 res://source/conveyor_belt/conveyor_belt.gdshader
-res://source/player_mover/player_mover.tscn
-res://source/player_mover/player_mover.gd
-res://source/primitives/box/box.tscn
-res://source/box_gizmo_component/box_gizmo_component.tscn
-res://source/box_gizmo_component/box_gizmo_component.gd
-res://source/primitives/box/box.gd
-res://source/autoloads/global.gd
-res://source/level_editor/object_button.gd
-res://source/level_editor/level_editor.tscn
-res://source/level_editor/level_editor.gd
-res://source/mover/mover.tscn
-res://source/level_editor/move_tool.gd
-res://source/player_mover/player_mover_material.tres
+res://source/player/player.gd
 res://source/scene_manager/scene_manager.tscn
 res://source/scene_manager/scene_manager.gd
-res://source/mover_component/mover_component.gd

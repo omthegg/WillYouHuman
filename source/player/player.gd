@@ -37,26 +37,39 @@ func _input(event) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-	
 	if is_on_floor():
 		extra_jumps = 1
 	
-	if health_component.health > 0:
-		move_around(delta)
-		push_rigidbodies()
+	take_input(delta)
+	push_rigidbodies()
 	
-	if !dragged_wire:
-		return
-	if !is_instance_valid(dragged_wire):
-		return
-	#dragged_wire.update_model()
+	var original_velocity:Vector3 = velocity
+	var original_global_position:Vector3 = global_position
+	
+	for i in 60:
+		move(delta)
+	
+	Global.scene_manager.future_player_position = global_position
+	
+	velocity = original_velocity
+	global_position = original_global_position
+	
+	move(delta)
 
 
-func move_around(delta:float) -> void:
+func move(delta:float) -> void:
+	move_and_slide()
+	
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+	
+
+
+func take_input(delta:float) -> void:
 	# Handle jump.
+	if health_component.health <= 0:
+		return
+	
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor():
 			velocity.y = JUMP_VELOCITY
@@ -65,8 +78,8 @@ func move_around(delta:float) -> void:
 			extra_jumps -= 1
 	
 	# Get the input direction and handle the movement/deceleration.
-	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var input_dir:Vector2 = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
+	var direction:Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		#velocity.x = direction.x * SPEED
 		#velocity.z = direction.z * SPEED
@@ -77,8 +90,6 @@ func move_around(delta:float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED/6)
 	
 	tilt_camera(input_dir.x, delta)
-	
-	move_and_slide()
 
 
 func push_rigidbodies() -> void:
