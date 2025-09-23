@@ -20,7 +20,7 @@ shading_mode = 0
 albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_xau1h"]
-size = Vector3(0.02, 20, 0.02)
+size = Vector3(0.02, 100, 0.02)
 
 [sub_resource type="Animation" id="Animation_xau1h"]
 length = 0.001
@@ -205,7 +205,7 @@ skeleton = NodePath("../../..")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.816, 0.028)
 
 [node name="Laser" type="MeshInstance3D" parent="Model/ShootingArm/Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11, -0.115)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -51, -0.115)
 visible = false
 material_override = SubResource("StandardMaterial3D_ma5mu")
 mesh = SubResource("BoxMesh_xau1h")
@@ -228,12 +228,18 @@ one_shot = true
 one_shot = true
 
 [node name="ShootTimer" type="Timer" parent="."]
+process_callback = 0
 wait_time = 0.5
 one_shot = true
 
 [node name="TargetTimer" type="Timer" parent="."]
+process_callback = 0
 wait_time = 0.5
 one_shot = true
+
+[node name="PlayerDetector" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -100)
+collision_mask = 8
 
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
 [connection signal="timeout" from="RandomTimer" to="." method="_on_random_timer_timeout"]

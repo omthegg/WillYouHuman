@@ -46,7 +46,7 @@ func _physics_process(delta: float) -> void:
 	var original_velocity:Vector3 = velocity
 	var original_global_position:Vector3 = global_position
 	
-	for i in 60:
+	for i in 30:
 		move(delta)
 	
 	Global.scene_manager.future_player_position = global_position

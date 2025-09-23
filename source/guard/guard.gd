@@ -10,6 +10,7 @@ extends CharacterBody3D
 @onready var target_timer:Timer = $TargetTimer
 @onready var revolver_hitscan_component:Node3D = $Model/ShootingArm/Node3D/Revolver/HitscanComponent
 @onready var laser:MeshInstance3D = $Model/ShootingArm/Node3D/Laser
+@onready var player_detector:RayCast3D = $PlayerDetector
 
 var player:CharacterBody3D
 
@@ -17,6 +18,8 @@ var speed:float = 8.0
 
 var targeting:bool = false
 var shooting:bool = false
+
+var active:bool = false
 
 var target_mesh_instance:MeshInstance3D = MeshInstance3D.new()
 
@@ -28,6 +31,9 @@ func _ready() -> void:
 	
 	navigation_agent.path_desired_distance = 1.0
 	navigation_agent.target_desired_distance = 1.0
+	
+	shoot_timer.wait_time = 0.5
+	target_timer.wait_time = 0.5
 	
 	#random_timer.wait_time = randf_range(0.0, 1.0)
 	#random_timer.start()
@@ -45,11 +51,20 @@ func _ready() -> void:
 
 func _physics_process(_delta:float) -> void:
 	player = Global.scene_manager.current_level.player
-	if player:
-		if !shooting:
-			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z))
-			shooting_arm.look_at(player.head.global_position + Vector3(0, -0.3, 0.0))
-			shooting_raycast.look_at(player.head.global_position)
+	if !player:
+		return
+	
+	player_detector.look_at(player.global_position)
+	if player_detector.get_collider() == player:
+		active = true
+	
+	if !active:
+		return
+	
+	if !shooting:
+		look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z))
+		shooting_arm.look_at(player.head.global_position + Vector3(0, -0.3, 0.0))
+		shooting_raycast.look_at(player.head.global_position)
 		
 		
 		move_to_path()
