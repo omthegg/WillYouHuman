@@ -219,7 +219,6 @@ libraries = {
 speed_scale = 2.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-max_speed = 5.0
 
 [node name="MoveTimer" type="Timer" parent="."]
 wait_time = 3.0
@@ -229,11 +228,11 @@ one_shot = true
 one_shot = true
 
 [node name="ShootTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 0.5
 one_shot = true
 
 [node name="TargetTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 0.5
 one_shot = true
 
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]

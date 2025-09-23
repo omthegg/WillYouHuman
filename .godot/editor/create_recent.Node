@@ -1,4 +1,5 @@
 MeshInstance3D
+Path3D
 Timer
 Area3D
 CollisionShape3D
@@ -11,4 +12,3 @@ VBoxContainer
 Panel
 TabContainer
 TabBar
-Label3D

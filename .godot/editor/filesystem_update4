@@ -10,3 +10,4 @@ res://source/scene_manager/menu_background.gdshader
 res://source/scene_manager/glow.gdshader
 res://source/conveyor_belt/conveyor_belt.gdshader
 res://source/guard/guard.gd
+res://source/player/player.gd

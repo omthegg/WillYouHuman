@@ -12,7 +12,7 @@ func _ready() -> void:
 
 
 func _physics_process(_delta):
-	if for_player and visible:
+	if for_player and get_parent().visible:
 		raycast.global_position = Global.scene_manager.current_level.player.camera.global_position
 		raycast.global_rotation = Global.scene_manager.current_level.player.camera.global_rotation
 		#print(raycast.get_collider())
