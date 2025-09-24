@@ -21,10 +21,11 @@ func add_levels_elements() -> void:
 		chapter_folder.list_dir_begin()
 		for level_file_name:String in chapter_folder.get_files():
 			var level_button:Button = packed_level_button.instantiate()
-			var level_name:String = level_file_name.replace(".tscn", "")
+			var level_name:String = level_file_name.replace(".tscn", "").replace(".remap", "")
 			level_button.name = level_name
 			level_button.text = level_name.capitalize().replace(" ", "")
-			level_button.packed_level_scene = load("res://source/levels/" + chapter_folder_name + "/" + level_file_name)
+			var level_path:String = "res://source/levels/" + chapter_folder_name + "/" + level_file_name
+			level_button.packed_level_scene = load(level_path)
 			v_box_container.add_child(level_button, true)
 
 
