@@ -70,6 +70,7 @@ skeleton = NodePath("")
 
 [node name="Outline" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+layers = 8
 material_override = ExtResource("3_pjdur")
 mesh = ExtResource("4_htn6w")
 

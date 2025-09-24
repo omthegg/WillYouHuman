@@ -8,13 +8,11 @@ extends StaticBody3D
 const SPIN_SPEED:float = 150.0
 
 func _ready() -> void:
-	if !Global.is_in_level_editor(self):
-		$Outline.hide()
-		match weapon:
-			0:
-				revolver.hide()
-			1:
-				revolver.show()
+	match weapon:
+		0:
+			revolver.hide()
+		1:
+			revolver.show()
 
 
 func _physics_process(delta:float) -> void:
