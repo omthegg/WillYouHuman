@@ -10,6 +10,7 @@ extends CharacterBody3D
 @onready var health_component:Node = $HealthComponent
 @onready var revolver:Node3D = $Head/Camera3D/CanvasLayer/SubViewportContainer/SubViewport/Revolver
 @onready var crosshair:Node2D = $Head/Camera3D/CanvasLayer/Crosshair
+@onready var viewmodel_subviewport_container:SubViewportContainer = $Head/Camera3D/CanvasLayer/SubViewportContainer
 
 const SPEED = 10.0
 const JUMP_VELOCITY = 6.0
@@ -24,8 +25,12 @@ var dragged_wire:Node3D
 
 
 func _ready() -> void:
-	#revolver.get_node("HitscanComponent/RayCast3D").global_position = camera.global_position
+	revolver.get_node("HitscanComponent/RayCast3D").global_position = camera.global_position
 	$Head/Camera3D/CanvasLayer/SubViewportContainer/SubViewport.world_3d = get_tree().root.world_3d
+	#if is_instance_valid(Global.scene_manager.level_editor):
+	#	viewmodel_subviewport_container.modulate = Color(0.5, 0.5, 0.5, 1.0)
+	#else:
+	#	viewmodel_subviewport_container.modulate = Color(1.0, 1.0, 1.0, 1.0)
 
 
 func _input(event) -> void:

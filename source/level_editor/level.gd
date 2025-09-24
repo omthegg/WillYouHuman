@@ -102,12 +102,15 @@ func update_network(network:Dictionary) -> void:
 		return
 	
 	for device in network.devices:
-		if get_node(device).is_source:
+		if get_node(device).get("is_source"):
 			has_power_source = true
 	
 	network["powered"] = has_power_source
 	
 	for device in network.devices:
+		if get_node(device).get("powered") == null:
+			continue
+		
 		get_node(device).powered = network["powered"]
 		get_node(device).display_network_id(network)
 	

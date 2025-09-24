@@ -1,6 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://dewylcfpmmaop"]
 
 [ext_resource type="Script" uid="uid://qhivmob45286" path="res://source/player/player.gd" id="1_jct2x"]
+[ext_resource type="Material" uid="uid://cr3n1y0ebamaj" path="res://source/player/viewmodel_subviewport_container_material.tres" id="2_fhjrr"]
 [ext_resource type="Material" uid="uid://bkyigbm1u3q4j" path="res://source/player/player_material1.tres" id="2_u10tu"]
 [ext_resource type="PackedScene" uid="uid://tv2j88wg8fre" path="res://source/revolver/revolver.tscn" id="4_favdl"]
 [ext_resource type="PackedScene" uid="uid://bnpvba8utgjab" path="res://source/health_component/health_component.tscn" id="4_glqx2"]
@@ -13,9 +14,6 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jct2x"]
 radius = 0.3
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_favdl"]
-blend_mode = 1
 
 [node name="Player" type="CharacterBody3D" groups=["moved_by_conveyor_belt", "player"]]
 disable_mode = 1
@@ -39,8 +37,7 @@ fov = 90.0
 layer = 0
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Head/Camera3D/CanvasLayer"]
-modulate = Color(0.5, 0.5, 0.5, 1)
-material = SubResource("CanvasItemMaterial_favdl")
+material = ExtResource("2_fhjrr")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -49,6 +46,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="SubViewport" type="SubViewport" parent="Head/Camera3D/CanvasLayer/SubViewportContainer"]
+transparent_bg = true
 handle_input_locally = false
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
@@ -58,7 +56,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.35, -0.385)
 visible = false
 
 [node name="Revolver" parent="Head/Camera3D/CanvasLayer/SubViewportContainer/SubViewport/Revolver" index="0"]
-transform = Transform3D(-0.5, 0, -1.2675908e-06, 0, 0.5, 0, 1.2675908e-06, 0, -0.5, 0, 0, 0)
 layers = 2
 
 [node name="HitscanComponent" parent="Head/Camera3D/CanvasLayer/SubViewportContainer/SubViewport/Revolver" index="1"]

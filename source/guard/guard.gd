@@ -47,6 +47,7 @@ func _ready() -> void:
 	target_mesh_instance.material_override.billboard_mode = 1
 	target_mesh_instance.material_override.shading_mode = 0
 	target_mesh_instance.top_level = true
+	target_mesh_instance.hide()
 
 
 func _physics_process(_delta:float) -> void:

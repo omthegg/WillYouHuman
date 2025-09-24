@@ -1,10 +1,10 @@
+res://source/player
 res://source/player_mover
 res://source/box_gizmo_component
 res://source/group_setter
 res://source/mover
 res://source/mover_component
 res://source/level_select
-res://source/player
 res://source/settings_menu
 res://source/autoloads
 res://source/environments

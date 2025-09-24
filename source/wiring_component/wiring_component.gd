@@ -35,15 +35,15 @@ func _on_body_entered(body:Node3D) -> void:
 		previous_wire_devices.erase(get_parent().get_parent().get_path_to(body))
 		var other_device = previous_wire_devices[0]
 		
-		if other_device.limited_range:
-			other_device.range_mesh_instance.hide()
+		if get_parent().get_parent().get_node(other_device).limited_range:
+			get_parent().get_parent().get_node(other_device).range_mesh_instance.hide()
 		
 		body.dragged_wire.queue_free()
-		if get_parent().get_parent().get_path_to(other_device) in neighbor_devices:
+		if other_device in neighbor_devices:
 			body.dragged_wire = create_wire([get_parent().get_parent().get_path_to(self), get_parent().get_parent().get_path_to(body)])
 			return
 		
-		get_parent().get_parent().connect_devices(get_parent().get_parent().get_path_to(self), get_parent().get_parent().get_path_to(body))
+		get_parent().get_parent().connect_devices(get_parent().get_parent().get_path_to(self), other_device)
 		#var new_wire = create_wire([self, other_device])
 		#var network = Global.scene_manager.current_level.create_network([new_wire], [self, other_device])
 		#var fixed_network = 

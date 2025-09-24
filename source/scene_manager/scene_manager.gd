@@ -79,6 +79,8 @@ func play_level(packed_level:PackedScene, bake_navmesh:bool = true, from_level_e
 		if is_instance_valid(level_editor):
 			level_editor.queue_free()
 			level_editor = null
+		
+		child.player.camera.make_current()
 	
 	hud_canvas_layer.show()
 	current_level = child
