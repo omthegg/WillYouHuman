@@ -22,11 +22,13 @@ mesh = ExtResource("5_16y3u")
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+visible = false
 billboard = 1
 text = "Network"
 
 [node name="Label3D2" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+visible = false
 billboard = 1
 modulate = Color(0, 1, 0.976562, 1)
 text = "Devices"

@@ -55,7 +55,7 @@ func _on_body_entered(body:Node3D) -> void:
 		#other_device.neighbor_devices.append(self)
 		#neighbor_devices.append(other_device)
 	
-	body.dragged_wire = create_wire([self, body])
+	body.dragged_wire = create_wire([get_parent().get_parent().get_path_to(self), get_parent().get_parent().get_path_to(body)])
 
 
 func player_has_dragged_wire(player:Node3D) -> bool:

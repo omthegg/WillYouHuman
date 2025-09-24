@@ -1,5 +1,5 @@
 res://source/environments/env1.tres
-res://source/guard/guard.tscn
+res://source/player/player.tscn
 res://source/materials/glass.tres
 res://source/level_editor/grid.gdshader
 res://source/themes/menu.tres
@@ -9,5 +9,6 @@ res://source/materials/glass_edge2.gdshader
 res://source/scene_manager/menu_background.gdshader
 res://source/scene_manager/glow.gdshader
 res://source/conveyor_belt/conveyor_belt.gdshader
-res://source/guard/guard.gd
 res://source/player/player.gd
+res://source/level_editor/level_editor.tscn
+res://source/level_editor/level_editor.gd

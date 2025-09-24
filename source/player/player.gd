@@ -1,5 +1,10 @@
 extends CharacterBody3D
 
+@export var y_rotation:float = 0.0:
+	set(value):
+		y_rotation = value
+		rotation_degrees.y = y_rotation
+
 @onready var head:Node3D = $Head
 @onready var camera:Camera3D = $Head/Camera3D
 @onready var health_component:Node = $HealthComponent
@@ -60,7 +65,8 @@ func _physics_process(delta: float) -> void:
 func move(delta:float) -> void:
 	move_and_slide()
 	
-	if not is_on_floor():
+	if !is_on_floor():
+		floor_snap_length = 0.1
 		velocity += get_gravity() * delta
 	
 

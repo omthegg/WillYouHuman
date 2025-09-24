@@ -36,7 +36,8 @@ var editable_variables:Dictionary = {
 	"group_to_move" = TYPE_STRING,
 	"movement_vector" = TYPE_VECTOR3,
 	"one_time_activation" = TYPE_BOOL,
-	"cylinder_mode" = TYPE_BOOL
+	"cylinder_mode" = TYPE_BOOL,
+	"y_rotation" = TYPE_FLOAT
 	#"global_position" = TYPE_VECTOR3
 }
 
