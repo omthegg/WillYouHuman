@@ -29,12 +29,14 @@ func create_spinbox(key:String) -> SpinBox:
 	spinbox.allow_greater = true
 	spinbox.allow_lesser = true
 	spinbox.value = Settings.settings.get(key)
+	spinbox.focus_mode = Control.FOCUS_NONE
 	return spinbox
 
 
 func create_checkbox(key) -> CheckBox:
 	var checkbox:CheckBox = CheckBox.new()
 	checkbox.button_pressed = Settings.settings.get(key)
+	checkbox.focus_mode = Control.FOCUS_NONE
 	return checkbox
 
 

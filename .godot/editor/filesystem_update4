@@ -1,5 +1,5 @@
 res://source/environments/env1.tres
-res://source/weapon_pickup/weapon_pickup.tscn
+res://source/level_select/level_button.tscn
 res://source/materials/glass.tres
 res://source/level_editor/grid.gdshader
 res://source/themes/menu.tres
@@ -9,5 +9,11 @@ res://source/materials/glass_edge2.gdshader
 res://source/scene_manager/menu_background.gdshader
 res://source/scene_manager/glow.gdshader
 res://source/conveyor_belt/conveyor_belt.gdshader
-res://source/weapon_pickup/weapon_pickup.gd
-res://source/scene_manager/scene_manager.tscn
+res://source/revolver/revolver.tscn
+res://source/revolver/revolver.gd
+res://source/settings_menu/settings_menu.gd
+res://source/level_select/level_select.tscn
+res://source/settings_menu/settings_menu.tscn
+res://source/level_editor/dragging_component.tscn
+res://source/level_editor/dragging_component.gd
+res://source/level_editor/size_tool.tscn

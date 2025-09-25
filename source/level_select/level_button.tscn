@@ -6,6 +6,7 @@
 offset_right = 8.0
 offset_bottom = 8.0
 size_flags_horizontal = 0
+focus_mode = 0
 alignment = 0
 script = ExtResource("1_br706")
 

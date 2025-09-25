@@ -34,6 +34,7 @@ anchor_right = 0.187167
 anchor_bottom = -0.041
 offset_right = 0.383995
 offset_bottom = -0.0559998
+focus_mode = 0
 text = "Back"
 metadata/_edit_use_anchors_ = true
 
@@ -46,6 +47,7 @@ anchor_right = 0.373
 anchor_bottom = -0.041
 offset_right = 0.303955
 offset_bottom = -0.0559998
+focus_mode = 0
 text = "Apply"
 metadata/_edit_use_anchors_ = true
 

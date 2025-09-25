@@ -6,9 +6,13 @@ extends Area3D
 		move_vector = value
 		if cursor_plane and auto_rotate_plane:
 			cursor_plane.look_at(move_vector)
+		
+		if horizontal:
+			cursor_plane.rotation_degrees.z = -90.0
 
 @export var toggles_top_level:bool = true
 @export var two_dimensional:bool = false
+@export var horizontal:bool = false
 
 @export var shape:Shape3D = preload("res://source/level_editor/dragging_component_shape_sphere.tres"):
 	set(value):
@@ -31,6 +35,7 @@ func _input(_event) -> void:
 	if Input.is_action_just_released("left_click"):
 		if grabbed:
 			stop_grab()
+
 
 func _physics_process(_delta: float) -> void:
 	if !is_instance_valid(Global.scene_manager.level_editor):

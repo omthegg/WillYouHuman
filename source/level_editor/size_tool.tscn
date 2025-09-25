@@ -20,6 +20,7 @@ script = ExtResource("1_xhmie")
 
 [node name="DraggingComponent" parent="." instance=ExtResource("1_fq5p2")]
 toggles_top_level = false
+horizontal = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_fq5p2")

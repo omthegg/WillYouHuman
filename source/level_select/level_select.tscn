@@ -33,6 +33,7 @@ anchor_right = 0.187167
 anchor_bottom = 0.0672361
 offset_right = 0.383995
 offset_bottom = -0.0559998
+focus_mode = 0
 text = "Back"
 metadata/_edit_use_anchors_ = true
 
@@ -45,6 +46,7 @@ anchor_right = 0.5621667
 anchor_bottom = 0.06723609
 offset_right = 0.383995
 offset_bottom = -0.0559998
+focus_mode = 0
 text = "Level Editor"
 metadata/_edit_use_anchors_ = true
 
